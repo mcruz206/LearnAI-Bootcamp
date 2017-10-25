@@ -34,17 +34,18 @@ Examples here
   - 10-11: Lab 3.1: TDSP Intro and Leveraging VSTS with AML (Buck)
   - 11-12: Lab 3.2: Comparing and Managing Models with AML (Seth)
   - 12-1: Lunch
-  - 1-2: Lab 3.3: Deploying a workflow to a remote execution environment (Buck)
-  - 2-3: Lab 3.4: Deploying a scoring service to AML (Buck)
-  - 3-4: Lab 3.5: Collect Data from a scoring service (Buck)
+  - 1-2: Lab 3.3: Deploying a data engineering or model training workflow to a remote execution environment (let's use docker on DSVM) (Buck)
+  - 2-3: Lab 3.4: Updating conda_dependencies.yml to include additional external dependencies for deep-learning or mml. (Buck)
+  - 3-4: Lab 3.5: 
   - 4-5: Summary and Discussion
 - Day 4 
   - 9-10: Introduction and Context. Deploying your starting point.
-  - 10-11: Lab 4.1: Updating conda_dependencies.yml to include additional external dependencies for deep-learning or mml. (Buck)
-  - 11-12: Lab 4.2: Parallel parameter sweeps on Spark (Seth)
+  - 10-11: Lab 4.1: Parallel parameter sweeps on Spark (Seth)
+  - 11-12: Lab 4.2: Leverage Batch AI Training for parallel training on GPUs (Seth + rodrigo [once on board])
   - 12-1: Lunch
-  - 1-2:30: Lab 4.3: Leverage Batch AI Training for parallel training on GPUs (Seth + rodrigo [once on board])
-  - 2:30-4: Lab 4.4:  Additional options?
+  - 1-2:00: Lab 4.3: Deploying a scoring service to AML (Buck)
+  - 2:00 - 3:00: Lab 4.4: Collect Data from a scoring service (Buck)
+  - 3:00-4: Lab 4.5:  Consuming the final service
   - 4-5: Summary and Discussion
 
 
