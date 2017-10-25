@@ -1,20 +1,25 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+This is a placeholder for the 4 day bootcamp to get the ball rolling.
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+The goal of this bootcamp is to kick-start advanced training for individuals who would like to be able to do the following:
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+1)	Create a web application leveraging Generally Available Cognitive Services REST APIs to meet customer business needs.
+2)	Leverage Azure Search to provide a positive search experience inside of a web application.
+3)	Build, test, and monitor intelligent bots using Azure Bot Services and LUIS.
+4)	Leverage and evangelize the most effective process for building, delivering, and managing AI-infused applications on Azure (i.e. the Team Data Science Process).
+5)	Leverage Azure Machine Learning Services to run experiments and manage and deploy models.
+6)	Leverage appropriate IaaS (e.g. the Data Science/Deep Learning Virtual Machine) and managed Services (e.g. Spark on HDInsight, Batch AI, AML Services) to efficiently execute deep-learning workflows, regardless of backend computational framework (e.g. TensorFlow, Cognitive Toolkit, etc).
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+We can't accomplish all of these in a single 4 day bootcamp, so we've curated and developed labs that focus on key workloads and activities in these domains. The first two days focus on kick-starting the first three learning objectives, and the second two days focus on kick-starting the last three. The pre-requisites for the first two days are different than the pre-requisites for the second two, so they are listed out separately:
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+- [Details for first two days](day_one_and_two)
+- [Details for the second two days](day_three_and_four)
+
+NOTES:
+- we can re-organize to individual days
+- numbering labs is just for internal tracking
+- descriptions for agenda and goal for each day are just placeholders.
+- pre-work definition in pre-reqs
+    - deploy a DSVM (?)
+    - Spark on HDI deployed using these instructions: https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql
+    
