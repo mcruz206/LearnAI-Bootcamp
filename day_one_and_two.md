@@ -40,17 +40,17 @@ We have tried to leverage a [gallery example](https://github.com/Azure/cortana-i
   - 11-12: Lab 1.2:
   - 12-1: Lunch
   - 1-2: Lab 1.3:
-  - 2-3: Lab 1.4: 
+  - 2-3: Lab 1.4: Search example with kiosk
   - 3-4: Lab 1.5: Updating standard Speech to text to CRIS (Custom SpPeech - requires the next day's example??)
-  - 4-5: Summary and Discussion
+  - 4-5: Summary and White-board Discussion
 - Day 2 
   - 9-10: Introduction and Context. Deploying your starting point.
   - 10-11: Lab 2.1: Log Chat Conversations in your Bot (Mithun)
   - 11-12: Lab 2.2: Testing your Bot (Mithun)
   - 12-1: Lunch
-  - 1-2:30: Lab 2.3: Adding Custom Intents and Entitites with LUIS (Anna)
+  - 1-2:30: Lab 2.3: Adding Custom Intents and Entities with LUIS (Anna)
   - 2:30-4: Lab 2.4: Using Entities with Search (Anna)
-  - 4-5: Summary and Discussion
+  - 4-5: Summary and White-board Discussion
 
 
 - Other potential labs:
