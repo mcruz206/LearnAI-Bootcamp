@@ -4,26 +4,26 @@
 
 ## 1. Business Understanding
 
-### Lab: Use-case evaluation for Data Science questions
+- [ ] Lab: Use-case evaluation for Data Science questions
 
 ## 2. Data Acquisition and Understanding
 
-### Lab: 
+- [ ]  Lab: 
 
 
 ## 3. Modeling
 
-### Lab: 
+- [ ]  Lab: 
 
 
 ## 4. Deployment
 
-### Lab: 
+- [ ]  Lab: 
 
 
 ## 5. Customer Acceptance
 
-### Lab: 
+- [ ]  Lab: 
 
 
 ## Lab Completion
