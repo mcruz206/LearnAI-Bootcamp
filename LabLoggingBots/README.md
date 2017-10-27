@@ -1,25 +1,42 @@
-# Introduction 
-This is a placeholder for the 4 day bootcamp to get the ball rolling.
+# Logging with Microsoft Bot Framework
 
-The goal of this bootcamp is to kick-start advanced training for individuals who would like to be able to do the following:
+Unless your bot is logging the conversation data somewhere, the bot framework will not perform any logging for you automatically. This has privacy implications, and many bots simply can't allow that in their scenarios.
 
-1)	Create a web application leveraging Generally Available Cognitive Services REST APIs to meet customer business needs.
-2)	Leverage Azure Search to provide a positive search experience inside of a web application.
-3)	Build, test, and monitor intelligent bots using Azure Bot Services and LUIS.
-4)	Leverage and evangelize the most effective process for building, delivering, and managing AI-infused applications on Azure (i.e. the Team Data Science Process).
-5)	Leverage Azure Machine Learning Services to run experiments and manage and deploy models.
-6)	Leverage appropriate IaaS (e.g. the Data Science/Deep Learning Virtual Machine) and managed Services (e.g. Spark on HDInsight, Batch AI, AML Services) to efficiently execute deep-learning workflows, regardless of backend computational framework (e.g. TensorFlow, Cognitive Toolkit, etc).
+This lab shows how you can perform logging using Microsoft Bot Framework and store chat conversations. More specifically, the aim of this lab is to:
 
-We can't accomplish all of these in a single 4 day bootcamp, so we've curated and developed labs that focus on key workloads and activities in these domains. The first two days focus on kick-starting the first three learning objectives, and the second two days focus on kick-starting the last three. The pre-requisites for the first two days are different than the pre-requisites for the second two, so they are listed out separately:
+1. Understand how to intercept and log message activities between bots and users.
 
-- [Details for first two days](day_one_and_two)
-- [Details for the second two days](day_three_and_four)
+2. Log conversations to a file using global events and activity logger.
 
-NOTES:
-- we can re-organize to individual days
-- numbering labs is just for internal tracking
-- descriptions for agenda and goal for each day are just placeholders.
-- pre-work definition in pre-reqs
-    - deploy a DSVM (?)
-    - Spark on HDI deployed using these instructions: https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql
-    
+3. Extend the logging to SQL DB using global events and activity logger.
+
+## Uses of logging chat conversations
+
+In the advanced analytics space, there are plenty of uses for storing log converstaions. Having a corpus of chat conversations can allow developers to: 
+1. Build question and answer engines specific to a domain.
+2. Introduce a personality to bots.
+3. Perform analyses on specific topics or products to identify trends.
+
+## Prerequisites
+
+* The latest update of Visual Studio 2015. You can download the community version [here](http://www.visualstudio.com) for free.
+
+* The Bot Framework Emulator. To install the Bot Framework Emulator, download it from [here](https://emulator.botframework.com/). Please refer to [this documentation article](https://github.com/microsoft/botframework-emulator/wiki/Getting-Started) to know more about the Bot Framework Emulator.
+
+* Code from [core-Middleware](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-Middleware)
+
+## Lab structure
+
+The folder structure is arranged as follows:
+
+__docs__: Contains all the hands-on labs
+
+The order of Hands-on Labs to carry out the solution is as follows:
+1. Activity Logger:
+The aim of this hands-on lab is to implement the IActivityLogger interface that writes message activities when running in debug. 
+2. File Logger:
+This hands-on lab is to demonstrate how you can log conversations to a file using global events.
+3. SQL Logger:
+This hands-on lab is an extension of the file logger. The same code from the previous task is extended to log conversations in SQL.
+
+Follow the hands-on labs in the sequential manner described above.
