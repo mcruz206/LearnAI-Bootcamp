@@ -2,9 +2,9 @@
 
 This hands-on lab guides you through using the [Team Data Science Process](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/overview) using [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-what-is-azure-ml) with the Azure Machine Learning Workbench. 
 
-- [ ] Objective (TODO)
-- [ ] Objective (TODO)
-- [ ] Objective (TODO)
+[ ] Use the TDSP to clearly define business goals and success criteria
+[ ] Objective (TODO)
+[ ] Objective (TODO)
 
 You'll focus on the objectives above, not Data Science, Machine Learning or a difficult scenario. You'll use the Iris flower data set, a canonical example for predictions and Data Mining.
 This data set is traditionally used for classification and prediction – to see which features of an iris can identify the flower as a certain type of iris. The values for length and width can be used to classify an iris into one of three iris types: Iris setosa, Iris versicolor, or Iris virginica. Visually exploring this data also lets you see the grouping (clustering) of the records into these three different types of irises.
