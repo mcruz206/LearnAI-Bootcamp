@@ -1,0 +1,42 @@
+﻿namespace MiddlewareBot
+{
+    using System.Diagnostics;
+    using System.Threading.Tasks;
+    using Microsoft.Bot.Builder.History;
+    using Microsoft.Bot.Connector;
+    using System.IO;
+    using System.Data.SqlClient;
+
+    public class SqlActivityLogger : IActivityLogger
+    {
+        SqlConnection connection;
+
+        public SqlActivityLogger(SqlConnection conn)
+        {
+            this.connection = conn;
+        }
+        public async Task LogAsync(IActivity activity)
+        {
+           
+            if (!activity.From.Name.Contains("Bot"))
+            {
+                string fromId = activity.From.Id;
+                string toId = activity.Recipient.Id;
+                string message = activity.AsMessageActivity().Text;
+
+                string insertQuery = "INSERT INTO userChatLog(fromId, toId, message) VALUES (@fromId,@toId,@message)";
+
+                SqlCommand command = new SqlCommand(insertQuery, connection);
+                command.Parameters.AddWithValue("@fromId", fromId);
+                command.Parameters.AddWithValue("@toId", toId);
+                command.Parameters.AddWithValue("@message", message);
+
+                command.ExecuteNonQuery();
+                Debug.WriteLine("Insertion successful of message: " + activity.AsMessageActivity().Text);
+                //Debug.WriteLine($"From:{activiy.From.Id} - To:{activiy.Recipient.Id} - Message:{activiy.AsMessageActivity().Text}");
+            }
+            
+        }
+    }
+
+}
