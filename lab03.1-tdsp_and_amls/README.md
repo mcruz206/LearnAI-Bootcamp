@@ -47,12 +47,14 @@ The Orange Telecom company in France is one of the largest operators of mobile a
 Customer Churn is always an issue in any company. Orange would like to predict the propensity of customers to switch provider (churn), buy new products or services (appetency), or buy upgrades or add-ons proposed to them to make the sale more profitable (up-selling). For this effort, they think churn is the first thing they would like to focus on. 
 
 ## 2. Data Acquisition and Understanding
-The [Data Aquisition and Understanding](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-data) phase of the TDSP (TODO)
-In this workshop, we'll use a single file-based dataset. The Iris data set contains 150 records of 3 classes of iris flowers with numeric values for petal and sepal length and width.  This data set is traditionally used for classification and prediction – to see which features of an iris can identify the flower as a certain type of iris. The values for length and width can be used to classify an iris into one of three iris types: Iris setosa, Iris versicolor, or Iris virginica. Visually exploring this data also lets you see the grouping (clustering) of the records into these three different types of irises.
-### Lab: (TODO)
-In this lab (TODO)
-- [ ] Download the Iris data set here: https://archive.ics.uci.edu/ml/datasets/Iris and store it locally in a directory on your Data Science Virtual Machine 
-- [ ] Lab Step 
+The [Data Aquisition and Understanding](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-data) phase of the TDSP you ingest or access data from various locations to answer the questions the organization has asked. In most cases, this data will be in multiple locations. 
+Once the data is ingested into the system, you'll need to examine it to see what it holds. All data needs cleaning, so after the inspection phase, you'll replace missing values, add and change columns. You'll cover more extensive Data Wrangling tasks in other labs. 
+In this workshop, we'll use a single file-based dataset. The Iris data set contains 150 records of 3 classes of iris flowers with numeric values for petal and sepal length and width.  This data set is traditionally used for classification and prediction – to see which features of an iris can identify the flower as a certain type of iris. The values for length and width can be used to classify an iris into one of three iris types: Iris setosa, Iris versicolor, or Iris virginica. Visually exploring this data also lets you see the grouping (clustering) of the records into these three different types of irises. You'll copy this data from the web into your sample data prject folder first, and then in subsequent labs you'll explore how to add more data sets in other locations such as databases or large-scale storage. 
+
+### Lab: Ingest data from a local source
+In this lab you will download the iris data set, inspect it, make a few changes, and then save the Data Wrangling steps as a Python package. 
+- [ ] Download the [Iris data set here](https://archive.ics.uci.edu/ml/datasets/Iris) and store it  in the *Sample_Data* directory on your Data Science Virtual Machine's project location. 
+- [ ] Open [this reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/tutorial-classifying-iris-part-1), skip the first section, and complete the steps starting with the section marked **Create a Data Preparation Task**. (Note: **DO NOT** create another project - stay in this one.) 
 
 ## 3. Modeling
 The [Modeling](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-modeling) phase of the Team Data Science Process involves (TODO)
