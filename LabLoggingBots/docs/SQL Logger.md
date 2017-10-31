@@ -6,7 +6,7 @@ The aim of this lab is to log chat conversations to Azure SQL database. This lab
 
 ## 2.	Setup/Pre-requisites
 
-2.1.   Since we will be writing to a SQL database, either we can use a database that you may already have or create a new one. To create a new one, go to the azure portal and follow the [Create DB – Portal](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal) steps to create a database called Botlog as shown below.
+2.1.   Since we will be writing to a SQL database, either we can use a database that you may already have or create a new one. To create a new one, go to the azure portal and follow the [Create DB ï¿½ Portal](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal) steps to create a database called Botlog as shown below.
 
 ![Botlog](images/BotLog.png)
 
@@ -14,7 +14,7 @@ The aim of this lab is to log chat conversations to Azure SQL database. This lab
 
 ![Connection Strings](images/ConnectionStrings.png)
 
-2.3.   Change your firewall settings to capture your ip address. You may have already done this if you followed the steps from [Create DB – Portal](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal)
+2.3.   Change your firewall settings to capture your ip address. You may have already done this if you followed the steps from [Create DB ï¿½ Portal](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal)
 
 ![Firewall Settings](images/FirewallSettings.png)
 
@@ -40,7 +40,7 @@ public class WebApiApplication : System.Web.HttpApplication
             SqlConnectionStringBuilder sqlbuilder = new SqlConnectionStringBuilder();
             sqlbuilder.DataSource = "botlogserver.database.windows.net";
             sqlbuilder.UserID = "botlogadmin";
-            sqlbuilder.Password = "…";
+            sqlbuilder.Password = "ï¿½";
             sqlbuilder.InitialCatalog = "Botlog";
 
             connection = new SqlConnection(sqlbuilder.ConnectionString);
@@ -94,6 +94,9 @@ public class SqlActivityLogger : IActivityLogger
         }
     }
 ````
+
+In the LogAsync method, parameters allow for defence against SQL injection. The prime benefit of parameterized queries is to prevent SQL injection.
+
 ## 4.  SQL Query Results
 
 Run the project from visual studio and open the bot emulator. Begin to send messages to your bot to test the SQL logging functionality.
