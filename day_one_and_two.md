@@ -48,8 +48,7 @@ We have tried to leverage a [gallery example](https://github.com/Azure/cortana-i
   - 10-11: Lab 2.1: Log Chat Conversations in your Bot (Mithun)
   - 11-12: Lab 2.2: Testing your Bot (Mithun)
   - 12-1: Lunch
-  - 1-2:30: Lab 2.3: Adding Custom Intents and Entities with LUIS (Anna)
-  - 2:30-4: Lab 2.4: Using Entities with Search (Anna)
+  - 1:00-4:00: Lab 2.3: Using LUIS and Azure Search(Anna)
   - 4-5: Summary and White-board Discussion
 
 
