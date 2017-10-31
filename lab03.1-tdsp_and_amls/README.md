@@ -30,8 +30,10 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
 
 ## 1. Business Understanding
 In the [Business Understanding](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-business-understanding) phase of the TDSP, you discover the questions that the organization would like answered from data. This is a group effort, involving the organization, the Data Science team, and the DevOps team along with other stakeholders. 
-![Image](resources/docs/images/contosologo.gif?raw=true)
-In this workshop, your organization has requested a model that will classify measurement data they have collected from local garden shops into one of three iris types. You'll begin the project using the TDSP by copying the github information from your source-control system, and then setting up the project structure using the Data Science Virtual Machine with the Azure Machine Learning Workbench.
+
+![Image](/lab03.1-tdsp_and_amls/resources/docs/images/contosologo.gif)
+
+The Iris plant can be used in various sedative medicines. In this workshop, your organization (Contoso Organics) has requested a model that will classify measurement data they have collected from their pharmecuetical gardens into one of three iris types. You'll begin the project using the TDSP by copying the github information from your source-control system, and then setting up the project structure using the Data Science Virtual Machine with the Azure Machine Learning Workbench.
 
 ### Lab: Set Up TDSP Structure using the Azure Machine Learning Workbench
 In this lab you'll set up your project's structure, conforming to the Team Data Science Process, using the Azure Machine Learning Workbench.
