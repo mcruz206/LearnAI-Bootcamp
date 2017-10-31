@@ -9,6 +9,7 @@ In this workshop, you will:
 - [ ] Use the TDSP and AMLS for creating an experiment with a model and evaluation of models
 - [ ] Use the TDSP and AMLS for deployment
 - [ ] Use the TDSP and AMLS for project close-out and customer acceptance
+
 You'll focus on the objectives above, not Data Science, Machine Learning or a difficult scenario.  
 
 ***NOTE:*** There are several pre-requisites for this course, including an understanding and implementation of: 
@@ -29,6 +30,7 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
 
 ## 1. Business Understanding
 In the [Business Understanding](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-business-understanding) phase of the TDSP, you discover the questions that the organization would like answered from data. This is a group effort, involving the organization, the Data Science team, and the DevOps team along with other stakeholders. 
+![Image](resources/docs/images/contosologo.gif?raw=true)
 In this workshop, your organization has requested a model that will classify measurement data they have collected from local garden shops into one of three iris types. You'll begin the project using the TDSP by copying the github information from your source-control system, and then setting up the project structure using the Data Science Virtual Machine with the Azure Machine Learning Workbench.
 
 ### Lab: Set Up TDSP Structure using the Azure Machine Learning Workbench
@@ -42,7 +44,8 @@ In this lab you'll evaluate a business scenario, and detail possible predictions
 - [ ] Detail a question you could begin to explore answering with a prediction or classification algorithm. Enter that question in your *Business Understanding.md* text file. 
 - [ ] Which algorithm or family of algorithms could you use to answer your question? Enter that answer in your *Business Understanding.md* text file.
 - [ ] What data sources will you need to complete your prediction? Enter possible sources in your *Business Understanding.md* text file.
-#### Scenario: 
+
+#### Example Scenario: 
 The Orange Telecom company in France is one of the largest operators of mobile and internet services in Europe and Africa and a global leader in corporate telecommunication services. They have 256 million customers worldwide. They have significant coverage in France, Spain, Belgium, Poland, Romania, Slovakia Moldova, and a large presence Africa and the Middle East.
 Customer Churn is always an issue in any company. Orange would like to predict the propensity of customers to switch provider (churn), buy new products or services (appetency), or buy upgrades or add-ons proposed to them to make the sale more profitable (up-selling). For this effort, they think churn is the first thing they would like to focus on. 
 
