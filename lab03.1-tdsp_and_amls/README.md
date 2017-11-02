@@ -75,27 +75,36 @@ The [Modeling](https://docs.microsoft.com/en-us/azure/machine-learning/team-data
   * Next, in this workshop, you'll use two models with 3-fold cross-validation: Elastic Net and Random forest. They use 59-point sampling for random grid search as a strategy for cross-validation and model parameter optimization. The accuracy of the models are measured using AUC (Area Under the Curve) on the test data set. 
   * Finally, after the experiments run, you'll score the models to select the best one.
 
-### Lab: (TODO)
+### Lab: Feature Engineering, Modeling, and Scoring
 In this lab you'll create your feature engineering file, run the model training, and create the final scores.
 - [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main_FeatureEngineering.py** file and run it to perform the Feature Engineering. You will see the Job status in the right-hand pane and in the Job History section of the Workbench.
 - [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main_ModelCreation.py** file and run it to create your model.  You will see the Job status in the right-hand pane and in the Job History section of the Workbench.
-- [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main_ScoringAndEvaluation.py** file and run it.  You will see the Job status in the right-hand pane and in the Job History section of the Workbench.
+- [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main_ScoringAndEvaluation.py** file and run it.  You will see the Job status in the right-hand pane. When the scoring completes, click that item and open the **driver_log** you find in the Run History. You will see the AUC for the two algorithms compared.
 
 ## 4. Deployment
-The [Deployment](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-deployment) phase of the TDSP entails (TODO) 
-### Lab: (TODO)
-In this lab (TODO)
+The [Deployment](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-deployment) phase of the TDSP entails ouputting the results to a data location, creating an Application Programming Interface (API) or another mechanism for the classification or prediction model to be consumed. 
+
+### Lab: Deploy the solution using Containers
+In this lab you will deploy the solution to Azure Container Services (ACS) for worldwide deployment. 
 - [ ] [Navigate to this location and follow the instructions you see there.](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/03_deployment). NOTE: You do not have to call the web service (the last two steps) at this time. 
 
 ## 5. Customer Acceptance
-The final step in the Team Data Science Process is [Customer Acceptance](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-acceptance). Here you focus on (TODO)
-### Lab: (TODO)
-In this lab (TODO)
-- [ ] Lab Step 
-- [ ] Lab Step 
+The final step in the Team Data Science Process is [Customer Acceptance](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-acceptance). Here you focus on ensuring that the model performed within acceptable time and accuracy rates, and also present your findings in a comprehensive project document.
+### Lab: Review Customer Acceptance and Closeout Documentation
+In this lab you will examine the final project close out document. In production implementations, you and your team will create this document. 
+- [ ] open the **docs/deliverable_docs/ProjectReport.md** file and examine its contents.
+- [ ] Is there more information needed there? Are there items you would also include? How should this document be communicated? Are there security implications?
 
 ## Workshop Completion
-In this workshop we covered (TODO)
-- [ ] Objective (TODO)
-- [ ] Objective (TODO)
-- [ ] Objective (TODO)
+In this workshop you learned how to:
+- [ ] Understand and use the TDSP to clearly define business goals and success criteria
+- [ ] Use a code-repository system with the Azure Machine Learning Workbench using the TDSP structure
+- [ ] Create an example environment
+- [ ] Use the TDSP and AMLS for data acquisition and understanding
+- [ ] Use the TDSP and AMLS for creating an experiment with a model and evaluation of models
+- [ ] Use the TDSP and AMLS for deployment
+- [ ] Use the TDSP and AMLS for project close-out and customer acceptance
+
+You may now delete and decommission the following resources if you wish:
+  * The Azure Machine Learning Services accounts and workspaces
+  * The Visual Studio Team Services Repository
