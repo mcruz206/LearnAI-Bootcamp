@@ -63,7 +63,7 @@ There are directories in the [resources](./resources) folder:
 		- **TestApp**: A UWP application that allows you to load your images and call the various cognitive services on them, then explore the results. Useful for experimentation and exploration of your images.
 		- **TestCLI**: A Console application allowing you to call the various cognitive services and then upload the images and data to Azure. Images are uploaded to Blob Storage, and the various metadata (tags, captions, faces) are uploaded to Cosmos DB.
 
-		Both _TestApp_ and _TestCLI_ contain a `settings.json` file containing the various keys and endpoints needed for accessing the Cognitive Services and Azure. They start blank, so once you get your Azure Pass up and running we can provision your service keys and set up your storage account and Cosmos DB instance.
+		Both _TestApp_ and _TestCLI_ contain a `settings.json` file containing the various keys and endpoints needed for accessing the Cognitive Services and Azure. They start blank, so once you provision your resources, we will grab your service keys and set up your storage account and Cosmos DB instance.
 		
 	- **LUIS**: Here is the LUIS model for the PictureBot. You will create your own, but if you fall behind or want to test out a different LUIS model, you can use the .json file to import this LUIS app.
 	- **Models**: These classes will be used when we add search to our PictureBot.
@@ -78,7 +78,7 @@ If you have been given an Azure Pass to complete this lab, you may go to [http:/
 
 ### Lab: Setting up your Data Science Virtual Machine
 
-After creating an Azure account, you may access the [Azure portal](https://portal.azure.com). From the portal, create a Resource Group for this lab. Detailed information about the Data Science Virtual Machine can be [found online](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/overview), but we will just over what's needed for this workshop. In your Resource Group, deploy and connect to a Data Science Virtual Machine for Windows (2016), with a size of DS3_V2 (all other defaults are fine).
+After creating an Azure account, you may access the [Azure portal](https://portal.azure.com). From the portal, create a Resource Group for this lab. Detailed information about the Data Science Virtual Machine can be [found online](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/overview), but we will just go over what's needed for this workshop. In your Resource Group, deploy and connect to a Data Science Virtual Machine for Windows (2016), with a size of DS3_V2 (all other defaults are fine).
 
 Once you're connected, there are several things you need to do to set up the DSVM for the workshop:
 
@@ -90,7 +90,7 @@ Once you're connected, there are several things you need to do to set up the DSV
 	- Type in the Cortana search bar "gpedit.msc" and push enter. Enable the following policy: Windows Settings>Security Settings>Local Policies>Security Options>User Account Control: Admin Approval Mode for the Built-in Administrator account
 	- Start the "Collecting the keys" lab. 
 5. Once the install is complete and you have changed your devleoper settings and the User Account Control policy, reboot your DSVM. 
-6. Be sure to turn off your DSVM (from the portal) until the workshop so you don't get charged.
+6. Be sure to turn off your DSVM after the workshop so you don't get charged.
 
 
 ### Lab: Collecting the Keys
@@ -116,7 +116,7 @@ In the Portal, hit **New** and then enter **cognitive** in the search box and ch
 
 ![Creating a Cognitive Service Key](./resources/assets/new-cognitive-services.PNG)
 
-This will lead you to fill out a few details for the API endpoint you'll be creating, choosing the API you're interested in and where you'd like your endpoint to reside, as well as what pricing plan you'd like. We'll be using S1 so that we have the throughput we need for the tutorial, and creating a new _Resource Group_. We'll be using this same resource group below for our Blob Storage and Cosmos DB. _Pin to dashboard_ so that you can easily find it. Since the Computer Vision API stores images internally at Microsoft (in a secure fashion) to help improve future Cognitive Services Vision offerings, you'll need to _Enable_ Account creation. This can be a stumbling block for users in Enterprise environment, as only Subscription Administrators have the right to enable this, but for Azure Pass users it's not an issue.
+This will lead you to fill out a few details for the API endpoint you'll be creating, choosing the API you're interested in and where you'd like your endpoint to reside, as well as what pricing plan you'd like. We'll be using S1 so that we have the throughput we need for the tutorial, and creating a new _Resource Group_. We'll be using this same resource group below for our Blob Storage and Cosmos DB. _Pin to dashboard_ so that you can easily find it. Since the Computer Vision API stores images internally at Microsoft (in a secure fashion), to help improve future Cognitive Services Vision offerings, you'll need to _Enable_ Account creation. This can be a stumbling block for users in Enterprise environment, as only Subscription Administrators have the right to enable this, but for Azure Pass users it's not an issue.
 
 ![Choosing Cognitive Services Details](./resources/assets/cognitive-account-creation.PNG) 
 
@@ -171,19 +171,19 @@ You'll need the **URI** and the **PRIMARY KEY** for your _TestCLI's_ `settings.j
 
 The focus of this workshop is not on all of the Cognitive Services APIs. We will be focusing on Azure Search and LUIS. However, if you are interested in getting more practice with Cognitive Services, I recommend checking out -TODO: Add reference lab link-Lab 1, where you build an intelligent kiosk using several Cognitive Services. 
 
-For the purpose of this workshop, we will be using the Computer Vision API to get understanding of images (via tags and descriptions), the Face API to keep track of all of the faces in the images we upload, and the Emotion API to grab a score of which emotions people have in the images. We will simply call the API to get that information. There is no training or testing that we need to do. 
+For the purposes of this workshop, we will be using the Computer Vision API to get understanding of images (via tags and descriptions), the Face API to keep track of all of the faces in the images we upload, and the Emotion API to grab a score of which emotions people have in the images. We will simply call the API to get that information. There is no training or testing that we need to do. 
 
-The resulting information will include tags, a description, gender and age if it is a person, emotion, and a few other things. After you've completed the following lab, check out the ImageInsights.json folder that is created to see how this information is structured.
+The resulting information will include tags, a description, and gender/age/emotion if it's a person. After you've completed the following lab, check out the ImageInsights.json folder that is created to see how this information is structured.
 
 Later, we will also spend some time developing a LUIS model so that our bot has better language understanding. For this service, we will add intents, entities, utterances and more to our model before training and publishing it. Only then can we access it from an API call.
 
 ### Lab: Exploring Cognitive Services and Image Processing Library
 
-When you open the `ImageProcessing.sln` solution, you will find a UWP application (`TestApp`) that allows you to load your images and call the various cognitive services on them, then explore the results. It is useful for experimentation and exploration of your images. This app is built on top of the `ImageProcessingLibrary` project, which is also what is used  by the TestCLI project to analyze the images. 
+When you open the `ImageProcessing.sln` solution, you will find a UWP application (`TestApp`) that allows you to load your images and call the various Cognitive Services on them, then explore the results. It is useful for experimentation and exploration of your images. This app is built on top of the `ImageProcessingLibrary` project, which is also used  by the TestCLI project to analyze the images. 
 
 You'll want to "Build" the solution (right click on `ImageProcessing.sln` and select "Build"). You also may have to reload the TestApp project, which you can do by right-clicking on it and selecting "Reload project". 
 
-Before running the app make sure to enter the Cognitive Services API keys in the `settings.json` file under the `TestApp` project. Once you do that, run the app, point it to any folder (you will need to unzip `sample_images` first) with images (via the `Select Folder` button), and it should generate results like the following, showing all the images it processed, along with a break down of unique faces, emotions and tags that also act as filters on the image collection.
+Before running the app, make sure to enter the Cognitive Services API keys in the `settings.json` file under the `TestApp` project. Once you do that, run the app, point it to any folder (you will need to unzip `sample_images` first) with images (via the `Select Folder` button), and it should generate results like the following, showing all the images it processed, along with a break down of unique faces, emotions and tags that also act as filters on the image collection.
 
 ![UWP Test App](./resources/assets/UWPTestApp.JPG)
 
@@ -203,7 +203,7 @@ We will implement the main processing and storage code as a command-line/console
 
 Once you've set your Cognitive Services API keys, your Azure Blob Storage Connection String, and your Cosmos DB Endpoint URI and Key in your _TestCLI's_ `settings.json`, you can run the _TestCLI_.
 
-Run _TestCLI_, then open Command Prompt and navigate to your ImagaeProcessing\TestCLI folder (Hint: use the "cd" command to change directories). Then enter `.\bin\Debug\TestCLI.exe`. You should get the following result:
+Run _TestCLI_, then open Command Prompt and navigate to your ImageProcessing\TestCLI folder (Hint: use the "cd" command to change directories). Then enter `.\bin\Debug\TestCLI.exe`. You should get the following result:
 
     > .\bin\Debug\TestCLI.exe
 
@@ -230,7 +230,7 @@ Once it's done processing, you can query against your Cosmos DB directly using _
 
 Developers look for PaaS services in Azure to achieve better results faster in their apps. Search is a key to many categories of applications. Web search engines have set the bar high for search; users expect instant results, auto-complete as they type, highlighting hits within the results, great ranking, and the ability to understand what they are looking for, even if they spell it incorrectly or include extra words.
 
-Search is a hard and rarely a core expertise area. From an infrastructure standpoint, need to have high availability, durability, scale, and operations. From a functionality standpoint, need to have ranking, language support, and geospatial.
+Search is a hard and rarely a core expertise area. From an infrastructure standpoint, it needs to have high availability, durability, scale, and operations. From a functionality standpoint, it needs to have ranking, language support, and geospatial capabilities.
 
 ![Example of Search Requirements](./resources/assets/AzureSearch-Example.png) 
 
@@ -238,13 +238,13 @@ The example above illustrates some of the components users are expecting in thei
 
 Typical Workflow:
 1. Provision service
-	- You can create or provision an Azure Search service from the [portal](https://docs.microsoft.com/en-us/azure/search/search-create-service-portal) or with [Powershell](https://docs.microsoft.com/en-us/azure/search/search-manage-powershell).
+	- You can create or provision an Azure Search service from the [portal](https://docs.microsoft.com/en-us/azure/search/search-create-service-portal) or with [PowerShell](https://docs.microsoft.com/en-us/azure/search/search-manage-powershell).
 2. Create an index
 	- An [index](https://docs.microsoft.com/en-us/azure/search/search-what-is-an-index) is a container for data, think "table". It has schema, CORS options, search options. You can create it in the [portal](https://docs.microsoft.com/en-us/azure/search/search-create-index-portal) or during [app initialization](https://docs.microsoft.com/en-us/azure/search/search-create-index-dotnet). 
 3. Index data
 	- There are two ways to [populate an index with your data](https://docs.microsoft.com/en-us/azure/search/search-what-is-data-import). The first option is to manually push your data into the index using the Azure Search [REST API](https://docs.microsoft.com/en-us/azure/search/search-import-data-rest-api) or [.NET SDK](https://docs.microsoft.com/en-us/azure/search/search-import-data-dotnet). The second option is to point a [supported data source](https://docs.microsoft.com/en-us/azure/search/search-indexer-overview) to your index and let Azure Search automatically pull in the data on a schedule.
 4. Search an index
-	- When submitting search requests to Azure Search, you can use simple search options, you can [filter](https://docs.microsoft.com/en-us/azure/search/search-filters), [sort](https://docs.microsoft.com/en-us/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [project](https://docs.microsoft.com/en-us/azure/search/search-faceted-navigation), and [page over results](https://docs.microsoft.com/en-us/azure/search/search-pagination-page-layout), you can address spelling mistakes, phonetics, and Regex, and there are options for working with search and [suggest](https://docs.microsoft.com/en-us/rest/api/searchservice/suggesters). These query parameters allow you to achieve some deeper control of the [full-text search experience](https://docs.microsoft.com/en-us/azure/search/search-query-overview)
+	- When submitting search requests to Azure Search, you can use simple search options, you can [filter](https://docs.microsoft.com/en-us/azure/search/search-filters), [sort](https://docs.microsoft.com/en-us/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [project](https://docs.microsoft.com/en-us/azure/search/search-faceted-navigation), and [page over results](https://docs.microsoft.com/en-us/azure/search/search-pagination-page-layout). You have the ability to address spelling mistakes, phonetics, and Regex, and there are options for working with search and [suggest](https://docs.microsoft.com/en-us/rest/api/searchservice/suggesters). These query parameters allow you to achieve deeper control of the [full-text search experience](https://docs.microsoft.com/en-us/azure/search/search-query-overview)
 
 
 ### Lab: Create an Azure Search Service
@@ -345,7 +345,7 @@ Try performing other searches using [examples such as these](https://docs.micros
 
 First, let's [learn about Language Understand Intelligent Service (LUIS)](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/Home).
 
-Now that we know what LUIS is, we'll want to plan our LUIS app. We'll be creating a bot that returns images based on our search, that we can then share or order. We will need to create intents that trigger the different actions that our bot can do, and then create entities to model some parameters than are required to execute that action. For example, an intent for our PictureBot may be "SearchPics" and it triggers the Search service to look for photos, which requires a "facet" entity to know what to search for. You can see more example for planning your app [here](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/plan-your-app).
+Now that we know what LUIS is, we'll want to plan our LUIS app. We'll be creating a bot that returns images based on our search, that we can then share or order. We will need to create intents that trigger the different actions that our bot can do, and then create entities to model some parameters than are required to execute that action. For example, an intent for our PictureBot may be "SearchPics" and it triggers the Search service to look for photos, which requires a "facet" entity to know what to search for. You can see more examples for planning your app [here](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/plan-your-app).
 
 Once we've thought out our app, we are ready to [build and train it](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-get-started-create-app). These are the steps you will generally take when creating LUIS applications:
   1. [Add intents](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/add-intents) 
@@ -360,13 +360,13 @@ Once we've thought out our app, we are ready to [build and train it](https://doc
 
 ### Lab: Adding intelligence to your applications with LUIS
 
-In the next lab, we're going to create our PictureBot. First, let's look at how we can use [Language Understanding Intelligent Service](https://www.luis.ai/), or LUIS, to add some natural language capabilities. LUIS allows you to map natural language utterances to intents.  For our application, we might have several intents: finding pictures, sharing pictures, and ordering prints of pictures, for example.  We can give a few example utterances as ways to ask for each of these things, and LUIS will map additional new utterances to each intent based on what it has learned.  
+In the next lab, we're going to create our PictureBot. First, let's look at how we can use LUIS to add some natural language capabilities. LUIS allows you to map natural language utterances to intents.  For our application, we might have several intents: finding pictures, sharing pictures, and ordering prints of pictures, for example.  We can give a few example utterances as ways to ask for each of these things, and LUIS will map additional new utterances to each intent based on what it has learned.  
 
 Navigate to https://www.luis.ai and sign in using your Microsoft account.  (This should be the same account that you used to create the Cognitive Services keys at the beginning of this lab.)  You should be redirected to a list of your LUIS applications at https://www.luis.ai/applications.  We will create a new LUIS app to support our bot.  
 
 > Fun Aside: Notice that there is also an "Import App" next to the "New App" button on [the current page](https://www.luis.ai/applications).  After creating your LUIS application, you have the ability to export the entire app as JSON, and check it into source control.  This is a recommended best practice so you can version your LUIS models as you version your code.  An exported LUIS app may be re-imported using that "Import App" button.  If you fall behind during the lab and want to cheat, you can click the "Import App" button and import the [LUIS model](./resources/code/LUIS/PictureBotLuisModel.json).  
 
-From https://www.luis.ai/applications, click the "New App" button.  Give it a name (I chose "PictureBotLuisModel") and set the Culture to "English".  You can optionally provide a description.  Click the dropdown to select an endpoint key to use, and if the LUIS key that you created on the Azure portal at the beginning of this lab is there, select it.  Then click "Create".  
+From https://www.luis.ai/applications, click the "New App" button.  Give it a name (I chose "PictureBotLuisModel") and set the Culture to "English".  You can optionally provide a description.  Click the dropdown to select an endpoint key to use, and if the LUIS key that you created on the Azure portal at the beginning of the workshop is there, select it (this option may not appear until you publish your app, so don't worry if you don't have any).  Then click "Create".  
 
 ![LUIS New App](./resources/assets/LuisNewApp.jpg) 
 
@@ -394,7 +394,7 @@ Click on "Entities" in the left-hand column and then click "Add custom entity". 
 
 Now click "Intents" in the left-hand sidebar and then click the yellow "Add Intent" button.  Give it an intent name of "SearchPics" and then click "Save".  
 
-Now let's add some sample utterances (words/phrases/sentences the user might say when talking to the bot).  People might search for pictures in many ways.  Feel free to use some of the utterances below, and add your own wording for how you would ask a bot to search for pictures.  
+Now let's add some sample utterances (words/phrases/sentences the user might say when talking to the bot).  People might search for pictures in many ways.  Feel free to use some of the utterances below, and add your own wording for how you would ask a bot to search for pictures. 
 
 + Find outdoor pics
 + Are there pictures of a train?
@@ -441,10 +441,10 @@ Click on "Train & Test" in the left sidebar.  Check the "Enable published model"
 
 ![Test LUIS](./resources/assets/TestLuis.jpg) 
 
-**Finish early? Try this extra credit tasks:**
+**Finish early? Try these extra credit tasks:**
 
 
-Create additional entities that can be leveraged by the "SearchPics" intent. For example, we know that our app calls out age - try creating a prebuilt entity for age. 
+Create additional entities that can be leveraged by the "SearchPics" intent. For example, we know that our app determines age - try creating a prebuilt entity for age. 
 
 Explore using custom entities of entity type "List" to capture emotion and gender. See the example of emotion below. 
 
