@@ -58,28 +58,34 @@ Customer Churn is always an issue in any company. Orange would like to predict t
 ## 2. Data Acquisition and Understanding
 The [Data Aquisition and Understanding](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-data) phase of the TDSP you ingest or access data from various locations to answer the questions the organization has asked. In most cases, this data will be in multiple locations. 
 Once the data is ingested into the system, you'll need to examine it to see what it holds. All data needs cleaning, so after the inspection phase, you'll replace missing values, add and change columns. You'll cover more extensive Data Wrangling tasks in other labs. 
+
 In this workshop, we'll use a single file-based dataset from the U.S. Census to train our model.
 
 ### Lab: Ingest data from a local source
 In this lab you will load the data set, inspect it, make a few changes, and then save the Data Wrangling steps as a Python package. 
+
 - [ ] Open [this reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-classifying-us-incomes), read the section marked **Data description**. 
-- [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main.py* file and run it.   
-- [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/DataPreparation.py* file and run it. 
-- [ ] This example uses the IDEAR methodology to examine the data. Open the directory where you stored your project, and examine the **\lab03_1-tdsp_and_amls\docs\deliverable_docs\IDEAR.html** file in a web browser for the code and results. 
+- [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main.py** file and run it. 
+- [ ] This example uses the IDEAR methodology to examine the data. Open the directory where you stored your project, and examine the **lab03_1-tdsp_and_amls\docs\deliverable_docs\IDEAR.html** file in a web browser for the code and results. 
 
 ## 3. Modeling
-The [Modeling](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-modeling) phase of the Team Data Science Process involves (TODO)
+The [Modeling](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-modeling) phase of the Team Data Science Process involves creating experiments using one or more algorithms and base data to create a repeatable prediction or classification. 
+
+  * You'll beging by doing some feature engineering to prepare the data for modeling.
+  * Next, in this workshop, you'll use two models with 3-fold cross-validation: Elastic Net and Random forest. They use 59-point sampling for random grid search as a strategy for cross-validation and model parameter optimization. The accuracy of the models are measured using AUC (Area Under the Curve) on the test data set. 
+  * Finally, after the experiments run, you'll score the models to select the best one.
+
 ### Lab: (TODO)
-In this lab (TODO)
-- [ ] Lab Step 
-- [ ] Lab Step 
+In this lab you'll create your feature engineering file, run the model training, and create the final scores.
+- [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main_FeatureEngineering.py** file and run it to perform the Feature Engineering. You will see the Job status in the right-hand pane and in the Job History section of the Workbench.
+- [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main_ModelCreation.py** file and run it to create your model.  You will see the Job status in the right-hand pane and in the Job History section of the Workbench.
+- [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main_ScoringAndEvaluation.py** file and run it.  You will see the Job status in the right-hand pane and in the Job History section of the Workbench.
 
 ## 4. Deployment
 The [Deployment](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-deployment) phase of the TDSP entails (TODO) 
 ### Lab: (TODO)
 In this lab (TODO)
-- [ ] Lab Step 
-- [ ] Lab Step 
+- [ ] [Navigate to this location and follow the instructions you see there.](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/03_deployment). NOTE: You do not have to call the web service (the last two steps) at this time. 
 
 ## 5. Customer Acceptance
 The final step in the Team Data Science Process is [Customer Acceptance](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-acceptance). Here you focus on (TODO)
