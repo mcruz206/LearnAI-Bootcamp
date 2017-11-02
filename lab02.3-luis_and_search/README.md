@@ -56,7 +56,7 @@ Once we have it in DocumentDB, we'll build an [Azure Search](https://azure.micro
 There are directories in the [resources](./resources) folder:
 
 - **assets**: This contains all of the images for the lab manual. You can ignore this folder.
-- **code**: In here, there are two main directories that we will use:
+- **code**: In here, there are several directories that we will use:
 	- **ImageProcessing**: This solution (.sln) contains several different projects for the first parts of the workshop, let's take a high level look at them:
 		- **ImageProcessingLibrary**: This is a Portable Class Library (PCL) containing helper classes for accessing the various Cognitive Services related to Vision, and some "Insights" classes for encapsulating the results.
 		- **ImageStorageLibrary**: Since Cosmos DB does not (yet) support UWP, this is a non-portable library for accessing Blob Storage and Cosmos DB.
