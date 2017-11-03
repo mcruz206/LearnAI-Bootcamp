@@ -14,7 +14,7 @@ You'll focus on the objectives above, not Data Science, Machine Learning or a di
 
 ***NOTE:*** There are several pre-requisites for this course, including an understanding and implementation of: 
   *  Programming using an Agile methodology
-  *  Maching Learning and Data Science
+  *  Machine Learning and Data Science
 
 There is a comprehensive Learning Path you can use to prepare for this course [located here](https://github.com/Azure/learnAnalytics-CreatingSolutionswiththeTeamDataScienceProcess-/blob/master/Instructions/Learning%20Path%20-%20Creating%20Solutions%20with%20the%20Team%20Data%20Science%20Process.md).
 
@@ -28,7 +28,7 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
   *  You can install the Azure Machine Learning Workbench locally:
         *  [Open this reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/quickstart-installation) and follow the sections marked **Install Azure Machine Learning Workbench on Windows** or choose your OS type from the instructions there.
 
-  *  Or you can use a Windows Data Science Vitual Machine (DSVM) to run this lab: 
+  *  Or you can use a Windows Data Science Virtual Machine (DSVM) to run this lab: 
         *  [Navigate to this path](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.windows-data-science-vm), and create a Windows Azure Data Science Virtual Machine (DSVM). Choose a VM size of: DS3_V2, with 4 virtual CPUs and 14-Gb RAM. When the DSVM is deployed, start it using the [Azure portal.](https://portal.azure.com)
         *  After you create and Start the DSVM, log in to it and double-click the "Install Azure Machine Learning Workbench" icon. Finish the installation by following the on-screen instructions. The installer downloads all the necessary dependent components, such as Python, Miniconda, and other related libraries. The installation might take around half an hour to finish all the components. When complete, the Azure Machine Learning Workbench is installed in the following directory: C:\Users\<user>\AppData\Local\AmlWorkbench
 
@@ -42,7 +42,7 @@ Contoso Organics has requested a model that will predict whether a population of
 ### Lab: Set Up TDSP Structure using the Azure Machine Learning Workbench
 In this lab you'll set up your project's structure, conforming to the Team Data Science Process, using the Azure Machine Learning Workbench.
 - [ ] [Open this link](Create a new workbench project), read from the top and complete the step marked **"Create a new workbench project"**. Enter the git repo text you brought with you to class. 
-- [ ] [Review this link](https://github.com/Azure/Azure-TDSP-ProjectTemplate) and verify that you have the structure shown in teh directory you specified. You will use this structure throughout this workshop.
+- [ ] [Review this link](https://github.com/Azure/Azure-TDSP-ProjectTemplate) and verify that you have the structure shown in the directory you specified. You will use this structure throughout this workshop.
 
 ### Optional Lab: Use-case evaluation for Data Science questions
 In this lab you'll evaluate a business scenario, and detail possible predictions, classifications, or other data science questions that you can begin to explore.
@@ -71,7 +71,7 @@ In this lab you will load the data set, inspect it, make a few changes, and then
 ## 3. Modeling
 The [Modeling](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-modeling) phase of the Team Data Science Process involves creating experiments using one or more algorithms and base data to create a repeatable prediction or classification. 
 
-  * You'll beging by doing some feature engineering to prepare the data for modeling.
+  * You'll begin by doing some feature engineering to prepare the data for modeling.
   * Next, in this workshop, you'll use two models with 3-fold cross-validation: Elastic Net and Random forest. They use 59-point sampling for random grid search as a strategy for cross-validation and model parameter optimization. The accuracy of the models are measured using AUC (Area Under the Curve) on the test data set. 
   * Finally, after the experiments run, you'll score the models to select the best one.
 
@@ -82,7 +82,7 @@ In this lab you'll create your feature engineering file, run the model training,
 - [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main_ScoringAndEvaluation.py** file and run it.  You will see the Job status in the right-hand pane. When the scoring completes, click that item and open the **driver_log** you find in the Run History. You will see the AUC for the two algorithms compared.
 
 ## 4. Deployment
-The [Deployment](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-deployment) phase of the TDSP entails ouputting the results to a data location, creating an Application Programming Interface (API) or another mechanism for the classification or prediction model to be consumed. 
+The [Deployment](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-deployment) phase of the TDSP entails outputting  the results to a data location, creating an Application Programming Interface (API) or another mechanism for the classification or prediction model to be consumed. 
 
 ### Lab: Deploy the solution using Containers
 In this lab you will deploy the solution to Azure Container Services (ACS) for worldwide deployment. 
