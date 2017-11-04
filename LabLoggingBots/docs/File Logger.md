@@ -26,7 +26,7 @@ A more efficient way of logging to a file is to use the Global.asax file and use
 tw = new StreamWriter("C:\\Users\\username\\log.txt", true);
 ````
 
-Application_Start opens a StreamWriter that implements a Stream wrapper that writes characters to a stream in a particular encoding. This lasts for the life of the bot and we can now just write to it as opposed to opening and closing the file for each message. It is also worth noting that the StreamWriter is now sent as a parameter to DebugActivityLogger. The log file can be closed in Application_End which is Called once per lifetime of the application before the application is unloaded.
+Application_Start opens a StreamWriter that implements a Stream wrapper that writes characters to a stream in a particular encoding. This lasts for the life of the bot and we can now just write to it as opposed to opening and closing the file for each message. It is also worth noting that the StreamWriter is now sent as a parameter to DebugActivityLogger. The log file can be closed in Application_End which is called once per lifetime of the application before the application is unloaded.
 
 ````C#
 namespace MiddlewareBot

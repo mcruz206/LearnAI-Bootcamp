@@ -2,7 +2,7 @@
 
 ## 1.	Objectives
 
-Writing code using Microsoft Bot Framework is fun and exciting. But before rushing to code bots, you need to think about unit testing your code. Chatbots bring their own set of challenges to testing including testing across environments, integrating third party APIs, etc. Unit testing is a software testing method where individual units/components of a software are tested.
+Writing code using Microsoft Bot Framework is fun and exciting. But before rushing to code bots, you need to think about unit testing your code. Chatbots bring their own set of challenges to testing including testing across environments, integrating third party APIs, etc. Unit testing is a software testing method where individual units/ components of a software are tested.
 
 Unit tests can help:
 

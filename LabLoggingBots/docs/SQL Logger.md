@@ -104,6 +104,6 @@ Run the project from visual studio and open the bot emulator. Begin to send mess
 ![Bot Emulator](images/BotEmulator.png)
 
 From the database page of the portal, select Tools -> Query editor (preview) to preview log messages stored in the table. Login to run any queries.
-This is a quick way to see results but is not the only of doing it. Feel free to use any SQL client to perform query operations. Run the query ````Select * from userChatLog```` to view chat inserts into the table userChatLog. In the below example, the message ````My Beautiful Los Angeles```` sent via the bot emulator is logged along with the ids.
+This is a quick way to see results but is not the only way of doing it. Feel free to use any SQL client to perform query operations. Run the query ````Select * from userChatLog```` to view chat inserts into the table userChatLog. In the below example, the message ````My Beautiful Los Angeles```` sent via the bot emulator is logged along with the ids.
 
 ![Query Editor](images/QueryEditor.png)
