@@ -28,22 +28,33 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
         *  [Navigate to this path](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.windows-data-science-vm), and create a Windows Azure Data Science Virtual Machine (DSVM). Choose a VM size of: DS3_V2, with 4 virtual CPUs and 14-Gb RAM. When the DSVM is deployed, start it using the [Azure portal.](https://portal.azure.com)
         *  After you create and Start the DSVM, log in to it and double-click the "Install Azure Machine Learning Workbench" icon. Finish the installation by following the on-screen instructions. The installer downloads all the necessary dependent components, such as Python, Miniconda, and other related libraries. The installation might take around half an hour to finish all the components. When complete, the Azure Machine Learning Workbench is installed in the following directory: C:\Users\<user>\AppData\Local\AmlWorkbench
 
-## Heading Two - TODO
+## Deploying an Experiment Locally - TODO
 TODO
 
 The Azure ML environment has this configuration: 
 ![AMLS Environment](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/overview-general-concepts/hierarchy.png)
 
-
-
-### Lab: TODO
+### Lab: Deploy an Experiment Locally
 In this lab you'll TODO
 - [ ] [TODO](Create a new workbench project), 
 
+## Deploying an Experiment to a remote Data Science Virtual Machine in Azure - TODO
+TODO
+
+The Azure ML environment has this configuration: 
+![AMLS Environment](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/overview-general-concepts/hierarchy.png)
+
+### Lab: Deploy an Experiment to a remote Data Science Virtual Machine
+In this lab you'll TODO
+- [ ] [TODO](Create a new workbench project), 
+
+
 ## Workshop Completion
 In this workshop you learned how to:
-- [ ] TODO
+- [ ] Deploy your Experiments on remote Data Science Virtual Machines 
+- [ ] Deploy your Experiments on remote Data Science VMs with GPU's
+- [ ] Deploy your Experiments on HDInsight Clusters running Spark
 
-You may now delete and decommission the following resources if you wish:
+You may now decommission and delete the following resources if you wish:
   * The Azure Machine Learning Services accounts and workspaces
-  * The Visual Studio Team Services Repository
+  * Any Data Science Virtual Machines you have created. NOTE: Even if "Shutdown" in the Operating System, unless these Virtual Machines are "Stopped" using the Azure Portal you are incurring run-time charges. If you Stop them in the Azure Portal, you will be charged for the storage the Virtual Machines are consuimg. 
