@@ -41,8 +41,8 @@ In this lab you'll TODO
 ## Deploying an Experiment to a remote Data Science Virtual Machine in Azure - TODO
 TODO
 
-The Azure ML environment has this configuration: 
-![AMLS Environment](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/overview-general-concepts/hierarchy.png)
+You configure the  Azure ML experiment flow using this process: 
+![AMLS Experiment Flow](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/experimentation-service-configuration/experiment-execution-flow.png)
 
 ### Lab: Deploy an Experiment to a remote Data Science Virtual Machine
 In this lab you'll TODO
