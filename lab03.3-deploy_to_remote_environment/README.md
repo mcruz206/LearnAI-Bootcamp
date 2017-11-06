@@ -34,9 +34,13 @@ TODO
 The Azure ML environment has this configuration: 
 ![AMLS Environment](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/overview-general-concepts/hierarchy.png)
 
+TODO 
+
+![Local AMLS Experiment run](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/experimentation-service-configuration/local-native-run.png)
 ### Lab: Deploy an Experiment Locally
-In this lab you'll TODO
-- [ ] [TODO](Create a new workbench project), 
+In this lab you'll create an experiment, examine it's configuration, and run the experiment locally. You'll set up the experiment in the AMLS Workbench tool, and then run all experiments from the command line interface (CLI)
+- [ ] Open the Azure Machine Learning Services Workbench tool locally or on your Data Science Virutal Machine. 
+- [ ] [Navigate to this resource, and ](https://docs.microsoft.com/en-us/azure/machine-learning/preview/experimentation-service-configuration).
 
 ## Deploying an Experiment to a remote Data Science Virtual Machine in Azure - TODO
 TODO
