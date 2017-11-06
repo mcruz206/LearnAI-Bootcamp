@@ -108,3 +108,5 @@ In this workshop you learned how to:
 You may now delete and decommission the following resources if you wish:
   * The Azure Machine Learning Services accounts and workspaces
   * The Visual Studio Team Services Repository
+  * Any Data Science Virtual Machines you have created. NOTE: Even if "Shutdown" in the Operating System, unless these Virtual Machines are "Stopped" using the Azure Portal you are incurring run-time charges. If you Stop them in the Azure Portal, you will be charged for the storage the Virtual Machines are consuimg. 
+
