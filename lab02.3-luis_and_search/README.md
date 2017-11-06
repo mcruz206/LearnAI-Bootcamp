@@ -3,23 +3,23 @@
 This hands-on lab guides you through creating an intelligent bot from end-to-end using the Microsoft Bot Framework, Azure Search and several Cognitive Services. 
 
 In this workshop, you will:
-- [ ] Understand how to weave intelligent services into your applications
-- [ ] Understand how to implement Azure Search features to provide a positive search experience inside an application
-- [ ] Configure an Azure Search service to extend your data to enable full-text, language-aware search
-- [ ] Build, train and publish a LUIS model to help your bot communicate effectively
-- [ ] Build an intelligent bot using Microsoft Bot Framework that leverages LUIS and Azure Search
-- [ ] Call various Cognitive Services APIs (specifically Computer Vision, Face, Emotion and LUIS) in .NET applications
+- Understand how to weave intelligent services into your applications
+- Understand how to implement Azure Search features to provide a positive search experience inside applications
+- Configure an Azure Search service to extend your data to enable full-text, language-aware search
+- Build, train and publish a LUIS model to help your bot communicate effectively
+- Build an intelligent bot using Microsoft Bot Framework that leverages LUIS and Azure Search
+- Call various Cognitive Services APIs (specifically Computer Vision, Face, Emotion and LUIS) in .NET applications
 
 While there is a focus on LUIS and Azure Search, you will also leverage the following technologies:
 
-- [ ] Computer Vision API
-- [ ] Face API
-- [ ] Emotion API
-- [ ] Data Science Virtual Machine (DSVM)
-- [ ] Windows 10 SDK (UWP)
-- [ ] CosmosDB
-- [ ] Azure Storage
-- [ ] Visual Studio
+- Computer Vision API
+- Face API
+- Emotion API
+- Data Science Virtual Machine (DSVM)
+- Windows 10 SDK (UWP)
+- CosmosDB
+- Azure Storage
+- Visual Studio
 
 
 ## Prerequisites
@@ -53,7 +53,7 @@ Once we have it in DocumentDB, we'll build an [Azure Search](https://azure.micro
 
 ## Navigating the GitHub ##
 
-There are directories in the [resources](./resources) folder:
+There are several directories in the [resources](./resources) folder:
 
 - **assets**: This contains all of the images for the lab manual. You can ignore this folder.
 - **code**: In here, there are several directories that we will use:
@@ -65,7 +65,7 @@ There are directories in the [resources](./resources) folder:
 
 		Both _TestApp_ and _TestCLI_ contain a `settings.json` file containing the various keys and endpoints needed for accessing the Cognitive Services and Azure. They start blank, so once you provision your resources, we will grab your service keys and set up your storage account and Cosmos DB instance.
 		
-	- **LUIS**: Here is the LUIS model for the PictureBot. You will create your own, but if you fall behind or want to test out a different LUIS model, you can use the .json file to import this LUIS app.
+	- **LUIS**: Here you will find the LUIS model for the PictureBot. You will create your own, but if you fall behind or want to test out a different LUIS model, you can use the .json file to import this LUIS app.
 	- **Models**: These classes will be used when we add search to our PictureBot.
 	- **PictureBot**: Here there is a PictureBot.sln that is for the latter sections of the workshop, where we integrate LUIS and our Search Index into the Bot Framework
 
@@ -140,7 +140,7 @@ Within the Azure Portal, click **New->Storage->Storage Account**
 
 ![New Azure Storage](./resources/assets/create-blob-storage.PNG)
 
-Once you click it, you'll be presented with the fields above to fill out. Choose your storage account name (lowercase letters and numbers), set _Account kind_ to _Blob storage_, _Replication_ to _Locally-Redundant storage (LRS)_ (this is just to save money), use the same Resource Group as above, and set _Location_ to _West US_.  (The list of Azure services that are available in each region is at https://azure.microsoft.com/en-us/regions/services/.) _Pin to dashboard_ so that you can easily find it.
+Once you click it, you'll be presented with the fields above to fill out. Choose your storage account name (lowercase letters and numbers), set _Account kind_ to _Blob storage_, _Replication_ to _Locally-Redundant storage (LRS)_ (this is just to save money), use the same Resource Group as above, and set _Location_ to _West US_.  (The list of Azure services that are available in each region is at https://azure.microsoft.com/en-us/regions/services/). _Pin to dashboard_ so that you can easily find it.
 
 Now that you have an Azure Storage account, let's grab the _Connection String_ and add it to your _TestCLI_ and _TestApp_ `settings.json`.
 
@@ -173,7 +173,7 @@ The focus of this workshop is not on all of the Cognitive Services APIs. We will
 
 For the purposes of this workshop, we will be using the Computer Vision API to get understanding of images (via tags and descriptions), the Face API to keep track of all of the faces in the images we upload, and the Emotion API to grab a score of which emotions people have in the images. We will simply call the API to get that information. There is no training or testing that we need to do. 
 
-The resulting information will include tags, a description, and gender/age/emotion if it's a person. After you've completed the following lab, check out the ImageInsights.json folder that is created to see how this information is structured.
+The resulting information will include tags, a description, and gender/age/emotion if it's a person. After you've completed the following lab, check out the ImageInsights.json file that is created to see how this information is structured.
 
 Later, we will also spend some time developing a LUIS model so that our bot has better language understanding. For this service, we will add intents, entities, utterances and more to our model before training and publishing it. Only then can we access it from an API call.
 
@@ -191,7 +191,7 @@ Once the app processes a given directory it will cache the resuls in a `ImageIns
 
 ## Exploring Cosmos DB
 
-Cosmos DB is not a focus of this workshop, but here are some highlights from the code we will be using:
+Cosmos DB is not a focus of this workshop, but if you're interested in what's going on - here are some highlights from the code we will be using:
 - Navigate to the `DocumentDBHelper.cs` class in the `ImageStorageLibrary`. Many of the implementations we are using can be found in the [Getting Started guide](https://docs.microsoft.com/en-us/azure/documentdb/documentdb-get-started).
 - Go to `TestCLI`'s `Util.cs` and review  the `ImageMetadata` class. This is where we turn the `ImageInsights` we retrieve from Cognitive Services into appropriate Metadata to be stored into Cosmos DB.
 - Finally, look in `Program.cs` and notice in `ProcessDirectoryAsync`. First, we check if the image and metadata have already been uploaded - we can use `DocumentDBHelper` to find the document by ID and to return `null` if the document doesn't exist. Next, if we've set `forceUpdate` or the image hasn't been processed before, we'll call the Cognitive Services using `ImageProcessor` from the `ImageProcessingLibrary` and retrieve the `ImageInsights`, which we add to our current `ImageMetadata`. 
@@ -240,7 +240,7 @@ Typical Workflow:
 1. Provision service
 	- You can create or provision an Azure Search service from the [portal](https://docs.microsoft.com/en-us/azure/search/search-create-service-portal) or with [PowerShell](https://docs.microsoft.com/en-us/azure/search/search-manage-powershell).
 2. Create an index
-	- An [index](https://docs.microsoft.com/en-us/azure/search/search-what-is-an-index) is a container for data, think "table". It has schema, CORS options, search options. You can create it in the [portal](https://docs.microsoft.com/en-us/azure/search/search-create-index-portal) or during [app initialization](https://docs.microsoft.com/en-us/azure/search/search-create-index-dotnet). 
+	- An [index](https://docs.microsoft.com/en-us/azure/search/search-what-is-an-index) is a container for data, think "table". It has schema, [CORS options](https://docs.microsoft.com/en-us/aspnet/core/security/cors), search options. You can create it in the [portal](https://docs.microsoft.com/en-us/azure/search/search-create-index-portal) or during [app initialization](https://docs.microsoft.com/en-us/azure/search/search-create-index-dotnet). 
 3. Index data
 	- There are two ways to [populate an index with your data](https://docs.microsoft.com/en-us/azure/search/search-what-is-data-import). The first option is to manually push your data into the index using the Azure Search [REST API](https://docs.microsoft.com/en-us/azure/search/search-import-data-rest-api) or [.NET SDK](https://docs.microsoft.com/en-us/azure/search/search-import-data-dotnet). The second option is to point a [supported data source](https://docs.microsoft.com/en-us/azure/search/search-indexer-overview) to your index and let Azure Search automatically pull in the data on a schedule.
 4. Search an index
@@ -602,7 +602,7 @@ Right-click on your project in the Solution Explorer of Visual Studio, and selec
 1. [ImageMapper.cs](./resources/code/Models/ImageMapper.cs)
 2. [SearchHit.cs](./resources/code/Models/SearchHit.cs)
 
-Next, right-click on the Dialogs folder in the Solution Explorer of Visual Studio, and select Add-->Class.  Call your class "SearchDialog.cs". Add the contents from [here](./resources/code/SearchDialog.cs)
+Next, right-click on the Dialogs folder in the Solution Explorer of Visual Studio, and select Add-->Class.  Call your class "SearchDialog.cs". Add the contents from [here](./resources/code/SearchDialog.cs).
 
 Finally, we need to update your RootDialog to call the SearchDialog.  In RootDialog.cs in the Dialogs folder, update the SearchPics method and add these "ResumeAfter" methods:
 
@@ -650,7 +650,7 @@ Press F5 to run your bot again.  In the Bot Emulator, try searching with "find d
 
 There are a number of things that we can do to improve our bot.  First of all, we may not want to call LUIS for a simple "hi" greeting, which the bot will get fairly frequently from its users.  A simple regular expression could match this, and save us time (due to network latency) and money (due to cost of calling the LUIS service).  
 
-Also, as the complexity of our bot grows, and we are taking the user's input and using multiple services to interpret it, we need a process to manage that flow.  For example, try regular expressions first, and if that doesn't match, call LUIS, and then perhaps we also drop down to try other services like [QnA Maker](http://qnamaker.ai) and Azure Search.  A great way to manage this is ScorableGroups.  ScorableGroups give you an attribute to impose an order on these service calls.  In our code, let's impose an order of matching on regular expressions first, then calling LUIS for interpretation of utterances, and finally lowest priority is to drop down to a generic "I'm not sure what you mean" response.    
+Also, as the complexity of our bot grows, and we are taking the user's input and using multiple services to interpret it, we need a process to manage that flow.  For example, try regular expressions first, and if that doesn't match, call LUIS, and then perhaps we also drop down to try other services like [QnA Maker](http://qnamaker.ai) and Azure Search.  A great way to manage this is [ScorableGroups](https://blog.botframework.com/2017/07/06/Scorables/).  ScorableGroups give you an attribute to impose an order on these service calls.  In our code, let's impose an order of matching on regular expressions first, then calling LUIS for interpretation of utterances, and finally lowest priority is to drop down to a generic "I'm not sure what you mean" response.    
 
 To use ScorableGroups, your RootDialog will need to inherit from DispatchDialog instead of LuisDialog (but you can still have the LuisModel attribute on the class).  You also will need a reference to Microsoft.Bot.Builder.Scorables (as well as others).  So in your RootDialog.cs file, add:
 
@@ -872,12 +872,12 @@ Try experimenting with more advanced Azure Search queries. Add term-boosting by 
 In this lab we covered creating an intelligent bot from end-to-end using the Microsoft Bot Framework, Azure Search and several Cognitive Services.
 
 You should have learned:
-- [ ] How to weave intelligent services into your applications
-- [ ] How to implement Azure Search features to provide a positive search experience inside an application
-- [ ] How to configure an Azure Search service to extend your data to enable full-text, language-aware search
-- [ ] How to build, train and publish a LUIS model to help your bot communicate effectively
-- [ ] How to build an intelligent bot using Microsoft Bot Framework that leverages LUIS and Azure Search
-- [ ] How to call various Cognitive Services APIs (specifically Computer Vision, Face, Emotion and LUIS) in .NET applications
+- How to weave intelligent services into your applications
+- How to implement Azure Search features to provide a positive search experience inside an application
+- How to configure an Azure Search service to extend your data to enable full-text, language-aware search
+- How to build, train and publish a LUIS model to help your bot communicate effectively
+- How to build an intelligent bot using Microsoft Bot Framework that leverages LUIS and Azure Search
+- How to call various Cognitive Services APIs (specifically Computer Vision, Face, Emotion and LUIS) in .NET applications
 
 Resources for future projects/learning:
 - [Azure Bot Services documentation](https://docs.microsoft.com/en-us/bot-framework/)
