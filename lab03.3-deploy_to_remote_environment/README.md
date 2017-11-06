@@ -2,7 +2,9 @@
 This hands-on lab guides you through deploying a Machine Learning algorithm to a remote environment using [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-what-is-azure-ml) with the Azure Machine Learning Workbench. 
 
 In this workshop, you will:
-- [ ] TODO
+- [ ] Understand how to deploy your Experiments on remote Data Science Virtual Machines 
+- [ ] Understand how to deploy your Experiments on remote Data Science VMs with GPU's
+- [ ] Understand how to deploy your Experiments on HDInsight Clusters running Spark
 
 You'll focus on the objectives above, not Data Science, Machine Learning or a difficult scenario.  
 
