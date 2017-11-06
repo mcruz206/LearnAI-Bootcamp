@@ -10,8 +10,8 @@ You'll focus on the objectives above, not Data Science, Machine Learning or a di
 
 ***NOTE:*** There are several pre-requisites for this course, including an understanding and implementation of: 
   *  Programming using an Agile methodology
-  *  Maching Learning and Data Science
-  *  Intermediate to Advancecd Python programming
+  *  Machine Learning and Data Science
+  *  Intermediate to Advancced Python programming
   *  Familiarity with Docker containers 
 
 There is a comprehensive Learning Path you can use to prepare for this course [located here](https://github.com/Azure/learnAnalytics-CreatingSolutionswiththeTeamDataScienceProcess-/blob/master/Instructions/Learning%20Path%20-%20Creating%20Solutions%20with%20the%20Team%20Data%20Science%20Process.md).
@@ -25,12 +25,12 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
   *  You can install the Azure Machine Learning Workbench locally:
         *  [Open this reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/quickstart-installation) and follow the sections marked **Install Azure Machine Learning Workbench on Windows** or choose your OS type from the instructions there.
 
-  *  Or you can use a Windows Data Science Vitual Machine (DSVM) to run this lab: 
+  *  Or you can use a Windows Data Science Virtual Machine (DSVM) to run this lab: 
         *  [Navigate to this path](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.windows-data-science-vm), and create a Windows Azure Data Science Virtual Machine (DSVM). Choose a VM size of: DS3_V2, with 4 virtual CPUs and 14-Gb RAM. When the DSVM is deployed, start it using the [Azure portal.](https://portal.azure.com)
         *  After you create and Start the DSVM, log in to it and double-click the "Install Azure Machine Learning Workbench" icon. Finish the installation by following the on-screen instructions. The installer downloads all the necessary dependent components, such as Python, Miniconda, and other related libraries. The installation might take around half an hour to finish all the components. When complete, the Azure Machine Learning Workbench is installed in the following directory: C:\Users\<user>\AppData\Local\AmlWorkbench
 
 ## Deploying an Experiment Locally
-The general configuration for working with Azure Machine Learning has these compoments:
+The general configuration for working with Azure Machine Learning has these components:
 ![Azure Machine Learning Components](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/overview-general-concepts/hierarchy.png)
 
 ### Configuration Files
@@ -53,17 +53,17 @@ The Azure Machine Learning Services Workbench tool combines all of these compone
 ![Local AMLS Experiment run](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/experimentation-service-configuration/local-native-run.png)
 
 ### Lab: Deploy an Experiment Locally
-In this lab you'll create an experiment, examine it's configuration, and run the experiment locally, using both a local and a local Docker container. You'll set up the experiment in the AMLS Workbench tool, and then run all experiments from the command line interface (CLI)
-- [ ] Open the Azure Machine Learning Services Workbench tool locally or on your Data Science Virutal Machine. 
+In this lab you'll create an experiment, examine its configuration, and run the experiment locally, using both a local and a local Docker container. You'll set up the experiment in the AMLS Workbench tool, and then run all experiments from the command line interface (CLI)
+- [ ] Open the Azure Machine Learning Services Workbench tool locally or on your Data Science Virtual Machine. 
 - [ ] [Navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/experimentation-service-configuration), and complete the sections marked **"Launching the CLI"** through **"Running a script on local Docker"**
 
 ## Deploying an Experiment to a remote Data Science Virtual Machine in Azure
-You configure the  Azure ML experiment flow for a remote run using this process: 
+You configure the Azure ML experiment flow for a remote run using this process: 
 ![AMLS Remote Experiment Flow](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/experimentation-service-configuration/remote-vm-run.png)
 
 ### Lab: Deploy an Experiment to a remote Data Science Virtual Machine
-In this lab you'll create an experiment, examine it's configuration, and run the experiment on a remote Docker container. You'll set up the experiment in the AMLS Workbench tool, and then run all experiments from the command line interface (CLI)
-- [ ] Open the Azure Machine Learning Services Workbench tool locally or on your Data Science Virutal Machine. 
+In this lab you'll create an experiment, examine its configuration, and run the experiment on a remote Docker container. You'll set up the experiment in the AMLS Workbench tool, and then run all experiments from the command line interface (CLI)
+- [ ] Open the Azure Machine Learning Services Workbench tool locally or on your Data Science Virtual Machine. 
 - [ ] [Navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/experimentation-service-configuration), and complete the section marked **"Running a script on a remote Docker"**
 
 To run your scripts on Spark, [review this link](https://docs.microsoft.com/en-us/azure/machine-learning/preview/experimentation-service-configuration), referencing the section marked **"Running a script on an HDInsight cluster"**
@@ -77,4 +77,4 @@ In this workshop you learned how to:
 
 You may now decommission and delete the following resources if you wish:
   * The Azure Machine Learning Services accounts and workspaces
-  * Any Data Science Virtual Machines you have created. NOTE: Even if "Shutdown" in the Operating System, unless these Virtual Machines are "Stopped" using the Azure Portal you are incurring run-time charges. If you Stop them in the Azure Portal, you will be charged for the storage the Virtual Machines are consuimg. 
+  * Any Data Science Virtual Machines you have created. NOTE: Even if "Shutdown" in the Operating System, unless these Virtual Machines are "Stopped" using the Azure Portal you are incurring run-time charges. If you Stop them in the Azure Portal, you will be charged for the storage the Virtual Machines are consuming. 
