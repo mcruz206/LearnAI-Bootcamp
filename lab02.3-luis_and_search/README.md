@@ -78,19 +78,19 @@ If you have been given an Azure Pass to complete this lab, you may go to [http:/
 
 ### Lab: Setting up your Data Science Virtual Machine
 
-After creating an Azure account, you may access the [Azure portal](https://portal.azure.com). From the portal, create a Resource Group for this lab. Detailed information about the Data Science Virtual Machine can be [found online](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/overview), but we will just go over what's needed for this workshop. In your Resource Group, deploy and connect to a Data Science Virtual Machine for Windows (2016), with a size of DS3_V2 (all other defaults are fine).
+After creating an Azure account, you may access the [Azure portal](https://portal.azure.com). From the portal, create a Resource Group for this lab. Detailed information about the Data Science Virtual Machine can be [found online](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/overview), but we will just go over what's needed for this workshop. In your Resource Group, deploy and connect to a Data Science Virtual Machine for Windows (2016), with a size of DS3_V2 (all other defaults are fine). 
 
 Once you're connected, there are several things you need to do to set up the DSVM for the workshop:
 
 1. Navigate to this repository in Firefox, and download it as a zip file. Extract all the files, and move the folder for this lab to your Desktop.
-2. Open "ImageProcessing.sln" which is under code>ImageProcessing. It may take a while for Visual Studio to open for the first time.
+2. Open "ImageProcessing.sln" which is under resources>code>ImageProcessing. It may take a while for Visual Studio to open for the first time, and you will have to log in.
 3. Once it's open, you will be prompted to install the SDK for Windows 10 App Development (UWP). Follow the prompts to install it. If you aren't prompted, right click on TestApp and select "Reload project", then you will be prompted.
 4. While it's installing, there are a few tasks you can complete: 
 	- Type in the Cortana search bar "For developers settings" and change the settings to "Developer Mode".
-	- Type in the Cortana search bar "gpedit.msc" and push enter. Enable the following policy: Windows Settings>Security Settings>Local Policies>Security Options>User Account Control: Admin Approval Mode for the Built-in Administrator account
+	- Type in the Cortana search bar "gpedit.msc" and push enter. Enable the following policy: Computer Configuration>Windows Settings>Security Settings>Local Policies>Security Options>User Account Control: Admin Approval Mode for the Built-in Administrator account
 	- Start the "Collecting the keys" lab. 
 5. Once the install is complete and you have changed your devleoper settings and the User Account Control policy, reboot your DSVM. 
-6. Be sure to turn off your DSVM after the workshop so you don't get charged.
+> Note: Be sure to turn off your DSVM after the workshop so you don't get charged.
 
 
 ### Lab: Collecting the Keys
@@ -362,11 +362,11 @@ Once we've thought out our app, we are ready to [build and train it](https://doc
 
 In the next lab, we're going to create our PictureBot. First, let's look at how we can use LUIS to add some natural language capabilities. LUIS allows you to map natural language utterances to intents.  For our application, we might have several intents: finding pictures, sharing pictures, and ordering prints of pictures, for example.  We can give a few example utterances as ways to ask for each of these things, and LUIS will map additional new utterances to each intent based on what it has learned.  
 
-Navigate to https://www.luis.ai and sign in using your Microsoft account.  (This should be the same account that you used to create the Cognitive Services keys at the beginning of this lab.)  You should be redirected to a list of your LUIS applications at https://www.luis.ai/applications.  We will create a new LUIS app to support our bot.  
+Navigate to [https://www.luis.ai](https://www.luis.ai) and sign in using your Microsoft account.  (This should be the same account that you used to create the Cognitive Services keys at the beginning of this lab.)  You should be redirected to a list of your LUIS applications at [https://www.luis.ai/applications](https://www.luis.ai/applications).  We will create a new LUIS app to support our bot.  
 
 > Fun Aside: Notice that there is also an "Import App" next to the "New App" button on [the current page](https://www.luis.ai/applications).  After creating your LUIS application, you have the ability to export the entire app as JSON, and check it into source control.  This is a recommended best practice so you can version your LUIS models as you version your code.  An exported LUIS app may be re-imported using that "Import App" button.  If you fall behind during the lab and want to cheat, you can click the "Import App" button and import the [LUIS model](./resources/code/LUIS/PictureBotLuisModel.json).  
 
-From https://www.luis.ai/applications, click the "New App" button.  Give it a name (I chose "PictureBotLuisModel") and set the Culture to "English".  You can optionally provide a description.  Click the dropdown to select an endpoint key to use, and if the LUIS key that you created on the Azure portal at the beginning of the workshop is there, select it (this option may not appear until you publish your app, so don't worry if you don't have any).  Then click "Create".  
+From [https://www.luis.ai/applications](https://www.luis.ai/applications), click the "New App" button.  Give it a name (I chose "PictureBotLuisModel") and set the Culture to "English".  You can optionally provide a description.  Click the dropdown to select an endpoint key to use, and if the LUIS key that you created on the Azure portal at the beginning of the workshop is there, select it (this option may not appear until you publish your app, so don't worry if you don't have any).  Then click "Create".  
 
 ![LUIS New App](./resources/assets/LuisNewApp.jpg) 
 
@@ -472,6 +472,8 @@ Browse around and examine the sample bot code, which is an echo bot that repeats
 + In **WebApiConfig.cs** under App_Start, the route template is api/{controller}/{id} where the id is optional.  That is why we always call the bot's endpoint with api/messages appended at the end.  
 + The **MessagesController.cs** under Controllers is therefore the entry point into your bot.  Notice that a bot can respond to many different activity types, and sending a message will invoke the RootDialog.  
 + In **RootDialog.cs** under Dialogs, "StartAsync" is the entry point which waits for a message from the user, and "MessageReceivedAsync" is the method that will handle the message once received and then wait for further messages.  We can use "context.PostAsync" to send a message from the bot back to the user.  
+
+Right click on the solution and select **Manage NuGet Packages for this Solution**. Under installed, search for Microsoft.Bot.Builder, and update to the latest version.
 
 Click F5 to run the sample code.  NuGet should take care of downloading the appropriate dependencies.  
 
@@ -594,7 +596,7 @@ Set the value for the SearchDialogsServiceKey to be the key for this service.  T
 
 ### Lab: Update the bot to use Azure Search
 
-Now, let's update the bot to call Azure Search.  First, open Tools-->NuGet Package Manager-->Manage NuGet Packages for Solution.  In the search box, type "Microsoft.Azure.Search".  Select the corresponding library, check the box that indicates your project, and install it.  It may install other dependencies as well.  
+Now, let's update the bot to call Azure Search.  First, open Tools-->NuGet Package Manager-->Manage NuGet Packages for Solution.  In the search box, type "Microsoft.Azure.Search".  Select the corresponding library, check the box that indicates your project, and install it.  It may install other dependencies as well. Under installed packages, you may also need to update the "Newtonsoft.Json" package.
 
 ![Azure Search NuGet](./resources/assets/AzureSearchNuGet.jpg) 
 
@@ -836,7 +838,7 @@ Finally, you will see the Web Deploy settings, and can click "Publish".  The out
 
 ### Lab: Register your bot with the Bot Connector
 
-Now, go to a web browser and navigate to http://dev.botframework.com.  Click [Register a bot](https://dev.botframework.com/bots/new).  Fill out your bot's name, handle, and description.  Your messaging endpoint will be your Azure website URL with "api/messages" appended to the end, like https://testpicturebot.azurewebsites.net/api/messages.  
+Now, go to a web browser and navigate to [http://dev.botframework.com](http://dev.botframework.com).  Click [Register a bot](https://dev.botframework.com/bots/new).  Fill out your bot's name, handle, and description.  Your messaging endpoint will be your Azure website URL with "api/messages" appended to the end, like https://testpicturebot.azurewebsites.net/api/messages.  
 
 ![Bot Registration](./resources/assets/BotRegistration.jpg) 
 
@@ -858,7 +860,9 @@ Finally, you need to update your bot with its registration information.  Return 
 
 ```
 
-Rebuild your project, and then right-click on the project in the Solution Explorer and select "Publish" again.  Your settings should be remembered from last time, so you can just hit "Publish".  
+Rebuild your project, and then right-click on the project in the Solution Explorer and select "Publish" again.  Your settings should be remembered from last time, so you can just hit "Publish". 
+
+> Getting an error that directs you to your MicrosoftAppPassword? Because it's in XML, if your key contains "&", "<", ">", "'", or '"', you will need to replace those symbols with their respective [escape facilities](https://en.wikipedia.org/wiki/XML#Characters_and_escaping): "&amp;", "&lt;", "&gt;", "&apos;", "&quot;". 
 
 Now you can navigate back to your bot's dashboard (something like https://dev.botframework.com/bots?id=TestPictureBot).  Try talking to it in the Chat window.  The carousel may look different in Web Chat than the emulator.  There is a great tool called the Channel Inspector to see the user experience of various controls in the different channels at https://docs.botframework.com/en-us/channel-inspector/channels/Skype/#navtitle.  
 From your bot's dashboard, you can add other channels, and try out your bot in Skype, Facebook Messenger, or Slack.  Simply click the "Add" button to the right of the channel name on your bot's dashboard, and follow the instructions.
