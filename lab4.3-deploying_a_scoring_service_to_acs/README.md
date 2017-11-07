@@ -20,7 +20,8 @@ You'll focus on the objectives above, not Data Science, Machine Learning or a di
 There is a comprehensive Learning Path you can use to prepare for this course [located here](https://github.com/Azure/learnAnalytics-CreatingSolutionswiththeTeamDataScienceProcess-/blob/master/Instructions/Learning%20Path%20-%20Creating%20Solutions%20with%20the%20Team%20Data%20Science%20Process.md).
 
 ## Introduction and setup 
-[Primary Concepts are here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/tutorial-classifying-iris-part-3)
+[Primary Concepts are here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-scale-clusters)
+[Our primary example is here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/tutorial-classifying-iris-part-3)
 [Another example is here](https://blogs.technet.microsoft.com/machinelearning/2017/09/25/deploying-machine-learning-models-using-azure-machine-learning/)
 
 ***NOTE***: These steps must be completed ***prior*** to attempting this workshop.
