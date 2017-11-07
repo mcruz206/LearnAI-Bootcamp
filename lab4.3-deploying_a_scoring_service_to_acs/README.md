@@ -21,6 +21,7 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
 
 ## Introduction and setup 
 [Primary Concepts are here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/tutorial-classifying-iris-part-3)
+[Another example is here](https://blogs.technet.microsoft.com/machinelearning/2017/09/25/deploying-machine-learning-models-using-azure-machine-learning/)
 
 ***NOTE***: These steps must be completed ***prior*** to attempting this workshop.
   *  You will need a Microsoft Azure account. You can use a production Azure account if you are able to create objects. You can also use your Microsoft Developer Network (MSDN) account (if you have one) to complete this workshop. If you don't have access to a corporate or MSDN account you can create a free account [using this process](https://azure.microsoft.com/free/).
