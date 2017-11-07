@@ -41,7 +41,7 @@ Contoso Organics has requested a model that will predict whether a population of
 
 ### Lab: Set Up TDSP Structure using the Azure Machine Learning Workbench
 In this lab you'll set up your project's structure, conforming to the Team Data Science Process, using the Azure Machine Learning Workbench.
-- [ ] [Open this link](Create a new workbench project), read from the top and complete the step marked **"Create a new workbench project"**. Enter the git repo text you brought with you to class. 
+- [ ] [Open this link](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-use-tdsp-in-azure-ml), read from the top and complete the step marked **"Create a new workbench project"**. Enter the git repo text you brought with you to class. 
 - [ ] [Review this link](https://github.com/Azure/Azure-TDSP-ProjectTemplate) and verify that you have the structure shown in the directory you specified. You will use this structure throughout this workshop.
 
 ### Optional Lab: Use-case evaluation for Data Science questions
