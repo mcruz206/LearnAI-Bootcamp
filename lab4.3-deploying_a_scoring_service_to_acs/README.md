@@ -15,7 +15,7 @@ You'll focus on the objectives above, not Data Science, Machine Learning or a di
   *  Programming using an Agile methodology
   *  Machine Learning and Data Science
   *  Intermediate to Advancced Python programming
-  *  Familiarity with Docker containers 
+  *  Familiarity with Docker containers and Kubernetes
 
 There is a comprehensive Learning Path you can use to prepare for this course [located here](https://github.com/Azure/learnAnalytics-CreatingSolutionswiththeTeamDataScienceProcess-/blob/master/Instructions/Learning%20Path%20-%20Creating%20Solutions%20with%20the%20Team%20Data%20Science%20Process.md).
 
