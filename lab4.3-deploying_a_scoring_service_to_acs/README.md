@@ -20,7 +20,6 @@ You'll focus on the objectives above, not Data Science, Machine Learning or a di
 There is a comprehensive Learning Path you can use to prepare for this course [located here](https://github.com/Azure/learnAnalytics-CreatingSolutionswiththeTeamDataScienceProcess-/blob/master/Instructions/Learning%20Path%20-%20Creating%20Solutions%20with%20the%20Team%20Data%20Science%20Process.md).
 
 ## Introduction and setup 
-[Primary Concepts are here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/deployment-setup-configuration), [and here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-scale-clusters)
 [Our primary example is here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/tutorial-classifying-iris-part-3)
 [Another example is here](https://blogs.technet.microsoft.com/machinelearning/2017/09/25/deploying-machine-learning-models-using-azure-machine-learning/)
 
@@ -37,6 +36,13 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
 ## Building the Model
 The general configuration for working with Azure Machine Learning has these components:
 ![Azure Machine Learning Components](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/overview-general-concepts/hierarchy.png)
+
+We will review these two articles: 
+[A quick overview of the Azure Container Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough)
+[Understanding Service Principals](https://docs.microsoft.com/en-us/azure/aks/kubernetes-service-principal)
+[Scoring Setup and Configuration](https://docs.microsoft.com/en-us/azure/machine-learning/preview/deployment-setup-configuration)
+[Scaling Clusters](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-scale-clusters)
+
 
 ### Lab: Check for model build and pkl file creation
 In this lab you'll create an experiment, examine its configuration, and run the experiment locally, using both a local and a local Docker container. You'll set up the experiment in the AMLS Workbench tool, and then run all experiments from the command line interface (CLI)
