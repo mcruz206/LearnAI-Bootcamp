@@ -7,9 +7,9 @@ using Microsoft.Azure.Search;
 using Microsoft.Azure.Search.Models;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
-using TestPictureBot.Models;
+using PictureBot.Models;
 
-namespace TestPictureBot.Dialogs
+namespace PictureBot.Dialogs
 {
     [Serializable]
     public class SearchDialog : IDialog<object>
@@ -67,7 +67,7 @@ namespace TestPictureBot.Dialogs
         [Serializable]
         public class SearchHitStyler : PromptStyler
         {
-            public override void Apply<T>(ref IMessageActivity message, string prompt, IReadOnlyList<T> options, IReadOnlyList<string> descriptions = null)
+            public void Apply<T>(ref IMessageActivity message, string prompt, IReadOnlyList<T> options, IReadOnlyList<string> descriptions = null)
             {
                 var hits = options as IList<SearchHit>;
                 if (hits != null)
