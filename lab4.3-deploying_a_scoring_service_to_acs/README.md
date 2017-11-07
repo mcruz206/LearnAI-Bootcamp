@@ -42,8 +42,7 @@ The general configuration for working with Azure Machine Learning has these comp
 In this lab you'll create an experiment, examine its configuration, and run the experiment locally, using both a local and a local Docker container. You'll set up the experiment in the AMLS Workbench tool, and then run all experiments from the command line interface (CLI)
 - [ ] Open the Azure Machine Learning Services Workbench tool locally or on your Data Science Virtual Machine. 
 - [ ] [Navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/tutorial-classifying-iris-part-2), and ensure you have completed all sections there.
-- [ ] [Next, navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/tutorial-classifying-iris-part-3), and ensure you have completed all sections there.
-
+- [ ] [Next, navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/tutorial-classifying-iris-part-3), and complete all sections there.
 
 ## Workshop Completion
 In this workshop you learned how to:
