@@ -34,7 +34,7 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
 ## Building the Scoring for remote Deployment
 (Note - [Our primary example is here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/tutorial-classifying-iris-part-3) and [Another example is here](https://blogs.technet.microsoft.com/machinelearning/2017/09/25/deploying-machine-learning-models-using-azure-machine-learning/) )
 
-The general configuration for working withthe  Azure Clustering Service has this architecture:
+The general configuration for working with the  Azure Clustering Service has this architecture:
 
 ![ACS](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/15159959-b5cd-4fe9-aeba-441139943ecd.png)
 
