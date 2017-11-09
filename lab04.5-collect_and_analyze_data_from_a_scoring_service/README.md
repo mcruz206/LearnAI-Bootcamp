@@ -1,11 +1,9 @@
 # lab04.5-collect_and_analyze_data_from_a_scoring_service - Collect and Analyze Data from a scoring service
-This hands-on lab guides you through collecting Machine Learning scoring hisotrical data using [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-what-is-azure-ml) with the Azure Machine Learning Workbench. 
+This hands-on lab guides you through collecting Machine Learning scoring  data using [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-what-is-azure-ml) with the Azure Machine Learning Workbench. 
 
 In this workshop, you will:
-- [ ] Use the Azure Machine Learning Services Workbench to view the Run History of your experients
-- [ ] Use the Azure Machine Learning Services Workbench to compare the Run History of multiple experients
-- [ ] Use the Azure Machine Learning Services Command Line Interface to view the Run History of your experients
-- [ ] Use the Azure Machine Learning Services to find the best Runs of your experients
+- [ ] Use the Azure Machine Learning Services collection module to view scoring data from API calls
+- [ ] Use Azure Storage to view the results
 
 You'll focus on the objectives above, not Data Science, Machine Learning or a difficult scenario.  
 
@@ -13,6 +11,8 @@ You'll focus on the objectives above, not Data Science, Machine Learning or a di
   *  Programming using an Agile methodology
   *  Machine Learning and Data Science
   *  Intermediate to Advancced Python programming
+  *  Microsoft Azure Storage concepts
+  *  Working with the Azure Portal
 
 There is a comprehensive Learning Path you can use to prepare for this course [located here](https://github.com/Azure/learnAnalytics-CreatingSolutionswiththeTeamDataScienceProcess-/blob/master/Instructions/Learning%20Path%20-%20Creating%20Solutions%20with%20the%20Team%20Data%20Science%20Process.md).
 
@@ -28,33 +28,19 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
         *  [Navigate to this path](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.windows-data-science-vm), and create a Windows Azure Data Science Virtual Machine (DSVM). Choose a VM size of: DS3_V2, with 4 virtual CPUs and 14-Gb RAM. When the DSVM is deployed, start it using the [Azure portal.](https://portal.azure.com)
         *  After you create and Start the DSVM, log in to it and double-click the "Install Azure Machine Learning Workbench" icon. Finish the installation by following the on-screen instructions. The installer downloads all the necessary dependent components, such as Python, Miniconda, and other related libraries. The installation might take around half an hour to finish all the components. When complete, the Azure Machine Learning Workbench is installed in the following directory: C:\Users\<user>\AppData\Local\AmlWorkbench
 
-## Building the Scoring for remote Deployment
-(Note - [Our primary example is here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/tutorial-classifying-iris-part-3) and [Another example is here](https://blogs.technet.microsoft.com/machinelearning/2017/09/25/deploying-machine-learning-models-using-azure-machine-learning/) )
-
-When complete, the graphical display of Run History has this view:
-
-![Scoring](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/tutorial-classifying-iris/run_details.png)
-
 We will review these articles in class: 
-  1.  [AMLS Data Collection Reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-data-collection-api-reference)
+  1.  [Model data collection](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-use-model-data-collection)
+  2.  [Azure Machine Learning Model Data Collection API reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-data-collection-api-reference)
 
-### Lab: Show Run History using the Azure Machine Learning Services Workbench and Command Line Interface
-In this lab you'll create an experiment, and run the experiment locally. You'll view the History of each run in the AMLS Workbench tool, and then in the command line interface (CLI)
+### Lab: Collecting Model Data
+In this lab you'll use Python to collect scoring data 
 - [ ] Open the Azure Machine Learning Services Workbench tool locally or on your Data Science Virtual Machine. 
-- [ ] [Navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-use-run-history-model-metrics), and complete all sections there.
-
-### Lab: Find the Run with the best history
-In this lab you'll create an experiment, and run the experiment locally. You'll view the History of each run in the AMLS Workbench tool, and then in the command line interface (CLI)
-- [ ] Open the Azure Machine Learning Services Workbench tool locally or on your Data Science Virtual Machine. 
-- [ ] Ensure you have run the Iris example from the last lab multiple times. 
-- [ ] [Navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-find-best-accuracy-cli), and complete all sections there.
+- [ ] [Navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-use-model-data-collection), and complete all sections there.
 
 ## Workshop Completion
 In this workshop you learned how to:
-- [ ] Use the Azure Machine Learning Services Workbench to view the Run History of your experients
-- [ ] Use the Azure Machine Learning Services Workbench to compare the Run History of multiple experients
-- [ ] Use the Azure Machine Learning Services Command Line Interface to view the Run History of your experients
-- [ ] Use the Azure Machine Learning Services to find the best Runs of your experients
+- [ ] Use the Azure Machine Learning Services collection module to view scoring data from API calls
+- [ ] Use Azure Storage to view the results
 
 You may now decommission and delete the following resources if you wish:
   * The Azure Machine Learning Services accounts and workspaces
