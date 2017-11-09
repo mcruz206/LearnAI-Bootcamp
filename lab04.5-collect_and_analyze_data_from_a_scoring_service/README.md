@@ -2,7 +2,10 @@
 This hands-on lab guides you through collecting Machine Learning scoring hisotrical data using [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-what-is-azure-ml) with the Azure Machine Learning Workbench. 
 
 In this workshop, you will:
-- [ ] Understand how to create a model file
+- [ ] Use the Azure Machine Learning Services Workbench to view the Run History of your experients
+- [ ] Use the Azure Machine Learning Services Workbench to compare the Run History of multiple experients
+- [ ] Use the Azure Machine Learning Services Command Line Interface to view the Run History of your experients
+- [ ] Use the Azure Machine Learning Services to find the best Runs of your experients
 
 You'll focus on the objectives above, not Data Science, Machine Learning or a difficult scenario.  
 
@@ -28,22 +31,30 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
 ## Building the Scoring for remote Deployment
 (Note - [Our primary example is here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/tutorial-classifying-iris-part-3) and [Another example is here](https://blogs.technet.microsoft.com/machinelearning/2017/09/25/deploying-machine-learning-models-using-azure-machine-learning/) )
 
-The general configuration for working with the  Azure Clustering Service has this architecture:
+When complete, the graphical display of Run History has this view:
 
-![ACS](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/15159959-b5cd-4fe9-aeba-441139943ecd.png)
+![Scoring](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/tutorial-classifying-iris/run_details.png)
 
 We will review these articles in class: 
-  1.  [A quick overview of the Azure Container Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough)
+  1.  [AMLS Data Collection Reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-data-collection-api-reference)
 
-
-### Lab: Check for model build and pkl file creation
-In this lab you'll create an experiment, examine its configuration, and run the experiment locally, using both a local and a local Docker container. You'll set up the experiment in the AMLS Workbench tool, and then run all experiments from the command line interface (CLI)
+### Lab: Show Run History using the Azure Machine Learning Services Workbench and Command Line Interface
+In this lab you'll create an experiment, and run the experiment locally. You'll view the History of each run in the AMLS Workbench tool, and then in the command line interface (CLI)
 - [ ] Open the Azure Machine Learning Services Workbench tool locally or on your Data Science Virtual Machine. 
-- [ ] [Navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/tutorial-classifying-iris-part-2), and ensure you have completed all sections there.
+- [ ] [Navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-use-run-history-model-metrics), and complete all sections there.
+
+### Lab: Find the Run with the best history
+In this lab you'll create an experiment, and run the experiment locally. You'll view the History of each run in the AMLS Workbench tool, and then in the command line interface (CLI)
+- [ ] Open the Azure Machine Learning Services Workbench tool locally or on your Data Science Virtual Machine. 
+- [ ] Ensure you have run the Iris example from the last lab multiple times. 
+- [ ] [Navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-find-best-accuracy-cli), and complete all sections there.
 
 ## Workshop Completion
 In this workshop you learned how to:
-- [ ] Understand how to create a model file
+- [ ] Use the Azure Machine Learning Services Workbench to view the Run History of your experients
+- [ ] Use the Azure Machine Learning Services Workbench to compare the Run History of multiple experients
+- [ ] Use the Azure Machine Learning Services Command Line Interface to view the Run History of your experients
+- [ ] Use the Azure Machine Learning Services to find the best Runs of your experients
 
 You may now decommission and delete the following resources if you wish:
   * The Azure Machine Learning Services accounts and workspaces
