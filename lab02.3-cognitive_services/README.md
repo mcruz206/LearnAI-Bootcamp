@@ -1,6 +1,6 @@
 # lab02.3-cognitive_services - Developing Intelligent Applications with Cognitive Services
 
-This hands-on lab guides you through creating an intelligent Windows (UWP) application from end-to-end using Cognitive Servives (Computer Vision API, Emotion API, Face API).
+This hands-on lab guides you through creating an intelligent Windows (UWP) application from end-to-end using Cognitive Services (Computer Vision API, Emotion API, Face API).
 
 In this workshop, you will:
 - Learn about some of the various Cognitive Services APIs
@@ -369,13 +369,13 @@ Look into the _Image Processing Library_ at the _Service Helpers_. You can copy 
 In this lab we covered creating an intelligent bot from end-to-end using the Microsoft Bot Framework, Azure Search and several Cognitive Services.
 
 You should have learned:
-- How to weave intelligent services into your applications
 - What the various Cognitive Services APIs are
 - How to configure your apps to call Cognitive Services
 - How to build an application that calls various Cognitive Services APIs (specifically Computer Vision, Face, Emotion and LUIS) in .NET applications
 
 
-## <a name="Appendix"></a>Appendix ##
+
+## Appendix ##
 
 ### Further resources ###
 

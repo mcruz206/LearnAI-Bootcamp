@@ -1,6 +1,6 @@
 # lab02.3-luis_and_search - Developing Intelligent Applications with LUIS and Azure Search
 
-This hands-on lab guides you through creating an intelligent bot from end-to-end using the Microsoft Bot Framework, Azure Search and Language Understanding Intelligent Service. 
+This hands-on lab guides you through creating an intelligent bot from end-to-end using the Microsoft Bot Framework, Azure Search, and Microsoft's Language Understanding Intelligent Service (LUIS). 
 
 In this workshop, you will:
 - Understand how to weave intelligent services into your applications
@@ -21,7 +21,7 @@ While there is a focus on LUIS and Azure Search, you will also leverage the foll
 
 ## Prerequisites
 
-This workshop is meant for an AI Developer on Azure. Since this is a half-day workshop, there are certain things you need before you arrive.
+This workshop is meant for an AI Developer on Azure. Since this is a short workshop, there are certain things you need before you arrive.
 
 Firstly, you should have experience with Visual Studio. We will be using it for everything we are building in the workshop, so you should be familiar with [how to use it](https://docs.microsoft.com/en-us/visualstudio/ide/visual-studio-ide) to create applications. Additionally, this is not a class where we teach you how to code or develop applications. We assume you know how to code in C# (you can learn [here](https://mva.microsoft.com/en-us/training-courses/c-fundamentals-for-absolute-beginners-16169?l=Lvld4EQIC_2706218949)), but you do not know how to implement advanced Search and NLP (natural language processing) solutions. 
 
@@ -754,7 +754,7 @@ Resources for future projects/learning:
 - [LUIS documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/Home)
 - [LUIS Sample](https://github.com/Microsoft/BotBuilder-Samples/blob/master/CSharp/intelligence-LUIS/README.md)
 
-## <a name="Appendix"></a>Appendix ##
+## Appendix ##
 
 ### Further resources ###
 
