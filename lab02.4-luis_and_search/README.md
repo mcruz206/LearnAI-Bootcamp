@@ -33,11 +33,11 @@ Thirdly, you should have experience with the portal and be able to create resour
 
 We're going to build an end-to-end scenario that allows you to pull in your own pictures, use Cognitive Services to find objects and people in the images, figure out how those people are feeling, and store all of that data into a NoSQL Store (DocumentDB). We use that NoSQL Store to populate an Azure Search index, and then build a Bot Framework bot using LUIS to allow easy, targeted querying.
 
-> Note: This lab is a continuation of TODO: add link to CS Lab; we will skip pulling in pictures, using Cognitive Services to determine information about the images, and storing the data in DocumentDB. However, the only thing we will use from that lab is DocumentDB to populate our search index. If you have completed the TODO: add link to CS Lab, you can optionally use your DocumentDB connection string instead of the one provided.
+> Note: This lab is a continuation of `lab02.3-cognitive_services`; we will skip pulling in pictures, using Cognitive Services to determine information about the images, and storing the data in DocumentDB. However, the only thing we will use from that lab is DocumentDB to populate our search index. If you have completed `lab02.3-cognitive_services`, you can optionally use your DocumentDB connection string instead of the one provided.
 
 ## Architecture
 
-In the TODO: add link to CS Lab, we built a simple C# application that allows you to ingest pictures from your local drive, then invoke several different Cognitive Services to gather data on those images:
+In `lab02.3-cognitive_services`, we built a simple C# application that allows you to ingest pictures from your local drive, then invoke several different Cognitive Services to gather data on those images:
 
 - [Computer Vision](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api): We use this to grab tags and a description
 - [Face](https://www.microsoft.com/cognitive-services/en-us/face-api): We use this to grab faces and their details from each image
@@ -56,14 +56,6 @@ There are several directories in the [resources](./resources) folder:
 
 - **assets**: This contains all of the images for the lab manual. You can ignore this folder.
 - **code**: In here, there are several directories that we will use:
-	- **ImageProcessing**: This solution (.sln) contains several different projects for the first parts of the workshop, let's take a high level look at them:
-		- **ProcessingLibrary**: This is a Portable Class Library (PCL) containing helper classes for accessing the various Cognitive Services related to Vision, and some "Insights" classes for encapsulating the results.
-		- **ImageStorageLibrary**: Since Cosmos DB does not (yet) support UWP, this is a non-portable library for accessing Blob Storage and Cosmos DB.
-		- **TestApp**: A UWP application that allows you to load your images and call the various cognitive services on them, then explore the results. Useful for experimentation and exploration of your images.
-		- **TestCLI**: A Console application allowing you to call the various cognitive services and then upload the images and data to Azure. Images are uploaded to Blob Storage, and the various metadata (tags, captions, faces) are uploaded to Cosmos DB.
-
-		Both _TestApp_ and _TestCLI_ contain a `settings.json` file containing the various keys and endpoints needed for accessing the Cognitive Services and Azure. They start blank, so once you provision your resources, we will grab your service keys and set up your storage account and Cosmos DB instance.
-		
 	- **LUIS**: Here you will find the LUIS model for the PictureBot. You will create your own, but if you fall behind or want to test out a different LUIS model, you can use the .json file to import this LUIS app.
 	- **Models**: These classes will be used when we add search to our PictureBot.
 	- **PictureBot**: Here there is a PictureBot.sln that is for the latter sections of the workshop, where we integrate LUIS and our Search Index into the Bot Framework
@@ -129,7 +121,7 @@ Within the Azure Search blade you just created, click **Import Data->Data Source
 
 ![Import Wizard for DocDB](./resources/assets/AzureSearch-DataSource.png) 
 
-Once you click this, choose a name for the Cosmos DB datasource. If you completed the previous lab, TODO: add link to other lab, choose the Cosmos DB account where your data resides as well as the cooresponding Container and Collections. If you did not create the previous lab, select "Or input a connection string" and paste in `AccountEndpoint=https://timedcosmosdb.documents.azure.com:443/;AccountKey=0aRt6JVgbf9KafBxRVuDMNfAj9YoSBbmpICdJ41N5CwHcjuMcVk7jWDBcu4BxbTitLR1zteauQsnF1Tgqs1A3g==;`.
+Once you click this, choose a name for the Cosmos DB datasource. If you completed the previous lab, `lab02.3-cognitive_services`, choose the Cosmos DB account where your data resides as well as the cooresponding Container and Collections. If you did not create the previous lab, select "Or input a connection string" and paste in `AccountEndpoint=https://timedcosmosdb.documents.azure.com:443/;AccountKey=0aRt6JVgbf9KafBxRVuDMNfAj9YoSBbmpICdJ41N5CwHcjuMcVk7jWDBcu4BxbTitLR1zteauQsnF1Tgqs1A3g==;`.
 
 Click **OK**.
 

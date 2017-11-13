@@ -19,13 +19,13 @@ While there is a focus on Cognitive Services, you will also leverage the followi
 
 This workshop is meant for an AI Developer on Azure. Since this is a half-day workshop, there are certain things you need before you arrive.
 
-Firstly, you should have experience with Visual Studio. We will be using it for everything we are building in the workshop, so you should be familiar with [how to use it](https://docs.microsoft.com/en-us/visualstudio/ide/visual-studio-ide) to create applications. Additionally, this is not a class where we teach you how to code or develop applications. We assume you know how to code in C# (you can learn [here](https://mva.microsoft.com/en-us/training-courses/c-fundamentals-for-absolute-beginners-16169?l=Lvld4EQIC_2706218949)), but you do not know how to implement advanced Search and NLP (natural language processing) solutions. 
+Firstly, you should have experience with Visual Studio. We will be using it for everything we are building in the workshop, so you should be familiar with [how to use it](https://docs.microsoft.com/en-us/visualstudio/ide/visual-studio-ide) to create applications. Additionally, this is not a class where we teach you how to code or develop applications. We assume you know how to code in C# (you can learn [here](https://mva.microsoft.com/en-us/training-courses/c-fundamentals-for-absolute-beginners-16169?l=Lvld4EQIC_2706218949)), but you do not know how to implement solutions with Cognitive Services. 
 
 Secondly, you should have experience with the portal and be able to create resources (and spend money) on Azure. We will not be providing Azure passes for this workshop.
 
 ## Intro
 
-We're going to build an end-to-end scenario that allows you to pull in your own pictures, use Cognitive Services to find objects and people in the images, figure out how those people are feeling, and store all of that data into a NoSQL Store (DocumentDB). In a continuation of this lab, TODO: add link to lab, we will use that NoSQL Store to populate an Azure Search index, and then build a Bot Framework bot using LUIS to allow easy, targeted querying.
+We're going to build an end-to-end scenario that allows you to pull in your own pictures, use Cognitive Services to find objects and people in the images, figure out how those people are feeling, and store all of that data into a NoSQL Store (DocumentDB). In a continuation of this lab, `lab02.4-luis_and_search`, we will use that NoSQL Store to populate an Azure Search index, and then build a Bot Framework bot using LUIS to allow easy, targeted querying.
 
 ## Architecture
 
@@ -37,7 +37,7 @@ We will build a simple C# application that allows you to ingest pictures from yo
 
 Once we have this data, we process it to pull out the details we need, and store it all into [DocumentDB](https://azure.microsoft.com/en-us/services/documentdb/), our [NoSQL](https://en.wikipedia.org/wiki/NoSQL) [PaaS](https://azure.microsoft.com/en-us/overview/what-is-paas/) offering.
 
-In the continuation of this lab, TODO: add link to other lab, we'll build an [Azure Search](https://azure.microsoft.com/en-us/services/search/) Index (Azure Search is our PaaS offering for faceted, fault-tolerant search - think Elastic Search without the management overhead) on top of DocumentDB. We'll show you how to query your data, and then build a [Bot Framework](https://dev.botframework.com/) bot to query it. Finally, we'll extend this bot with [LUIS](https://www.microsoft.com/cognitive-services/en-us/language-understanding-intelligent-service-luis) to automatically derive intent from your queries and use those to direct your searches intelligently. 
+In the continuation of this lab, `lab02.4-luis_and_search`, we'll build an [Azure Search](https://azure.microsoft.com/en-us/services/search/) Index (Azure Search is our PaaS offering for faceted, fault-tolerant search - think Elastic Search without the management overhead) on top of DocumentDB. We'll show you how to query your data, and then build a [Bot Framework](https://dev.botframework.com/) bot to query it. Finally, we'll extend this bot with [LUIS](https://www.microsoft.com/cognitive-services/en-us/language-understanding-intelligent-service-luis) to automatically derive intent from your queries and use those to direct your searches intelligently. 
 
 ![Architecture Diagram](./resources/assets/AI_Immersion_Arch.png)
 
@@ -56,14 +56,10 @@ There are several directories in the [resources](./resources) folder:
 
 		Both _TestApp_ and _TestCLI_ contain a `settings.json` file containing the various keys and endpoints needed for accessing the Cognitive Services and Azure. They start blank, so once you provision your resources, we will grab your service keys and set up your storage account and Cosmos DB instance.
 		
-	- **LUIS**: Here you will find the LUIS model for the PictureBot. You will create your own, but if you fall behind or want to test out a different LUIS model, you can use the .json file to import this LUIS app.
-	- **Models**: These classes will be used when we add search to our PictureBot.
-	- **PictureBot**: Here there is a PictureBot.sln that is for the latter sections of the workshop, where we integrate LUIS and our Search Index into the Bot Framework
-
 
 ### Lab: Setting up Visual Studio
 
-After creating an Azure account, you may access the [Azure portal](https://portal.azure.com). From the portal, create a Resource Group for this lab. In the portal, search for Visual Studio Community2017 on Windows 10 Enterprise N (x64). In your resource group, deploy and connect to it, with a size of DS2_V2 (all other defaults are fine). This will take about five minutes to deploy. While you're waiting, you can start the **Collecting the Keys** lab.
+After creating an Azure account, you may access the [Azure portal](https://portal.azure.com). From the portal, create a Resource Group for this lab. In the portal, search for "Visual Studio Community 2017 on Windows 10 Enterprise N (x64)". In your resource group, deploy and connect to it, with a size of DS2_V2 (all other defaults are fine). This will take about five minutes to deploy. While you're waiting, you can start the **Collecting the Keys** lab.
 
 > Note: Because of some of the developer tasks we will be doing, it's easiest to just set up the Visual Studio VM than to use Visual Studio on your computer (if you already have it installed). Some users will not have access on their personal computers to change the settings we need to change.
 
@@ -72,6 +68,7 @@ Once you're connected, there are several things you need to do to set up the VM 
 1. Navigate to this repository, and download it as a zip file. Extract all the files, and move the folder for this lab to your Desktop. You'll also want to extract all the files from the `sample_images` folder.
 2. Open `ImageProcessing.sln` which is under resources>code>ImageProcessing. It may take a while for Visual Studio to open for the first time, and you will have to log in.
 3. Once you've signed in and opened the solution, you may receive a `For developers settings` pop-up (if you don't, type in the Cortana search bar "For deverlopers settings"). Change the settings to "Developer Mode".
+4. Right-click on the solution and select "Build Solution". You should be able to ignore any errors for now.
 
 > Note: Be sure to turn off your VM after the workshop so you don't get charged.
 
@@ -175,7 +172,7 @@ After creating the image processor, you should be able to pick up this portable 
 
 **Service Helpers**
 
-The service helpers are there to make your life easier when you're developing your app. One of the key things that service helpers do is provide the ability to detect when the API calls return a call-rate-exceeded error and automatically retry the call (after some delay). They also help with bringing in methods, handling exceptions and handling the keys.
+Service helpers exist to make your life easier when you're developing your app. One of the key things that service helpers do is provide the ability to detect when the API calls return a call-rate-exceeded error and automatically retry the call (after some delay). They also help with bringing in methods, handling exceptions and handling the keys.
 
 You can find additional service helpers for some of the other Cognitive Services within the [Intelligent Kiosk sample application](https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk/tree/master/Kiosk/ServiceHelpers). Utilizing these resources makes it easy to add and remove the service helpers in your future projects as needed.
 
@@ -194,7 +191,7 @@ Now let's take a step back for a minute. It isn't quite as simple as creating "I
 
 ### Lab: Creating `ImageProcessor.cs`
 
-Right click on `ImageProcessingLibrary` and add a new Visual C# class called `ImageProcessor.cs`.  
+Navigate to `ImageProcessor.cs` within `ImageProcessingLibrary`. 
 
 Add the following code to the top:
 
@@ -206,7 +203,7 @@ Add the following code to the top:
 
 [Project Oxford](https://blogs.technet.microsoft.com/machinelearning/tag/project-oxford/) was the project where many Cognitive Services got their start. As you can see, the NuGet Packages were even labeled under Project Oxford. In thus scenario, we'll call `Microsoft.ProjectOxford.Common.Contract` for the Emotion API, `Microsoft.ProjectOxford.Face` and `Microsoft.ProjectOxford.Face.Contract` for the Face API, and `Microsoft.Oxford.Vision` for the Computer Vision API. Additionally, we'll reference our service helpers (remember, these will make our lives easier).
 
-Right at the beginning of our image processor, we're going to set up some static arrays that we'll fill in with our tasks/methods within the processor. Add the code below:
+Right at the beginning of our image processor, we're going to set up some static arrays that we'll fill in throughout the processor. Add the code below:
 
     private static FaceAttributeType[] DefaultFaceAttributeTypes = new FaceAttributeType[] { FaceAttributeType.Age, FaceAttributeType.Gender };
     
@@ -227,11 +224,22 @@ Next, create a public task that we'll use to trigger computer vision, face and e
         return result;
     }
 
-In the code above, you can see there is an `await` for `AnalyzeImageFeaturesAsync`, `AnalyzeFacesAsync` and `AnalyzeEmotionAsync`. Create a `private static async Task` for each. Turn to a neighbor if you need help.
+In the code above, you can see there is an `await` for three methods: `AnalyzeImageFeaturesAsync`, `AnalyzeFacesAsync` and `AnalyzeEmotionAsync`. Since this public method invokes three other methods, it’s good practice to make those private since they’re not part of the API (at least for this project). Create a `private static async Task` for each. 
 
-TODO: need to figure out what Func<Task<Stream>> and ImageInsights purpose is in AnalyzeImageFeaturesAsync(Func<Task<Stream>> imageStreamCallback, ImageInsights result)
+> Hint 1: The code for the first one is shown below. The other two are very similar, except `AnalyzeEmotionAsync` will have a different output (which you may be able to glean from the public task you created earlier). Turn to a neighbor if you need help. 
 
-Let's work on `AnalyzeImageFeaturesAsync` first. We'll create a variable called `imageAnalysisResult`that uses `VisionServiceHelper.AnalyzeImageAsync` (service helper making life easier) to analyze the image's features. Next, we'll output VisionsInsights for the image, containing the Caption and Tags. See code below:
+
+
+    private static async Task AnalyzeImageFeaturesAsync(Func<Task<Stream>> imageStreamCallback, ImageInsights result)
+    {
+
+    }
+
+> Hint 2: We use `Func<Task<Stream>>` for a few reasons. We want to make sure we can process the image multiple times (once for each service that needs it), so we have a Func that can hand us back a way to get the stream. Since getting a stream is usually an async operation, rather than the Func handing back the stream itself, it hands back a task that allows us to do so in an async fashion.
+
+
+
+Let's work on the `AnalyzeImageFeaturesAsync` method first. We'll create a variable called `imageAnalysisResult` that uses `VisionServiceHelper.AnalyzeImageAsync` (service helper making life easier) to analyze the image's features. Next, we'll output VisionsInsights for the image, containing the Caption and Tags. See code below:
 
     var imageAnalysisResult = await VisionServiceHelper.AnalyzeImageAsync(imageStreamCallback, DefaultVisualFeatureTypes);
 
@@ -247,7 +255,7 @@ Next let's add to `AnalyzeFacesAsync` so we can use the Face API to locate the f
 
     var faces = await FaceServiceHelper.DetectAsync(imageStreamCallback, returnFaceId: true, returnFaceLandmarks: false, returnFaceAttributes: DefaultFaceAttributeTypes);
 
-If there's more than one face, we'll need to make a list of the insights, and then cycle through each. Here's a skeleton of the code you'll need to complete:
+If there's more than one face, we'll need to make a list of the insights, and then cycle through each. You'll need to determine how we add the `detectedFace` attributes to FaceInsights. Here's a skeleton of the code you'll need to complete:
 
     List<FaceInsights> faceInsightsList = new List<FaceInsights>();
     foreach (Face detectedFace in faces)
@@ -256,7 +264,7 @@ If there's more than one face, we'll need to make a list of the insights, and th
         {
             FaceRectangle = ,
             Age = ,
-            Gender = 
+            Gender = ,
         };
 
         SimilarPersistedFace similarPersistedFace = await FaceListManager.FindSimilarPersistedFaceAsync(imageStreamCallback, detectedFace.FaceId, detectedFace);
@@ -269,7 +277,7 @@ If there's more than one face, we'll need to make a list of the insights, and th
 
         result.FaceInsights = faceInsightsList.ToArray();
 
-> Hints: Remember, in the first part, we're just spelling out what we've already returned (start with `detectedFace.` and use the dropdowns to help. In the second part, determine what the it means if the if statement is true. Turn to a neighbor if you need help.
+> Hints: Remember, in the first part, we're just spelling out what we've already returned (start with `detectedFace.` and use the dropdowns to help). In the second part, determine what the it means if the if statement is true. Turn to a neighbor if you need help.
 
 Note that at the end of the foreach loop, we're adding our insights to the list, and at the very end, we're adding the list of insights to our output result.
 
@@ -277,7 +285,7 @@ Next, let's modify `AnalyzeEmotionAsync`. We only need one line of code (service
 
     faceEmotions.AddRange(await EmotionServiceHelper.RecognizeAsync(imageStreamCallback));
 
-Note that this doesn't return the TopEmotion that we originally wanted for our FaceInsights (take a look at `FaceInsights.cs`). We don't want to include the scores for each emotion or list all the emotions for everyone. We really just care about the main emotion each face shows. Similar to `AnalyzeFacesAsync`, we will use a foreach loop to find the top emotion and store it in faceInsights. Below what you already have in `ProcessImageAsync`, paste in the following skeleton code:
+Note that this doesn't return the TopEmotion that we originally wanted for our FaceInsights (take a look at `FaceInsights.cs`). We don't want to include the scores for each emotion or list all the emotions for everyone. We really just care about the main emotion each face shows. Similar to `AnalyzeFacesAsync`, we will use a foreach loop to find the top emotion and store it in faceInsights. Below what you already have in `ProcessImageAsync` (but above `return result;`), paste in the following skeleton code:
 
     foreach (var faceInsights in result.FaceInsights)
     {
@@ -288,13 +296,15 @@ Note that this doesn't return the TopEmotion that we originally wanted for our F
         }
     }
 
-Hint: start by calling `faceEmotion.` and use the dropdown menus to guide you.
+> Hint: Figure out what we're doing with the if statement. What do we want to grab `if faceEmotion != null`? 
 
-Now that you've built `ImageProcessor.cs`, don't forget to save it! Below, you'll find a flowchart that summarizes how `ImageProcessor.cs` works.
+> Still stuck? Start with `faceEmotion.` and use the dropdowns to help. 
 
-TODO: Make flowchart and include it here
+Now that you've built `ImageProcessor.cs`, don't forget to save it! Below, you'll find a flowchart that summarizes how `ImageProcessor.cs` works. There are three levels, the top represents the first set of async tasks, the second represents the second, and the bottom represents the ultimate takeaway from the processor.
 
-Want to make sure you set up ImageProcessor.cs correctly? You can find the full class under resources/code/classes TODO: add link here
+![Image Processor Flowchart](./resources/assets/ProcessorFlowchart.png)
+
+Want to make sure you set up ImageProcessor.cs correctly? You can find the full class [here](./resources/code/classes).
 
 
 ### Lab: Building and exploring the TestApp
@@ -311,7 +321,7 @@ Once the app processes a given directory it will cache the results in a `ImageIn
 
 ## (optional) Exploring Cosmos DB
 
-Azure Cosmos DB is our resilient NoSQL PaaS solution, and is incredibly useful for storing loosely structured data like we have with our image metadata results. There are other possible choices (Azure Table Storage, SQL Server), but Cosmos DB gives us the flexibility to evolve our schema freely (like adding data for new services), query it easily, and can be quickly integrated into Azure Search (which we'll do in TODO: add link to next lab)
+Azure Cosmos DB is our resilient NoSQL PaaS solution, and is incredibly useful for storing loosely structured data like we have with our image metadata results. There are other possible choices (Azure Table Storage, SQL Server), but Cosmos DB gives us the flexibility to evolve our schema freely (like adding data for new services), query it easily, and can be quickly integrated into Azure Search (which we'll do in `lab02.4-luis_and_search`)
 
 Cosmos DB is not a focus of this workshop, but if you're interested in what's going on - here are some highlights from the code we will be using:
 - Navigate to the `DocumentDBHelper.cs` class in the `ImageStorageLibrary`. Many of the implementations we are using can be found in the [Getting Started guide](https://docs.microsoft.com/en-us/azure/documentdb/documentdb-get-started).
