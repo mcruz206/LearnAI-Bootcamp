@@ -19,7 +19,7 @@ You'll focus on the objectives above, not Data Science, Machine Learning or a di
 There is a comprehensive Learning Path you can use to prepare for this course [located here](https://github.com/Azure/learnAnalytics-CreatingSolutionswiththeTeamDataScienceProcess-/blob/master/Instructions/Learning%20Path%20-%20Creating%20Solutions%20with%20the%20Team%20Data%20Science%20Process.md).
 
 ## Introduction and setup 
-[Primary Concepts are here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-classifying-us-incomes)
+[The Primary Concepts for this lab are here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-classifying-us-incomes). We'll refer to these throughout the lab.
 
 ***NOTE***: These steps must be completed ***prior*** to attempting this workshop.
   *  You will use Visual Studio Team Services as your code-control system. First, [read all information in this link](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project), and then perform steps 1-2 **only**. Record the git repo location from the VSTS location you created and bring it to class with you.
@@ -27,6 +27,7 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
   *  You will need an Azure Machine Learning Services account. [Open this reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/quickstart-installation), and complete only the sections marked **"Sign in to the Azure portal"** and **"Create Azure Machine Learning accounts"**. Write down the *Experimentation account name* and bring it to class.
   *  You can install the Azure Machine Learning Workbench locally:
         *  [Open this reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/quickstart-installation) and follow the sections marked **Install Azure Machine Learning Workbench on Windows** or choose your OS type from the instructions there.
+        *  You'll also need Docker for certain parts of the lab. [Open this reference](https://www.docker.com/docker-windows) and follow the instructions for installing Docker locally.
 
   *  Or you can use a Windows Data Science Virtual Machine (DSVM) to run this lab: 
         *  [Navigate to this path](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.windows-data-science-vm), and create a Windows Azure Data Science Virtual Machine (DSVM). Choose a VM size of: DS3_V2, with 4 virtual CPUs and 14-Gb RAM. When the DSVM is deployed, start it using the [Azure portal.](https://portal.azure.com)
