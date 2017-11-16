@@ -80,8 +80,8 @@ In this workshop, we'll use a single file-based dataset from the U.S. Census to 
 In this lab you will load the data set, inspect it, make a few changes, and then save the Data Wrangling steps as a Python package. 
 
 - [ ] Open [this reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-classifying-us-incomes), and complete all sections. 
-- [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main.py** file and run it. 
-- [ ] This example uses the IDEAR methodology to examine the data. Open the directory where you stored your project, and examine the **lab03_1-tdsp_and_amls\docs\deliverable_docs\IDEAR.html** file in a web browser for the code and results. 
+- [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main.py** file and run it (use the pull-down menu in the main project screen). This will take some time - allow it to complete. 
+- [ ] This example uses the IDEAR methodology to examine the data. Open the directory where you stored your project, and examine the **WhateverYouNamedYourProject\docs\deliverable_docs\IDEAR.html** file in a web browser for the code and results. 
 
 ## 3. Modeling
 The [Modeling](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-modeling) phase of the Team Data Science Process involves creating experiments using one or more algorithms and base data to create a repeatable prediction or classification. 
