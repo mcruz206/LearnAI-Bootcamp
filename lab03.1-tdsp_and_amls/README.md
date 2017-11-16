@@ -99,6 +99,10 @@ In this lab we'll use the same project you just completed - the "Classify US Inc
 ## 4. Deployment
 The [Deployment](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-deployment) phase of the TDSP entails outputting  the results to a data location, creating an Application Programming Interface (API) or another mechanism for the classification or prediction model to be consumed. 
 
+An outline of this process is here: 
+
+![Image](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/model-management-overview/modelmanagementworkflow.png)
+ 
 ### Lab: Deploy the solution using Containers
 In this lab you will deploy the solution to Azure Container Services (ACS) for worldwide deployment. 
 - [ ] [Navigate to this location and follow the instructions you see there.](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/03_deployment). NOTE: You do not have to call the web service (the last two steps) at this time. 
