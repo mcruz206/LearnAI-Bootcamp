@@ -79,7 +79,7 @@ In this workshop, we'll use a single file-based dataset from the U.S. Census to 
 ### Lab: Ingest data from a local source
 In this lab you will load the data set, inspect it, make a few changes, and then save the Data Wrangling steps as a Python package. 
 
-- [ ] Open [this reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-classifying-us-incomes), read the section marked **Data description**. 
+- [ ] Open [this reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-classifying-us-incomes), and complete all sections. 
 - [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main.py** file and run it. 
 - [ ] This example uses the IDEAR methodology to examine the data. Open the directory where you stored your project, and examine the **lab03_1-tdsp_and_amls\docs\deliverable_docs\IDEAR.html** file in a web browser for the code and results. 
 
