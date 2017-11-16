@@ -30,6 +30,7 @@ In the advanced analytics space, there are plenty of uses for storing log conver
 The folder structure is arranged as follows:
 
 __docs__: Contains all the hands-on labs
+__code__: Contains all the code for the hands-on labs
 
 The order of Hands-on Labs to carry out the solution is as follows:
 1. Activity Logger:
