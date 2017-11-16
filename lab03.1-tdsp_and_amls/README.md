@@ -111,7 +111,7 @@ In this lab you will deploy the solution to Azure Container Services (ACS) for w
 The final step in the Team Data Science Process is [Customer Acceptance](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-acceptance). Here you focus on ensuring that the model performed within acceptable time and accuracy rates, and also present your findings in a comprehensive project document.
 ### Lab: Review Customer Acceptance and Closeout Documentation
 In this lab you will examine the final project close out document. In production implementations, you and your team will create this document. 
-- [ ] open the **docs/deliverable_docs/ProjectReport.md** file and examine its contents.
+- [ ] open the **WhateverYouNamedYourProject\docs\deliverable_docs\ProjectReport.md** file and examine its contents.
 - [ ] Is there more information needed there? Are there items you would also include? How should this document be communicated? Are there security implications?
 
 ## Workshop Completion
