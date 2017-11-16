@@ -41,6 +41,8 @@ At the end of this workshop, you should be able to:
 
 # Agenda
 
+Please note: This is a rough agenda, and the schedule is subject to change pending class activities and interaction.
+
 - Day 1
   - 9-10: Introduction and Context. 
   - 10-11:20: Lab 1.1: Using Portable Class Libraries to Simplify App Development with Cognitive Services

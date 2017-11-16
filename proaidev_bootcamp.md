@@ -39,7 +39,7 @@ Welcome to the second two days of the Cloud AI Bootcamp. In these two days, we w
 
 # Agenda
 
-The rough agenda for this two-day workshop are:
+Please note: This is a rough agenda, and the schedule is subject to change pending class activities and interaction.
 
 - Day 1
   - 9-11: Introduction and Context
