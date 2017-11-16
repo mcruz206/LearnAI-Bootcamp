@@ -1,6 +1,6 @@
 # Testing Bots with Microsoft Bot Framework
 
-Writing code using Microsoft Bot Framework is fun and exciting. But before rushing to code bots that can make tea and send spaceships to mars, you need to think about testing your code. This workshop shows how you can perform raid development/testing, perform unit testing and functional testing (using Direct Line).
+Writing code using Microsoft Bot Framework is fun and exciting. But before rushing to code bots that can make tea and send spaceships to mars, you need to think about testing your code. This workshop demonstrates how you can perform raid development/testing, perform unit testing and functional testing (using Direct Line).
 
 ## Prerequisites
 
