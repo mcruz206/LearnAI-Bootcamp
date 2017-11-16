@@ -35,7 +35,7 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
 
   *  You can install the Azure Machine Learning Workbench and Docker locally:
         *  [Open this reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/quickstart-installation) and follow the sections marked **Install Azure Machine Learning Workbench on Windows**
-        *  You'll also need Docker for certain parts of the lab. To install it, open this reference](https://www.docker.com/docker-windows) and follow the instructions for installing Docker locally.
+        *  You'll also need Docker for certain parts of the lab. To install it, [open this reference](https://www.docker.com/docker-windows) and follow the instructions for installing Docker locally.
 
   *  Or you can use a Windows Data Science Virtual Machine (DSVM) to run this lab: 
         *  [Navigate to this path](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.windows-data-science-vm), and create a Windows Azure Data Science Virtual Machine (DSVM). 
