@@ -2,7 +2,7 @@
 
 Unless your bot is logging the conversation data somewhere, the bot framework will not perform any logging for you automatically. This has privacy implications, and many bots simply can't allow that in their scenarios.
 
-This lab shows how you can perform logging using Microsoft Bot Framework and store chat conversations. More specifically, the aim of this lab is to:
+This workshop shows how you can perform logging using Microsoft Bot Framework and store chat conversations. More specifically, the aim of this lab is to:
 
 1. Understand how to intercept and log message activities between bots and users.
 
