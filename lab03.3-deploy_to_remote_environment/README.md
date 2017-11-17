@@ -74,19 +74,10 @@ You configure the Azure ML experiment flow for a remote run using this process:
 
 ### Lab: Deploy an Experiment to a remote Data Science Virtual Machine
 In this lab you'll create an experiment, examine its configuration, and run the experiment on a remote Docker container. You'll set up the experiment in the AMLS Workbench tool, and then run all experiments from the command line interface (CLI)
-- [ ] Generate a public/private key pair and save them locally on your machine. 
-
-      -  [ ] Type:
-
-             ssh-keygen 
-
-      -  [ ] The public key will be saved in c/Users/*username*/.ssh/id_rsa.pub. To get that to the clipboard, type
-
-              clip < ~/.ssh/id_rsa.pub
 
 - [ ] [Open this Reference and create an Ubuntu Data Science Virtual Machine](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
       - [ ] Choose a size of *Standard D4s v3 (4 vcpus, 16 GB memory)*
-      - [ ] When requested, paste the public key your copied from the previous step into the proper location.
+      - [ ] Use an SSH password, not a Keygen. 
       - [ ] Start the VM and connect to it using the git bash shell using the following format:
 
       ssh *nameyoupicked*@*ipaddressofvm*
