@@ -35,7 +35,7 @@ At the end of this workshop, you should be able to:
 - Build, train, and publish a LUIS model to help your bot communicate effectively
 - Build an intelligent bot using Microsoft Bot Framework that leverages LUIS and Azure Search
 - Effectively log chat conversations in your bot
-- Effectively test your bot
+- Perform rapid development/testing with Ngrok and test your bots with unit tests and direct bot communication
 - Effectively leverage the custom vision service to create image classification services that can then be leveraged by an application
 
 
@@ -48,8 +48,8 @@ Please note: This is a rough agenda, and the schedule is subject to change pendi
   - 10-11:20: Lab 1.1: Using Portable Class Libraries to Simplify App Development with Cognitive Services
   - 11:30-12:00: Whiteboard Session for Cognitive Services
   - 12-1: Lunch
-  - 1-2: Lab 1.2: Developing Intelligent Applications with LUIS and Azure Search
-  - 4-5: Summary and White-board Discussion
+  - 1-3:15: Lab 1.2: Developing Intelligent Applications with LUIS and Azure Search
+  - 3:30-5: Summary and White-board Discussion
 - Day 2 
   - 9-10: Introduction and Context.
   - 10-11: Lab 2.1: Log Chat Conversations in your Bot 
