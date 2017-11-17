@@ -35,6 +35,7 @@ In that Console, add the nuget with:
 Install-Package Microsoft.Cognitive.CustomVision.Training -Version 1.0.0
 ```
 
+
 ### The Training API key
 
 You also need to have a training API key. The training API key allows you to create, 
@@ -251,3 +252,11 @@ Build and run the solution. You will be required to input your training API key
 into the console app when running the solution so have this at the ready. The
 training and prediction of the images can take 2 minutes. The prediction results
 appear on the console.
+
+
+## Further Reading
+
+The source code for the Windows client library is available on
+[github](https://github.com/Microsoft/Cognitive-CustomVision-Windows/).
+
+The client library includes multiple sample applications, and this tutorial is based on the `CustomVision.Sample` demo within that repository.
