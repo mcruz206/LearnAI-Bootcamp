@@ -130,7 +130,7 @@ namespace CustomVision.Sample
 ### Step 2: Create a Custom Vision Service project
 
 To create a new Custom Vision Service project, add the following code in your
-`Main()` method after the call to `LoadImagesFromDisk().`
+`Main()` method after the call to `new TrainingApi().`
 
  
 
