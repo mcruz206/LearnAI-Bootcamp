@@ -14,7 +14,6 @@ as a template for building your own app for Windows using the Custom Vision API.
 
 This example has been tested using the .NET Framework using [Visual Studio
 2017, Community Edition](https://www.visualstudio.com/downloads/)
-
  
 ### Training client library
 
@@ -39,10 +38,11 @@ Install-Package Microsoft.Cognitive.CustomVision.Training -Version 1.0.0
 ### The Training API key
 
 You also need to have a training API key. The training API key allows you to create, 
-manage and train Custom Vision projects programatically. All operations on [https://customvision.ai](https://customvision.ai)
- are exposed through this library, allowing you
-to automate all aspects of the Custom Vision Service. You can obtain a key by
-creating a new project at [https://customvision.ai](https://customvision.ai) and then clicking on the "setting" gear in the top right. 
+manage, and train Custom Vision projects programatically. All operations on 
+[https://customvision.ai](https://customvision.ai)  are exposed through this library, 
+allowing you to automate all aspects of the Custom Vision Service. You can obtain a key by
+creating a new project at [https://customvision.ai](https://customvision.ai) and then 
+clicking on the "setting" gear in the top right. 
 
 
 ## **Lab: Creating a Custom Vision Application**
