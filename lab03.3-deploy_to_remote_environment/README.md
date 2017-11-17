@@ -29,8 +29,9 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
        *  [Open this reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/quickstart-installation), and complete only the sections marked **"Sign in to the Azure portal"** and **"Create Azure Machine Learning accounts"**. 
        *  Write down the *Experimentation account name* and bring it to class
 
-  *  You can install the Azure Machine Learning Workbench and Docker locally:
+  *  You can install the Azure Machine Learning Workbench, git, and Docker locally:
         *  [Open this reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/quickstart-installation) and follow the sections marked **Install Azure Machine Learning Workbench on Windows**
+        *  [Install git from here]()
         *  You'll also need Docker for certain parts of the lab. To install it, [open this reference](https://www.docker.com/docker-windows) and follow the instructions for installing Docker locally.
 
   *  Or you can use a Windows Data Science Virtual Machine (DSVM) to run this lab: 
@@ -74,7 +75,8 @@ You configure the Azure ML experiment flow for a remote run using this process:
 ### Lab: Deploy an Experiment to a remote Data Science Virtual Machine
 In this lab you'll create an experiment, examine its configuration, and run the experiment on a remote Docker container. You'll set up the experiment in the AMLS Workbench tool, and then run all experiments from the command line interface (CLI)
 - [ ] Generate a public/private key pair and save them locally on your machine. 
-      -  [ ] You can use the git bash shell for this activity. Type:
+
+      -  [ ] Type:
 
              ssh-keygen 
 
@@ -91,7 +93,7 @@ In this lab you'll create an experiment, examine its configuration, and run the 
 
       - [ ] Check to ensure Docker is functional on your Linux DSVM with the following command:
 
-      sudo docker run docker/whalesay cowsay "Visit Linux.com every day!"
+      sudo docker run docker/whalesay cowsay "The best debugging is done with CTRL-X. - Buck Woody"
 
 - [ ] Open the Azure Machine Learning Services Workbench tool locally or on your Windows Data Science Virtual Machine. 
 - [ ] [Navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/experimentation-service-configuration), and complete the section marked **"Running a script on a remote Docker"**
