@@ -76,22 +76,22 @@ In this lab you'll create an experiment, examine its configuration, and run the 
 - [ ] Generate a public/private key pair and save them locally on your machine. 
       -  [ ] You can use the git bash shell for this activity. Type:
 
-             **ssh-keygen** 
+             ssh-keygen 
 
       -  [ ] The public key will be saved in c/Users/*username*/.ssh/id_rsa.pub. To get that to the clipboard, type
 
-              **clip < ~/.ssh/id_rsa.pub**
+              clip < ~/.ssh/id_rsa.pub
 
 - [ ] [Open this Reference and create an Ubuntu Data Science Virtual Machine](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
       - [ ] Choose a size of *Standard D4s v3 (4 vcpus, 16 GB memory)*
       - [ ] When requested, paste the public key your copied from the previous step into the proper location.
       - [ ] Start the VM and connect to it using the git bash shell using the following format:
 
-      **ssh *nameyoupicked*@*ipaddressofvm***
+      ssh *nameyoupicked*@*ipaddressofvm*
 
       - [ ] Check to ensure Docker is functional on your Linux DSVM with the following command:
 
-      **sudo docker run docker/whalesay cowsay "Visit Linux.com every day!"**
+      sudo docker run docker/whalesay cowsay "Visit Linux.com every day!"
 
 - [ ] Open the Azure Machine Learning Services Workbench tool locally or on your Windows Data Science Virtual Machine. 
 - [ ] [Navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/experimentation-service-configuration), and complete the section marked **"Running a script on a remote Docker"**
