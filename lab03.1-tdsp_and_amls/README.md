@@ -39,18 +39,18 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
 
   *  Or you can use a Windows Data Science Virtual Machine (DSVM) to run this lab: 
         *  [Navigate to this path](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.windows-data-science-vm), and create a Windows Azure Data Science Virtual Machine (DSVM). 
-           *  Choose a VM size of: DS3_V2, with 4 virtual CPUs and 14-Gb RAM. 
+           *  Choose a VM size of: D4S_V3, with 4 virtual CPUs and 14-Gb RAM. This VM size is not available in all regions, so choose an appropriate region (`East US 2` is a good choice).
            *  When the DSVM is deployed, start it using the [Azure portal.](https://portal.azure.com)
-        *  After you create and Start the DSVM, log in to it and double-click the "Install Azure Machine Learning Workbench" icon. Finish the installation by following the on-screen instructions. The installer downloads all the necessary dependent components, such as Python, Miniconda, and other related libraries. The installation might take around half an hour to finish all the components. When complete, the Azure Machine Learning Workbench is installed in the following directory: C:\Users\<user>\AppData\Local\AmlWorkbench
+        *  After you create and Start the DSVM, log in to it and double-click the "Install Azure Machine Learning Workbench" icon. Finish the installation by following the on-screen instructions. The installer downloads all the necessary dependent components, such as Python, Miniconda, and other related libraries. The installation might take around half an hour to finish all the components. When complete, the Azure Machine Learning Workbench is installed in the following directory: C:\\Users\\%USERNAME%\\AppData\\Local\\AmlWorkbench
 
 ## Introduction to the TDSP
 
-![Image](/lab03.1-tdsp_and_amls/resources/docs/images/tdsp.png)
+![Image](resources/docs/images/tdsp.png)
 
 ## 1. Business Understanding
 In the [Business Understanding](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-business-understanding) phase of the TDSP, you discover the questions that the organization would like answered from data. This is a group effort, involving the organization, the Data Science team, and the DevOps team along with other stakeholders. 
 
-![Image](/lab03.1-tdsp_and_amls/resources/docs/images/contosologo.gif)
+![Image](resources/docs/images/contosologo.gif)
 
 Contoso Organics has requested a model that will predict whether a population of people makes over 50,000.00 US dollars a year, from data they have collected. 
 
@@ -94,7 +94,8 @@ The [Modeling](https://docs.microsoft.com/en-us/azure/machine-learning/team-data
 In this lab we'll use the same project you just completed - the "Classify US Incomes" one. You'll create your feature engineering file, run the model training, and create the final scores.
 - [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main_FeatureEngineering.py** file and run it to perform the Feature Engineering. You will see the Job status in the right-hand pane and in the Job History section of the Workbench.
 - [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main_ModelCreation.py** file and run it to create your model.  You will see the Job status in the right-hand pane and in the Job History section of the Workbench.
-- [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main_ScoringAndEvaluation.py** file and run it.  You will see the Job status in the right-hand pane. When the scoring completes, click that item and open the **driver_log** you find in the Run History. You will see the AUC for the two algorithms compared.
+- [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main_ScoringAndEvaluation.py** 
+file and run it.  You will see the Job status in the right-hand pane. When the scoring completes, click that item and open the **driver_log** you find in the Run History. You will see the AUC for the two algorithms compared.
 
 ## 4. Deployment
 The [Deployment](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-deployment) phase of the TDSP entails outputting  the results to a data location, creating an Application Programming Interface (API) or another mechanism for the classification or prediction model to be consumed. 
