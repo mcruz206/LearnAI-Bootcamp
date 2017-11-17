@@ -14,7 +14,7 @@ While there is a focus on Cognitive Services, you will also leverage the followi
 - CosmosDB
 - Azure Storage
 
-
+ 
 ## Prerequisites
 
 This workshop is meant for an AI Developer on Azure. Since this is a half-day workshop, there are certain things you need before you arrive.
@@ -41,6 +41,7 @@ In the continuation of this lab, `lab02.4-luis_and_search`, we'll build an [Azur
 
 ![Architecture Diagram](./resources/assets/AI_Immersion_Arch.png)
 
+> This lab was modified from this [Cognitive Services Tutorial](https://github.com/noodlefrenzy/CognitiveServicesTutorial).
 
 ## Navigating the GitHub ##
 

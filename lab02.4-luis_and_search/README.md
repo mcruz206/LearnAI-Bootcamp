@@ -48,6 +48,7 @@ Now that we have it in DocumentDB, we'll build an [Azure Search](https://azure.m
 
 ![Architecture Diagram](./resources/assets/AI_Immersion_Arch.png)
 
+> This lab was modified from this [Cognitive Services Tutorial](https://github.com/noodlefrenzy/CognitiveServicesTutorial).
 
 ## Navigating the GitHub ##
 
@@ -680,7 +681,7 @@ Finally, add a default handler if none of the above services were able to unders
 
 Hit F5 to run your bot and test it in the Bot Emulator.  
 
-### (optional) Lab: Publish your bot
+### Lab: Publish your bot
 
 A bot created using the Microsoft Bot can be hosted at any publicly-accessible URL.  For the purposes of this lab, we will host our bot in an Azure website/app service.  
 
@@ -696,7 +697,7 @@ On the App Service screen, select the appropriate subscription and click "New". 
 
 Finally, you will see the Web Deploy settings, and can click "Publish".  The output window in Visual Studio will show the deployment process.  Then, your bot will be hosted at a URL like http://testpicturebot.azurewebsites.net/, where "testpicturebot" is the App Service API app name.  
 
-### (optional) Lab: Register your bot with the Bot Connector
+### Lab: Register your bot with the Bot Connector
 
 Now, go to a web browser and navigate to [http://dev.botframework.com](http://dev.botframework.com).  Click [Register a bot](https://dev.botframework.com/bots/new).  Fill out your bot's name, handle, and description.  Your messaging endpoint will be your Azure website URL with "api/messages" appended to the end, like https://testpicturebot.azurewebsites.net/api/messages.  
 
