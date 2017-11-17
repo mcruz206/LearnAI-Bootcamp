@@ -1,11 +1,11 @@
 **Custom Vision API C\# Tutorial**
 ==================================
 
-Explore a basic Windows application that uses the Computer Vision API to create
-a project, add tags to it, upload images, train the project, obtain the default
-prediction endpoint URL for the project, and use the endpoint to
-programmatically test an image. You can use this open source example as a
-template for building your own app for Windows using the Custom Vision API.
+The goal of this tutorial is to explore a basic Windows application that uses the 
+Computer Vision API to create a project, add tags to it, upload images, train the 
+project, obtain the default prediction endpoint URL for the project, and use the 
+endpoint to programmatically test an image. You can use this open source example 
+as a template for building your own app for Windows using the Custom Vision API.
  
 
 **Prerequisites**
@@ -18,27 +18,35 @@ This example has been tested using the .NET Framework using [Visual Studio
 2017, Community Edition](https://www.visualstudio.com/downloads/)
 
  
-
 ### Training client library
 
-You may need to install the client library. The easiest way to get the training
-client library is to get the
-[Microsoft.Cognitive.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Cognitive.CustomVision.Training/)
-package from [nuget](ttp://nuget.org).
+You may need to install the client library depending on your settings within
+Visual Studio. The easiest way to get the training client library is to install
+ the [Microsoft.Cognitive.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Cognitive.CustomVision.Training/)
+package from nuget.
 
- 
+You can install it through the Visual Studio Package manager. Access the package manager by navigating through:
+
+```
+Tools -> Nuget Package Manager -> Package Manager Console
+```
+
+In that Console, add the nuget with:
+
+```
+Install-Package Microsoft.Cognitive.CustomVision.Training -Version 1.0.0
+```
 
 ### The Training API key
 
-The training API key allows you to create, manage and train Custom Vision
-projects programatically. All operations on the
-[website](https://customvision.ai)are exposed through this library, allowing you
+You also need to have a training API key. The training API key allows you to create, 
+manage and train Custom Vision projects programatically. All operations on the
+[website](https://customvision.ai) are exposed through this library, allowing you
 to automate all aspects of the Custom Vision Service. You can obtain a key by
-creating a project at at the website and finding the key in the setting of the
-project that you have created.
+creating a project at the website and then clicking on the "setting" gear in the top right. 
 
 
-**Lab: Creating as Custom Vision Application**
+**Lab: Creating a Custom Vision Application**
 --------------------------------------------------
 
 
@@ -47,15 +55,15 @@ project that you have created.
  
 
 Start Visual Studio 2017, Community Edition, open the Visual Studio solution
-named `CustomVision.Sample.sln` in location:
+named **CustomVision.Sample.sln** in the sub-directory of where this lab is located:
 
 ```
-\\[Lab Location]\Starter\\CustomVision.Sample
+Resources/Starter/CustomVision.Sample/CustomVision.Sample.sln
 ```
 
 This code defines and calls two helper methods. The method called
-**GetTrainingKey** prepares the training key. The one called
-**LoadImagesFromDisk** loads two sets of images that this example uses to train
+`GetTrainingKey` prepares the training key. The one called
+`LoadImagesFromDisk` loads two sets of images that this example uses to train
 the project, and one test image that the example loads to demonstrate the use of
 the default prediction endpoint. On opening the project the following code
 should be displayed from line 35:
@@ -129,8 +137,7 @@ namespace CustomVision.Sample
 
 ### Step 2: Create a Custom Vision Service project
 
-To create a new Custom Vision Service project, add the following code in your
-`Main()` method after the call to `new TrainingApi().`
+To create a new Custom Vision Service project, add the following code in the body of the `Main()` method after the call to `new TrainingApi().`
 
  
 
@@ -145,7 +152,7 @@ var project = trainingApi.CreateProject("My New Project");
 ### Step 3: Add tags to your project
 
 To add tags to your project, insert the following code after the call to
-`CreateProject(”My New Project”);`.
+`CreateProject("My New Project");`.
 
 
 ```
@@ -180,8 +187,8 @@ trainingApi.CreateImagesFromData(project.Id, japaneseCherryImages, new List<Guid
 
 ### Step 5: Train the project
 
-Now that we've added tags and images to the project, we can train it. Insert the
-following code after the end of code that you added in step 4.. This creates the
+Now that we have added tags and images to the project, we can train it. Insert the
+following code after the end of code that you added in the prior step. This creates the
 first iteration in the project. We can then mark this iteration as the default
 iteration.
 
@@ -244,6 +251,6 @@ Console.ReadKey();
 ### Step 7: Run the example
 
 Build and run the solution. You will be required to input your training API key
-into the console app when runing the solution so have this at the ready. The
-training and prediction of the images can take 2 mins The prediction results
-appear on the console. the console.
+into the console app when running the solution so have this at the ready. The
+training and prediction of the images can take 2 minutes. The prediction results
+appear on the console.
