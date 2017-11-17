@@ -40,10 +40,10 @@ Install-Package Microsoft.Cognitive.CustomVision.Training -Version 1.0.0
 ### The Training API key
 
 You also need to have a training API key. The training API key allows you to create, 
-manage and train Custom Vision projects programatically. All operations on the
-[website](https://customvision.ai) are exposed through this library, allowing you
+manage and train Custom Vision projects programatically. All operations on https://customvision.ai
+ are exposed through this library, allowing you
 to automate all aspects of the Custom Vision Service. You can obtain a key by
-creating a project at the website and then clicking on the "setting" gear in the top right. 
+creating a new project at https://customvision.ai and then clicking on the "setting" gear in the top right. 
 
 
 **Lab: Creating a Custom Vision Application**
