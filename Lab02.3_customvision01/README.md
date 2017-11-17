@@ -1,5 +1,4 @@
-**Custom Vision API C\# Tutorial**
-==================================
+# **Custom Vision API C\# Tutorial**
 
 The goal of this tutorial is to explore a basic Windows application that uses the 
 Computer Vision API to create a project, add tags to it, upload images, train the 
@@ -8,8 +7,7 @@ endpoint to programmatically test an image. You can use this open source example
 as a template for building your own app for Windows using the Custom Vision API.
  
 
-**Prerequisites**
------------------
+## **Prerequisites**
  
 
 ### Platform requirements
@@ -40,14 +38,13 @@ Install-Package Microsoft.Cognitive.CustomVision.Training -Version 1.0.0
 ### The Training API key
 
 You also need to have a training API key. The training API key allows you to create, 
-manage and train Custom Vision projects programatically. All operations on https://customvision.ai
+manage and train Custom Vision projects programatically. All operations on [https://customvision.ai](https://customvision.ai)
  are exposed through this library, allowing you
 to automate all aspects of the Custom Vision Service. You can obtain a key by
-creating a new project at https://customvision.ai and then clicking on the "setting" gear in the top right. 
+creating a new project at [https://customvision.ai](https://customvision.ai) and then clicking on the "setting" gear in the top right. 
 
 
-**Lab: Creating a Custom Vision Application**
---------------------------------------------------
+## **Lab: Creating a Custom Vision Application**
 
 
 ### Step 1: Create a console application and prepare the training key and the images needed for the example.
