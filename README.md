@@ -1,25 +1,14 @@
-# Introduction 
-This is a placeholder for the 4 day bootcamp to get the ball rolling.
+# Cloud AI Bootcamp
 
-The goal of this bootcamp is to kick-start advanced training for individuals who would like to be able to do the following:
+The goal of this four day bootcamp is to provide a kick-start to individuals who need to develop deeper proficiency with the range of the Microsoft Cloud AI platform. These days are not "Getting Started with..." the various services and assume a 100-200-level familiarity with the products prior to getting started.
 
-1)	Create a web application leveraging Generally Available Cognitive Services REST APIs to meet customer business needs.
-2)	Leverage Azure Search to provide a positive search experience inside of a web application.
-3)	Build, test, and monitor intelligent bots using Azure Bot Services and LUIS.
-4)	Leverage and evangelize the most effective process for building, delivering, and managing AI-infused applications on Azure (i.e. the Team Data Science Process).
-5)	Leverage Azure Machine Learning Services to run experiments and manage and deploy models.
-6)	Leverage appropriate IaaS (e.g. the Data Science/Deep Learning Virtual Machine) and managed Services (e.g. Spark on HDInsight, Batch AI, AML Services) to efficiently execute deep-learning workflows, regardless of backend computational framework (e.g. TensorFlow, Cognitive Toolkit, etc).
+The structure of all 4-days is intended to be hands-on. Each lab should be able to be run in relative isolation, so as long as **appropriate pre-requisites are met**, an individual should be able to complete a given lab without needing to complete the others.
 
-We can't accomplish all of these in a single 4 day bootcamp, so we've curated and developed labs that focus on key workloads and activities in these domains. The first two days focus on kick-starting the first three learning objectives, and the second two days focus on kick-starting the last three. The pre-requisites for the first two days are different than the pre-requisites for the second two, so they are listed out separately:
+## Emerging AI Developers
 
-- [Details for first two days](day_one_and_two)
-- [Details for the second two days](day_three_and_four)
+Days one and two are oriented towards emerging AI Developers who are interested in leveraging AI-based technologies and services to build intelligent applications. These two days focus on hands-on activities that develop proficiency in AI-oriented services such as Azure Bot Services, Azure Search, and some of the Cognitive Services. For more details about the set of learning objectives, pre-requisites, and a tentative schedule, please see the appropriate [details file](emergingaidev_bootcamp).
 
-NOTES:
-- we can re-organize to individual days
-- numbering labs is just for internal tracking
-- descriptions for agenda and goal for each day are just placeholders.
-- pre-work definition in pre-reqs
-    - deploy a DSVM (?)
-    - Spark on HDI deployed using these instructions: https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql
-    
+## Professional AI Developers
+
+Days three and four are oriented towards professional AI developers and Data Scientists who are interested in developing proficiency tools that will simplify the full data science lifecycle. These two days focus on hands-on activities that develop proficiency in AI-oriented workflows leveraging Azure Machine Learning Workbench and Services, the Team Data Science Process, Visual Studio Team Services, Azure Batch AI, and Azure Container Services. For more details about the set of learning objectives, pre-requisites, and a tentative schedule, please see the appropriate [details file](proaidev_bootcamp).
+
