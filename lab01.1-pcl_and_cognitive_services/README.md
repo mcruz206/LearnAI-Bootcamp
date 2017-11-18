@@ -144,7 +144,7 @@ Once you click this, you'll have to fill out a few fields as you see fit.
 
 ![Cosmos DB Creation Form](./resources/assets/create-cosmosdb-formfill.png)
 
-In our case, select the ID you'd like, subject to the constraints that it needs to be lowercase letters, numbers, or dashes. We will be using the Document DB SDK and not Mongo, so select Document DB as the NoSQL API. Let's use the same Resource Group as we used for our previous steps, and the same location, select _Pin to dashboard_ to make sure we keep track of it and it's easy to get back to, and hit Create.
+In our case, select the ID you'd like, subject to the constraints that it needs to be lowercase letters, numbers, or dashes. We will be using the Document DB SDK and not Mongo, so select `SQL` as the  API. Let's use the same Resource Group as we used for our previous steps, and the same location, select _Pin to dashboard_ to make sure we keep track of it and it's easy to get back to, and hit Create.
 
 Once creation is complete, open the panel for your new database and select the _Keys_ sub-panel.
 
