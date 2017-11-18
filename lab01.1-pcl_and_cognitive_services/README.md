@@ -11,7 +11,7 @@ While there is a focus on Cognitive Services, you will also leverage the followi
 
 - Visual Studio
 - Windows 10 SDK (UWP)
-- CosmosDB
+- Cosmos DB
 - Azure Storage
 
  
@@ -25,7 +25,7 @@ Secondly, you should have experience with the portal and be able to create resou
 
 ## Intro
 
-We're going to build an end-to-end scenario that allows you to pull in your own pictures, use Cognitive Services to find objects and people in the images, figure out how those people look like they are feeling, and store all of that data in a NoSQL Store (CosmosDB). In a continuation of this lab, `lab01.2-luis_and_search`, we will use that NoSQL Store to populate an Azure Search index, and then build a Bot Framework bot using LUIS to allow easy, targeted querying.
+We're going to build an end-to-end scenario that allows you to pull in your own pictures, use Cognitive Services to find objects and people in the images, figure out how those people look like they are feeling, and store all of that data in a NoSQL Store (Cosmos DB). In a continuation of this lab, `lab01.2-luis_and_search`, we will use that NoSQL Store to populate an Azure Search index, and then build a Bot Framework bot using LUIS to allow easy, targeted querying.
 
 ## Architecture
 
@@ -35,9 +35,9 @@ We will build a simple C# application that allows you to ingest pictures from yo
 - [Face](https://www.microsoft.com/cognitive-services/en-us/face-api): We use this to grab faces and their details from each image
 - [Emotion](https://www.microsoft.com/cognitive-services/en-us/emotion-api): We use this to pull emotion scores from each face in the image
 
-Once we have this data, we process it to pull out the details we need, and store it all into [CosmosDB](https://azure.microsoft.com/en-us/services/cosmos-db/), our [NoSQL](https://en.wikipedia.org/wiki/NoSQL) [PaaS](https://azure.microsoft.com/en-us/overview/what-is-paas/) offering.
+Once we have this data, we process it to pull out the details we need, and store it all into [Cosmos DB](https://azure.microsoft.com/en-us/services/cosmos-db/), our [NoSQL](https://en.wikipedia.org/wiki/NoSQL) [PaaS](https://azure.microsoft.com/en-us/overview/what-is-paas/) offering.
 
-In the continuation of this lab, `lab01.2-luis_and_search`, we'll build an [Azure Search](https://azure.microsoft.com/en-us/services/search/) Index (Azure Search is our PaaS offering for faceted, fault-tolerant search - think Elastic Search without the management overhead) on top of CosmosDB. We'll show you how to query your data, and then build a [Bot Framework](https://dev.botframework.com/) bot to query it. Finally, we'll extend this bot with [LUIS](https://www.microsoft.com/cognitive-services/en-us/language-understanding-intelligent-service-luis) to automatically derive intent from your queries and use those to direct your searches intelligently. 
+In the continuation of this lab, `lab01.2-luis_and_search`, we'll build an [Azure Search](https://azure.microsoft.com/en-us/services/search/) Index (Azure Search is our PaaS offering for faceted, fault-tolerant search - think Elastic Search without the management overhead) on top of Cosmos DB. We'll show you how to query your data, and then build a [Bot Framework](https://dev.botframework.com/) bot to query it. Finally, we'll extend this bot with [LUIS](https://www.microsoft.com/cognitive-services/en-us/language-understanding-intelligent-service-luis) to automatically derive intent from your queries and use those to direct your searches intelligently. 
 
 ![Architecture Diagram](./resources/assets/AI_Immersion_Arch.png)
 
@@ -66,7 +66,7 @@ After creating an Azure account, you may access the [Azure portal](https://porta
 
 Once you're connected, there are several things you need to do to set up the VM for the workshop:
 
-1. Navigate to this repository and download it as a zip file. Extract all the files and move the folder for this lab to your Desktop. You'll also want to extract all the files from the `sample_images` folder.
+1. Navigate to this repository and download it as a zip file. Extract all the files and move the folder for this lab to your Desktop. You'll also want to extract all the files from the `sample_images.zip` file.
 2. Open `ImageProcessing.sln` which is under resources>code>ImageProcessing. It may take a while for Visual Studio to open for the first time, and you will have to log in.
 3. Once you've signed in and opened the solution, you may receive a `For developers settings` pop-up (if you don't, type in the Cortana search bar "For developers settings"). Change the settings to "Developer Mode".
 4. Right-click on the solution and select "Build Solution". You should be able to ignore any errors for now.
@@ -78,15 +78,15 @@ Once you're connected, there are several things you need to do to set up the VM 
 
 Over the course of this lab, we will collect Cognitive Services keys and storage keys. You should save all of them in a text file so you can easily access them in future labs.
 
->_Cognitive Services Keys_
->- Computer Vision API:
->- Face API:
->- Emotion API:
+- _Cognitive Services Keys_
+  - Computer Vision API:
+  - Face API:
+  - Emotion API:
 
->_Storage Keys_
->- Azure Blob Storage Connection String:
->- Cosmos DB URI:
->- Cosmos DB key:
+- _Storage Keys_
+  - Azure Blob Storage Connection String:
+  - Cosmos DB URI:
+  - Cosmos DB key:
 
 **Getting Cognitive Services API Keys**
 
@@ -120,7 +120,13 @@ Within the Azure Portal, click **New->Storage->Storage Account**
 
 ![New Azure Storage](./resources/assets/create-blob-storage.PNG)
 
-Once you click it, you'll be presented with the fields above to fill out. Choose your storage account name (lowercase letters and numbers), set _Account kind_ to _Blob storage_, _Replication_ to _Locally-Redundant storage (LRS)_ (this is just to save money), use the same Resource Group as above, and set _Location_ to _West US_.  (The list of Azure services that are available in each region is at [https://azure.microsoft.com/en-us/regions/services/](https://azure.microsoft.com/en-us/regions/services/)). _Pin to dashboard_ so that you can easily find it.
+Once you click it, you'll be presented with the fields above to fill out. 
+
+- Choose your storage account name (lowercase letters and numbers), 
+- set _Account kind_ to _Blob storage_, 
+- set _Replication_ to _Locally-Redundant storage (LRS)_ (this is just to save money), 
+- use the same Resource Group as above, and 
+- set _Location_ to _West US_.  (The list of Azure services that are available in each region is at [https://azure.microsoft.com/en-us/regions/services/](https://azure.microsoft.com/en-us/regions/services/)). _Pin to dashboard_ so that you can easily find it.
 
 Now that you have an Azure Storage account, let's grab the _Connection String_ and add it to your _TestCLI_ and _TestApp_ `settings.json`.
 
@@ -144,12 +150,12 @@ Once creation is complete, open the panel for your new database and select the _
 
 ![Keys sub-panel for Cosmos DB](./resources/assets/docdb-keys.png)
 
-You'll need the **URI** and the **PRIMARY KEY** for your _TestCLI's_ `settings.json` file, so copy those into there and you're now ready to store images and data into the cloud.
+You'll need the **URI** and the **PRIMARY KEY** for your _TestCLI's_ and the _TestApp's_ `settings.json` file, so copy those into there and you're now ready to store images and data into the cloud.
 
 
 ## Cognitive Services
 
-Cognitive Services can be used to infuse your apps, websites and bots with intelligent algorithms to see, hear, speak, understand and interpret your user needs through natural methods of communication. 
+Cognitive Services can be used to infuse your apps, websites and bots with algorithms to see, hear, speak, understand and interpret your user needs through natural methods of communication. 
 
 There are five main categories for the available Cognitive Services:
 - **Vision**: Image-processing algorithms to identify, caption and moderate your pictures
@@ -196,22 +202,27 @@ Navigate to `ImageProcessor.cs` within `ImageProcessingLibrary`.
 
 Add the following code to the top:
 
-        using Microsoft.ProjectOxford.Common.Contract;
-        using Microsoft.ProjectOxford.Face;
-        using Microsoft.ProjectOxford.Face.Contract;
-        using Microsoft.ProjectOxford.Vision;
-        using ServiceHelpers;
+```
+using Microsoft.ProjectOxford.Common.Contract;
+using Microsoft.ProjectOxford.Face;
+using Microsoft.ProjectOxford.Face.Contract;
+using Microsoft.ProjectOxford.Vision;
+using ServiceHelpers;
+```
 
 [Project Oxford](https://blogs.technet.microsoft.com/machinelearning/tag/project-oxford/) was the project where many Cognitive Services got their start. As you can see, the NuGet Packages were even labeled under Project Oxford. In this scenario, we'll call `Microsoft.ProjectOxford.Common.Contract` for the Emotion API, `Microsoft.ProjectOxford.Face` and `Microsoft.ProjectOxford.Face.Contract` for the Face API, and `Microsoft.Oxford.Vision` for the Computer Vision API. Additionally, we'll reference our service helpers (remember, these will make our lives easier). You'll have to reference different packages depending on which Cogitive Services you're leveraging in your application.
 
 Right at the beginning of our image processor, we're going to set up some static arrays that we'll fill in throughout the processor. As you can see, these are the main attributes we want to call for `ImageInsights.cs`. Add the code below:
 
-    private static FaceAttributeType[] DefaultFaceAttributeTypes = new FaceAttributeType[] { FaceAttributeType.Age, FaceAttributeType.Gender };
-    
-    private static VisualFeature[] DefaultVisualFeatureTypes = new VisualFeature[] { VisualFeature.Tags, VisualFeature.Description };
+```
+private static FaceAttributeType[] DefaultFaceAttributeTypes = new FaceAttributeType[] { FaceAttributeType.Age, FaceAttributeType.Gender };
+
+private static VisualFeature[] DefaultVisualFeatureTypes = new VisualFeature[] { VisualFeature.Tags, VisualFeature.Description };
+```
 
 Next, create a public task that we'll use to trigger computer vision, face and emotion analysis:
 
+```
     public static async Task<ImageInsights> ProcessImageAsync(Func<Task<Stream>> imageStreamCallback, string imageId)
     {
         ImageInsights result = new ImageInsights { ImageId = imageId };
@@ -224,17 +235,19 @@ Next, create a public task that we'll use to trigger computer vision, face and e
 
         return result;
     }
+```
 
 In the code above, you see that the result of our task is populating ImageInsights. You can also see there is an `await` for three methods: `AnalyzeImageFeaturesAsync`, `AnalyzeFacesAsync` and `AnalyzeEmotionAsync`. Since this public method invokes three other methods, it’s good practice to make those private since they’re not part of the API (at least for this project). Create a `private static async Task` for each. 
 
 > Hint 1: The code for the first one is shown below. The other two are very similar, except `AnalyzeEmotionAsync` will have a different output (which you may be able to glean from the public task you created earlier). Turn to a neighbor if you need help. 
 
 
-
+```
     private static async Task AnalyzeImageFeaturesAsync(Func<Task<Stream>> imageStreamCallback, ImageInsights result)
     {
 
     }
+```
 
 > Hint 2: We use `Func<Task<Stream>>` because we want to make sure we can process the image multiple times (once for each service that needs it), so we have a Func that can hand us back a way to get the stream. Since getting a stream is usually an async operation, rather than the Func handing back the stream itself, it hands back a task that allows us to do so in an async fashion.
 
@@ -242,6 +255,7 @@ In the code above, you see that the result of our task is populating ImageInsigh
 
 Let's work on the `AnalyzeImageFeaturesAsync` method first. We'll create a variable called `imageAnalysisResult` that uses `VisionServiceHelper.AnalyzeImageAsync` (service helper making life easier) to analyze the image's features (returns `DefaultVisualFeatureTypes`). Next, we'll output VisionInsights for the image, containing the Caption and Tags. See code below:
 
+```
     var imageAnalysisResult = await VisionServiceHelper.AnalyzeImageAsync(imageStreamCallback, DefaultVisualFeatureTypes);
 
         result.VisionInsights = new VisionInsights
@@ -249,15 +263,19 @@ Let's work on the `AnalyzeImageFeaturesAsync` method first. We'll create a varia
                 Caption = imageAnalysisResult.Description.Captions[0].Text,
                 Tags = imageAnalysisResult.Tags.Select(t => t.Name).ToArray()
             };
+```
 
 So now we have the caption and tags that we need from the Computer Vision API, and they're stored in `result.VisionInsights`. 
 
 Next let's add to `AnalyzeFacesAsync` so we can use the Face API to locate the face rectangles (that our app will use to let you filter faces) and the age/gender of the people detected. In the following code, we use the FaceServiceHelper to detect if there are faces in the image. If there are, we want the FaceId and the FaceAttributes (specifically age and gender). Add below code:
 
+```
     var faces = await FaceServiceHelper.DetectAsync(imageStreamCallback, returnFaceId: true, returnFaceLandmarks: false, returnFaceAttributes: DefaultFaceAttributeTypes);
+```
 
 If there's more than one face, we'll need to make a list of the insights, and then cycle through each. You'll need to determine how we add the `detectedFace` attributes to FaceInsights, as well as how we determine the face ID. Here's a skeleton of the code you'll need to complete:
 
+```
     List<FaceInsights> faceInsightsList = new List<FaceInsights>();
     foreach (Face detectedFace in faces)
     {
@@ -277,6 +295,7 @@ If there's more than one face, we'll need to make a list of the insights, and th
         }
 
         result.FaceInsights = faceInsightsList.ToArray();
+```
 
 > Hints: Remember, in the first part, we're just spelling out what we've already returned (start with `detectedFace.` and use the dropdowns to help). In the second part, determine what the it means if the if statement is true. Turn to a neighbor if you need help.
 
@@ -284,10 +303,13 @@ Note that at the end of the foreach loop, we're adding our insights to the list,
 
 Next, let's modify `AnalyzeEmotionAsync`. We only need one line of code (service helpers make our lives easier!) to grab all of the face emotions. This code also gives an additional hint for what the output for `AnalyzeEmotionAsync` should be. Add below code:
 
+```
     faceEmotions.AddRange(await EmotionServiceHelper.RecognizeAsync(imageStreamCallback));
+```
 
 Note that this doesn't return the TopEmotion that we originally wanted for our FaceInsights (take a look at `FaceInsights.cs`). We don't want to include the scores for each emotion or list all the emotions for everyone. We really just care about the main emotion each face shows. Similar to `AnalyzeFacesAsync`, we will use a foreach loop to find the top emotion and store it in faceInsights. Below what you already have in `ProcessImageAsync` (but above `return result;`), paste in the following skeleton code:
 
+```
     foreach (var faceInsights in result.FaceInsights)
     {
         Emotion faceEmotion = CoreUtil.FindFaceClosestToRegion(emotionResult, faceInsights.FaceRectangle);
@@ -296,6 +318,8 @@ Note that this doesn't return the TopEmotion that we originally wanted for our F
             faceInsights.TopEmotion = ;
         }
     }
+```
+
 
 > Hint: Figure out what we're doing with the if statement. What do we want to grab `if faceEmotion != null`? 
 
@@ -338,6 +362,7 @@ Once you've set your Cognitive Services API keys, your Azure Blob Storage Connec
 
 Run _TestCLI_, then open Command Prompt and navigate to your ImageProcessing\TestCLI folder (Hint: use the "cd" command to change directories). Then enter `.\bin\Debug\TestCLI.exe`. You should get the following result:
 
+```
     > .\bin\Debug\TestCLI.exe
 
     Usage:  [options]
@@ -348,15 +373,19 @@ Run _TestCLI_, then open Command Prompt and navigate to your ImageProcessing\Tes
     -process          The directory to process
     -query            The query to run
     -? | -h | --help  Show help information
+```
 
 By default, it will load your settings from `settings.json` (it builds it into the `.exe`), but you can provide your own using the `-settings` flag. To load images (and their metadata from Cognitive Services) into your cloud storage, you can just tell _TestCLI_ to `-process` your image directory as follows:
 
+```
     > .\bin\Debug\TestCLI.exe -process c:\my\image\directory
+```
 
 Once it's done processing, you can query against your Cosmos DB directly using _TestCLI_ as follows:
 
+```
     > .\bin\Debug\TestCLI.exe -query "select * from images"
-
+```
 
 #### Finish early? Try this ####
 
