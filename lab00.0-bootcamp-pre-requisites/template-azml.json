@@ -1,0 +1,97 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "storageAccountName": {
+            "type": "string"
+        },
+        "seatCount": {
+            "type": "string"
+        },
+        "workspaceName": {
+            "type": "string"
+        },
+        "workspaceUserObjectId": {
+            "type": "string"
+        },
+        "modelManagementAccountName": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "modelManagementAccountSkuName": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "modelManagementAccountSkuTier": {
+            "type": "string",
+            "defaultValue": ""
+        }
+    },
+    "variables": {
+        "experimentationAccountApiVersion": "2017-05-01-preview",
+        "storageApiVersion": "2016-12-01",
+        "classicStorageApiVersion": "2014-04-01",
+        "modelManagementAccountApiVersion": "2017-09-01-preview",
+        "authorizationApiVersion": "2015-07-01"
+    },
+    "resources": [
+        {
+            "apiVersion": "[variables('experimentationAccountApiVersion')]",
+            "name": "[parameters('name')]",
+            "location": "[parameters('location')]",
+            "type": "Microsoft.MachineLearningExperimentation/accounts",
+            "dependsOn": [],
+            "properties": {
+                "storageAccount": {
+                    "storageAccountId": "/subscriptions/5be49961-ea44-42ec-8021-b728be90d58c/resourceGroups/sethmottbootcamp/providers/Microsoft.Storage/storageAccounts/sethmotteastus2",
+                    "accessKey": "[listKeys('/subscriptions/5be49961-ea44-42ec-8021-b728be90d58c/resourceGroups/sethmottbootcamp/providers/Microsoft.Storage/storageAccounts/sethmotteastus2', variables('storageApiVersion')).keys[0].value]"
+                },
+                "seats": "[parameters('seatCount')]"
+            }
+        },
+        {
+            "apiVersion": "[variables('experimentationAccountApiVersion')]",
+            "name": "[concat(parameters('name'), '/', parameters('workspaceName'))]",
+            "location": "[parameters('location')]",
+            "type": "Microsoft.MachineLearningExperimentation/accounts/workspaces",
+            "dependsOn": [
+                "[resourceId('Microsoft.MachineLearningExperimentation/accounts', parameters('name'))]"
+            ],
+            "properties": {
+                "friendlyName": "[parameters('workspaceName')]"
+            }
+        },
+        {
+            "apiVersion": "[variables('authorizationApiVersion')]",
+            "name": "[concat(parameters('name'), '/', parameters('workspaceName'), '/Microsoft.Authorization/f06067a2-2de5-4487-b9f4-c67a8cfcd4ff')]",
+            "type": "Microsoft.MachineLearningExperimentation/accounts/workspaces/providers/roleAssignments",
+            "dependsOn": [
+                "[resourceId('Microsoft.MachineLearningExperimentation/accounts/workspaces', parameters('name'), parameters('workspaceName'))]"
+            ],
+            "properties": {
+                "roleDefinitionId": "[concat(resourceId('Microsoft.MachineLearningExperimentation/accounts/workspaces', parameters('name'), parameters('workspaceName')), '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
+                "principalId": "[parameters('workspaceUserObjectId')]"
+            }
+        },
+        {
+            "apiVersion": "[variables('modelManagementAccountApiVersion')]",
+            "name": "[parameters('modelManagementAccountName')]",
+            "location": "[parameters('location')]",
+            "type": "Microsoft.MachineLearningModelManagement/accounts",
+            "properties": {
+                "description": ""
+            },
+            "sku": {
+                "name": "[parameters('modelManagementAccountSkuName')]",
+                "tier": "[parameters('modelManagementAccountSkuTier')]",
+                "capacity": 1
+            }
+        }
+    ]
+}
