@@ -65,7 +65,15 @@ The Azure Machine Learning Services Workbench tool combines all of these compone
 ### Lab: Execute an Experiment Locally
 In this lab you'll create an experiment, examine its configuration, and run the experiment locally, using both a `local` compute and a `localdocker` compute. You'll set up the experiment in the AML Workbench tool, and then run all experiments from the command line interface (CLI)
 - [ ] Open the Azure Machine Learning Workbench tool locally or on your Data Science Virtual Machine. 
+- [ ] Create a new experiment using the Iris example.
 - [ ] [Navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/experimentation-service-configuration), and complete the sections marked **"Launching the CLI"** through **"Running a script on local Docker"**
+- [ ] Replace the line marked: 
+
+      $az ml experiment submit -c docker myscript.py
+
+      with 
+
+      $az ml experiment submit -c docker iris_sklearn.py
 
 ## Executing an Experiment to a remote Data Science Virtual Machine in Azure
 You configure the Azure ML experiment flow for a remote run using this process: 
