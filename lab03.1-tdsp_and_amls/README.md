@@ -54,6 +54,11 @@ In the [Business Understanding](https://docs.microsoft.com/en-us/azure/machine-l
 
 Contoso Organics has requested a model that will predict whether a population of people makes over 50,000.00 US dollars a year, from data they have collected. 
 
+We will use the Azure Machine Learning Services (AMLS) and the Azure Machine Learning Services Workbench (WB) in this lab. The general configuration for working with Azure Machine Learning has these components:
+
+![Azure Machine Learning Components](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/overview-general-concepts/hierarchy.png)
+
+
 ### Lab: Set Up TDSP Structure using the Azure Machine Learning Workbench
 In this lab you'll set up your project's structure, conforming to the Team Data Science Process, using the Azure Machine Learning Workbench.
 - [ ] [Open this link](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-use-tdsp-in-azure-ml), read from the top and complete the steps there. Do not complete the steps marked **"Next Steps"**. Enter the git repo text you brought with you to class. 
