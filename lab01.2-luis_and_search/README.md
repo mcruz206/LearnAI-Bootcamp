@@ -213,9 +213,7 @@ Once we've thought out our app, we are ready to [build and train it](https://doc
 
 In the Portal, hit **New** and then enter **LUIS** in the search box and choose **Language Understanding Intelligent Service**:
 
-This will lead you to fill out a few details for the API endpoint you'll be creating, choosing the API you're interested in and where you'd like your endpoint to reside, as well as what pricing plan you'd like. The free tier is sufficient for this lab. Since LUIS stores images internally at Microsoft (in a secure fashion), to help improve future Cognitive Services Vision offerings, you'll need to _Enable_ Account creation. This can be an obstacle for users in Enterprise environment, as only Subscription Administrators have the right to enable this, but for Azure Pass users it's not an issue.
-
-![Choosing Cognitive Services Details](./resources/assets/cognitive-account-creation.PNG) 
+This will lead you to fill out a few details for the API endpoint you'll be creating, choosing the API you're interested in and where you'd like your endpoint to reside, as well as what pricing plan you'd like. The free tier is sufficient for this lab. Since LUIS stores images internally at Microsoft (in a secure fashion), to help improve future Cognitive Services offerings, you'll need to check the box to confirm you're ok with this.
 
 Once you have created your new API subscription, you can grab the key from the appropriate section of the blade and add it to your list of keys.
 

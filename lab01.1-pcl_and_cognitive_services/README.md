@@ -96,15 +96,14 @@ In the Portal, hit **New** and then enter **cognitive** in the search box and ch
 
 ![Creating a Cognitive Service Key](./resources/assets/new-cognitive-services.PNG)
 
-This will lead you to fill out a few details for the API endpoint you'll be creating, choosing the API you're interested in and where you'd like your endpoint to reside, as well as what pricing plan you'd like. We'll be using S1 so that we have the throughput we need for the tutorial and creating a new _Resource Group_. We'll be using this same resource group below for our Blob Storage and Cosmos DB. _Pin to dashboard_ so that you can easily find it. Since the Computer Vision API stores images internally at Microsoft (in a secure fashion), to help improve future Cognitive Services Vision offerings, you'll need to _Enable_ Account creation. This can be a stumbling block for users in Enterprise environment, as only Subscription Administrators have the right to enable this, but for Azure Pass users it's not an issue.
+This will lead you to fill out a few details for the API endpoint you'll be creating, choosing the API you're interested in and where you'd like your endpoint to reside, as well as what pricing plan you'd like. We'll be using S1 so that we have the throughput we need for the tutorial and creating a new _Resource Group_. We'll be using this same resource group below for our Blob Storage and Cosmos DB. _Pin to dashboard_ so that you can easily find it. Since the Computer Vision API stores images internally at Microsoft (in a secure fashion), to help improve future Cognitive Services Vision offerings, you'll need to check the box that states you're ok with this before you can create the resource.
 
-![Choosing Cognitive Services Details](./resources/assets/cognitive-account-creation.PNG) 
 
 Once you have created your new API subscription, you can grab the keys from the appropriate section of the blade and add them to your _TestApp's_ and _TestCLI's_ `settings.json` file.
 
 ![Cognitive API Key](./resources/assets/cognitive-keys.PNG)
 
-We'll also be using other APIs within the Cognitive Services family, so take this opportunity to create API keys for the **Emotion** and **Face** APIs as well. They are created in the same fashion as above, and you should re-use the same Resource Group you've created. _Pin to Dashboard_, and then add those keys to your `settings.json` files.
+We'll also be using other APIs within the Cognitive Services family, so take this opportunity to create API keys for the **Emotion** and **Face** APIs as well. They are created in the same fashion as above, except you'll need to use the **S0** pricing for the Emotion API and Face API. Make sure to select _Pin to Dashboard_, and then add those keys to your `settings.json` files.
 
 
 
