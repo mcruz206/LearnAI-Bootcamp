@@ -23,6 +23,9 @@ In the advanced analytics space, there are plenty of uses for storing log conver
 
 * The Bot Framework Emulator. To install the Bot Framework Emulator, download it from [here](https://emulator.botframework.com/). Please refer to [this documentation article](https://github.com/microsoft/botframework-emulator/wiki/Getting-Started) to know more about the Bot Framework Emulator.
 
+* Access to portal and be able to create resources on Azure. We will not be providing Azure passes for this workshop.
+
+
 ## Lab structure
 
 The folder structure is arranged as follows:
