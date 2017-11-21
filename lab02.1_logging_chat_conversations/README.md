@@ -25,6 +25,7 @@ In the advanced analytics space, there are plenty of uses for storing log conver
 
 * Access to portal and be able to create resources on Azure. We will not be providing Azure passes for this workshop.
 
+* Be familiar with C# and have some experience developing bots with Microsoft Bot Framework.
 
 ## Lab structure
 
