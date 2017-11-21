@@ -58,9 +58,9 @@ There are several directories in the [resources](./resources) folder:
 - **code**: In here, there are several directories that we will use:
 	- **LUIS**: Here you will find the LUIS model for the PictureBot. You will create your own, but if you fall behind or want to test out a different LUIS model, you can use the .json file to import this LUIS app.
 	- **Models**: These classes will be used when we add search to our PictureBot.
-	- **PictureBot**: Here there is a PictureBot.sln that is for the latter sections of the workshop, where we integrate LUIS and our Search Index into the Bot Framework
+	- **Finished-PictureBot**: Here there is the finished PictureBot.sln that is for the latter sections of the workshop, where we integrate LUIS and our Search Index into the Bot Framework. If you fall behind or get stuck, you can use this.
 
-> If you don't have Visual Studio installed, no problem! See [the Appendix](#Appendix) for details on setting up a Visual Studio VM in Azure. If you have already deployed a Windows Data Science Virtual Machine or Visual Studio VM for one of the workshops, you could also use it for these labs.
+> You need Visual Studio to run these labs, but if you have already deployed a Windows Data Science Virtual Machine for one of the workshops, you could use that.
 
 ## Collecting the Keys
 

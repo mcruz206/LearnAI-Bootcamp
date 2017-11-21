@@ -13,6 +13,7 @@ While there is a focus on Cognitive Services, you will also leverage the followi
 - Windows 10 SDK (UWP)
 - Cosmos DB
 - Azure Storage
+- Data Science Virtual Machine
 
  
 ## Prerequisites
@@ -65,7 +66,8 @@ If you have been given an Azure Pass to complete this lab, you may go to [http:/
 
 ### Lab: Setting up your Data Science Virtual Machine
 
-After creating an Azure account, you may access the [Azure portal](https://portal.azure.com). From the portal, create a Resource Group for this lab. Detailed information about the Data Science Virtual Machine can be [found online](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/overview), but we will just go over what's needed for this workshop. In your Resource Group, deploy and connect to a Data Science Virtual Machine for Windows (2016), with a size of D4S_V3 (this is only available on certain regions, try "West US" or "East US 2"). All other defaults are fine
+After creating an Azure account, you may access the [Azure portal](https://portal.azure.com). From the portal, create a Resource Group for this lab. Detailed information about the Data Science Virtual Machine can be [found online](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/overview), but we will just go over what's needed for this workshop. In your Resource Group, deploy and connect to a Data Science Virtual Machine for Windows (2016), with a size of D4S_V3 (this is only available on certain regions, try "West US" or "East US 2"). All other defaults are fine.
+>We are creating a VM and not doing it locally, because many of you will not have the ability to change your machine to "Developer Mode" which we need to develop UWP apps.
 
 Once you're connected, there are several things you need to do to set up the DSVM for the workshop:
 
