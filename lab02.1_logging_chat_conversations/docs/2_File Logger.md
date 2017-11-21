@@ -4,12 +4,12 @@
 
 The aim of this lab is to log chat conversations to a file using middleware. Excessive Input/Output (I/O) operations can result in slow responses from the bot. In this lab, the global events are leveraged to perform efficient logging of chat conversations to a file. We will continue to extend the code from the previous lab.
 
-This lab refers to the project in code\file-core-Middleware.
+Import the project from code\file-core-Middleware in Visual Studio.
 
 ## 2. An inefficient way of logging
 
 A very simple way of logging chat conversations to a file is to use File.AppendAllLines as shown below in the code snippet. File.AppendAllLines opens a file, appends the specified string to the file, and then closes the file. However, this can be very inefficient way of logging as we will be opening and closing the file for every message from the user/bot.
-
+tu
 ````C#
 public class DebugActivityLogger : IActivityLogger
 {
