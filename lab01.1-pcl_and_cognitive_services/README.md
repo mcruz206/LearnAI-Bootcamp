@@ -49,7 +49,7 @@ There are several directories in the [resources](./resources) folder:
 
 - **assets**: This contains all of the images for the lab manual. You can ignore this folder.
 - **code**: In here, there are several directories that we will use:
-	- **ImageProcessing**: This solution (.sln) contains several different projects for the first parts of the workshop, let's take a high level look at them:
+	- **Starting-ImageProcessing** and **Finished-ImageProcessing**: There is a folder for starting, which you should use if you are going through the labs, but there is also a finished folder if you get stuck or run out of time. Each folder contains a solution (.sln) that has several different projects for the workshop, let's take a high level look at them:
 		- **ProcessingLibrary**: This is a Portable Class Library (PCL) containing helper classes for accessing the various Cognitive Services related to Vision, and some "Insights" classes for encapsulating the results.
 		- **ImageStorageLibrary**: Since Cosmos DB does not (yet) support UWP, this is a non-portable library for accessing Blob Storage and Cosmos DB.
 		- **TestApp**: A UWP application that allows you to load your images and call the various cognitive services on them, then explore the results. Useful for experimentation and exploration of your images.
@@ -57,21 +57,27 @@ There are several directories in the [resources](./resources) folder:
 
 		Both _TestApp_ and _TestCLI_ contain a `settings.json` file containing the various keys and endpoints needed for accessing the Cognitive Services and Azure. They start blank, so once you provision your resources, we will grab your service keys and set up your storage account and Cosmos DB instance.
 		
+### Lab: Setting up your Azure Account
 
-### Lab: Setting up Visual Studio
+You may activate an Azure free trial at [https://azure.microsoft.com/en-us/free/](https://azure.microsoft.com/en-us/free/).  
 
-After creating an Azure account, you may access the [Azure portal](https://portal.azure.com). From the portal, create a Resource Group for this lab. In the portal, search for "visual studio" and select "Visual Studio Community 2017 on Windows 10 Enterprise N (x64)". In your resource group, deploy and connect to it, with a size of DS2_V3 (all other defaults are fine). This will take about five minutes to deploy. While you're waiting, you can start the **Collecting the Keys** lab.
+If you have been given an Azure Pass to complete this lab, you may go to [http://www.microsoftazurepass.com/](http://www.microsoftazurepass.com/) to activate it.  Please follow the instructions at [https://www.microsoftazurepass.com/howto](https://www.microsoftazurepass.com/howto), which document the activation process.  A Microsoft account may have **one free trial** on Azure and one Azure Pass associated with it, so if you have already activated an Azure Pass on your Microsoft account, you will need to use the free trial or use another Microsoft account.
 
-> Note: Because of some of the developer tasks we will be doing, it's easiest to just set up the Visual Studio VM than to use Visual Studio on your computer (if you already have it installed). Some users will not have access on their personal computers to change the settings we need to change.
+### Lab: Setting up your Data Science Virtual Machine
 
-Once you're connected, there are several things you need to do to set up the VM for the workshop:
+After creating an Azure account, you may access the [Azure portal](https://portal.azure.com). From the portal, create a Resource Group for this lab. Detailed information about the Data Science Virtual Machine can be [found online](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/overview), but we will just go over what's needed for this workshop. In your Resource Group, deploy and connect to a Data Science Virtual Machine for Windows (2016), with a size of D4S_V3 (this is only available on certain regions, try "West US" or "East US 2"). All other defaults are fine
 
-1. Navigate to this repository and download it as a zip file. Extract all the files and move the folder for this lab to your Desktop. You'll also want to extract all the files from the `sample_images.zip` file.
-2. Open `ImageProcessing.sln` which is under resources>code>ImageProcessing. It may take a while for Visual Studio to open for the first time, and you will have to log in.
-3. Once you've signed in and opened the solution, you may receive a `For developers settings` pop-up (if you don't, type in the Cortana search bar "For developers settings"). Change the settings to "Developer Mode".
-4. Right-click on the solution and select "Build Solution". You should be able to ignore any errors for now.
+Once you're connected, there are several things you need to do to set up the DSVM for the workshop:
 
-> Note: Be sure to turn off your VM after the workshop so you don't get charged.
+1. Navigate to this repository in Firefox, and download it as a zip file. Extract all the files, and move the folder for this lab to your Desktop.
+2. Open "ImageProcessing.sln" which is under resources>code>Starting-ImageProcessing. It may take a while for Visual Studio to open for the first time, and you will have to log in.
+3. Once it's open, you will be prompted to install the SDK for Windows 10 App Development (UWP). Follow the prompts to install it (you'll have to close Visual Studio). If you aren't prompted, right click on TestApp and select "Reload project", then you will be prompted.
+4. While it's installing, there are a few tasks you can complete: 
+	- Type in the Cortana search bar "For developers settings" and change the settings to "Developer Mode".
+	- Type in the Cortana search bar "gpedit.msc" and push enter. Enable the following policy: Computer Configuration>Windows Settings>Security Settings>Local Policies>Security Options>User Account Control: Admin Approval Mode for the Built-in Administrator account
+	- Start the "Collecting the keys" lab. 
+5. Once the install is complete and you have changed your devleoper settings and the User Account Control policy, reboot your DSVM. 
+> Note: Be sure to turn off your DSVM after the workshop so you don't get charged.
 
 
 ### Lab: Collecting the Keys
@@ -171,7 +177,7 @@ Let's talk about how we're going to call these Cognitive Services in our applica
 
 ### **Image Processing Library** ###
 
-Under resources>code>ImageProcessing, you'll find the `Processing Library`. This is a [Portable Class Library (PCL)](https://docs.microsoft.com/en-us/dotnet/standard/cross-platform/cross-platform-development-with-the-portable-class-library), which helps in building cross-platform apps and libraries quickly and easily. It serves as a wrapper around several services. This specific PCL contains various helper classes for accessing the various Cognitive Services related to Vision, and several "Insights" classes to encapsulate the results. Later, we'll create an image processor class that will be responsible for wrapping an image and exposing several methods and properties that act as a bridge to the Cognitive Services. 
+Under resources>code>Starting-ImageProcessing, you'll find the `Processing Library`. This is a [Portable Class Library (PCL)](https://docs.microsoft.com/en-us/dotnet/standard/cross-platform/cross-platform-development-with-the-portable-class-library), which helps in building cross-platform apps and libraries quickly and easily. It serves as a wrapper around several services. This specific PCL contains various helper classes for accessing the various Cognitive Services related to Vision, and several "Insights" classes to encapsulate the results. Later, we'll create an image processor class that will be responsible for wrapping an image and exposing several methods and properties that act as a bridge to the Cognitive Services. 
 
 After creating the image processor, you should be able to pick up this portable class library and drop it in your other projects that involve Cognitive Services (some modification may be required). 
 
@@ -335,7 +341,7 @@ Want to make sure you set up `ImageProcessor.cs` correctly? You can find the ful
 
 We've spent some time looking at the `ImageProcessingLibrary`, but you will also find a UWP application (`TestApp`) that allows you to load your images and call the various Cognitive Services on them, then explore the results. It is useful for experimentation and exploration of your images. This app is built on top of the `ImageProcessingLibrary` project, which is also used  by the TestCLI project to analyze the images. 
 
-You'll want to "Build" the solution (right click on `ImageProcessing.sln` and select "Build"). You also may have to reload the TestApp project, which you can do by right-clicking on it and selecting "Reload project". 
+You'll want to "Build" the solution (right click on `ImageProcessing.sln` and select "Build Solution"). You also may have to reload the TestApp project, which you can do by right-clicking on it and selecting "Reload project". 
 
 Before running the app, make sure to enter the Cognitive Services API keys in the `settings.json` file under the `TestApp` project. Once you do that, run the app, point it to any folder (you will need to unzip `sample_images` first) with images (via the `Select Folder` button), and it should generate results like the following, showing all the images it processed, along with a breakdown of unique faces, emotions and tags that also act as filters on the image collection.
 
@@ -359,7 +365,7 @@ We will implement the main processing and storage code as a command-line/console
 
 Once you've set your Cognitive Services API keys, your Azure Blob Storage Connection String, and your Cosmos DB Endpoint URI and Key in your _TestCLI's_ `settings.json`, you can run the _TestCLI_.
 
-Run _TestCLI_, then open Command Prompt and navigate to your ImageProcessing\TestCLI folder (Hint: use the "cd" command to change directories). Then enter `.\bin\Debug\TestCLI.exe`. You should get the following result:
+Run _TestCLI_, then open Command Prompt and navigate to your Starting-ImageProcessing\TestCLI folder (Hint: use the "cd" command to change directories). Then enter `.\bin\Debug\TestCLI.exe`. You should get the following result:
 
 ```
     > .\bin\Debug\TestCLI.exe

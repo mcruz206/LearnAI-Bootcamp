@@ -15,21 +15,21 @@ namespace PictureBot.Dialogs
     public class SearchDialog : IDialog<object>
     {
         private string searchText = "";
-        private static ISearchIndexClient indexClientForQueries = null;
 
         public SearchDialog(string facet)
         {
             searchText = facet;
-            indexClientForQueries = CreateSearchIndexClient();
         }
 
         public async Task StartAsync(IDialogContext context)
         {
+            ISearchIndexClient indexClientForQueries = CreateSearchIndexClient();
+
             // For more examples of calling search with SearchParameters, see
             // https://github.com/Azure-Samples/search-dotnet-getting-started/blob/master/DotNetHowTo/DotNetHowTo/Program.cs.  
 
             DocumentSearchResult results = await indexClientForQueries.Documents.SearchAsync(searchText);
-            await SendResults(context, results); 
+            await SendResults(context, results);
         }
 
         private async Task SendResults(IDialogContext context, DocumentSearchResult results)
@@ -56,21 +56,18 @@ namespace PictureBot.Dialogs
 
         private ISearchIndexClient CreateSearchIndexClient()
         {
-            if (indexClientForQueries == null)
-            {
-                string searchServiceName = ConfigurationManager.AppSettings["SearchDialogsServiceName"];
-                string queryApiKey = ConfigurationManager.AppSettings["SearchDialogsServiceKey"];
-                string indexName = ConfigurationManager.AppSettings["SearchDialogsIndexName"];
+            string searchServiceName = ConfigurationManager.AppSettings["SearchDialogsServiceName"];
+            string queryApiKey = ConfigurationManager.AppSettings["SearchDialogsServiceKey"];
+            string indexName = ConfigurationManager.AppSettings["SearchDialogsIndexName"];
 
-                indexClientForQueries = new SearchIndexClient(searchServiceName, indexName, new SearchCredentials(queryApiKey));
-            }
-            return indexClientForQueries;
+            SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, indexName, new SearchCredentials(queryApiKey));
+            return indexClient;
         }
 
         [Serializable]
         public class SearchHitStyler : PromptStyler
         {
-            public override void Apply<T>(ref IMessageActivity message, string prompt, IReadOnlyList<T> options, IReadOnlyList<string> descriptions = null)
+            public void Apply<T>(ref IMessageActivity message, string prompt, IReadOnlyList<T> options, IReadOnlyList<string> descriptions = null)
             {
                 var hits = options as IList<SearchHit>;
                 if (hits != null)
