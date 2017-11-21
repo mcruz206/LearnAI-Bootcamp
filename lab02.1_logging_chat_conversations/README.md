@@ -19,11 +19,9 @@ In the advanced analytics space, there are plenty of uses for storing log conver
 
 ## Prerequisites
 
-* The latest update of Visual Studio 2015. You can download the community version [here](http://www.visualstudio.com) for free.
+* The latest update of Visual Studio 2015 or higher. You can download the community version [here](http://www.visualstudio.com) for free.
 
 * The Bot Framework Emulator. To install the Bot Framework Emulator, download it from [here](https://emulator.botframework.com/). Please refer to [this documentation article](https://github.com/microsoft/botframework-emulator/wiki/Getting-Started) to know more about the Bot Framework Emulator.
-
-* Code from [core-Middleware](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-Middleware)
 
 ## Lab structure
 
@@ -33,11 +31,15 @@ __docs__: Contains all the hands-on labs
 __code__: Contains all the code for the hands-on labs
 
 The order of Hands-on Labs to carry out the solution is as follows:
-1. Activity Logger:
+1. [Activity Logger](docs/1_Activity Logger.md):
 The aim of this hands-on lab is to implement the IActivityLogger interface that writes message activities when running in debug. 
-2. File Logger:
+2. [File Logger](docs/2_File Logger.md):
 This hands-on lab is to demonstrate how you can log conversations to a file using global events.
-3. SQL Logger:
+3. [SQL Logger](docs/3_SQL Logger.md):
 This hands-on lab is an extension of the file logger. The same code from the previous task is extended to log conversations in SQL.
 
-Follow the hands-on labs in the sequential manner described above.
+Follow the hands-on labs in the sequential manner listed above.
+
+## Extra credit
+
+On finishing all the activities, can you take an existing bot and selectively log conversations from the bot to a flat file?
