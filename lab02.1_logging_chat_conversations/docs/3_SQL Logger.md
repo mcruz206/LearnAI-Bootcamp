@@ -8,7 +8,7 @@ The aim of this lab is to log chat conversations to Azure SQL database. This lab
 
 2.1.   Since we will be writing to a SQL database, either we can use a database that you may already have or create a new one. To create a new one, go to the azure portal and follow the [Create DB - Portal](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal) steps to create a database called Botlog as shown below.
 
-2.2.   This activity refers to the project in code\sql-core-Middleware.
+2.2.   Import the project from code\sql-core-Middleware in Visual Studio.
 
 ![Botlog](images/BotLog.png)
 
