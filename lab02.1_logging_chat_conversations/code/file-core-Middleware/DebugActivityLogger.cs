@@ -1,11 +1,11 @@
-﻿namespace MiddlewareBot
-{
-    using System.Diagnostics;
-    using System.Threading.Tasks;
-    using Microsoft.Bot.Builder.History;
-    using Microsoft.Bot.Connector;
-    using System.IO;
+﻿using System.Diagnostics;
+using System.Threading.Tasks;
+using Microsoft.Bot.Builder.History;
+using Microsoft.Bot.Connector;
+using System.IO;
 
+namespace MiddlewareBot
+{
     public class DebugActivityLogger : IActivityLogger
     {
         TextWriter tw;
@@ -14,10 +14,10 @@
             this.tw = inputFile;
         }
 
-        public async Task LogAsync(IActivity activiy)
+        public async Task LogAsync(IActivity activity)
         {
-            Debug.WriteLine($"From:{activiy.From.Id} - To:{activiy.Recipient.Id} - Message:{activiy.AsMessageActivity().Text}");
-            tw.WriteLine($"From:{activiy.From.Id} - To:{activiy.Recipient.Id} - Message:{activiy.AsMessageActivity().Text}", true);
+            Debug.WriteLine($"From:{activity.From.Id} - To:{activity.Recipient.Id} - Message:{activity.AsMessageActivity().Text}");
+            tw.WriteLine($"From:{activity.From.Id} - To:{activity.Recipient.Id} - Message:{activity.AsMessageActivity().Text}", true);
             tw.Flush();
         }
     }

@@ -1,11 +1,12 @@
-﻿namespace MiddlewareBot
+﻿using System.Web.Http;
+using Autofac;
+using Microsoft.Bot.Builder.Dialogs;
+using System.IO;
+using System.Diagnostics;
+using System;
+
+namespace MiddlewareBot
 {
-    using System.Web.Http;
-    using Autofac;
-    using Microsoft.Bot.Builder.Dialogs;
-    using System.IO;
-    using System.Diagnostics;
-    using System;
 
     public class WebApiApplication : System.Web.HttpApplication
     {
