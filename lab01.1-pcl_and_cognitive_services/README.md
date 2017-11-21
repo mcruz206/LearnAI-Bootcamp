@@ -1,4 +1,4 @@
-# lab02.3-pcl_and_cognitive_services - Using Portable Class Libraries to Simplify App Development with Cognitive Services
+# lab01.1-pcl_and_cognitive_services - Using Portable Class Libraries to Simplify App Development with Cognitive Services
 
 This hands-on lab guides you through creating an intelligent Windows (UWP) application from end-to-end using Cognitive Services (Computer Vision API, Emotion API, Face API). We will focus on the ImageProcessing portable class library (PCL), discussing its contents and how to use it in your own applications. 
 
@@ -23,7 +23,7 @@ Firstly, you should have experience with Visual Studio. We will be using it for 
 
 Secondly, you should have experience with the portal and be able to create resources (and spend money) on Azure. 
 
-## Intro
+## Introduction
 
 We're going to build an end-to-end scenario that allows you to pull in your own pictures, use Cognitive Services to find objects and people in the images, figure out how those people look like they are feeling, and store all of that data in a NoSQL Store (Cosmos DB). In a continuation of this lab, `lab01.2-luis_and_search`, we will use that NoSQL Store to populate an Azure Search index, and then build a Bot Framework bot using LUIS to allow easy, targeted querying.
 
@@ -345,7 +345,7 @@ Once the app processes a given directory it will cache the results in a `ImageIn
 
 ## (optional) Exploring Cosmos DB
 
-Azure Cosmos DB is our resilient NoSQL PaaS solution and is incredibly useful for storing loosely structured data like we have with our image metadata results. There are other possible choices (Azure Table Storage, SQL Server), but Cosmos DB gives us the flexibility to evolve our schema freely (like adding data for new services), query it easily, and can be quickly integrated into Azure Search (which we'll do in `lab02.4-luis_and_search`).
+Azure Cosmos DB is our resilient NoSQL PaaS solution and is incredibly useful for storing loosely structured data like we have with our image metadata results. There are other possible choices (Azure Table Storage, SQL Server), but Cosmos DB gives us the flexibility to evolve our schema freely (like adding data for new services), query it easily, and can be quickly integrated into Azure Search (which we'll do in `lab01.2-luis_and_search`).
 
 Cosmos DB is not a focus of this workshop, but if you're interested in what's going on - here are some highlights from the code we will be using:
 - Navigate to the `DocumentDBHelper.cs` class in the `ImageStorageLibrary`. Many of the implementations we are using can be found in the [Getting Started guide](https://docs.microsoft.com/en-us/azure/cosmos-db/documentdb-get-started).

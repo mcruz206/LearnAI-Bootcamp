@@ -1,4 +1,4 @@
-# lab02.4-luis_and_search - Developing Intelligent Applications with LUIS and Azure Search
+# lab01.2-luis_and_search - Developing Intelligent Applications with LUIS and Azure Search
 
 This hands-on lab guides you through creating an intelligent bot from end-to-end using the Microsoft Bot Framework, Azure Search, and Microsoft's Language Understanding Intelligent Service (LUIS). 
 
@@ -28,15 +28,15 @@ Secondly, you should have some experience developing bots with Microsoft's Bot F
 
 Thirdly, you should have experience with the portal and be able to create resources (and spend money) on Azure. We will not be providing Azure passes for this workshop.
 
-## Intro
+## Introduction
 
 We're going to build an end-to-end scenario that allows you to pull in your own pictures, use Cognitive Services to find objects and people in the images, figure out how those people are feeling, and store all of that data into a NoSQL Store (DocumentDB). We'll use that NoSQL Store to populate an Azure Search index, and then build a Bot Framework bot using LUIS to allow easy, targeted querying.
 
-> Note: This lab is a continuation of `lab02.3-pcl_and_cognitive_services`; we will skip pulling in pictures, using Cognitive Services to determine information about the images, and storing the data in DocumentDB. The only thing we will use from that lab is DocumentDB to populate our search index. If you have completed `lab02.3-pcl_and_cognitive_services`, you can optionally use your DocumentDB connection string instead of the one provided.
+> Note: This lab is a continuation of `lab01.1-pcl_and_cognitive_services`; we will skip pulling in pictures, using Cognitive Services to determine information about the images, and storing the data in DocumentDB. The only thing we will use from that lab is DocumentDB to populate our search index. If you have completed `lab01.1-pcl_and_cognitive_services`, you can optionally use your DocumentDB connection string instead of the one provided.
 
 ## Architecture
 
-In `lab02.3-pcl_and_cognitive_services`, we built a simple C# application that allows you to ingest pictures from your local drive, then invoke several different Cognitive Services to gather data on those images:
+In `lab01.1-pcl_and_cognitive_services`, we built a simple C# application that allows you to ingest pictures from your local drive, then invoke several different Cognitive Services to gather data on those images:
 
 - [Computer Vision](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api): We use this to grab tags and a description
 - [Face](https://www.microsoft.com/cognitive-services/en-us/face-api): We use this to grab faces and their details from each image
@@ -111,7 +111,7 @@ Once creation is complete, open the panel for your new search service.
 
 ### Lab: Create an Azure Search Index
 
-An Index is the container for your data and is a similar concept to that of a SQL Server table.  Like a table has rows, an Index has documents.  Like a table that has fields, an Index has fields.  These fields can have properties that tell things such as if it is full text searchable, or if it is filterable.  You can populate content into Azure Search by programmatically [pushing content](https://docs.microsoft.com/en-us/rest/api/searchservice/addupdate-or-delete-documents) or by using the [Azure Search Indexer](https://docs.microsoft.com/en-us/azure/search/search-indexer-overview) (which can crawl common datastores for data).
+An index is a persistent store of documents and other constructs used by an Azure Search service. An index is like a database that holds your data and can accept search queries. You define the index schema to map to reflect the structure of the documents you wish to search, similar to fields in a database. These fields can have properties that tell things such as if it is full text searchable, or if it is filterable.  You can populate content into Azure Search by programmatically [pushing content](https://docs.microsoft.com/en-us/rest/api/searchservice/addupdate-or-delete-documents) or by using the [Azure Search Indexer](https://docs.microsoft.com/en-us/azure/search/search-indexer-overview) (which can crawl common datastores for data).
 
 For this lab, we will use the [Azure Search Indexer for Cosmos DB](https://docs.microsoft.com/en-us/azure/search/search-howto-index-documentdb) to crawl the data in the Cosmos DB container. 
 
@@ -121,7 +121,7 @@ Within the Azure Search blade you just created, click **Import Data->Data Source
 
 ![Import Wizard for DocDB](./resources/assets/AzureSearch-DataSource.png) 
 
-Once you click this, choose a name for the Cosmos DB data source. If you completed the previous lab, `lab02.3-pcl_and_cognitive_services`, choose the Cosmos DB account where your data resides as well as the corresponding Container and Collections. If you did not create the previous lab, select "Or input a connection string" and paste in `AccountEndpoint=https://timedcosmosdb.documents.azure.com:443/;AccountKey=0aRt6JVgbf9KafBxRVuDMNfAj9YoSBbmpICdJ41N5CwHcjuMcVk7jWDBcu4BxbTitLR1zteauQsnF1Tgqs1A3g==;`.
+Once you click this, choose a name for the Cosmos DB data source. If you completed the previous lab, `lab01.1-pcl_and_cognitive_services`, choose the Cosmos DB account where your data resides as well as the corresponding Container and Collections. If you did not create the previous lab, select "Or input a connection string" and paste in `AccountEndpoint=https://timedcosmosdb.documents.azure.com:443/;AccountKey=0aRt6JVgbf9KafBxRVuDMNfAj9YoSBbmpICdJ41N5CwHcjuMcVk7jWDBcu4BxbTitLR1zteauQsnF1Tgqs1A3g==;`.
 
 Click **OK**.
 
@@ -149,7 +149,8 @@ Click the **Analyzer** tab and set the fields **Caption, Tags, and Faces** to us
 
 ![Language Analyzers](./resources/assets/AzureSearch-Analyzer.png) 
 
-For the final Index configuration step, we will set the fields that will be used for type ahead, allowing the user to type parts of a word where Azure Search will look for best matches in these fields
+For the final Index configuration step, we will create a [**Suggester**](https://docs.microsoft.com/en-us/rest/api/searchservice/suggesters) to set the fields that will be used for type ahead, allowing the user to type parts of a word where Azure Search will look for best matches in these fields. To learn more about suggestors and how to extend your searches to support fuzzy matching, which allows you to get results based on close matches even if the user misspells a word, check out [this example](https://docs.microsoft.com/en-us/azure/search/search-query-lucene-examples#fuzzy-search-example).
+
 
 Click the **Suggester** tab and enter a Suggester Name: **sg** and choose **Tags and Faces** to be the fields to look for term suggestions
 
@@ -174,6 +175,10 @@ Click **Search Explorer** and in the resulting blade choose your Index if it is 
 Click **Search** to search for all documents.
 
 ![Search Explorer](./resources/assets/AzureSearch-SearchExplorer.png)
+
+In the resulting json, you'll see a number after `@search.score`. Scoring refers to the computation of a search score for every item returned in search results. The score is an indicator of an item's relevance in the context of the current search operation. The higher the score, the more relevant the item. In search results, items are rank ordered from high to low, based on the search scores calculated for each item.
+
+Azure Search uses default scoring to compute an initial score, but you can customize the calculation through a [scoring profile](https://docs.microsoft.com/en-us/rest/api/searchservice/add-scoring-profiles-to-a-search-index). There is an extra lab at the end of this workshop if you want to get some hands on experience with using [term boosting](https://docs.microsoft.com/en-us/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_termboost) for scoring.
 
 **Finish early? Try this extra credit lab:**
 
@@ -227,9 +232,9 @@ Navigate to [https://www.luis.ai](https://www.luis.ai) and sign in using your Mi
 
 > Fun Aside: Notice that there is also an "Import App" next to the "New App" button on [the current page](https://www.luis.ai/applications).  After creating your LUIS application, you have the ability to export the entire app as JSON and check it into source control.  This is a recommended best practice, so you can version your LUIS models as you version your code.  An exported LUIS app may be re-imported using that "Import App" button.  If you fall behind during the lab and want to cheat, you can click the "Import App" button and import the [LUIS model](./resources/code/LUIS/PictureBotLuisModel.json).  
 
-From [https://www.luis.ai/applications](https://www.luis.ai/applications), click the "New App" button.  Give it a name (I chose "PictureBotLuisModel") and set the Culture to "English".  You can optionally provide a description.  Click the dropdown to select an endpoint key to use, and if the LUIS key that you created on the Azure portal at the beginning of the workshop is there, select it (this option may not appear until you publish your app, so don't worry if you don't have any).  Then click "Create".  
+From [https://www.luis.ai/applications](https://www.luis.ai/applications), click the "New App" button.  Give it a name (I chose "PictureBotLuisModel") and set the Culture to "English".  You can optionally provide a description. Then click "Create".  
 
-![LUIS New App](./resources/assets/LuisNewApp.jpg) 
+![LUIS New App](./resources/assets/LuisNewApp.png) 
 
 You will be taken to a Dashboard for your new app.  The App Id is displayed; note that down for later as your **LUIS App ID**.  Then click "Create an intent".  
 
@@ -247,15 +252,15 @@ Name the first intent "Greeting" and click "Save".  Then give several examples o
 
 ![LUIS Greeting Intent](./resources/assets/LuisGreetingIntent.jpg) 
 
-Now let's see how to create an entity.  When the user requests to search the pictures, they may specify what they are looking for.  Let's capture that in an entity.  
+Let's see how to create an entity.  When the user requests to search the pictures, they may specify what they are looking for.  Let's capture that in an entity.  
 
 Click on "Entities" in the left-hand column and then click "Add custom entity".  Give it an entity name "facet" and entity type "Simple".  Then click "Save".  
 
 ![Add Facet Entity](./resources/assets/AddFacetEntity.jpg) 
 
-Now click "Intents" in the left-hand sidebar and then click the yellow "Add Intent" button.  Give it an intent name of "SearchPics" and then click "Save".  
+Next, click "Intents" in the left-hand sidebar and then click the yellow "Add Intent" button.  Give it an intent name of "SearchPics" and then click "Save".  
 
-Now let's add some sample utterances (words/phrases/sentences the user might say when talking to the bot).  People might search for pictures in many ways.  Feel free to use some of the utterances below, and add your own wording for how you would ask a bot to search for pictures. 
+Let's add some sample utterances (words/phrases/sentences the user might say when talking to the bot).  People might search for pictures in many ways.  Feel free to use some of the utterances below, and add your own wording for how you would ask a bot to search for pictures. 
 
 + Find outdoor pics
 + Are there pictures of a train?
@@ -269,7 +274,7 @@ Now let's add some sample utterances (words/phrases/sentences the user might say
 + I want to see pics of sad girls
 + Show me happy baby pics
 
-Now we have to teach LUIS how to pick out the search topic as the "facet" entity.  Hover and click over the word (or drag to select a group of words) and then select the "facet" entity.  
+Once we have some utterances, we have to teach LUIS how to pick out the search topic as the "facet" entity.  Hover and click over the word (or drag to select a group of words) and then select the "facet" entity.  
 
 ![Labelling Entity](./resources/assets/LabellingEntity.jpg) 
 
@@ -288,19 +293,23 @@ Finally, click "Intents" in the left sidebar and add two more intents:
 + Create another intent named **"OrderPic"**.  This could be communicated with utterances like "Print this picture", "I would like to order prints", "Can I get an 8x10 of that one?", and "Order wallets".  
 When choosing utterances, it can be helpful to use a combination of questions, commands, and "I would like to..." formats.  
 
-Note too that there is one intent called "None".  Random utterances that don't map to any of your intents may be mapped to "None".  You are welcome to seed it with a few, like "Do you like peanut butter and jelly?"
+Note too that there is one intent called "None".  Random utterances that don't map to any of your intents may be mapped to "None".  
 
-Now we are ready to train our model.  Click "Train & Test" in the left sidebar.  Then click the train button.  This builds a model to do utterance --> intent mapping with the training data you've provided.  
+We are now ready to train our model.  Click "Train & Test" in the left sidebar.  Then click the train button.  This builds a model to do utterance --> intent mapping with the training data you've provided. Training is not always immediate. Sometimes, it gets queued and can take several minutes.
 
-Then click on "Publish App" in the left sidebar.  If you have not already done so, select the endpoint key that you set up earlier, or follow the link to create a new key in your Azure account.  You can leave the endpoint slot as "Production".  Then click "Publish".  
+Then click on "Publish App" in the left sidebar.  You have several options when you publish your app, including enabling [verbose endpoint response or Bing spell checker](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/PublishApp). If you have not already done so, select the endpoint key that you set up earlier, or follow the link to add a key from your Azure account.  You can leave the endpoint slot as "Production".  Then click "Publish".  
 
-![Publish LUIS App](./resources/assets/PublishLuisApp.jpg) 
+
+
+![Publish LUIS App](./resources/assets/PublishLuisApp.png) 
 
 Publishing creates an endpoint to call the LUIS model.  The URL will be displayed.  
 
 Click on "Train & Test" in the left sidebar.  Check the "Enable published model" box to have the calls go through the published endpoint rather than call the model directly.  Try typing a few utterances and see the intents returned.  
 
 ![Test LUIS](./resources/assets/TestLuis.jpg) 
+
+You can also [test your published endpoint in a browser](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/PublishApp#test-your-published-endpoint-in-a-browser). Copy the URL, then replace the `{YOUR-KEY-HERE}` with one of the keys listed in the Key String column for the resource you want to use. To open this URL in your browser, set the URL parameter `&q` to your test query. For example, append `&q=Find pictures of dogs` to your URL, and then press Enter. The browser displays the JSON response of your HTTP endpoint.
 
 **Finish early? Try these extra credit tasks:**
 
@@ -325,9 +334,11 @@ We will be developing a bot using the C# SDK.  To get started, you need two thin
 
 ### Lab: Creating a simple bot and running it
 
-In Visual Studio, go to File --> New Project and create a Bot Application named "PictureBot".  
+In Visual Studio, go to File --> New Project and create a Bot Application named "PictureBot". Make sure you name it "PictureBot" or you may have issues later on.  
 
 ![New Bot Application](./resources/assets/NewBotApplication.jpg) 
+
+>The rest of the **Creating a simple bot and running it** lab is optional. Per the prerequisites, you should have experience working with the Bot Framework. You can hit F5 to confirm it builds correctly, and move on to the next lab.
 
 Browse around and examine the sample bot code, which is an echo bot that repeats back your message and its length in characters.  In particular, note:
 + In **WebApiConfig.cs** under App_Start, the route template is api/{controller}/{id} where the id is optional.  That is why we always call the bot's endpoint with api/messages appended at the end.  
@@ -342,13 +353,13 @@ The code will launch in your default web browser in a URL similar to http://loca
 
 ![Bot Project URL](./resources/assets/BotProjectUrl.jpg) 
 
-Make sure your project is still running (hit F5 again if you stopped to look at the project properties) and launch the Bot Framework Emulator.  (If you just installed it, it may not be indexed to show up in a search on your local machine, so remember that it installs to c:\Users\your-username\AppData\Local\botframework\app-3.5.27\botframework-emulator.exe.)  Ensure that the Bot URL matches the port number that your code launched in above, and has api/messages appended to the end.  Now you should be able to converse with the bot.  
+Make sure your project is still running (hit F5 again if you stopped to look at the project properties) and launch the Bot Framework Emulator.  (If you just installed it, it may not be indexed to show up in a search on your local machine, so remember that it installs to c:\Users\your-username\AppData\Local\botframework\app-3.5.27\botframework-emulator.exe.)  Ensure that the Bot URL matches the port number that your code launched in above, and has api/messages appended to the end.  You should be able to converse with the bot.  
 
 ![Bot Emulator](./resources/assets/BotEmulator.png) 
 
 ### Lab: Update bot to use LUIS
 
-Now we want to update our bot to use LUIS.  We can do this by using the [LuisDialog class](https://docs.botframework.com/en-us/csharp/builder/sdkreference/d8/df9/class_microsoft_1_1_bot_1_1_builder_1_1_dialogs_1_1_luis_dialog.html).  
+We have to update our bot in order to use LUIS.  We can do this by using the [LuisDialog class](https://docs.botframework.com/en-us/csharp/builder/sdkreference/d8/df9/class_microsoft_1_1_bot_1_1_builder_1_1_dialogs_1_1_luis_dialog.html).  
 
 In the **RootDialog.cs** file, add references to the following namespaces:
 
@@ -359,7 +370,7 @@ using Microsoft.Bot.Builder.Luis.Models;
 
 ```
 
-Then, change the RootDialog class to derive from LuisDialog<object> instead of IDialog<object>.  Then, give the class a LuisModel attribute with the LUIS App ID and LUIS key.  (HINT: The LUIS App ID will have hyphens in it, and the LUIS key will not.  If you can't find these values, go back to http://luis.ai.  Click on your application, and the App ID is displayed right on the Dashboard page, as well as in the URL.  Then click on ["My keys" in the top sidebar](https://www.luis.ai/home/keys) to find your Endpoint Key in the list.)  
+Then, change the RootDialog class to derive from LuisDialog<object> instead of IDialog<object>.  Next, give the class a LuisModel attribute with the LUIS App ID and LUIS key.  If you can't find these values, go back to http://luis.ai.  Click on your application, and go to the "Publish App" page. You can get the LUIS App ID and LUIS key from the Endpoint URL (HINT: The LUIS App ID will have hyphens in it, and the LUIS key will not).
 
 ```csharp
 
@@ -420,7 +431,7 @@ Finally, add a method for each intent.  The corresponding method will be invoked
 
 ```
 
-Now, let's run our code.  Hit F5 to run in Visual Studio, and start up a new conversation in the Bot Framework Emulator.  Try chatting with the bot, and ensure that you get the expected responses.  If you get any unexpected results, note them down and we will revise LUIS.  
+Once you've modified your code, hit F5 to run in Visual Studio, and start up a new conversation in the Bot Framework Emulator.  Try chatting with the bot, and ensure that you get the expected responses.  If you get any unexpected results, note them down and we will revise LUIS.  
 
 ![Bot Test LUIS](./resources/assets/BotTestLuis.jpg) 
 
@@ -455,7 +466,7 @@ Set the value for the SearchDialogsServiceKey to be the key for this service.  T
 
 ### Lab: Update the bot to use Azure Search
 
-Now, let's update the bot to call Azure Search.  First, open Tools-->NuGet Package Manager-->Manage NuGet Packages for Solution.  In the search box, type "Microsoft.Azure.Search".  Select the corresponding library, check the box that indicates your project, and install it.  It may install other dependencies as well. Under installed packages, you may also need to update the "Newtonsoft.Json" package.
+Next, we'll update the bot to call Azure Search.  First, open Tools-->NuGet Package Manager-->Manage NuGet Packages for Solution.  In the search box, type "Microsoft.Azure.Search".  Select the corresponding library, check the box that indicates your project, and install it.  It may install other dependencies as well. Under installed packages, you may also need to update the "Newtonsoft.Json" package.
 
 ![Azure Search NuGet](./resources/assets/AzureSearchNuGet.jpg) 
 
@@ -580,7 +591,7 @@ This code will match on expressions from the user that start with "hi", "hello",
 
 > Fun Aside: One might argue that the user shouldn't have to type "help" to get a menu of clear options on what the bot can do; rather, this should be the default experience on first contact with the bot.  **Discoverability** is one of the biggest challenges for bots - letting the users know what the bot is capable of doing.  Good [bot design principles](https://docs.microsoft.com/en-us/bot-framework/bot-design-principles) can help.   
 
-Now we will call LUIS as our second attempt if no regular expression matches, in Scorable Group 1.  
+This setup makes it so we call LUIS as our second attempt if no regular expression matches, in Scorable Group 1.  
 
 The "None" intent in LUIS means that the utterance didn't map to any intent.  In this situation, we want to fall down to the next level of ScorableGroup.  Modify your "None" method in the RootDialog class as follows:
 
@@ -697,7 +708,7 @@ Finally, you will see the Web Deploy settings, and can click "Publish".  The out
 
 ### Lab: Register your bot with the Bot Connector
 
-Now, go to a web browser and navigate to [http://dev.botframework.com](http://dev.botframework.com).  Click [Register a bot](https://dev.botframework.com/bots/new).  Fill out your bot's name, handle, and description.  Your messaging endpoint will be your Azure website URL with "api/messages" appended to the end, like https://testpicturebot.azurewebsites.net/api/messages.  
+Go to a web browser and navigate to [http://dev.botframework.com](http://dev.botframework.com).  Click [Register a bot](https://dev.botframework.com/bots/new).  Fill out your bot's name, handle, and description.  Your messaging endpoint will be your Azure website URL with "api/messages" appended to the end, like https://testpicturebot.azurewebsites.net/api/messages.  
 
 ![Bot Registration](./resources/assets/BotRegistration.jpg) 
 
@@ -723,7 +734,7 @@ Rebuild your project, and then right-click on the project in the Solution Explor
 
 > Getting an error that directs you to your MicrosoftAppPassword? Because it's in XML, if your key contains "&", "<", ">", "'", or '"', you will need to replace those symbols with their respective [escape facilities](https://en.wikipedia.org/wiki/XML#Characters_and_escaping): "&amp;", "&lt;", "&gt;", "&apos;", "&quot;". 
 
-Now you can navigate back to your bot's dashboard (something like https://dev.botframework.com/bots?id=TestPictureBot).  Try talking to it in the Chat window.  The carousel may look different in Web Chat than the emulator.  There is a great tool called the Channel Inspector to see the user experience of various controls in the different channels at https://docs.botframework.com/en-us/channel-inspector/channels/Skype/#navtitle.  
+Navigate back to your bot's dashboard (something like https://dev.botframework.com/bots?id=TestPictureBot).  Try talking to it in the Chat window.  The carousel may look different in Web Chat than the emulator.  There is a great tool called the Channel Inspector to see the user experience of various controls in the different channels at https://docs.botframework.com/en-us/channel-inspector/channels/Skype/#navtitle.  
 From your bot's dashboard, you can add other channels, and try out your bot in Skype, Facebook Messenger, or Slack.  Simply click the "Add" button to the right of the channel name on your bot's dashboard, and follow the instructions.
 
 **Finish early? Try this extra credit lab:**
