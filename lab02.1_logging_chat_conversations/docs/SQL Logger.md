@@ -6,7 +6,7 @@ The aim of this lab is to log chat conversations to Azure SQL database. This lab
 
 ## 2.	Setup/Pre-requisites
 
-2.1.   Since we will be writing to a SQL database, either we can use a database that you may already have or create a new one. To create a new one, go to the azure portal and follow the [Create DB � Portal](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal) steps to create a database called Botlog as shown below.
+2.1.   Since we will be writing to a SQL database, either we can use a database that you may already have or create a new one. To create a new one, go to the azure portal and follow the [Create DB - Portal](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal) steps to create a database called Botlog as shown below.
 
 ![Botlog](images/BotLog.png)
 
@@ -14,11 +14,11 @@ The aim of this lab is to log chat conversations to Azure SQL database. This lab
 
 ![Connection Strings](images/ConnectionStrings.png)
 
-2.3.   Change your firewall settings to capture your ip address. You may have already done this if you followed the steps from [Create DB � Portal](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal)
+2.3.   Change your firewall settings to capture your ip address. You may have already done this if you followed the steps from [Create DB - Portal](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal)
 
 ![Firewall Settings](images/FirewallSettings.png)
 
-2.4.   Create a new table called userChatLog with the below create table statement (or schema):
+2.4.   Create a new table called userChatLog with the below create table statement (or schema). You can run the below query in the Query Editor by selecting Tools-> Query Editor.
 
 ```
 CREATE TABLE userChatLog(id int IDENTITY(1, 1),fromId varchar(25),toId varchar(25),message varchar(max),PRIMARY KEY(id));
@@ -95,7 +95,9 @@ public class SqlActivityLogger : IActivityLogger
     }
 ````
 
-In the LogAsync method, parameters allow for defence against SQL injection. The prime benefit of parameterized queries is to prevent SQL injection.
+### SQL Injection 
+
+SQL Injection refers to an injection attack wherein an attacker can execute malicious SQL statements that control an application’s database server. SQL Injection can provide an attacker with unauthorized access to sensitive data. In the LogAsync method, parameters allow for defense against SQL injection. The prime benefit of parameterized queries is to prevent SQL injection.
 
 ## 4.  SQL Query Results
 
