@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
 using Microsoft.Bot.Builder.Scorables;
-using Microsoft.Bot.Connector;
+using System.Collections.Generic;
 
 namespace PictureBot.Dialogs
 {
-    [LuisModel("TODO-modelID", "TODO-luisKey")]
+    [LuisModel("f542d017-743f-418c-8a56-894aaebbae38", "0db36f78de5f41749a985b66201bebb6")]
     [Serializable]
-    public class RootDialog : DispatchDialog
+    public class RootDialog : DispatchDialog<object>
     {
         [RegexPattern("^hello")]
         [RegexPattern("^hi")]
@@ -27,14 +27,14 @@ namespace PictureBot.Dialogs
         {
             // Launch help dialog with button menu  
             List<string> choices = new List<string>(new string[] { "Search Pictures", "Share Picture", "Order Prints" });
-            PromptDialog.Choice<string>(context, ResumeAfterChoice, 
-                new PromptOptions<string>("How can I help you?", options:choices));
+            PromptDialog.Choice<string>(context, ResumeAfterChoice,
+                new PromptOptions<string>("How can I help you?", options: choices));
         }
 
         private async Task ResumeAfterChoice(IDialogContext context, IAwaitable<string> result)
         {
             string choice = await result;
-            
+
             switch (choice)
             {
                 case "Search Pictures":
@@ -53,6 +53,7 @@ namespace PictureBot.Dialogs
             }
         }
 
+
         [LuisIntent("")]
         [LuisIntent("None")]
         [ScorableGroup(1)]
@@ -63,6 +64,8 @@ namespace PictureBot.Dialogs
             ContinueWithNextGroup();
         }
 
+
+
         [LuisIntent("Greeting")]
         [ScorableGroup(1)]
         public async Task Greeting(IDialogContext context, LuisResult result)
@@ -70,6 +73,7 @@ namespace PictureBot.Dialogs
             // Duplicate logic, for a teachable moment on Scorables.  
             await context.PostAsync("Hello from LUIS!  I am a Photo Organization Bot.  I can search your photos, share your photos on Twitter, and order prints of your photos.  You can ask me things like 'find pictures of food'.");
         }
+
 
         [LuisIntent("SearchPics")]
         [ScorableGroup(1)]
@@ -118,17 +122,14 @@ namespace PictureBot.Dialogs
         public async Task SharePic(IDialogContext context, LuisResult result)
         {
             PromptDialog.Confirm(context, AfterShareAsync,
-                "Are you sure you want to tweet this picture?");            
+                "Are you sure you want to tweet this picture?");
         }
 
         private async Task AfterShareAsync(IDialogContext context, IAwaitable<bool> result)
         {
-            // This is a different way to get an awaiter!  Which do you like better?  
             if (result.GetAwaiter().GetResult() == true)
             {
                 // Yes, share the picture.
-                // NOTE: for purposes of this hands-on lab, we are not going to bother to get everyone set
-                // up with Twitter dev accounts and actually post, but feel free to implement if you want!
                 await context.PostAsync("Posting tweet.");
             }
             else
@@ -144,7 +145,7 @@ namespace PictureBot.Dialogs
         public async Task Default(IDialogContext context, IActivity activity)
         {
             await context.PostAsync("I'm sorry. I didn't understand you.");
-            await context.PostAsync("You can tell me to find photos, tweet them, and order prints.  Here is an example: \"find pictures of food\".  Or say \"help\" for a lovely button menu!");
+            await context.PostAsync("You can tell me to find photos, tweet them, and order prints.  Here is an example: \"find pictures of food\".");
         }
 
     }
