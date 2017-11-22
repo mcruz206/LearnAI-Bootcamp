@@ -2,6 +2,8 @@
 
 This hands-on lab guides you through creating an intelligent bot from end-to-end using the Microsoft Bot Framework, Azure Search, and Microsoft's Language Understanding Intelligent Service (LUIS). 
 
+
+## Objectives
 In this workshop, you will:
 - Understand how to implement Azure Search features to provide a positive search experience inside applications
 - Configure an Azure Search service to extend your data to enable full-text, language-aware search

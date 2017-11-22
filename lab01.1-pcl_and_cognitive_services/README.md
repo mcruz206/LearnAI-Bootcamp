@@ -2,6 +2,8 @@
 
 This hands-on lab guides you through creating an intelligent Windows (UWP) application from end-to-end using Cognitive Services (Computer Vision API, Emotion API, Face API). We will focus on the ImageProcessing portable class library (PCL), discussing its contents and how to use it in your own applications. 
 
+
+## Objectives 
 In this workshop, you will:
 - Learn about some of the various Cognitive Services APIs
 - Understand how to configure your apps to call Cognitive Services
@@ -9,7 +11,7 @@ In this workshop, you will:
 
 While there is a focus on Cognitive Services, you will also leverage the following technologies:
 
-- Visual Studio
+- Visual Studio 2017, Community Edition
 - Windows 10 SDK (UWP)
 - Cosmos DB
 - Azure Storage
@@ -26,15 +28,15 @@ Secondly, you should have experience with the portal and be able to create resou
 
 ## Introduction
 
-We're going to build an end-to-end scenario that allows you to pull in your own pictures, use Cognitive Services to find objects and people in the images, figure out how those people look like they are feeling, and store all of that data in a NoSQL Store (Cosmos DB). In a continuation of this lab, `lab01.2-luis_and_search`, we will use that NoSQL Store to populate an Azure Search index, and then build a Bot Framework bot using LUIS to allow easy, targeted querying.
+We're going to build an end-to-end application that allows you to pull in your own pictures, use Cognitive Services to find objects and people in the images, figure out how those people look like they are feeling, and store all of that data in a NoSQL Store (Cosmos DB). In a continuation of this lab, `lab01.2-luis_and_search`, we will use that NoSQL Store to populate an Azure Search index, and then build a Bot Framework bot using LUIS to allow easy, targeted querying.
 
 ## Architecture
 
 We will build a simple C# application that allows you to ingest pictures from your local drive, then invoke several different Cognitive Services to gather data on those images:
 
-- [Computer Vision](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api): We use this to grab tags and a description
-- [Face](https://www.microsoft.com/cognitive-services/en-us/face-api): We use this to grab faces and their details from each image
-- [Emotion](https://www.microsoft.com/cognitive-services/en-us/emotion-api): We use this to pull emotion scores from each face in the image
+- [Computer Vision](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api): We will call this service to analyze the image and obtain tags and a description.
+- [Face](https://www.microsoft.com/cognitive-services/en-us/face-api): We will call this service to determine if there are faces in the image, and if there are, we will store the UniqueFaceId and FaceRectangle location.
+- [Emotion](https://www.microsoft.com/cognitive-services/en-us/emotion-api): We use this to pull emotion scores from each face in the image.
 
 Once we have this data, we process it to pull out the details we need, and store it all into [Cosmos DB](https://azure.microsoft.com/en-us/services/cosmos-db/), our [NoSQL](https://en.wikipedia.org/wiki/NoSQL) [PaaS](https://azure.microsoft.com/en-us/overview/what-is-paas/) offering.
 
@@ -66,7 +68,7 @@ If you have been given an Azure Pass to complete this lab, you may go to [http:/
 
 ### Lab: Setting up your Data Science Virtual Machine
 
-After creating an Azure account, you may access the [Azure portal](https://portal.azure.com). From the portal, create a Resource Group for this lab. Detailed information about the Data Science Virtual Machine can be [found online](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/overview), but we will just go over what's needed for this workshop. In your Resource Group, deploy and connect to a Data Science Virtual Machine for Windows (2016), with a size of D4S_V3 (this is only available on certain regions, try "West US" or "East US 2"). All other defaults are fine.
+After creating an Azure account, you may access the [Azure portal](https://portal.azure.com). From the portal, [create a Resource Group for this lab](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-portal). Detailed information about the Data Science Virtual Machine can be [found online](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/overview), but we will just go over what's needed for this workshop. In your Resource Group, deploy and connect to a Data Science Virtual Machine for Windows (2016), with a size of D4S_V3 (this is only available on certain regions, try "West US" or "East US 2"). All other defaults are fine.
 >We are creating a VM and not doing it locally, because many of you will not have the ability to change your machine to "Developer Mode" which we need to develop UWP apps.
 
 Once you're connected, there are several things you need to do to set up the DSVM for the workshop:
@@ -75,10 +77,11 @@ Once you're connected, there are several things you need to do to set up the DSV
 2. Open "ImageProcessing.sln" which is under resources>code>Starting-ImageProcessing. It may take a while for Visual Studio to open for the first time, and you will have to log in.
 3. Once it's open, you will be prompted to install the SDK for Windows 10 App Development (UWP). Follow the prompts to install it (you'll have to close Visual Studio). If you aren't prompted, right click on TestApp and select "Reload project", then you will be prompted.
 4. While it's installing, there are a few tasks you can complete: 
-	- Type in the Cortana search bar "For developers settings" and change the settings to "Developer Mode".
+	- Type in the Cortana search bar "For developers", select "For developers settings", and change the settings to "Developer Mode".
 	- Type in the Cortana search bar "gpedit.msc" and push enter. Enable the following policy: Computer Configuration>Windows Settings>Security Settings>Local Policies>Security Options>User Account Control: Admin Approval Mode for the Built-in Administrator account
+    - In the Cortana search bar, type "gpupdate", and click "gpupdate" to force the local security policy to refresh immediately
 	- Start the "Collecting the keys" lab. 
-5. Once the install is complete and you have changed your devleoper settings and the User Account Control policy, reboot your DSVM. 
+5. Once the install is complete and you have changed your developer settings and the User Account Control policy, reboot your DSVM. 
 > Note: Be sure to turn off your DSVM after the workshop so you don't get charged.
 
 
@@ -106,6 +109,7 @@ In the Portal, hit **New** and then enter **cognitive** in the search box and ch
 
 This will lead you to fill out a few details for the API endpoint you'll be creating, choosing the API you're interested in and where you'd like your endpoint to reside, as well as what pricing plan you'd like. We'll be using S1 so that we have the throughput we need for the tutorial and creating a new _Resource Group_. We'll be using this same resource group below for our Blob Storage and Cosmos DB. _Pin to dashboard_ so that you can easily find it. Since the Computer Vision API stores images internally at Microsoft (in a secure fashion), to help improve future Cognitive Services Vision offerings, you'll need to check the box that states you're ok with this before you can create the resource.
 
+**Modifying `settings.json`, part one**
 
 Once you have created your new API subscription, you can grab the keys from the appropriate section of the blade and add them to your _TestApp's_ and _TestCLI's_ `settings.json` file.
 
@@ -135,6 +139,8 @@ Once you click it, you'll be presented with the fields above to fill out.
 - use the same Resource Group as above, and 
 - set _Location_ to _West US_.  (The list of Azure services that are available in each region is at [https://azure.microsoft.com/en-us/regions/services/](https://azure.microsoft.com/en-us/regions/services/)). _Pin to dashboard_ so that you can easily find it.
 
+**Modifying `settings.json`, part two**
+
 Now that you have an Azure Storage account, let's grab the _Connection String_ and add it to your _TestCLI_ and _TestApp_ `settings.json`.
 
 ![Azure Blob Keys](./resources/assets/blob-storage-keys.PNG)
@@ -152,6 +158,8 @@ Once you click this, you'll have to fill out a few fields as you see fit.
 ![Cosmos DB Creation Form](./resources/assets/create-cosmosdb-formfill.png)
 
 In our case, select the ID you'd like, subject to the constraints that it needs to be lowercase letters, numbers, or dashes. We will be using the Document DB SDK and not Mongo, so select `SQL` as the  API. Let's use the same Resource Group as we used for our previous steps, and the same location, select _Pin to dashboard_ to make sure we keep track of it and it's easy to get back to, and hit Create.
+
+**Modifying `settings.json`, part three**
 
 Once creation is complete, open the panel for your new database and select the _Keys_ sub-panel.
 
