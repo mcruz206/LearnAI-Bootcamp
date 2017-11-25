@@ -19,6 +19,7 @@ Writing code using Microsoft Bot Framework is fun and exciting. But before rushi
 The folder structure is arranged as follows:
 
 __docs__: Contains all the hands-on labs
+
 __code__: Contains all the code for the hands-on labs
 
 The order of Hands-on Labs to carry out the solution is as follows:
