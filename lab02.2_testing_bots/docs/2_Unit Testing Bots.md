@@ -2,7 +2,7 @@
 
 ## 1.	Objectives
 
-Writing code using Microsoft Bot Framework is fun and exciting. But before rushing to code bots, you need to think about unit testing your code. Chatbots bring their own set of challenges to testing including testing across environments, integrating third party APIs, etc. Unit testing is a software testing method where individual units/ components of a software are tested.
+Writing code using Microsoft Bot Framework is fun and exciting. But before rushing to code bots, you need to think about unit testing your code. Chatbots bring their own set of challenges to testing including testing across environments, integrating third party APIs, etc. Unit testing is a software testing method where individual units/components of a software are tested.
 
 Unit tests can help:
 
@@ -14,7 +14,7 @@ The goal of this lab is to introduce unit testing for bots developed using Micro
 
 ## 2.	Setup
 
-Import the EchoBot Solution in VisualStudio from Student-Resources/Labs/CSharp/UnitTests. On successful import, you will see two projects (EchoBot, a Bot Application and EchoBotTests, a Unit Test Project) as shown below. 
+Import the EchoBot Solution in VisualStudio from code\EchoBot. On successful import, you will see two projects (EchoBot, a Bot Application and EchoBotTests, a Test Project) as shown below. 
 
 ![Setup](images/Setup.png)
 
@@ -59,7 +59,12 @@ Run all Tests by selecting Test -> Run -> All Tests as shown below and verify th
 
 ![Echo Bot](images/Echobot.png)
 
-## 5.	Exercise
+## 5.	Finish early? Try this for extra credit:
 
-1.	Write another TestMethod called *EchoStartsWith* that verifies echo prompt begins with "You sent".
-2.	Can you verify that the echoed messages were sent by a bot?
+A.   Write another TestMethod called *EchoStartsWith* that verifies echo prompt begins with "You sent".
+
+*Hint:* The TestMethod would be very similar to ShouldReturnEcho() and you would check if toUser.Text starts with "You sent". 
+
+B.   Can you verify that the echoed messages were sent by a bot?
+
+*Hint:* This would involve checking the properties of IMessageActivity response recieved.

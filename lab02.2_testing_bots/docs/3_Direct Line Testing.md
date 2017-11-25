@@ -2,17 +2,13 @@
 
 ## Objectives
 
-In certain scenarios such as testing, communication directly to your bot may be required. Communication between your bot and your own client application can be performed using Direct Line API. This hands-on lab introduces key concepts related to Direct Line API.
+Communication directly with your bot may be required in some situations. For example, you may want to perform functional tests with a hosted bot. Communication between your bot and your own client application can be performed using [Direct Line API](https://docs.microsoft.com/en-us/bot-framework/rest-api/bot-framework-rest-direct-line-3-0-concepts). This hands-on lab introduces key concepts related to Direct Line API.
 
 ## Setup
 
-For this lab, you can use a published Bot to talk to via Direct Line API. 
+1. Open the project from code\core-DirectLine and import the solution in Visual Studio.
 
-Download the sample from:
-
-https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-DirectLine and import the solution in Visual Studio.
-
-In the DirectLineBot solution, you will find two projects: DirectLineBot and DirectLineSampleClient. If you do not have a published app, you can publish DirectLineBot.
+2. In the DirectLineBot solution, you will find two projects: DirectLineBot and DirectLineSampleClient. Publish DirectLineBot.
 
 DirectLineSampleClient is the client that will send messages to the bot.
 
@@ -49,7 +45,7 @@ Using Direct Line API, a client can send messages to your bot by issuing HTTP Po
 
 1.	Run project DirectLineSampleClient after making the Config changes.
 
-2.	Submit a message via console and obtain the conversation id using the below line:
+2.	Submit a message via console and obtain the conversation id. Line 52 of Program.cs prints the conversation ID that you will need in order to talk to bots:
 
 ````Console.WriteLine("Conversation ID:" + conversation.ConversationId);````
 
