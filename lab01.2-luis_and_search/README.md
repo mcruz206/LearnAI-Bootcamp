@@ -472,7 +472,7 @@ Next, we'll update the bot to call Azure Search.  First, open Tools-->NuGet Pack
 
 ![Azure Search NuGet](./resources/assets/AzureSearchNuGet.jpg) 
 
-Right-click on your project in the Solution Explorer of Visual Studio, and select Add-->New Folder.  Create a folder called "Models".  Then right-click on the Models folder, and select Add-->Existing Item.  Do this twice to add these two files under the [Models](./resources/code/Models) folder (make sure to adjust your namespaces if necessary):
+Right-click on your project in the Solution Explorer of Visual Studio, and select Add-->New Folder.  Create a folder called "Models".  Then right-click on the Models folder, and select Add-->Existing Item.  Do this twice to add these two files under the Models folder (make sure to adjust your namespaces if necessary):
 1. [ImageMapper.cs](./resources/code/Models/ImageMapper.cs)
 2. [SearchHit.cs](./resources/code/Models/SearchHit.cs)
 
@@ -762,3 +762,50 @@ Resources for future projects/learning:
 - [Azure Search Samples](https://github.com/Azure-Samples/search-dotnet-getting-started)
 - [LUIS documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/Home)
 - [LUIS Sample](https://github.com/Microsoft/BotBuilder-Samples/blob/master/CSharp/intelligence-LUIS/README.md)
+
+## Appendix ##
+
+### Further resources ###
+
+- [Cognitive Services](https://www.microsoft.com/cognitive-services)
+- [Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/)
+- [Azure Search](https://azure.microsoft.com/en-us/services/search/)
+- [Bot Developer Portal](http://dev.botframework.com)
+
+### Setting Up a Visual Studio VM in Azure ###
+
+If you don't have Visual Studio installed (or don't want to worry about versions), or you're on a Mac, it's no big deal. Azure comes with several pre-configured VMs with Visual Studio installed. Let's stand up the Visual Studio Community Edition on Windows 10 on a VM and I'll walk you through getting set up on that machine. 
+
+First, head to the portal and hit the "New" button, then type "visual studio" in the search box. It should bring up a whole family of VMs - we're selecting the VS2017 Community Windows 10 Enterprise N (x64).
+
+Once you've selected Create, you're presented with the typical VM creation form - fill it out, selecting a machine name, user and password you'll remember. 
+
+![Visual Studio VM Basics](./resources/assets/new_visual_studio_vm_basics.png)
+
+As far as VM size, let's use DS2_V2. Just hit ok on the next two screens to start creation, and wait for the VM to provision (should take roughly five minutes).
+
+### Connecting to your VM ###
+
+#### From a Windows PC ####
+
+Once your VM is created, hit "Connect" and it will download an RDP configuration file that should allow you to connect to the machine. On Windows, MSTSC is already installed and will automatically open when you double-click that file, log in using the credentials you specified on creation, and you'll be presented with a new Windows VM. Load up Visual Studio using the Start menu and once you sign in and it gets through the initial "first time use" screen you should be ready to go.
+
+#### From a Mac ####
+
+If you're using a Mac you may need to install [Microsoft Remote Desktop from the App Store](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12), which will allow you to connect to the Windows VM you've created and use it as if you were sitting in front of it. Once you've got Remote Desktop running, click New to create a new connection, give your connection a name, and enter the Public IP address of your VM in the "PC name" field. You can enter your User name and Password too, if you want to have them automatically sent every time you log in. 
+
+![Connecting to your VM from a Mac](./resources/assets/macrdp.png) 
+
+Close the "Edit remote desktops" window, then double-click your new connection to launch a remote desktop session to your VM. Load up Visual Studio using the Start menu and once you sign in and it gets through the initial "first time use" screen you should be ready to go.
+
+### Loading the Project From Visual Studio ###
+
+If you've never used Git from within Visual Studio, it is easy to clone and open solutions directly from within the tool. From the File menu, just choose Open->Open from Source Control:
+
+![Open from Source Control](./resources/assets/open_from_source_control.png)
+
+and that will load a window allowing you to clone a GitHub repo (well, any remote repo) locally:
+
+![Clone Locally](./resources/assets/clone_to_local.png)
+
+Once you've cloned, you should be able to navigate the directory using the Solution Explorer and open the .sln file you want.
