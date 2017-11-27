@@ -231,7 +231,7 @@ using ServiceHelpers;
 
 [Project Oxford](https://blogs.technet.microsoft.com/machinelearning/tag/project-oxford/) was the project where many Cognitive Services got their start. As you can see, the NuGet Packages were even labeled under Project Oxford. In this scenario, we'll call `Microsoft.ProjectOxford.Common.Contract` for the Emotion API, `Microsoft.ProjectOxford.Face` and `Microsoft.ProjectOxford.Face.Contract` for the Face API, and `Microsoft.Oxford.Vision` for the Computer Vision API. Additionally, we'll reference our service helpers (remember, these will make our lives easier). You'll have to reference different packages depending on which Cogitive Services you're leveraging in your application.
 
-Right at the beginning of our image processor, we're going to set up some static arrays that we'll fill in throughout the processor. As you can see, these are the main attributes we want to call for `ImageInsights.cs`. Add the code below inside the `public class` at the beginning:
+In `ImageProcessor.cs`, under the line `public class ImageProcessor` we're going to set up some static arrays that we'll fill in throughout the processor. As you can see, these are the main attributes we want to call for `ImageInsights.cs`. Add the code below between the `{ }` of `public class ImageProcessor`:
 
 ```
 private static FaceAttributeType[] DefaultFaceAttributeTypes = new FaceAttributeType[] { FaceAttributeType.Age, FaceAttributeType.Gender };
@@ -239,7 +239,7 @@ private static FaceAttributeType[] DefaultFaceAttributeTypes = new FaceAttribute
 private static VisualFeature[] DefaultVisualFeatureTypes = new VisualFeature[] { VisualFeature.Tags, VisualFeature.Description };
 ```
 
-Next, below the code you just inserted in the public class, create a method that we'll use to trigger computer vision, face and emotion analysis:
+Immediately underneath the code you have just created for the **private static VisualFeature[ ]**, create a public task that we'll use to trigger computer vision, face and emotion analysis:
 
 ```
     public static async Task<ImageInsights> ProcessImageAsync(Func<Task<Stream>> imageStreamCallback, string imageId)
