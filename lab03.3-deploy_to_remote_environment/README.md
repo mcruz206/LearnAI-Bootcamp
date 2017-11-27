@@ -1,4 +1,4 @@
-# lab03.3-execute_in_remote_environment - Executng Your Machine Learning Model In A Remote Environment
+# lab03.3-execute_in_remote_environment - Executing Your Machine Learning Model In A Remote Environment
 This hands-on lab guides you through executing a machine learning data preparation or model training work load in a remote environment using [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-what-is-azure-ml) with the Azure Machine Learning Workbench. 
 
 In this workshop, you will:
