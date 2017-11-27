@@ -73,19 +73,19 @@ After creating an Azure account, you may access the [Azure portal](https://porta
 
 Once you're connected, there are several things you need to do to set up the DSVM for the workshop:
 
-1. Navigate to this repository in Firefox, and download it as a zip file. Extract all the files, and move the folder for this lab to your Desktop.
+1. Navigate to this repository in Firefox, and download it as a zip file. Extract all the files for this lab to your Desktop.
 2. Open "ImageProcessing.sln" which is under resources>code>Starting-ImageProcessing. It may take a while for Visual Studio to open for the first time, and you will have to log in.
 3. Once it's open, you will be prompted to install the SDK for Windows 10 App Development (UWP). Follow the prompts to install it (you'll have to close Visual Studio). If you aren't prompted, right click on TestApp and select "Reload project", then you will be prompted.
 4. While it's installing, there are a few tasks you can complete: 
 	- Type in the Cortana search bar "For developers", select "For developers settings", and change the settings to "Developer Mode".
 	- Type in the Cortana search bar "gpedit.msc" and push enter. Enable the following policy: Computer Configuration>Windows Settings>Security Settings>Local Policies>Security Options>User Account Control: Admin Approval Mode for the Built-in Administrator account
     - In the Cortana search bar, type "gpupdate", and click "gpupdate" to force the local security policy to refresh immediately
-	- Start the "Collecting the keys" lab. 
+	- Start the [Collecting the Keys](#Lab) lab. 
 5. Once the install is complete and you have changed your developer settings and the User Account Control policy, reboot your DSVM. 
 > Note: Be sure to turn off your DSVM after the workshop so you don't get charged.
 
 
-### Lab: Collecting the Keys
+### <a name="Lab"></a> Lab: Collecting the Keys ###
 
 Over the course of this lab, we will collect Cognitive Services keys and storage keys. You should save all of them in a text file so you can easily access them in future labs.
 
@@ -103,11 +103,11 @@ Over the course of this lab, we will collect Cognitive Services keys and storage
 
 Within the Portal, we'll first create keys for the Cognitive Services we'll be using. We'll primarily be using different APIs under the [Computer Vision](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api) Cognitive Service, so let's create an API key for that first.
 
-In the Portal, hit **New** and then enter **cognitive** in the search box and choose **Computer Vision API**:
+In the Portal, hit **New** and then enter **cognitive** or **computer vision** in the search box and choose **Computer Vision API**:
 
 ![Creating a Cognitive Service Key](./resources/assets/new-cognitive-services.PNG)
 
-This will lead you to fill out a few details for the API endpoint you'll be creating, choosing the API you're interested in and where you'd like your endpoint to reside, as well as what pricing plan you'd like. We'll be using S1 so that we have the throughput we need for the tutorial and creating a new _Resource Group_. We'll be using this same resource group below for our Blob Storage and Cosmos DB. _Pin to dashboard_ so that you can easily find it. Since the Computer Vision API stores images internally at Microsoft (in a secure fashion), to help improve future Cognitive Services Vision offerings, you'll need to check the box that states you're ok with this before you can create the resource.
+This will lead you to fill out a few details for the API endpoint you'll be creating, choosing the API you're interested in and where you'd like your endpoint to reside, as well as what pricing plan you'd like. We'll be using **S1** so that we have the throughput we need for the tutorial. Use the same Resource Group that you used to create your DSVM. We'll be using this same resource group below for our Blob Storage and Cosmos DB as well. _Pin to dashboard_ so that you can easily find it. Since the Computer Vision API stores images internally at Microsoft (in a secure fashion), to help improve future Cognitive Services Vision offerings, you'll need to check the box that states you're ok with this before you can create the resource.
 
 **Modifying `settings.json`, part one**
 
@@ -115,7 +115,9 @@ Once you have created your new API subscription, you can grab the keys from the 
 
 ![Cognitive API Key](./resources/assets/cognitive-keys.PNG)
 
-We'll also be using other APIs within the Cognitive Services family, so take this opportunity to create API keys for the **Emotion** and **Face** APIs as well. They are created in the same fashion as above, except you'll need to use the **S0** pricing for the Emotion API and Face API. Make sure to select _Pin to Dashboard_, and then add those keys to your `settings.json` files.
+>Note: there are two keys for each of the Cognitive Services APIs you will create. Either one will work. You can read more about multiple keys [here](https://blogs.msdn.microsoft.com/mast/2013/11/06/why-does-an-azure-storage-account-have-two-access-keys/).
+
+We'll also be using other APIs within the Cognitive Services family, so take this opportunity to create API keys for the **Emotion** and **Face** APIs as well. They are created in the same fashion as above (search for **cognitive**, **face**, or **emotion**), except you'll need to use the **S0** pricing for the Emotion API and Face API. Make sure to select _Pin to Dashboard_, and then add those keys to your `settings.json` files.
 
 
 
@@ -215,7 +217,7 @@ Now let's take a step back for a minute. It isn't quite as simple as creating "I
 
 Navigate to `ImageProcessor.cs` within `ImageProcessingLibrary`. 
 
-Add the following code to the top:
+Add the following code **to the top**:
 
 ```
 using Microsoft.ProjectOxford.Common.Contract;
@@ -227,7 +229,7 @@ using ServiceHelpers;
 
 [Project Oxford](https://blogs.technet.microsoft.com/machinelearning/tag/project-oxford/) was the project where many Cognitive Services got their start. As you can see, the NuGet Packages were even labeled under Project Oxford. In this scenario, we'll call `Microsoft.ProjectOxford.Common.Contract` for the Emotion API, `Microsoft.ProjectOxford.Face` and `Microsoft.ProjectOxford.Face.Contract` for the Face API, and `Microsoft.Oxford.Vision` for the Computer Vision API. Additionally, we'll reference our service helpers (remember, these will make our lives easier). You'll have to reference different packages depending on which Cogitive Services you're leveraging in your application.
 
-Right at the beginning of our image processor, we're going to set up some static arrays that we'll fill in throughout the processor. As you can see, these are the main attributes we want to call for `ImageInsights.cs`. Add the code below:
+Right at the beginning of our image processor, we're going to set up some static arrays that we'll fill in throughout the processor. As you can see, these are the main attributes we want to call for `ImageInsights.cs`. Add the code below inside the `public class` at the beginning:
 
 ```
 private static FaceAttributeType[] DefaultFaceAttributeTypes = new FaceAttributeType[] { FaceAttributeType.Age, FaceAttributeType.Gender };
@@ -235,7 +237,7 @@ private static FaceAttributeType[] DefaultFaceAttributeTypes = new FaceAttribute
 private static VisualFeature[] DefaultVisualFeatureTypes = new VisualFeature[] { VisualFeature.Tags, VisualFeature.Description };
 ```
 
-Next, create a public task that we'll use to trigger computer vision, face and emotion analysis:
+Next, below the code you just inserted in the public class, create a method that we'll use to trigger computer vision, face and emotion analysis:
 
 ```
     public static async Task<ImageInsights> ProcessImageAsync(Func<Task<Stream>> imageStreamCallback, string imageId)
