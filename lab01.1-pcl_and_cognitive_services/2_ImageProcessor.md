@@ -1,5 +1,48 @@
 ## 2_ImageProcessor
 
+## Cognitive Services
+
+Cognitive Services can be used to infuse your apps, websites and bots with algorithms to see, hear, speak, understand and interpret your user needs through natural methods of communication. 
+
+There are five main categories for the available Cognitive Services:
+- **Vision**: Image-processing algorithms to identify, caption and moderate your pictures
+- **Knowledge**: Map complex information and data in order to solve tasks such as intelligent recommendations and semantic search
+- **Language**: Allow your apps to process natural language with pre-built scripts, evaluate sentiment and learn how to recognize what users want
+- **Speech**: Convert spoken audio into text, use voice for verification, or add speaker recognition to your app
+- **Search**: Add Bing Search APIs to your apps and harness the ability to comb billions of webpages, images, videos, and news with a single API call
+
+You can browse all of the specific APIs in the [Services Directory](https://azure.microsoft.com/en-us/services/cognitive-services/directory/). 
+
+As you may recall, the application we'll be building today will use [Computer Vision](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api) to grab tags and a description, [Face](https://www.microsoft.com/cognitive-services/en-us/face-api) to grab faces and their details from each image, and [Emotion](https://www.microsoft.com/cognitive-services/en-us/emotion-api) to pull emotion scores from each face in the image.
+
+Let's talk about how we're going to call these Cognitive Services in our application.
+
+### **Image Processing Library** ###
+
+Under resources>code>Starting-ImageProcessing, you'll find the `Processing Library`. This is a [Portable Class Library (PCL)](https://docs.microsoft.com/en-us/dotnet/standard/cross-platform/cross-platform-development-with-the-portable-class-library), which helps in building cross-platform apps and libraries quickly and easily. It serves as a wrapper around several services. This specific PCL contains various helper classes for accessing the various Cognitive Services related to Vision, and several "Insights" classes to encapsulate the results. Later, we'll create an image processor class that will be responsible for wrapping an image and exposing several methods and properties that act as a bridge to the Cognitive Services. 
+
+After creating the image processor, you should be able to pick up this portable class library and drop it in your other projects that involve Cognitive Services (some modification may be required). 
+
+
+**Service Helpers**
+
+Service helpers exist to make your life easier when you're developing your app. One of the key things that service helpers do is provide the ability to detect when the API calls return a call-rate-exceeded error and automatically retry the call (after some delay). They also help with bringing in methods, handling exceptions and handling the keys.
+
+You can find additional service helpers for some of the other Cognitive Services within the [Intelligent Kiosk sample application](https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk/tree/master/Kiosk/ServiceHelpers). Utilizing these resources makes it easy to add and remove the service helpers in your future projects as needed.
+
+
+**The "Insights" classes**
+
+Take a look at each of the "Insights" classes:
+- If you look at `FaceInsights.cs`, you can see the items we ultimately want from the Face and Emotion APIs: `UniqueFaceID`, `FaceRectangle`, `TopEmotion`, `Gender`, and `Age`
+- You can see that in `VisionInsights.cs`, we're calling for `Caption` and `Tags` from the images. 
+- Finally, in `ImageInsights.cs`, we're creating our complete Image Insights for each image, with the `ImageId`, `FaceInsights` and `VisionInsights`.
+
+Overall, the "Insights" group only the pieces of information we want from the Cognitive Services.
+
+Now let's take a step back for a minute. It isn't quite as simple as creating "Insights" classes and copying over some methods/error handling from service helpers. We still have to call the API and process the images somewhere. For the purpose of this lab, we are going to walk through creating `ImageProcessor.cs`, but in future projects, feel free to add this class to your PCL and start from there (it may need modification depending what Cognitive Services you are calling and what you are processing - images, text, voice, etc.).
+
+
 ### Lab: Creating `ImageProcessor.cs`
 
 Right-click on the solution and select "Build Solution". If you have errors related to `ImageProcessor.cs`, you can ignore them for now, because we are about to fix them.
@@ -136,3 +179,10 @@ Now that you've built `ImageProcessor.cs`, don't forget to save it! Below, you'l
 ![Image Processor Flowchart](./resources/assets/ProcessorFlowchart.png)
 
 Want to make sure you set up `ImageProcessor.cs` correctly? You can find the full class [here](./resources/code/classes).
+
+
+### Continue to [3_TestApp](./3_TestApp.md)
+
+
+
+Back to [README](./readme.md)
