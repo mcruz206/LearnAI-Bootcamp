@@ -5,13 +5,13 @@ In this lab, we will use the Azure CLI to provision and configure a HDI Spark cl
 1. To create a Spark cluster we will use the template found [here](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json) and the Azrue CLI. The credentials to log into the cluster along with some other information is stored in `parameters-hdi.json`. To provision the cluster we simply run the command below (if we do not wish to store passwords in the file, we can remove them and instead we will be prompted to enter a password when we run the command).
 
 ```
-az group deployment create -g azurebootcamp --template-file template-hdi.json --parameters @parameters-hdi.json
+az group deployment create -g azurebootcamplab41 --template-file template-hdi.json --parameters @parameters-hdi.json
 ```
 
 2. Open the Azure ML Workbench and start a new project called `parameter_sweep` that uses the **Parameter Sweep on Spark** as template. Place the new project in **Documents**. Open the project and go to **File > Open Command Prompt** and type the following commands to prepare the docker environment and the Spark cluster to run our jobs.
 ```
 az ml experiment prepare -c docker
-az ml experiment prepare -c azbootcamphdispark -g azbootcamphdi
+az ml experiment prepare -c azbootcamphdispark -g azurebootcamplab41
 ```
 3. Return to the Workbench and go to **File > Open Project (Code)** to open it using Code. Examine the script `sweep_spark.py`. Find the learning algorithm we're using and the set of hyper-parameters that we want to optimize over and their ranges.
 
@@ -24,4 +24,3 @@ az ml computetarget attach --name azbootcamphdispark --address azbootcamphdispar
 This will create the files `aml_config/azbootcamphdispark.compute` and `aml_config/azbootcamphdispark.runconfig`. We now have a pair of such files for local, Docker and one for Spark.
 5. Finally, we can now run the job. We will first run it in Docker, which is great for debugging purposes and working locally while we're still in development mode. To do so just run `az ml experiment submit -c docker .\sweep_spark.py` on the Command Line. If we were able to run the Docker example successfully, we can now see if we can replicate it in Spark. To do so simply replace `docker` with `azbootcamphdispark` in the above command and rerun it. If the Docker run failed, we may need to swich Docker to a Windows context (by right-clicking on the Docker icon in the taskbar) and upon getting an error message, switch it back to a Linux context and then try again.
 6. Report the accuracy of the best model that came out of the parameter sweep.
-
