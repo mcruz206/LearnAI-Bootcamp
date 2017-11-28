@@ -8,7 +8,7 @@ Communication directly with your bot may be required in some situations. For exa
 
 1. Open the project from code\core-DirectLine and import the solution in Visual Studio.
 
-2. In the DirectLineBot solution, you will find two projects: DirectLineBot and DirectLineSampleClient. Publish DirectLineBot.
+2. In the DirectLineBot solution, you will find two projects: DirectLineBot and DirectLineSampleClient. You can choose to use the published bot (from the earlier labs) or publish DirectLineBot for this lab.
 
 DirectLineSampleClient is the client that will send messages to the bot.
 
