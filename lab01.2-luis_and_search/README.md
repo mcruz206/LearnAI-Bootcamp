@@ -70,7 +70,7 @@ Over the course of this lab, we will collect various keys. It is recommended tha
 
 >_Keys_
 >- LUIS API:
->- Cosmos DB Connection String: AccountEndpoint=https://timedcosmosdb.documents.azure.com:443/;AccountKey=0aRt6JVgbf9KafBxRVuDMNfAj9YoSBbmpICdJ41N5CwHcjuMcVk7jWDBcu4BxbTitLR1zteauQsnF1Tgqs1A3g==;
+>- Cosmos DB Connection String:
 >- Azure Search Name:
 >- Azure Search Key:
 >- Bot Framework App Name:
@@ -103,9 +103,9 @@ Typical Workflow:
 
 ### Lab: Create an Azure Search Service
 
-Within the Azure Portal, click **New->Web + Mobile->Azure Search**.
+Within the Azure Portal, click **Create a resource->Web + Mobile->Azure Search**.
 
-Once you click this, you'll have to fill out a few fields as you see fit. For this lab, a "Free" tier is sufficient.
+Once you click this, you'll have to fill out a few fields as you see fit. For this lab, a "Free" tier is sufficient. You are only able to have one "Free" Azure Search instance per subscription, so if you or another member on your subscription have already done this, you will need to use the "Basic" pricing tier.
 
 ![Create New Azure Search Service](./resources/assets/AzureSearch-CreateSearchService.png)
 
@@ -218,7 +218,7 @@ Once we've thought out our app, we are ready to [build and train it](https://doc
 
 ### Lab: Creating the LUIS service in the portal
 
-In the Portal, hit **New** and then enter **LUIS** in the search box and choose **Language Understanding Intelligent Service**:
+In the Portal, hit **Create a resource** and then enter **LUIS** in the search box and choose **Language Understanding Intelligent Service**:
 
 This will lead you to fill out a few details for the API endpoint you'll be creating, choosing the API you're interested in and where you'd like your endpoint to reside, as well as what pricing plan you'd like. The free tier is sufficient for this lab. Since LUIS stores images internally at Microsoft (in a secure fashion), to help improve future Cognitive Services offerings, you'll need to check the box to confirm you're ok with this.
 
@@ -307,9 +307,10 @@ Then click on "Publish App" in the left sidebar.  You have several options when 
 
 Publishing creates an endpoint to call the LUIS model.  The URL will be displayed.  
 
-Click on "Train & Test" in the left sidebar.  Check the "Enable published model" box to have the calls go through the published endpoint rather than call the model directly.  Try typing a few utterances and see the intents returned.  
+Click on "Train & Test" in the left sidebar.  Check the "Enable published model" box to have the calls go through the published endpoint rather than call the model directly. Try typing a few utterances and see the intents returned.  
+>Unfortunately, there is a bug open with "Enable published model", and it only works in Chrome. 
 
-![Test LUIS](./resources/assets/TestLuis.jpg) 
+![Test LUIS](./resources/assets/TestLuis.png) 
 
 You can also [test your published endpoint in a browser](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/PublishApp#test-your-published-endpoint-in-a-browser). Copy the URL, then replace the `{YOUR-KEY-HERE}` with one of the keys listed in the Key String column for the resource you want to use. To open this URL in your browser, set the URL parameter `&q` to your test query. For example, append `&q=Find pictures of dogs` to your URL, and then press Enter. The browser displays the JSON response of your HTTP endpoint.
 
@@ -762,50 +763,3 @@ Resources for future projects/learning:
 - [Azure Search Samples](https://github.com/Azure-Samples/search-dotnet-getting-started)
 - [LUIS documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/Home)
 - [LUIS Sample](https://github.com/Microsoft/BotBuilder-Samples/blob/master/CSharp/intelligence-LUIS/README.md)
-
-## Appendix ##
-
-### Further resources ###
-
-- [Cognitive Services](https://www.microsoft.com/cognitive-services)
-- [Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/)
-- [Azure Search](https://azure.microsoft.com/en-us/services/search/)
-- [Bot Developer Portal](http://dev.botframework.com)
-
-### Setting Up a Visual Studio VM in Azure ###
-
-If you don't have Visual Studio installed (or don't want to worry about versions), or you're on a Mac, it's no big deal. Azure comes with several pre-configured VMs with Visual Studio installed. Let's stand up the Visual Studio Community Edition on Windows 10 on a VM and I'll walk you through getting set up on that machine. 
-
-First, head to the portal and hit the "New" button, then type "visual studio" in the search box. It should bring up a whole family of VMs - we're selecting the VS2017 Community Windows 10 Enterprise N (x64).
-
-Once you've selected Create, you're presented with the typical VM creation form - fill it out, selecting a machine name, user and password you'll remember. 
-
-![Visual Studio VM Basics](./resources/assets/new_visual_studio_vm_basics.png)
-
-As far as VM size, let's use DS2_V2. Just hit ok on the next two screens to start creation, and wait for the VM to provision (should take roughly five minutes).
-
-### Connecting to your VM ###
-
-#### From a Windows PC ####
-
-Once your VM is created, hit "Connect" and it will download an RDP configuration file that should allow you to connect to the machine. On Windows, MSTSC is already installed and will automatically open when you double-click that file, log in using the credentials you specified on creation, and you'll be presented with a new Windows VM. Load up Visual Studio using the Start menu and once you sign in and it gets through the initial "first time use" screen you should be ready to go.
-
-#### From a Mac ####
-
-If you're using a Mac you may need to install [Microsoft Remote Desktop from the App Store](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12), which will allow you to connect to the Windows VM you've created and use it as if you were sitting in front of it. Once you've got Remote Desktop running, click New to create a new connection, give your connection a name, and enter the Public IP address of your VM in the "PC name" field. You can enter your User name and Password too, if you want to have them automatically sent every time you log in. 
-
-![Connecting to your VM from a Mac](./resources/assets/macrdp.png) 
-
-Close the "Edit remote desktops" window, then double-click your new connection to launch a remote desktop session to your VM. Load up Visual Studio using the Start menu and once you sign in and it gets through the initial "first time use" screen you should be ready to go.
-
-### Loading the Project From Visual Studio ###
-
-If you've never used Git from within Visual Studio, it is easy to clone and open solutions directly from within the tool. From the File menu, just choose Open->Open from Source Control:
-
-![Open from Source Control](./resources/assets/open_from_source_control.png)
-
-and that will load a window allowing you to clone a GitHub repo (well, any remote repo) locally:
-
-![Clone Locally](./resources/assets/clone_to_local.png)
-
-Once you've cloned, you should be able to navigate the directory using the Solution Explorer and open the .sln file you want.

@@ -73,7 +73,7 @@ After creating an Azure account, you may access the [Azure portal](https://porta
 
 Once you're connected, there are several things you need to do to set up the DSVM for the workshop:
 
-1. Navigate to this repository in Firefox, and download it as a zip file. Extract all the files for this lab to your Desktop.
+1. Navigate to [this repository](https://github.com/Azure/learnAI-Bootcamp) in Firefox, and download it as a zip file. Extract all the files for this lab to your Desktop.
 2. Open "ImageProcessing.sln" which is under resources>code>Starting-ImageProcessing. It may take a while for Visual Studio to open for the first time, and you will have to log in.
 3. Once it's open, you will be prompted to install the SDK for Windows 10 App Development (UWP). Follow the prompts to install it (you'll have to close Visual Studio). If you aren't prompted, right click on TestApp and select "Reload project", then you will be prompted.
 4. While it's installing, there are a few tasks you can complete: 
@@ -103,7 +103,7 @@ Over the course of this lab, we will collect Cognitive Services keys and storage
 
 Within the Portal, we'll first create keys for the Cognitive Services we'll be using. We'll primarily be using different APIs under the [Computer Vision](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api) Cognitive Service, so let's create an API key for that first.
 
-In the Portal, hit **New** and then enter **cognitive** or **computer vision** in the search box and choose **Computer Vision API**:
+In the Portal, hit **Create a resource** and then enter **cognitive** or **computer vision** in the search box and choose **Computer Vision API**:
 
 ![Creating a Cognitive Service Key](./resources/assets/new-cognitive-services.PNG)
 
@@ -129,7 +129,7 @@ _Azure Blob Storage_
 
 Detailed "Getting Started" instructions can be [found online](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-how-to-use-blobs), but let's just go over what you need for this lab.
 
-Within the Azure Portal, click **New->Storage->Storage Account**
+Within the Azure Portal, click **Create a resource->Storage->Storage Account**
 
 ![New Azure Storage](./resources/assets/create-blob-storage.PNG)
 
@@ -151,7 +151,7 @@ _Cosmos DB_
 
 Detailed "Getting Started" instructions can be [found online](https://docs.microsoft.com/en-us/azure/cosmos-db/documentdb-get-started), but we'll walk through what you need for this lab.
 
-Within the Azure Portal, click **New->Databases->Azure Cosmos DB**.
+Within the Azure Portal, click **Create a resource->Databases->Azure Cosmos DB**.
 
 ![New Cosmos DB](./resources/assets/create-cosmosdb-portal.png)
 
@@ -159,7 +159,7 @@ Once you click this, you'll have to fill out a few fields as you see fit.
 
 ![Cosmos DB Creation Form](./resources/assets/create-cosmosdb-formfill.png)
 
-In our case, select the ID you'd like, subject to the constraints that it needs to be lowercase letters, numbers, or dashes. We will be using the Document DB SDK and not Mongo, so select `SQL` as the  API. Let's use the same Resource Group as we used for our previous steps, and the same location, select _Pin to dashboard_ to make sure we keep track of it and it's easy to get back to, and hit Create.
+In our case, select the ID you'd like, subject to the constraints that it needs to be lowercase letters, numbers, or dashes. We will be using the SQL API so we can create a document database that is queryable using SQL syntax, so select `SQL` as the  API. Let's use the same Resource Group as we used for our previous steps, and the same location, select _Pin to dashboard_ to make sure we keep track of it and it's easy to get back to, and hit Create.
 
 **Modifying `settings.json`, part three**
 
