@@ -1,4 +1,3 @@
-
 # Setting up for the bootcamp
 
 The following steps will get us up and running for the bootcamp. For the sake of consistency, we've tried to automate as many of the steps as possible to avoid running into issues during the setup phase, but as much as possible we try to do so in a transparent fashion so users know what is happening under the hood. In addition to getting our environment ready for the bootcamp, the following outline can also serve as a short tutorial on how to manage Azure resource like a power user by leveraging the Azure CLI.
@@ -33,7 +32,7 @@ The Azure CLI is a command line utility for provisioning and managing Azure reso
 <div style="text-align:center"><img src ="./images/deploy-programmatically.jpg" width="600"/></div>
 Scroll down and make sure that the status is enabled for the intended subscription.
 <div style="text-align:center"><img src ="./images/enabled-subscription.jpg" width="600"/></div>
-2. From **Windows Explorer** navigate to the course folder and from there launch the command prompt by going to the address bar and typing `cmd` (for the Windows command prompt) or `bash` (for the Linux command prompt assuming it is installed already) and type `az --version` to check the installation. Run `az group create -n azurebootcamp -l eastus2` to create a resource group called `azurebootcamp` for the resources we will provision throughout this lab. Next run the following command to provision the DSVM:
+2. From **Windows Explorer** navigate to the course folder and from there launch the command prompt by going to the address bar and typing `cmd` (for the Windows command prompt) or `bash` (for the Linux command prompt assuming it is installed already) and type `az --version` to check the installation. Run `az group create -n azurebootcamp -l eastus2` to create a resource group called `azurebootcamp`. Next run the following command to provision the DSVM:
 ```
 az group deployment create -g azurebootcamp --template-file template-dsvm.json --parameters @parameters-dsvm.json
 ```
@@ -54,17 +53,9 @@ We now have a DSVM provisioned and almost ready to use. In this part, we log int
 <div style="text-align:center"><img src ="./images/dsvm-ip-address.jpg" width="600"/></div>
 
 1. On the DSVM, open the browser and navigate to [https://aka.ms/azureml-wb-msi](https://aka.ms/azureml-wb-msi), run the downloader to install Workbench. This will take between 10 and 20 minutes.
-2. On the DSVM, download and run the [Docker installer](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe) for Windows. You will be prompted to logout upon completion. Do NOT log out until Workbench has finished installing.
+2. On the DSVM, download and run the [Docker installer](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe) for Windows. Logout upon completion, but do NOT log out until Workbench has finished installing (previous step).
 3. Log back into the DSVM and launch Docker. When prompted to enable Hyper-V, do so. After a few seconds, this will restart the server and we will need to log back in.
 <div style="text-align:center"><img src ="./images/enable-hyperv.jpg" width="600"/></div>
-4. Run the following command to create an Azure ML Experimentation account, a Model Management account, and a Workspace.
-```
-az storage account create -n azurebootcampastus2 -g azurebootcamp --sku Standard_LRS
-az group deployment create -g azurebootcamp --template-file template-azml.json --parameters @parameters-azml.json
-```
-In case the deployment results in an error message coded `RoleAssignmentUpdateNotPermitted`, you can safely ignore it as long as the assets `azureuseramlexp`, `azureuseramlws` and `azureuseramlmm` were added to the resource group. You can check all the resources under a resource group from the portal or by running `az resource list -g azurebootcamp -o table`.
-
-FYI, as an alternative, we can also create the above from the Azure portal by navigating to [this link](https://docs.microsoft.com/en-us/azure/machine-learning/preview/quickstart-installation) and completing the section **Create Azure Machine Learning accounts**.
 
 ### 2.2 Preparing the Workbench to run a project (10 minutes)
 
@@ -74,5 +65,5 @@ For the remainder of this lab, we will be working exclusively on the DSVM. So lo
 2. Click on initials at the bottom-left corner of the Workbench and make sure that we are using the correct account (namely the Experimentation account and matching Model Management account we created in section 2.1.4).
 3. Go to **File > Configure Project IDE** and name the IDE `Code` with the following path `C:\Program Files\Microsoft VS Code\Code.exe`. This will allow us to open the entire project in Visual Studio Code, which is our editor of choice for this lab.
 4. Go to **File > Open Project (VSCode)** to open the project in Visual Studio Code. It is not necessary to use Code to make edit our course files but it is much more convenient. We will return to Code when we need to make changes to the existing scripts.
-5. We now log into the Azure CLI using our Azure account. Return to the Workbench and go to **File > Open Command Prompt**. Check that the Azure CLI is installed on the DSVM by typing `az -h`. Now type `az login` and copy the access code. In Firefox open a **private tab** using **CTRL+SHIFT+P** then enter the URL `aka.ms/devicelogin` and when prompted, paste in the access code. You will next be prompted to authenticate using an Azure account.
+5. We now log into the Azure CLI using our Azure account. Return to the Workbench and go to **File > Open Command Prompt**. Check that the Azure CLI is installed on the DSVM by typing `az -h`. Now type `az login` and copy the access code. In Firefox open a **private tab** using **CTRL+SHIFT+P** then enter the URL `aka.ms/devicelogin` and when prompted, paste in the access code. Next, authenticate using an Azure account.
 6. We now set the Azure CLI to use the right Azure account. From the command prompt, enter `az account list –o table` to see available accounts. Then copy the subscription ID from the Azure account used to create an AML Workbench account and type `az account set –s <subscription_id>`, replacing `<subscription_id>` with the account ID.
