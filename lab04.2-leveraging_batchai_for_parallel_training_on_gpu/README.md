@@ -1,6 +1,6 @@
 # Lab 4.2: Leverage Batch AI Training for parallel training on GPUs
 
-An AI workflow is very iterative. We go from questions, to data, to building models and operationalizing them and we then iterate on this workflow over and over again. As we do this, we run into many DevOps kind of tasks, such as moving from development to production, provisioning, monitoring and scaling my VMs up and down based on demand, or writing code to hadle failures and run at scale. As data scientists, we want these tasks to be handled by others as much as possible so we can focus on what we data scientists are good at.
+An AI workflow is very iterative. We go from questions, to data, to building models and operationalizing them and we then iterate on this workflow over and over again. As we do this, we run into many DevOps kind of tasks, such as moving from development to production, provisioning, monitoring, scaling VMs up and down based on demand, or writing code to hadle failures and run at scale. As data scientists, we want these tasks to be handled by others as much as possible so we can focus on what we data scientists are good at.
 
 The purpose of Azure BatchAI is to make it as easy as possible for data scientists to iterate as they build and deploy models. With Azure BatchAI, with a few commands on the command line (or using the Python API, which is slightly more verbose) we can provision a VM and deploy our code on the VM by submitting jobs. We can monitor the status of running jobs both from the command line and from the Azure portal. 
 
@@ -8,12 +8,14 @@ The material for this lab was mostly derived from the [Azure BatchAI documentati
 
 ## How to access Azure BatchAI from the command line
 
-1. We will use a Data Science Virtual Machine (DSVM) to run this lab. Azure BatchAI is already installed on the DSVM and integrated into the Azure CLI. Log into the DSVM and open up the browser. Download the data used in this lab from [this link](https://batchaisamples.blob.core.windows.net/samples/BatchAIQuickStart.zip?st=2017-09-29T18%3A29%3A00Z&se=2099-12-31T08%3A00%3A00Z&sp=rl&sv=2016-05-31&sr=b&sig=hrAZfbZC%2BQ%2FKccFQZ7OC4b%2FXSzCF5Myi4Cj%2BW3sVZDo%3D), unzip it and go to the unzipped folder. You will see three files: `ConvNet_MNIST.py` which has our script and `Train-28x28_cntk_text.txt` and `Test-28x28_cntk_text.txt` which have our training and test data. The data is a very typical dataset called [MNIST](https://en.wikipedia.org/wiki/MNIST_database), containing images hand-written digits. In the above datasets, the images have already been pre-processed so the data is ready for analysis. The analysis will consist of a Python script which will use the CNTK framework to build a deep learning model for recognizing hand-written digits.
-2. From the above folder, launch the Command Prompt by typing `cmd` from the address bar at the top. Because Azure BatchAI is still in preview, we need to register to use it. We can do so by the commands `az provider register -n Microsoft.BatchAI` and `az provider register -n Microsoft.Batch`. The registration will take a few minutes. We can check if it's done by typing `az provider show -n Microsoft.BatchAI -o table`.
+1. We will use a Data Science Virtual Machine (DSVM) to run this lab. Azure BatchAI is already installed on the DSVM and integrated into the Azure CLI. Log into the DSVM and open up the browser. Download the data used in this lab from [this link](https://batchaisamples.blob.core.windows.net/samples/BatchAIQuickStart.zip?st=2017-09-29T18%3A29%3A00Z&se=2099-12-31T08%3A00%3A00Z&sp=rl&sv=2016-05-31&sr=b&sig=hrAZfbZC%2BQ%2FKccFQZ7OC4b%2FXSzCF5Myi4Cj%2BW3sVZDo%3D), unzip it and go to the unzipped folder. We will see three files: `ConvNet_MNIST.py` which has our script and `Train-28x28_cntk_text.txt` and `Test-28x28_cntk_text.txt` which have our training and test data. The data is a very typical dataset called [MNIST](https://en.wikipedia.org/wiki/MNIST_database), containing images hand-written digits. In the above datasets, the images have already been pre-processed so the data is ready for analysis. The analysis will consist of a Python script which will use the CNTK framework to build a deep learning model for recognizing hand-written digits.
+2. From the above folder, launch the Command Prompt by typing `cmd` from the address bar at the top.
+<div style="text-align:center"><img src ="./images/address-bar-cmd.jpg" width="500"/></div>
+Because Azure BatchAI is still in preview, we need to register to use it. We can do so by the commands `az provider register -n Microsoft.BatchAI` and `az provider register -n Microsoft.Batch`. The registration will take a few minutes. We can check if it's done by typing `az provider show -n Microsoft.BatchAI -o table`.
 
 ## Preparing Azure BatchAI to run jobs
 
-1. We will now create a resource group to contain our Azure BatchAI jobs. Azure BatchAI is right now available in a limited number of regions. We will be using "East US". Type `az group create --name azbootcampazbatch --location eastus` to create the resource group and type `az configure --defaults group=azbootcampazbatch` and `az configure --defaults location=eastus` to make the resource group and location default for the current session.
+1. We will now create a resource group to contain our Azure BatchAI jobs. Azure BatchAI is right now available in a limited number of regions. We will be using "East US". Type `az group create --name azurebootcamplab42 --location eastus` to create the resource group and type `az configure --defaults group=azurebootcamplab42 location=eastus` to make the resource group and location default for the current session.
 2. We will also create a storage account for storing data and script. Type `az storage account create --name azbootcampbatchstore --sku Standard_LRS` to do so.
 3. Our next task is to create a set of environment variables that will be used to provision our VM later. If we're using the Windows Command Prompt we will run the following commands:
 ```
@@ -40,10 +42,13 @@ az storage file upload --share-name batchaiquickstart --source Train-28x28_cntk_
 az storage file upload --share-name batchaiquickstart --source Test-28x28_cntk_text.txt --path mnistcntksample
 az storage file upload --share-name batchaiquickstart --source ConvNet_MNIST.py --path mnistcntksample
 ```
+5. We can now visit the Azure portal to make sure that the above assets were created and the files uploaded.
+<div style="text-align:center"><img src ="./images/azbatchai-storage.jpg" width="600"/></div>
+<div style="text-align:center"><img src ="./images/azbatchai-files.jpg" width="600"/></div>
 
 ## Managing jobs in Azure BatchAI
 
-The above tasks were needed to get our environment ready for use by Azure BatchAI, but they are not needed every time. We are now ready to put Azure BatchAI to use. BatchAI is an extension of the Azure CLI, the command line utility to spin and manage Azure resources. To access it, we simply type `az batchai`. Type `az batchai -h` to get a high-level idea of the things we can do with Azure BatchAI. 
+The above tasks were needed to get our environment ready for use by Azure BatchAI, but they are not needed every time. We are now ready to put Azure BatchAI to use. BatchAI is an extension of the Azure CLI, the command line utility to spin and manage Azure resources. To access it, we simply type `az batchai`. For example, type `az batchai -h` to get a high-level idea of the things we can do with Azure BatchAI.
 
 1. In this part of the lab, we will be spinning a new NC6 GPU cluster (for deep learning) to submit our CNTK job. Along we the cluster specs, we also provide the shared file and credentials to log into the cluster if we need to. Run the following command to spin up the cluster:
 ```
