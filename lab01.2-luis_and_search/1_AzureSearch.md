@@ -3,7 +3,7 @@
 
 [Azure Search](https://docs.microsoft.com/en-us/azure/search/search-what-is-azure-search) is a search-as-a-service solution allowing developers to incorporate great search experiences into applications without managing infrastructure or needing to become search experts.
 
-Developers look for PaaS services in Azure to achieve better results faster in their apps. Search is a key to many categories of applications. Web search engines have set the bar high for search; users expect instant results, auto-complete as they type, highlighting hits within the results, great ranking, and the ability to understand what they are looking for, even if they spell it incorrectly or include extra words.
+Developers look for PaaS services in Azure to achieve better and faster results in their apps. While search is a key to many types of applications, web search engines have set the bar high for search. Users expect: instant results, auto-complete as they type, highlighting hits within the results, great ranking, and the ability to understand what they are looking for, even if they spell it incorrectly or include extra words.
 
 Search is a hard and rarely a core expertise area. From an infrastructure standpoint, it needs to have high availability, durability, scale, and operations. From a functionality standpoint, it needs to have ranking, language support, and geospatial capabilities.
 
@@ -26,7 +26,7 @@ Typical Workflow:
 
 Within the Azure Portal, click **Create a resource->Web + Mobile->Azure Search**.
 
-Once you click this, you'll have to fill out a few fields as you see fit. For this lab, a "Free" tier is sufficient. You are only able to have one "Free" Azure Search instance per subscription, so if you or another member on your subscription have already done this, you will need to use the "Basic" pricing tier.
+Once you click this, you'll have to fill out a few fields as you see fit. For this lab, the "F0" free tier is sufficient. You are only able to have one Free Azure Search instance per subscription, so if you or another member on your subscription have already done this, you will need to use the "Basic" pricing tier. Use the one Resource Group for all of the labs in this workshop. If you completed `lab01.1-pcl_and_cognitive_services`, you can just use that Resource Group.
 
 ![Create New Azure Search Service](./resources/assets/AzureSearch-CreateSearchService.png)
 
@@ -44,7 +44,7 @@ Within the Azure Search blade you just created, click **Import Data->Data Source
 
 ![Import Wizard for DocDB](./resources/assets/AzureSearch-DataSource.png) 
 
-Once you click this, choose a name for the Cosmos DB data source. If you completed the previous lab, `lab01.1-pcl_and_cognitive_services`, choose the Cosmos DB account where your data resides as well as the corresponding Container and Collections. If you did not create the previous lab, select "Or input a connection string" and paste in `AccountEndpoint=https://timedcosmosdb.documents.azure.com:443/;AccountKey=0aRt6JVgbf9KafBxRVuDMNfAj9YoSBbmpICdJ41N5CwHcjuMcVk7jWDBcu4BxbTitLR1zteauQsnF1Tgqs1A3g==;`.
+Once you click this, choose a name for the Cosmos DB data source. If you completed the previous lab, `lab01.1-pcl_and_cognitive_services`, choose the Cosmos DB account where your data resides as well as the corresponding Container and Collections. If you did not complete the previous lab, select "Or input a connection string" and paste in `AccountEndpoint=https://timedcosmosdb.documents.azure.com:443/;AccountKey=0aRt6JVgbf9KafBxRVuDMNfAj9YoSBbmpICdJ41N5CwHcjuMcVk7jWDBcu4BxbTitLR1zteauQsnF1Tgqs1A3g==;`. For both, the Database should be "images" and the Collection should be "metadata".
 
 Click **OK**.
 
@@ -95,7 +95,7 @@ At this point we can try searching the index.
 
 Click **Search Explorer** and in the resulting blade choose your Index if it is not already selected.
 
-Click **Search** to search for all documents.
+Click **Search** to search for all documents. Try searching for "water", or something else, and use **ctrl+click** to select and view the URLs. Were your results what you expected?
 
 ![Search Explorer](./resources/assets/AzureSearch-SearchExplorer.png)
 

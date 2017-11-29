@@ -28,9 +28,9 @@ Once you have created your new API subscription, you can grab the key from the a
 
 ### Lab: Adding intelligence to your applications with LUIS
 
-In the next lab, we will create our PictureBot. First, let's look at how we can use LUIS to add some natural language capabilities. LUIS allows you to map natural language utterances to intents.  For our application, we might have several intents: finding pictures, sharing pictures, and ordering prints of pictures, for example.  We can give a few example utterances as ways to ask for each of these things, and LUIS will map additional new utterances to each intent based on what it has learned.  
+In the next lab, we will create our PictureBot. First, let's look at how we can use LUIS to add some natural language capabilities. LUIS allows you to map natural language utterances (words/phrases/sentences the user might say when talking to the bot) to intents (tasks or actions the user wants to perform).  For our application, we might have several intents: finding pictures, sharing pictures, and ordering prints of pictures, for example.  We can give a few example utterances as ways to ask for each of these things, and LUIS will map additional new utterances to each intent based on what it has learned.  
 
-Navigate to [https://www.luis.ai](https://www.luis.ai) and sign in using your Microsoft account.  (This should be the same account that you used to create the Cognitive Services keys at the beginning of this lab.)  You should be redirected to a list of your LUIS applications at [https://www.luis.ai/applications](https://www.luis.ai/applications).  We will create a new LUIS app to support our bot.  
+Navigate to [https://www.luis.ai](https://www.luis.ai) and sign in using your Microsoft account.  (This should be the same account that you used to create the LUIS key in the previous section).  You should be redirected to a list of your LUIS applications at [https://www.luis.ai/applications](https://www.luis.ai/applications).  We will create a new LUIS app to support our bot.  
 
 > Fun Aside: Notice that there is also an "Import App" next to the "New App" button on [the current page](https://www.luis.ai/applications).  After creating your LUIS application, you have the ability to export the entire app as JSON and check it into source control.  This is a recommended best practice, so you can version your LUIS models as you version your code.  An exported LUIS app may be re-imported using that "Import App" button.  If you fall behind during the lab and want to cheat, you can click the "Import App" button and import the [LUIS model](./resources/code/LUIS/PictureBotLuisModel.json).  
 
@@ -62,7 +62,7 @@ Click on "Entities" in the left-hand column and then click "Add custom entity". 
 
 Next, click "Intents" in the left-hand sidebar and then click the yellow "Add Intent" button.  Give it an intent name of "SearchPics" and then click "Save".  
 
-Let's add some sample utterances (words/phrases/sentences the user might say when talking to the bot).  People might search for pictures in many ways.  Feel free to use some of the utterances below, and add your own wording for how you would ask a bot to search for pictures. 
+Just as we did for Greetings, let's add some sample utterances (words/phrases/sentences the user might say when talking to the bot).  People might search for pictures in many ways.  Feel free to use some of the utterances below, and add your own wording for how you would ask a bot to search for pictures. 
 
 + Find outdoor pics
 + Are there pictures of a train?
@@ -76,7 +76,7 @@ Let's add some sample utterances (words/phrases/sentences the user might say whe
 + I want to see pics of sad girls
 + Show me happy baby pics
 
-Once we have some utterances, we have to teach LUIS how to pick out the search topic as the "facet" entity.  Hover and click over the word (or drag to select a group of words) and then select the "facet" entity.  
+Once we have some utterances, we have to teach LUIS how to pick out the **search topic** as the "facet" entity. Whatever the "facet" entity picks up is what will be searched. Hover and click over the word (or drag to select a group of words) and then select the "facet" entity. 
 
 ![Labelling Entity](./resources/assets/LabellingEntity.jpg) 
 
@@ -105,7 +105,7 @@ Then click on "Publish App" in the left sidebar.  You have several options when 
 
 ![Publish LUIS App](./resources/assets/PublishLuisApp.png) 
 
-Publishing creates an endpoint to call the LUIS model.  The URL will be displayed.  
+Publishing creates an endpoint to call the LUIS model.  The URL will be displayed, which will be explained in a later lab.
 
 Click on "Train & Test" in the left sidebar.  Check the "Enable published model" box to have the calls go through the published endpoint rather than call the model directly. Try typing a few utterances and see the intents returned.  
 >Unfortunately, there is a bug open with "Enable published model", and it only works in Chrome. 

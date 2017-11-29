@@ -180,7 +180,7 @@ In the Solution Explorer in Visual Studio, right-click on your Bot Application p
 
 Select the publish target of "Microsoft Azure App Service".  
 
-![Publish Bot to Azure App Service](./resources/assets/PublishBotAzureAppService.jpg) 
+![Publish Bot to Azure App Service](./resources/assets/PublishBotAzureAppService.png) 
 
 On the App Service screen, select the appropriate subscription and click "New". Then enter an API app name, subscription, the same resource group that you've been using thus far, and an app service plan.  
 
@@ -207,7 +207,7 @@ Finally, you need to update your bot with its registration information.  Return 
 ```xml
 
     <add key="BotId" value="TestPictureBot" />
-    <add key="MicrosoftAppId" value="95b76ae6-8643-4d94-b8a1-916d9f753ab0" />
+    <add key="MicrosoftAppId" value="95b76ae6-8643-4d94-b8a1-916d9f753a30" />
     <add key="MicrosoftAppPassword" value="kC200000000000000000000" />
 
 ```
