@@ -1,4 +1,5 @@
 ## (optional) 4_TestCLI
+Estimated Time: 10-15 minutes
 
 ## (optional) Exploring Cosmos DB
 

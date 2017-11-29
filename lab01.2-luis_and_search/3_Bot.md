@@ -1,4 +1,5 @@
-
+## 3_Bot:
+Estimated Time: 30-40 minutes
 
 ## Building a Bot
 
@@ -14,7 +15,7 @@ We will be developing a bot using the C# SDK.  To get started, you need two thin
 
 In Visual Studio, go to File --> New Project and create a Bot Application named "PictureBot". Make sure you name it "PictureBot" or you may have issues later on.  
 
-![New Bot Application](./resources/assets/NewBotApplication.jpg) 
+![New Bot Application](./resources/assets/NewBotApplication.png) 
 
 >The rest of the **Creating a simple bot and running it** lab is optional. Per the prerequisites, you should have experience working with the Bot Framework. You can hit F5 to confirm it builds correctly, and move on to the next lab.
 
@@ -151,6 +152,8 @@ Next, we'll update the bot to call Azure Search.  First, open Tools-->NuGet Pack
 Right-click on your project in the Solution Explorer of Visual Studio, and select Add-->New Folder.  Create a folder called "Models".  Then right-click on the Models folder, and select Add-->Existing Item.  Do this twice to add these two files under the Models folder (make sure to adjust your namespaces if necessary):
 1. [ImageMapper.cs](./resources/code/Models/ImageMapper.cs)
 2. [SearchHit.cs](./resources/code/Models/SearchHit.cs)
+
+>You can find the files in this repository under [resources/code/Models](./resources/code/Models)
 
 Next, right-click on the Dialogs folder in the Solution Explorer of Visual Studio, and select Add-->Class.  Call your class "SearchDialog.cs". Add the contents from [here](./resources/code/SearchDialog.cs).
 

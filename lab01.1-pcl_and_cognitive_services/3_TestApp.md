@@ -1,4 +1,5 @@
 ## 3_TestApp
+Estimated Time: 10-15 minutes
 
 ### Lab: Building and exploring the TestApp
 

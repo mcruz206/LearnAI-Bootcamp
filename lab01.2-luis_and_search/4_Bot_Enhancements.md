@@ -1,4 +1,5 @@
-
+## 4_Bot_Enhancements:
+Estimated Time: 20-30 minutes
 
 ### Lab: Regular expressions and scorable groups
 

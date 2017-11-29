@@ -1,4 +1,5 @@
 ## 1_Setup:
+Estimated Time: 30-40 minutes
 
 ### Lab: Setting up your Azure Account
 
