@@ -32,10 +32,16 @@ We will review these articles in class:
   1.  [Model data collection](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-use-model-data-collection)
   2.  [Azure Machine Learning Model Data Collection API reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-data-collection-api-reference)
 
+The process and flow for using Azure Machine Learning Services has this layout:  
+
+![Image](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/model-management-overview/modelmanagementworkflow.png)
+
 ### Lab: Collecting Model Data
 In this lab you'll use Python to collect scoring data 
 - [ ] Open the Azure Machine Learning Services Workbench tool locally or on your Data Science Virtual Machine. 
 - [ ] [Navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-use-model-data-collection), and complete all sections there.
+- [ ] Run the "az ml service run" section multiple times.
+- [ ] Using Power BI, Excel, Spark or HIVE, examine the data from the various runs.
 
 ## Workshop Completion
 In this workshop you learned how to:
