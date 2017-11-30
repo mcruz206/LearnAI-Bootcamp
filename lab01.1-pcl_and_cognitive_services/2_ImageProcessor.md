@@ -1,5 +1,5 @@
 ## 2_ImageProcessor
-Estimated Time: 30-40 minutes
+Estimated Time: 30-45 minutes
 
 ## Cognitive Services
 
