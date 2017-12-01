@@ -36,7 +36,6 @@ The three main Azure resources we will consume in this lab are as follows:
  - A **Model Management account** is for managing models. Model management is essential to both model development and deployment. We use a model management account to register models and bundle models and code (including dependencies) into **manifests**. Manifests are in turn used to create Docker **images**, and those images in turn build containerized web services that run instances of our deployed application, locally or in the cloud.
  - An **environment** denotes a particular computing resource that is used for deploying and managing models. It can be a local computer, a Linux VM on Azure, or a Kubernetes cluster running in Azure Container Service. A model hosted in a Docker container runs in these environments and is exposed as a REST API endpoint.
 
-Source: https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-general-concepts
 
 After this lab is finished, we will have a better idea of how to use the Workbench and accompanying Azure services in order to
 
@@ -70,15 +69,15 @@ TrackedRun: true
 6. In order to run the experiment in a Docker container, we must prepare a Docker image. We will do so programatically by going to **File > Open Command Prompt** and typing `az ml experiment prepare -c docker`. Notice all the changes that are happening as this command is running. This should take a few minutes.
   **Note:** At this point, there is a strange Docker behavior for which we propose an easy solution: we may get an error at the top about `image operating system "linux" cannot be used on this platform`.
 
-  <div style="text-align:center"><img src ="./images/linux-image-not-found.jpg" width="600"/></div>
+  ![Image](./images/linux-image-not-found.jpg)
 
   To resolve it we click on the Docker logo on the right-hand side in the taskbar and switch Docker to use Windows containers. This will result in a new Docker error:
 
-  <div style="text-align:center"><img src ="./images/docker-windows-image.jpg" width="300"/></div>
+  ![Image](./images/docker-windows-image.jpg)
 
   Now we switch Docker back to Linux containers (by going to the taskbar once more).
 
-  <div style="text-align:center"><img src ="./images/switch-linux-containers.jpg" width="500"/></div>
+  ![Image](./images/switch-linux-containers.jpg)
 
   We then return to the command prompt and run the above command again. This will take a few minutes. When finished, we should get a message saying `Your environment is now ready`.
 
