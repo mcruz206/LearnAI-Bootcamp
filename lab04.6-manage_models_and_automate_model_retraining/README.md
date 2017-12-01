@@ -45,16 +45,12 @@ The [Primary Concepts for this Workshop are here](https://docs.microsoft.com/en-
 
 AMLS Model Management has the following structure: 
 
-![Image](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/model-management-overview/modelmanagement.png)
+![Image](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/model-management-overview/modelmanagementworkflow.png)
+
 
 ### Lab: Working with Models in AMLS
 In this lab you'll ***TODO*** using the Azure Machine Learning Workbench.
 - [ ] [Open this link](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-use-tdsp-in-azure-ml), ***TODO***
-
-## Retraining 
-Once you have Operationalized your model, you will want to improve its performance. To retrain your model, the following workflow is used: 
-
-![Image](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/model-management-overview/modelmanagementworkflow.png)
 
 ## Workshop Completion
 
