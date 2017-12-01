@@ -44,7 +44,7 @@ After this lab is finished, we will have a better idea of how to use the Workben
 - smooth out the transition of going from development to production for operationalizing ML models
 - get back to doing more data science and less administrative or devops types of tasks
 
-### 3.1 Running the modeling script in Docker
+### Lab 4.6.1 Running the modeling script in Docker
 
 Our task in this section is to successfully run the project in a Docker container. To do so, we will need to start a new Workbench project based on an existing template and make a set of changes to the project in order to run it successfully. 
 
@@ -96,7 +96,7 @@ f.close()
 
 9. Rerun the experiment and when finished click on the job and notice the output `model.pkl` in the **Run Properties** pane under **Outputs**. Select this output and download it and place it in new folder called `outputs` under the project directory.
 
-### 3.2 Creating a web service out of the scoring script
+### Lab 4.6.2 Creating a web service out of the scoring script
 
 Let's now see how we can create a scoring web service from the above model inside a docker image. There are multiple steps that go into doing that. We will be running commands from the command line, but we will also log into the Azure portal in order to see which resources are being created as we run various Azure CLI commands.
 
@@ -138,6 +138,7 @@ Notice that since a service already existed for the model, we used `az ml servic
 az ml env setup --cluster -l eastus2 -n bootcampvmprod -g azurebootcamplab32
 ```
 We can create a new service programmatically in the same way we did earlier. But we can also go to the Model Management portal, select the image and choose **Create Service** and switch the environment to the production environment `bootcampvmprod` we just created.
+
 ## Workshop Completion
 
 In this workshop you learned how to:
