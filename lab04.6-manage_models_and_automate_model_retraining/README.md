@@ -2,7 +2,11 @@
 This hands-on lab guides you through managing and regtraining models using [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-what-is-azure-ml) with the Azure Machine Learning Workbench. 
 
 In this workshop, you will:
-- [ ] Understand ***TODO***
+- [ ] Understand Machine Learning Model versioning
+- [ ] Track models in production
+- [ ] Understand how to deploy models to production through AzureML Compute Environment with Azure Container Service and Kubernetes
+- [ ] Create Docker containers with the models and test them locally
+- [ ] Automate model retraining
 
 You'll focus on the objectives above, not Data Science, Machine Learning or a difficult scenario.  
 
@@ -55,7 +59,11 @@ Once you have Operationalized your model, you will want to improve its performan
 ## Workshop Completion
 
 In this workshop you learned how to:
-- [ ] ***TODO***
+- [ ] Understand Machine Learning Model versioning
+- [ ] Track models in production
+- [ ] Understand how to deploy models to production through AzureML Compute Environment with Azure Container Service and Kubernetes
+- [ ] Create Docker containers with the models and test them locally
+- [ ] Automate model retraining
 
 You may now delete and decommission the following resources if you wish:
   * The Azure Machine Learning Services accounts and workspaces
