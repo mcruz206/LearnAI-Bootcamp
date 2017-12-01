@@ -221,6 +221,6 @@ Navigate back to your bot's dashboard (something like https://dev.botframework.c
 From your bot's dashboard, you can add other channels, and try out your bot in Skype, Facebook Messenger, or Slack.  Simply click the "Add" button to the right of the channel name on your bot's dashboard, and follow the instructions.
 
 
-### Continue to [5_Challenge_and_Closing](./4_Challenge_and_Closing.md)
+### Continue to [5_Challenge_and_Closing](./5_Challenge_and_Closing.md)
 
 Back to [README](./0_readme.md)

@@ -66,7 +66,7 @@ This workshop has been broken down into five sections:
 - [1_Setup](./1_Setup.md): Here we'll get everything set up for you to perform these labs - Azure, a Data Science Virtual Machine, and Keys you'll need throughout the workshop
 - [2_ImageProcessor](./2_ImageProcessor.md): You'll learn about portable class libraries, and how to build an image processor from service helpers
 - [3_TestApp](./3_TestApp.md): We'll finish building our application and test it out, also storing our insights in `ImageInsights.json`
-- [4_TestCLI](./4_TestCLI.md) (optional): Here we'll load our images into Cosmos DB and Azure Storage using a console application. You should complete this lab if you want to learn more about Cosmos DB, and you plan on completing **lab01.2-luis_and_search**
+- [4_TestCLI](./4_TestCLI.md) (optional): Here we'll load our images into Cosmos DB and Azure Storage using a console application. You should complete this lab if you want to learn more about Cosmos DB, and if you plan on completing **lab01.2-luis_and_search**
 - [5_Challenge_and_Closing](./5_Challenge_and_Closing.md): If you get through all the labs, try this challenge. You will also find a summary of what you've done and where to learn more.
 
 

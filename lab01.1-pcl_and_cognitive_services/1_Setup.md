@@ -10,7 +10,7 @@ If you have been given an Azure Pass to complete this lab, you may go to [http:/
 ### Lab: Setting up your Data Science Virtual Machine
 
 After creating an Azure account, you may access the [Azure portal](https://portal.azure.com). From the portal, [create a Resource Group for this lab](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-portal). Detailed information about the Data Science Virtual Machine can be [found online](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/overview), but we will just go over what's needed for this workshop. In your Resource Group, deploy and connect to a Data Science Virtual Machine for Windows (2016), with a size of D4S_V3 (this is only available on certain regions, try "West US" or "East US 2"). All other defaults are fine.
->We are creating a VM and not doing it locally, because many of you will not have the ability to change your machine to "Developer Mode" which we need to develop UWP apps.
+>We are creating a VM and not doing it locally, because many of you will not have the ability to change your machine to "Developer Mode" which we need to develop UWP (Windows) apps.
 
 Once you're connected, there are several things you need to do to set up the DSVM for the workshop:
 
@@ -21,12 +21,12 @@ Once you're connected, there are several things you need to do to set up the DSV
 	- Type in the Cortana search bar "For developers", select "For developers settings", and change the settings to "Developer Mode".
 	- Type in the Cortana search bar "gpedit.msc" and push enter. Enable the following policy: Computer Configuration>Windows Settings>Security Settings>Local Policies>Security Options>User Account Control: Admin Approval Mode for the Built-in Administrator account
     - In the Cortana search bar, type "gpupdate", and click "gpupdate" to force the local security policy to refresh immediately
-	- Start the [Collecting the Keys](#Lab) lab. 
+	- Start the Collecting the Keys lab (right below this one) 
 5. Once the install is complete and you have changed your developer settings and the User Account Control policy, reboot your DSVM. 
 > Note: Be sure to turn off your DSVM after the workshop so you don't get charged.
 
 
-### <a name="Lab"></a> Lab: Collecting the Keys ###
+### Lab: Collecting the Keys ###
 
 Over the course of this lab, we will collect Cognitive Services keys and storage keys. You should save all of them in a text file so you can easily access them in future labs.
 
