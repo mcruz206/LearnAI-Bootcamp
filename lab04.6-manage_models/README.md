@@ -18,16 +18,17 @@ You'll focus on the objectives above, not Data Science, Machine Learning or a di
 There is a comprehensive Learning Path you can use to prepare for this course [located here](https://github.com/Azure/learnAnalytics-CreatingSolutionswiththeTeamDataScienceProcess-/blob/master/Instructions/Learning%20Path%20-%20Creating%20Solutions%20with%20the%20Team%20Data%20Science%20Process.md).
 
 ## Introduction and setup 
-The [Primary Concepts for this Workshop are here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-overview) and [another here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-configuration). We'll refer to these throughout the labs.
+- [ ] The [Primary Concepts for this Workshop are here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-overview) and [another here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-configuration). We'll refer to these throughout the labs.
 
 ***NOTE*** The following steps must be completed ***prior*** to attempting this workshop:
 
+Ensure you have [completed this set of prerequisites prior to attending class](https://msdata.visualstudio.com/AlgorithmsAndDataScience/Training/_git/LearnAI-Bootcamp?_a=preview&path=%2Flab00.0-bootcamp-pre-requisites%2FREADME.md&version=GBmaster)
 
 ## Azure Machine Learning Model Management
 
 Here is the high-level architecture of an end-to-end solution with Azure ML Workbench (or Workbench for short) handling both the development and operationalization of a Machine Learning model. We should return to this chart as we run through this lab to see how all the pieces come together.
 
-<div style="text-align:center"><img src ="https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/overview-general-concepts/hierarchy.png" width="800"/></div>
+![Image](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/overview-general-concepts/hierarchy.png)
 
 The three main Azure resources we will consume in this lab are as follows:
 
