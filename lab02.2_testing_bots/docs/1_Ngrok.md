@@ -30,11 +30,10 @@ Visit Bot Framework to register your bot. When you register it, remember to set 
 
 ![Forwarding Url](images/ForwardingUrl.png)
 
- e.	 Enter the forwarding url (http) in the bot emulator. The bot url will have /api/messages appended to the forwarding url. Test the bot in the emulator by sending messages.
+ e.	 Enter the forwarding url (http) in the bot emulator. The bot url will have /api/messages appended to the forwarding url. Test the bot in the emulator by sending messages. We have now used a public endpoint instead of localhost to test the bot.
+
 
 ![Bot Url](images/BotUrl.png)
-
-We have used a public endpoint instead of localhost to test the bot.
 
 ## 4.	Finish early? Try this exercise for extra credit:
 
