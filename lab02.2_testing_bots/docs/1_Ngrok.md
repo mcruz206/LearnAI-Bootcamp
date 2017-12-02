@@ -18,6 +18,8 @@ Describe your bot here and your terms of use etc.
 
 Visit Bot Framework to register your bot. When you register it, remember to set your bot's endpoint to https://your_bots_hostname/api/messages
 
+*** The above information is informational only. You do not need to register your bot for this lab.
+
 ## 3.	Forwarding
 
  a.	 Given the bot is being hosted on localhost:3979, we can use ngrok to expose this port to the public internet
