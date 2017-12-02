@@ -34,6 +34,8 @@ Visit Bot Framework to register your bot. When you register it, remember to set 
 
 ![Bot Url](images/BotUrl.png)
 
+We have used a public endpoint instead of localhost to test the bot.
+
 ## 4.	Finish early? Try this exercise for extra credit:
 
  When you register the bot on the Microsoft Bot Framework, can you use the forwarding url for the Messaging Endpoint? Test the bot on a channel using the forwarding URL on any channel (skype for example).
