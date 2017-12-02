@@ -30,15 +30,7 @@ Visit Bot Framework to register your bot. When you register it, remember to set 
 
 ![Forwarding Url](images/ForwardingUrl.png)
 
- d.	 In some of the older emulator versions, you will also need to provide an emulator url for port 9000. If you see Emulator url (port 9000) listed in your emulator, you will also need to generate a forwarding url using ngrok. Run the below command and you should see the forwarding url for port 9000:
-
- ````ngrok.exe http -host-header=rewrite 9000````
-
-![Emulator Url](images/EmulatorUrl.png)
-
-*** The above step (d) may not be required if you do not see emulator url in your emulator.
-
- e.	 Enter the forwarded urls in the bot emulator (bot url and emulator url). The bot url will have /api/messages appended to the forwarding url. Test the bot in the emulator by sending messages.
+ e.	 Enter the forwarded url (http) in the bot emulator. The bot url will have /api/messages appended to the forwarding url. Test the bot in the emulator by sending messages.
 
 ![Bot Url](images/BotUrl.png)
 
