@@ -8,7 +8,7 @@ Communication directly with your bot may be required in some situations. For exa
 
 1. Open the project from code\core-DirectLine and import the solution in Visual Studio.
 
-2. In the DirectLineBot solution, you will find two projects: DirectLineBot and DirectLineSampleClient. Publish DirectLineBot.
+2. In the DirectLineBot solution, you will find two projects: DirectLineBot and DirectLineSampleClient. You can choose to use the published bot (from the earlier labs) or publish DirectLineBot for this lab.
 
 DirectLineSampleClient is the client that will send messages to the bot.
 
@@ -30,7 +30,7 @@ Tokens: A token is conversation specific. You request a token using that secret 
 
 ## Config
 
-The Secret key obtained from *Configure Direct Line* in the Bot Framework Portal is then added to the Configuration settings in Program.cs file. In addition, for the published bot, capture the bot id. The relevant lines of Program.cs to enter the secret key and bot id are as follows:
+The Secret key obtained from *Configure Direct Line* in the Bot Framework Portal is then added to the Configuration settings in Program.cs file. In addition, capture the bot id/app id of the published bot. The relevant lines of Program.cs to enter the secret key and bot id are as follows:
 
 ````C#
         private static string directLineSecret = "SecretKey";
@@ -40,8 +40,6 @@ The Secret key obtained from *Configure Direct Line* in the Bot Framework Portal
 
 The fromUser is optional but is a placeholder to validate users communicating with the bot.
 
-
-![Config](images/Config.png)
 
 ## Sending and Receiving Messages
 
@@ -85,7 +83,7 @@ curl -H "Authorization:Bearer {SecretKey}" https://directline.botframework.com/a
 
 5.	Direct Line API 3.0
 
-	With 3.0, you can also send rich media such as images or hero cards unlike the earlier versions. In DirectLineBotDialog.cs, one of the case statements looks for the text "send me a botframework image" to send image
+	With 3.0, you can also send rich media such as images or hero cards unlike the earlier versions. If you are using DirectLineBotDialog.cs, one of the case statements looks for the text "send me a botframework image" to send image
 
 ```c#
 case "send me a botframework image":
