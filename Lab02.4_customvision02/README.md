@@ -278,8 +278,8 @@ prediction. The code should look as follows:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // this loads the images to be uploaded from disk into memory
-AmpImages = Directory.GetFiles(@"..\..\..\CustomImages\Amps").Select(f => new MemoryStream(File.ReadAllBytes(f))).ToList();
-GuitarImages = Directory.GetFiles(@"..\..\..\CustomImages\Guitars").Select(f => new MemoryStream(File.ReadAllBytes(f))).ToList();
+AmpImages = Directory.GetFiles(@"..\..\..\Images\Amps").Select(f => new MemoryStream(File.ReadAllBytes(f))).ToList();
+GuitarImages = Directory.GetFiles(@"..\..\..\Images\Guitars").Select(f => new MemoryStream(File.ReadAllBytes(f))).ToList();
 testImage = new MemoryStream(File.ReadAllBytes(@"..\..\..\CustomImages\Test\Instrument.jpg"));;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

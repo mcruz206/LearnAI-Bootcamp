@@ -43,9 +43,9 @@ namespace CustomVision.Sample
 {
     class Program
     {
-        private static List<MemoryStream> hemlockImages;
+        private static List<MemoryStream> AmpImages;
 
-        private static List<MemoryStream> japaneseCherryImages;
+        private static List<MemoryStream> GuitarImages;
 
         private static MemoryStream testImage;
 
@@ -60,24 +60,24 @@ namespace CustomVision.Sample
 
             // Create a new project  
             Console.WriteLine("Creating new project:");
-            var project = trainingApi.CreateProject("My New Project");
+            var project = trainingApi.CreateProject("My Second Project");
 
             // Make two tags in the new project
-            var hemlockTag = trainingApi.CreateTag(project.Id, "Hemlock");
-            var japaneseCherryTag = trainingApi.CreateTag(project.Id, "Japanese Cherry");
+            var AmpTag = trainingApi.CreateTag(project.Id, "Amp");
+            var GuitarTag = trainingApi.CreateTag(project.Id, "Guitar");
 
             // Add some images to the tags  
             Console.WriteLine("\\tUploading images");
             LoadImagesFromDisk();
 
             // Images can be uploaded one at a time  
-            foreach (var image in hemlockImages)
+            foreach (var image in AmpImages)
             {
-                trainingApi.CreateImagesFromData(project.Id, image, new List<string>() { hemlockTag.Id.ToString() });
+                trainingApi.CreateImagesFromData(project.Id, image, new List<string>() { AmpTag.Id.ToString() });
             }
 
             // Or uploaded in a single batch   
-            trainingApi.CreateImagesFromData(project.Id, japaneseCherryImages, new List<Guid>() { japaneseCherryTag.Id });
+            trainingApi.CreateImagesFromData(project.Id, GuitarImages, new List<Guid>() { GuitarTag.Id });
 
             // Now there are images with tags start training the project  
             Console.WriteLine("\\tTraining");
@@ -144,9 +144,9 @@ namespace CustomVision.Sample
         private static void LoadImagesFromDisk()
         {
             // this loads the images to be uploaded from disk into memory
-            hemlockImages = Directory.GetFiles(@"..\..\..\..\Images\Hemlock").Select(f => new MemoryStream(File.ReadAllBytes(f))).ToList();
-            japaneseCherryImages = Directory.GetFiles(@"..\..\..\..\Images\Japanese Cherry").Select(f => new MemoryStream(File.ReadAllBytes(f))).ToList();
-            testImage = new MemoryStream(File.ReadAllBytes(@"..\..\..\..\Images\Test\test_image.jpg"));
+            AmpImages = Directory.GetFiles(@"..\..\..\..\Images\Amps").Select(f => new MemoryStream(File.ReadAllBytes(f))).ToList();
+            GuitarImages = Directory.GetFiles(@"..\..\..\..\Images\Guitars").Select(f => new MemoryStream(File.ReadAllBytes(f))).ToList();
+            testImage = new MemoryStream(File.ReadAllBytes(@"..\..\..\..\Images\Test\Instrument.jpg"));
 
         }
     }
