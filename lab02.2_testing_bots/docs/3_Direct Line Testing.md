@@ -2,17 +2,13 @@
 
 ## Objectives
 
-In certain scenarios such as testing, communication directly to your bot may be required. Communication between your bot and your own client application can be performed using Direct Line API. This hands-on lab introduces key concepts related to Direct Line API.
+Communication directly with your bot may be required in some situations. For example, you may want to perform functional tests with a hosted bot. Communication between your bot and your own client application can be performed using [Direct Line API](https://docs.microsoft.com/en-us/bot-framework/rest-api/bot-framework-rest-direct-line-3-0-concepts). This hands-on lab introduces key concepts related to Direct Line API.
 
 ## Setup
 
-For this lab, you can use a published Bot to talk to via Direct Line API. 
+1. Open the project from code\core-DirectLine and import the solution in Visual Studio.
 
-Download the sample from:
-
-https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-DirectLine and import the solution in Visual Studio.
-
-In the DirectLineBot solution, you will find two projects: DirectLineBot and DirectLineSampleClient. If you do not have a published app, you can publish DirectLineBot.
+2. In the DirectLineBot solution, you will find two projects: DirectLineBot and DirectLineSampleClient. You can choose to use the published bot (from the earlier labs) or publish DirectLineBot for this lab.
 
 DirectLineSampleClient is the client that will send messages to the bot.
 
@@ -32,16 +28,18 @@ Secret Key: Secret key is application wide and is embedded in the client applica
 
 Tokens: A token is conversation specific. You request a token using that secret and you can initiate a conversation with that token. Its valid for 30 minutes from when it is issued but it can be refreshed.
 
-## App Config
+## Config
 
-The Secret key obtained from *Configure Direct Line* in the Bot Framework Portal is then added to the Configuration settings in App.config file as shown below. In addition, for the published bot, capture the bot id and enter in the appSettings part of App.config from DirectLineSampleClient project. The relevant lines of App.config to enter in the App.config are listed as follows:
+The Secret key obtained from *Configure Direct Line* in the Bot Framework Portal is then added to the Configuration settings in Program.cs file. In addition, capture the bot id/app id of the published bot. The relevant lines of Program.cs to enter the secret key and bot id are as follows:
 
-```
-<add key="DirectLineSecret" value="YourBotDirectLineSecret" />
-<add key="BotId" value="YourBotId" />
-```
+````C#
+        private static string directLineSecret = "SecretKey";
+        private static string botId = "appId";
+        private static string fromUser = "DirectLineSampleClientUser";
+````
 
-![Config](images/Config.png)
+The fromUser is optional but is a placeholder to validate users communicating with the bot.
+
 
 ## Sending and Receiving Messages
 
@@ -49,7 +47,7 @@ Using Direct Line API, a client can send messages to your bot by issuing HTTP Po
 
 1.	Run project DirectLineSampleClient after making the Config changes.
 
-2.	Submit a message via console and obtain the conversation id using the below line:
+2.	Submit a message via console and obtain the conversation id. Line 52 of Program.cs prints the conversation ID that you will need in order to talk to bots:
 
 ````Console.WriteLine("Conversation ID:" + conversation.ConversationId);````
 
@@ -85,7 +83,7 @@ curl -H "Authorization:Bearer {SecretKey}" https://directline.botframework.com/a
 
 5.	Direct Line API 3.0
 
-	With 3.0, you can also send rich media such as images or hero cards unlike the earlier versions. In DirectLineBotDialog.cs, one of the case statements looks for the text "send me a botframework image" to send image
+	With 3.0, you can also send rich media such as images or hero cards unlike the earlier versions. If you are using DirectLineBotDialog.cs, one of the case statements looks for the text "send me a botframework image" to send image
 
 ```c#
 case "send me a botframework image":

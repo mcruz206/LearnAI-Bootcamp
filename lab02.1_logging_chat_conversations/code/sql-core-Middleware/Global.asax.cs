@@ -1,15 +1,15 @@
-﻿namespace MiddlewareBot
-{
-    using System.Web.Http;
-    using Autofac;
-    using Microsoft.Bot.Builder.Dialogs;
-    using System.IO;
-    using System.Diagnostics;
-    using System;
-    using System.Configuration;
-    using System.Data.SqlClient;
-    using System.Text;
+﻿using System.Web.Http;
+using Autofac;
+using Microsoft.Bot.Builder.Dialogs;
+using System.IO;
+using System.Diagnostics;
+using System;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Text;
 
+namespace MiddlewareBot
+{
     public class WebApiApplication : System.Web.HttpApplication
     {
         SqlConnection connection = null;

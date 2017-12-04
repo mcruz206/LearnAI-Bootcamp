@@ -1,12 +1,12 @@
-﻿namespace MiddlewareBot
-{
-    using System.Diagnostics;
-    using System.Threading.Tasks;
-    using Microsoft.Bot.Builder.History;
-    using Microsoft.Bot.Connector;
-    using System.IO;
-    using System.Data.SqlClient;
+﻿using System.Diagnostics;
+using System.Threading.Tasks;
+using Microsoft.Bot.Builder.History;
+using Microsoft.Bot.Connector;
+using System.IO;
+using System.Data.SqlClient;
 
+namespace MiddlewareBot
+{
     public class SqlActivityLogger : IActivityLogger
     {
         SqlConnection connection;

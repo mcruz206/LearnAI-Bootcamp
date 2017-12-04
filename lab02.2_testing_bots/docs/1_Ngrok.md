@@ -8,7 +8,7 @@ When designing / building / testing your code, you do not always want to have to
   
 ## 2.	Setup
   
- a.	  If you do not have ngrok installed, download ngrok from https://ngrok.com/download and install for your OS
+ a.	  If you do not have ngrok installed, download ngrok from https://ngrok.com/download and install for your OS. Unzip ngrok file downloaded and install it.
 
  b.	  Open any Bot project (from the previous labs) in Visual Studio and run it. If you are using EchoBot, you should be seeing the below message in the browser:
 
@@ -16,7 +16,9 @@ When designing / building / testing your code, you do not always want to have to
 
 Describe your bot here and your terms of use etc.
 
-Visit Bot Framework to register your bot. When you register it, remember to set your bot's endpoint to
+Visit Bot Framework to register your bot. When you register it, remember to set your bot's endpoint to https://your_bots_hostname/api/messages
+
+*** The above information is informational only. You do not need to register your bot for this lab.
 
 ## 3.	Forwarding
 
@@ -30,18 +32,11 @@ Visit Bot Framework to register your bot. When you register it, remember to set 
 
 ![Forwarding Url](images/ForwardingUrl.png)
 
- d.	 To use public urls in the bot emulator, you will also need to generate a forwarding url using ngrok for Emulator url (port 9000). Run the below command and you should see the forwarding url for port 9000:
+ e.	 Enter the forwarding url (http) in the bot emulator. The bot url will have /api/messages appended to the forwarding url. Test the bot in the emulator by sending messages. We have now used a public endpoint instead of localhost to test the bot.
 
- ````ngrok.exe http -host-header=rewrite 9000````
-
-![Emulator Url](images/EmulatorUrl.png)
-
- e.	 Enter the forwarded urls in the bot emulator (bot url and emulator url). The bot url will have /api/messages appended to the forwarding url. Test the bot in the emulator by sending messages.
 
 ![Bot Url](images/BotUrl.png)
 
-## 4.	Exercise
+## 4.	Finish early? Try this exercise for extra credit:
 
- a.	 When you register the bot on the Microsoft Bot Framework, can you use the forwarding url for the Messaging Endpoint?
- 
- b.	 Test the bot on a channel using the forwarding URL on a channel.
+ When you register the bot on the Microsoft Bot Framework, can you use the forwarding url for the Messaging Endpoint? Test the bot on a channel using the forwarding URL on any channel (skype for example).

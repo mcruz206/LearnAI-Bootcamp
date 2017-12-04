@@ -6,7 +6,7 @@ This lab is aimed at getting started with logging using the Microsoft Bot Framew
 
 ## 2. Setup
 
-Import the core-Middleware code from https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-Middleware in Visual Studio. The easiest way to perform this is opening core-Middleware.sln. The solution explorer would look as follows in Visual Studio:
+Import the core-Middleware code from code\core-Middleware in Visual Studio. The easiest way to perform this is opening core-Middleware.sln. The solution explorer would look as follows in Visual Studio:
 
 ![Solution Explorer](images/SolutionExplorer.png)
 

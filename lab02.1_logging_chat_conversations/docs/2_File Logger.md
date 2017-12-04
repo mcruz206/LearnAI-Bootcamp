@@ -2,18 +2,20 @@
 
 ## 1.	Objectives
 
-The aim of this lab is to log chat conversations to a file using middleware. Excessive I/O operations can result in slow responses from the bot. In this lab, the global events are leveraged to perform efficient logging of chat conversations to a file. We will continue to extend the code from the previous lab.
+The aim of this lab is to log chat conversations to a file using middleware. Excessive Input/Output (I/O) operations can result in slow responses from the bot. In this lab, the global events are leveraged to perform efficient logging of chat conversations to a file. This activity is an extension of the previous lab's concepts.
+
+Import the project from code\file-core-Middleware in Visual Studio.
 
 ## 2. An inefficient way of logging
 
 A very simple way of logging chat conversations to a file is to use File.AppendAllLines as shown below in the code snippet. File.AppendAllLines opens a file, appends the specified string to the file, and then closes the file. However, this can be very inefficient way of logging as we will be opening and closing the file for every message from the user/bot.
-
+tu
 ````C#
 public class DebugActivityLogger : IActivityLogger
 {
-    public async Task LogAsync(IActivity activiy)
+    public async Task LogAsync(IActivity activity)
     {
-        File.AppendAllLines("C:\\Users\\username\\log.txt", new[] { $"From:{activiy.From.Id} - To:{activiy.Recipient.Id} - Message:{activiy.AsMessageActivity().Text}" });
+        File.AppendAllLines("C:\\Users\\username\\log.txt", new[] { $"From:{activity.From.Id} - To:{activity.Recipient.Id} - Message:{activity.AsMessageActivity().Text}" });
     }
 }
 ````
@@ -29,15 +31,16 @@ tw = new StreamWriter("C:\\Users\\username\\log.txt", true);
 Application_Start opens a StreamWriter that implements a Stream wrapper that writes characters to a stream in a particular encoding. This lasts for the life of the bot and we can now just write to it as opposed to opening and closing the file for each message. It is also worth noting that the StreamWriter is now sent as a parameter to DebugActivityLogger. The log file can be closed in Application_End which is called once per lifetime of the application before the application is unloaded.
 
 ````C#
+using System.Web.Http;
+using Autofac;
+using Microsoft.Bot.Builder.Dialogs;
+using System.IO;
+using System.Diagnostics;
+using System;
+
+
 namespace MiddlewareBot
 {
-    using System.Web.Http;
-    using Autofac;
-    using Microsoft.Bot.Builder.Dialogs;
-    using System.IO;
-    using System.Diagnostics;
-    using System;
-
     public class WebApiApplication : System.Web.HttpApplication
     {
         static TextWriter tw = null;
@@ -60,22 +63,24 @@ namespace MiddlewareBot
 }
 ````
 
-Change the DebugActivityLogger now to receive the file parameter in the constructor and update LogAsync to write to the log file now by adding the below lines.
+Recieve the file parameter in DebugActivityLogger constructor and update LogAsync to write to the log file now by adding the below lines.
 
 ````C#
-tw.WriteLine($"From:{activiy.From.Id} - To:{activiy.Recipient.Id} - Message:{activiy.AsMessageActivity().Text}", true);
+tw.WriteLine($"From:{activity.From.Id} - To:{activity.Recipient.Id} - Message:{activity.AsMessageActivity().Text}", true);
 tw.Flush();
 ````
 
+The entire DebugActivityLogger code looks as follows:
+
 ````C#
+using System.Diagnostics;
+using System.Threading.Tasks;
+using Microsoft.Bot.Builder.History;
+using Microsoft.Bot.Connector;
+using System.IO;
+
 namespace MiddlewareBot
-{
-    using System.Diagnostics;
-    using System.Threading.Tasks;
-    using Microsoft.Bot.Builder.History;
-    using Microsoft.Bot.Connector;
-    using System.IO;
-    
+{    
     public class DebugActivityLogger : IActivityLogger
     {
         TextWriter tw;
@@ -85,9 +90,9 @@ namespace MiddlewareBot
         }
 
 
-        public async Task LogAsync(IActivity activiy)
+        public async Task LogAsync(IActivity activity)
         {
-            tw.WriteLine($"From:{activiy.From.Id} - To:{activiy.Recipient.Id} - Message:{activiy.AsMessageActivity().Text}", true);
+            tw.WriteLine($"From:{activity.From.Id} - To:{activity.Recipient.Id} - Message:{activity.AsMessageActivity().Text}", true);
             tw.Flush();
         }
     }
@@ -143,7 +148,7 @@ One can always capture all the chat messages and perform filtering to mine selec
   "replyToId": "09df56eecd28457b87bba3e67f173b84"
 }
 ```
-Can you change the LogAsync to filter on user messages only? You can do that with a simple condition to check ````activity.From.Name```` property:
+After investigating the json, the LogAsync method in DebugActivityLogger can be modified to filter on user messages by introducing a simple condition to check ````activity.From.Name```` property:
 
 ````C#
 public class DebugActivityLogger : IActivityLogger
