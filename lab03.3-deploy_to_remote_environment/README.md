@@ -91,7 +91,7 @@ In this lab you will create an experiment, examine its configuration, and run th
 - [ ] [Open this Reference and create an Ubuntu Data Science Virtual Machine](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
 
     - [ ] Choose a size of *Standard D4s v3 (4 vcpus, 16 GB memory)*
-    - [ ] Use an SSH password, not a Keygen. 
+    - [ ] Use a password, not a SSH Key
     - [ ] Start the VM and connect to it using ssh. If you use some version of bash, the command is: `ssh *nameyoupicked*@*ipaddressofvm*`
     - [ ] Check to ensure Docker is functional on your Linux DSVM with the following command:
 
