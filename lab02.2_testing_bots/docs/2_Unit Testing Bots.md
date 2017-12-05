@@ -55,7 +55,7 @@ Inside EchoBotTests.cs, you will find a TestMethod called *ShouldReturnEcho*. *S
 using (new FiberTestBase.ResolveMoqAssembly(rootDialog))
 ````
 
-Run all Tests by selecting  **Test -> Run -> All Tests ** as shown below and verify the tests run successfully.
+Run all Tests by selecting  **Test -> Run -> All Tests** as shown below and verify the tests run successfully.
 
 ![Echo Bot](images/Echobot.png)
 
