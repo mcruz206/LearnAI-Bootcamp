@@ -11,8 +11,8 @@
 
     public class Program
     {
-        private static string directLineSecret = "DirectLineKey";
-        private static string botId = "BotID";
+        private static string directLineSecret = ConfigurationManager.AppSettings["DirectLineSecret"];
+        private static string botId = ConfigurationManager.AppSettings["BotId"];
         private static string fromUser = "DirectLineSampleClientUser";
 
         public static void Main(string[] args)
