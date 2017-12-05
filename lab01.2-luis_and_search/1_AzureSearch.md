@@ -72,7 +72,7 @@ Set the fields **Caption, Tags, and Faces** to be **Searchable** (to allow the c
 
 At this point we will configure the Azure Search Analyzers.  At a high level, you can think of an analyzer as the thing that takes the terms a user enters and works to find the best matching terms in the Index.  Azure Search includes analyzers that are used in technologies like Bing and Office that have deep understanding of 56 languages.  
 
-Click the **Analyzer** tab and set the fields **Caption, Tags, and Faces** to use the **English-Microsoft** analyzer
+Click the **Analyzer** tab and set the fields **Caption, Tags, and Faces** to use the **English-Microsoft** [analyzer](https://docs.microsoft.com/en-us/azure/search/search-analyzers).
 
 ![Language Analyzers](./resources/assets/AzureSearch-Analyzer.png) 
 

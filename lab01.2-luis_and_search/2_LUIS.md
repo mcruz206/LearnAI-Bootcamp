@@ -109,7 +109,7 @@ Then click on "Publish App" in the left sidebar.  You have several options when 
 Publishing creates an endpoint to call the LUIS model.  The URL will be displayed, which will be explained in a later lab.
 
 Click on "Train & Test" in the left sidebar.  Check the "Enable published model" box to have the calls go through the published endpoint rather than call the model directly. Try typing a few utterances and see the intents returned.  
->Unfortunately, there is a bug open with "Enable published model", and it only works in Chrome. 
+>Unfortunately, there is a bug open with "Enable published model", and it only works in Chrome. You can either download Chrome and try this, or skip it but remember that it's not enabled.
 
 ![Test LUIS](./resources/assets/TestLuis.png) 
 
