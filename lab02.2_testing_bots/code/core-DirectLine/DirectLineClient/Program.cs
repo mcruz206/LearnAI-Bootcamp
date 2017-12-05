@@ -11,8 +11,8 @@
 
     public class Program
     {
-        private static string directLineSecret = "EnziuKarqjI.cwA.o4A.NDCWDMDFn8TuuyL1lKIg8-frNF0cofo_NMDKuYmKh5M";
-        private static string botId = "eaab8106-4044-414d-9dd2-c30fc6b88725";
+        private static string directLineSecret = "DirectLineKey";
+        private static string botId = "BotID";
         private static string fromUser = "DirectLineSampleClientUser";
 
         public static void Main(string[] args)
