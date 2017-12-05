@@ -20,7 +20,7 @@ Import the EchoBot Solution in VisualStudio from code\EchoBot. On successful imp
 
 ## 3.	Echobot
 
-In this lab, we will use EchoBot to develop unit tests. EchoBot is a very simple bot that echos back to the user with any message typed. For example, if the user types "Hello", EchoBot responds with the message "You sent: Hello". The core of EchoBot code that uses Dialogs can be found below. MessageReceivedAsync echos back to the user with "You said:� "
+In this lab, we will use EchoBot to develop unit tests. EchoBot is a very simple bot that echos back to the user with any message typed. For example, if the user types "Hello", EchoBot responds with the message "You sent: Hello". The core of EchoBot code that uses Dialogs can be found below (MessagesController.cs). MessageReceivedAsync echos back to the user with "You said: "
 
 ````c#
 public class EchoDialog : IDialog<object>
@@ -55,7 +55,7 @@ Inside EchoBotTests.cs, you will find a TestMethod called *ShouldReturnEcho*. *S
 using (new FiberTestBase.ResolveMoqAssembly(rootDialog))
 ````
 
-Run all Tests by selecting Test -> Run -> All Tests as shown below and verify the tests run successfully.
+Run all Tests by selecting  **Test -> Run -> All Tests ** as shown below and verify the tests run successfully.
 
 ![Echo Bot](images/Echobot.png)
 
