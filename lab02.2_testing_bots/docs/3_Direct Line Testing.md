@@ -8,7 +8,14 @@ Communication directly with your bot may be required in some situations. For exa
 
 1. Open the project from code\core-DirectLine and import the solution in Visual Studio.
 
-2. In the DirectLineBot solution, you will find two projects: DirectLineBot and DirectLineSampleClient. You can choose to use the published bot (from the earlier labs) or publish DirectLineBot for this lab.
+2. In the DirectLineBot solution, you will find two projects: DirectLineBot and DirectLineSampleClient. You can choose to use the **published bot (from the earlier labs) or publish DirectLineBot** for this lab.
+
+To use DirectLineBot, you must:
+
+- Deploy it to Azure. Follow [this tutorial](https://docs.microsoft.com/en-us/bot-framework/deploy-dotnet-bot-visual-studio) to learn how to deploy a .NET bot to Azure directly from Visual Studio.
+
+- Register it with the Bot Framework before others can use DirectLineBot. The steps to register can be found in the [registration instructions](https://docs.microsoft.com/en-us/bot-framework/portal-register-bot).
+
 
 DirectLineSampleClient is the client that will send messages to the bot.
 
