@@ -71,9 +71,13 @@ In this lab you'll create an experiment, examine its configuration, and run the 
 
       $az ml experiment submit -c docker myscript.py
 
-      with 
+      with: 
 
       $az ml experiment submit -c docker iris_sklearn.py
+
+      if that fails, use:
+
+      $az ml experiment submit -c docker-python iris_sklearn.py
 
 ## Executing an Experiment to a remote Data Science Virtual Machine in Azure
 You configure the Azure ML experiment flow for a remote run using this process: 
