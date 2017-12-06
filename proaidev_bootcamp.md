@@ -54,7 +54,7 @@ Please note: This is a rough agenda, and the schedule is subject to change pendi
   - 10-11: Lab 4.1: Explore hyper-parameters on Spark using Azure Machine Learning
   - 11-12:00: Lab 4.2: Deploying a scoring service to Azure Container Service 
   - 12-1: Lunch
-  - 1:00-1:50: Lab 4.3:  Consuming the final service
-  - 2:00-2:50: Lab 4.4: Collect and Analyzing Data from a scoring service
-  - 3:00-3:50: Lab 4.5: Updating a Model in Production using Model Management Service
+  - 1:00-1:50: Lab 4.3: Updating a Model in Production using Model Management Service
+  - 2:00-2:50: Lab 4.4: Consuming the final service
+  - 3:00-3:50: Lab 4.5: Collect data from a scoring service
   - 4-5: Summary and White-board Discussion
