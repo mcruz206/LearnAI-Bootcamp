@@ -65,7 +65,7 @@ Using Direct Line API, a client can send messages to your bot by issuing HTTP Po
 
 	4.1 Curl:
 
-	You can also use curl for communicating with the bot. Curl is a command line tool for transferring data using various protocols. Curl can be downloaded from 	
+	Curl is a command line tool for transferring data using various protocols. Curl can be downloaded from 	
 	https://curl.haxx.se/download.html
 
 	Open terminal and go to the location where curl is installed and run the below command for a specific conversation:
@@ -95,20 +95,20 @@ Using Direct Line API, a client can send messages to your bot by issuing HTTP Po
 
 	With 3.0, you can also send rich media such as images or hero cards unlike the earlier versions. If you are using DirectLineBotDialog.cs, one of the case statements looks for the text "send me a botframework image" to send image
 
-```c#
-case "send me a botframework image":
-                    
-	reply.Text = $"Sample message with an Image attachment";
+	```c#
+	case "send me a botframework image":
+						
+		reply.Text = $"Sample message with an Image attachment";
 
-        var imageAttachment = new Attachment()
-        {
-		ContentType = "image/png",
-                ContentUrl = "https://docs.microsoft.com/en-us/bot-framework/media/how-it-works/architecture-resize.png",
-         };
+			var imageAttachment = new Attachment()
+			{
+			ContentType = "image/png",
+					ContentUrl = "https://docs.microsoft.com/en-us/bot-framework/media/how-it-works/architecture-resize.png",
+			};
 
-	reply.Attachments.Add(imageAttachment);
-```
+		reply.Attachments.Add(imageAttachment);
+	```
 
-Enter this text using the client and view the results via curl as shown below. You will find the image url displayed in the images array.
+	Enter this text using the client and view the results via curl as shown below. You will find the image url displayed in the images array.
 
-![Images Array](images/ImagesArray.png)
+	![Images Array](images/ImagesArray.png)
