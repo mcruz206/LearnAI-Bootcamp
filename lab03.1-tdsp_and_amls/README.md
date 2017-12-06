@@ -39,7 +39,7 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
 
   *  Or you can use a Windows Data Science Virtual Machine (DSVM) to run this lab: 
         *  [Navigate to this path](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.windows-data-science-vm), and create a Windows Azure Data Science Virtual Machine (DSVM). 
-           *  Choose a VM size of: D4S_V3, with 4 virtual CPUs and 14-Gb RAM. This VM size is not available in all regions, so choose an appropriate region (`East US 2` is a good choice).
+           *  Choose a VM size of: D4S_V3, with 4 virtual CPUs and 14-Gb RAM. This VM size is not available in all regions, so choose an appropriate region (`West US 2` is a good choice).
            *  When the DSVM is deployed, start it using the [Azure portal.](https://portal.azure.com)
         *  After you create and Start the DSVM, log in to it and double-click the "Install Azure Machine Learning Workbench" icon. Finish the installation by following the on-screen instructions. The installer downloads all the necessary dependent components, such as Python, Miniconda, and other related libraries. The installation might take around half an hour to finish all the components. When complete, the Azure Machine Learning Workbench is installed in the following directory: C:\\Users\\%USERNAME%\\AppData\\Local\\AmlWorkbench
 
@@ -84,8 +84,15 @@ In this workshop, we'll use a single file-based dataset from the U.S. Census to 
 ### Lab: Ingest data from a local source
 In this lab you will load the data set, inspect it, make a few changes, and then save the Data Wrangling steps as a Python package. 
 
-- [ ] Open [this reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-classifying-us-incomes), and complete all sections. 
-- [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main.py** file and run it (use the pull-down menu in the main project screen). This will take some time - allow it to complete. 
+- [ ] Open [this reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-classifying-us-incomes).  We will use this to explain the steps we will use in this lab.
+- [ ] Open Azure Machine Learning Workbench
+    - [ ] On the **Projects** page, click the **+** sign and select **New Project**
+    - [ ] In the Create New Project pane, fill in the information for your new project (Note your folder location - this is the *root*)
+    - [ ] In the Search Project Templates search box, type "**Classify US incomes - TDSP project**" and select the template
+    - [ ] Click **Create**
+
+- [ ] In the Azure Machine Learning Services Workbench, open the **Files** icon
+- [ ] Open the **code/01_data_acquisition_and_understanding/Main.py** file and run it (use the "Run" icon at the top of the screen). This will take some time - allow it to complete. 
 - [ ] This example uses the IDEAR methodology to examine the data. Open the directory where you stored your project, and examine the **WhateverYouNamedYourProject\docs\deliverable_docs\IDEAR.html** file in a web browser for the code and results. 
 
 ## 3. Modeling
@@ -97,10 +104,13 @@ The [Modeling](https://docs.microsoft.com/en-us/azure/machine-learning/team-data
 
 ### Lab: Feature Engineering, Modeling, and Scoring
 In this lab we'll use the same project you just completed - the "Classify US Incomes" one. You'll create your feature engineering file, run the model training, and create the final scores.
-- [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main_FeatureEngineering.py** file and run it to perform the Feature Engineering. You will see the Job status in the right-hand pane and in the Job History section of the Workbench.
-- [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main_ModelCreation.py** file and run it to create your model.  You will see the Job status in the right-hand pane and in the Job History section of the Workbench.
-- [ ] In the Azure Machine Learning Services Workbench, open the **code/01_data_acquisition_and_understanding/Main_ScoringAndEvaluation.py** 
-file and run it.  You will see the Job status in the right-hand pane. When the scoring completes, click that item and open the **driver_log** you find in the Run History. You will see the AUC for the two algorithms compared.
+- [ ] In the Azure Machine Learning Services Workbench, open the **Files** icon
+    - [ ] Open the **code/02_modeling/Main_FeatureEngineering.py** file and run it to perform the Feature Engineering. You will see the Job status in the right-hand pane and in the Job History section of the Workbench.
+    - [ ] Open the **code/02_modeling/Main_ModelCreation.py** file and run it to create your model.  You will see the Job status in the right-hand pane and in the Job History section of the Workbench.
+    - [ ] Open the **code/02_modeling/Main_ScoringAndEvaluation.py** file and run it.  
+
+- [ ] When these processes complete, you will see the **Job status** for each in the right-hand pane. Click the click the **code/02_modeling/Main_ScoringAndEvaluation.py** item in that pane and open the **driver_log** you find in the Run History. You will see the AUC for the two algorithms compared.
+- [ ] Now you need the serialized model file ("pickle file") saved off so that the code in the deployment section that follows can send the model to a container. To do that, look in the Job Status pane again and this time click the **code/02_modeling/Main_ModelCreation.py** item. In the **Output** area there you will see two models. Select the **CVRandomForestModel.pkl** file, select **Download** and save the file in the root of the project folder - You can find this in the "Project Dashboard" view in the Workbench, as the "Location" shown there. 
 
 ## 4. Deployment
 The [Deployment](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-deployment) phase of the TDSP entails outputting  the results to a data location, creating an Application Programming Interface (API) or another mechanism for the classification or prediction model to be consumed. 
@@ -109,9 +119,11 @@ An outline of this process is here:
 
 ![Image](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/model-management-overview/modelmanagementworkflow.png)
  
-### Lab: Deploy the solution using Containers
-In this lab you will deploy the solution to Azure Container Services (ACS) for worldwide deployment. 
-- [ ] [Navigate to this location and follow the instructions you see there.](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/03_deployment). NOTE: You do not have to call the web service (the last two steps) at this time. 
+### Optional Lab: Deploy the solution using Containers, consume the results
+In this lab you will deploy the solution to Azure Container Services (ACS) for worldwide deployment. **NOTE** This section takes quite some, so it's included here for completeness. The instructor will go over it with you. 
+- [ ] Click **File** then **Open Command Prompt** in the Workbench
+- [ ] In the Workbench, Open the **Files** area, and navigate to the **code/03_deployment/readme.md** file. Click the **Edit** button at the top of the Workbench and follow along with the instructions in that file. 
+- [ ] You will copy and paste each of the commands shown in the Command Prompt. Some of these take a bit of time to complete.
 
 ## 5. Customer Acceptance
 The final step in the Team Data Science Process is [Customer Acceptance](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-acceptance). Here you focus on ensuring that the model performed within acceptable time and accuracy rates, and also present your findings in a comprehensive project document.
