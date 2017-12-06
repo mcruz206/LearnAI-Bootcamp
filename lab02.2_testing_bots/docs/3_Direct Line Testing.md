@@ -61,23 +61,23 @@ Using Direct Line API, a client can send messages to your bot by issuing HTTP Po
 
 3.	Once you have the conversation id, you can retrieve user and bot messages using HTTP Get. To retrieve messages for a specific conversation, you can issue a GET request to https://directline.botframework.com/api/conversations/{conversationId}/messages endpoint. You will also need to pass the Secret Key as part of raw header (i.e. Authorization: Bearer {secretKey}).
 
-4.	Use any Rest Client to receive messages via HTTP Get.
+4.	Any Rest Client can be used to receive messages via HTTP Get. In this lab, we will leverage curl or web based client:
 
-* Curl:
+	4.1 Curl:
 
 	You can also use curl for communicating with the bot. Curl is a command line tool for transferring data using various protocols. Curl can be downloaded from 	
 	https://curl.haxx.se/download.html
 
 	Open terminal and go to the location where curl is installed and run the below command for a specific conversation:
 		
-```
-curl -H "Authorization:Bearer {SecretKey}" https://directline.botframework.com/api/conversations/{conversationId}/messages -XGET
-```
+	```
+	curl -H "Authorization:Bearer {SecretKey}" https://directline.botframework.com/api/conversations/{conversationId}/messages -XGET
+	```
 
-![Messages-XGET](images/Messages-XGET.png)
+	![Messages-XGET](images/Messages-XGET.png)
 
 
-* Web based Rest Clients:
+	4.2 Web based Rest Clients:
 
 	You can use [Advanced Rest Client](https://advancedrestclient.com/) with Chrome for receiving messages from the bot. 
 	
@@ -85,11 +85,11 @@ curl -H "Authorization:Bearer {SecretKey}" https://directline.botframework.com/a
 	
 	The below images indicate the conversations obtained from *Advanced Rest Client*. Note the conversation "Hi there" and the corresponding bot response that is echoed back.
 
-![HTTPRequest](images/HTTPRequest.png)
+	![HTTPRequest](images/HTTPRequest.png)
 
-&nbsp;
+	&nbsp;
 
-![HTTPRequest1](images/HTTPRequest_1.png)
+	![HTTPRequest1](images/HTTPRequest_1.png)
 
 5.	Direct Line API 3.0
 
