@@ -55,9 +55,9 @@ Using Direct Line API, a client can send messages to your bot by issuing HTTP Po
 
 2.	Submit a message via console and obtain the conversation id. Line 52 of Program.cs prints the conversation ID that you will need in order to talk to bots:
 
-````Console.WriteLine("Conversation ID:" + conversation.ConversationId);````
+	````Console.WriteLine("Conversation ID:" + conversation.ConversationId);````
 
-![Console](images/Console.png)
+	![Console](images/Console.png)
 
 3.	Once you have the conversation id, you can retrieve user and bot messages using HTTP Get. To retrieve messages for a specific conversation, you can issue a GET request to https://directline.botframework.com/api/conversations/{conversationId}/messages endpoint. You will also need to pass the Secret Key as part of raw header (i.e. Authorization: Bearer {secretKey}).
 
