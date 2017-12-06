@@ -8,7 +8,7 @@ Communication directly with your bot may be required in some situations. For exa
 
 1. Open the project from code\core-DirectLine and import the solution in Visual Studio.
 
-2. In the DirectLineBot solution, you will find two projects: DirectLineBot and DirectLineSampleClient. You can choose to use the **published bot (from the earlier labs) or publish DirectLineBot** for this lab.
+2. In the DirectLineBot solution, you will find two projects: DirectLineBot and DirectLineSampleClient. You can choose to use the **published bot (from the earlier labs)** or **publish DirectLineBot** for this lab.
 
 To use DirectLineBot, you must:
 
@@ -37,12 +37,13 @@ Tokens: A token is conversation specific. You request a token using that secret 
 
 ## App Config
 
-The Secret key obtained from *Configure Direct Line* in the Bot Framework Portal is then added to the Configuration settings in App.config file as shown below. In addition, for the published bot, capture the bot id and enter in the appSettings part of App.config from DirectLineSampleClient project. The relevant lines of App.config to enter in the App.config are listed as follows:
+The Secret key obtained from *Configure Direct Line* in the Bot Framework Portal is then added to the Configuration settings in App.config file as shown below. In addition, for the published bot, capture the bot id (also known as the app id) and enter in the appSettings part of App.config from DirectLineSampleClient project. The relevant lines of App.config to enter in the App.config are listed as follows:
 
 ```
 <add key="DirectLineSecret" value="YourBotDirectLineSecret" />
-<add key="BotId" value="YourBotId" />
+<add key="BotId" value="YourBotId/" />
 ```
+
 
 ![Config](images/Config.png)
 
@@ -62,29 +63,33 @@ Using Direct Line API, a client can send messages to your bot by issuing HTTP Po
 
 4.	Use any Rest Client to receive messages via HTTP Get.
 
-	* Web based Rest Clients:
+* Curl:
 
-		You can use https://advancedrestclient.com/ with Chrome for receiving messages from the bot. The below images indicate the conversations obtained from *Advanced Rest Client*. Note the conversation "Hi there" and the corresponding bot response that is echoed back.
-
-	![HTTPRequest](images/HTTPRequest.png)
-
-
-	&nbsp;
-
-	![HTTPRequest1](images/HTTPRequest_1.png)
-
-	* Curl:
-
-		Alternatively, you can also use curl for communicating with the bot. You can download curl from 	
+	You can also use curl for communicating with the bot. Curl is a command line tool for transferring data using various protocols. Curl can be downloaded from 	
 	https://curl.haxx.se/download.html
 
-		Open terminal and go to the location where curl is installed and run the below command for a specific conversation:
+	Open terminal and go to the location where curl is installed and run the below command for a specific conversation:
 		
 ```
 curl -H "Authorization:Bearer {SecretKey}" https://directline.botframework.com/api/conversations/{conversationId}/messages -XGET
 ```
 
 ![Messages-XGET](images/Messages-XGET.png)
+
+
+* Web based Rest Clients:
+
+	You can use [Advanced Rest Client](https://advancedrestclient.com/) with Chrome for receiving messages from the bot. 
+	
+	To use Advanced Rest Client, the header would need to contain header name (Authorization) and header value (Bearer SecretKey). The request url would be https://directline.botframework.com/api/conversations/{conversationId}/messages endpoint
+	
+	The below images indicate the conversations obtained from *Advanced Rest Client*. Note the conversation "Hi there" and the corresponding bot response that is echoed back.
+
+![HTTPRequest](images/HTTPRequest.png)
+
+&nbsp;
+
+![HTTPRequest1](images/HTTPRequest_1.png)
 
 5.	Direct Line API 3.0
 
