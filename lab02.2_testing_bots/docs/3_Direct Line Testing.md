@@ -8,7 +8,7 @@ Communication directly with your bot may be required in some situations. For exa
 
 1. Open the project from code\core-DirectLine and import the solution in Visual Studio.
 
-2. In the DirectLineBot solution, you will find two projects: DirectLineBot and DirectLineSampleClient. You can choose to use the **published bot (from the earlier labs) or publish DirectLineBot** for this lab.
+2. In the DirectLineBot solution, you will find two projects: DirectLineBot and DirectLineSampleClient. You can choose to use the **published bot (from the earlier labs)** or **publish DirectLineBot** for this lab.
 
 To use DirectLineBot, you must:
 
@@ -37,12 +37,13 @@ Tokens: A token is conversation specific. You request a token using that secret 
 
 ## App Config
 
-The Secret key obtained from *Configure Direct Line* in the Bot Framework Portal is then added to the Configuration settings in App.config file as shown below. In addition, for the published bot, capture the bot id and enter in the appSettings part of App.config from DirectLineSampleClient project. The relevant lines of App.config to enter in the App.config are listed as follows:
+The Secret key obtained from *Configure Direct Line* in the Bot Framework Portal is then added to the Configuration settings in App.config file as shown below. In addition, for the published bot, capture the bot id (also known as the app id) and enter in the appSettings part of App.config from DirectLineSampleClient project. The relevant lines of App.config to enter in the App.config are listed as follows:
 
 ```
 <add key="DirectLineSecret" value="YourBotDirectLineSecret" />
-<add key="BotId" value="YourBotId" />
+<add key="BotId" value="YourBotId/" />
 ```
+
 
 ![Config](images/Config.png)
 
@@ -54,56 +55,60 @@ Using Direct Line API, a client can send messages to your bot by issuing HTTP Po
 
 2.	Submit a message via console and obtain the conversation id. Line 52 of Program.cs prints the conversation ID that you will need in order to talk to bots:
 
-````Console.WriteLine("Conversation ID:" + conversation.ConversationId);````
+	````Console.WriteLine("Conversation ID:" + conversation.ConversationId);````
 
-![Console](images/Console.png)
+	![Console](images/Console.png)
 
 3.	Once you have the conversation id, you can retrieve user and bot messages using HTTP Get. To retrieve messages for a specific conversation, you can issue a GET request to https://directline.botframework.com/api/conversations/{conversationId}/messages endpoint. You will also need to pass the Secret Key as part of raw header (i.e. Authorization: Bearer {secretKey}).
 
-4.	Use any Rest Client to receive messages via HTTP Get.
+4.	Any Rest Client can be used to receive messages via HTTP Get. In this lab, we will leverage curl or web based client:
 
-	* Web based Rest Clients:
+	4.1 Curl:
 
-		You can use https://advancedrestclient.com/ with Chrome for receiving messages from the bot. The below images indicate the conversations obtained from *Advanced Rest Client*. Note the conversation "Hi there" and the corresponding bot response that is echoed back.
+	Curl is a command line tool for transferring data using various protocols. Curl can be downloaded from 	
+	https://curl.haxx.se/download.html
+
+	Open terminal and go to the location where curl is installed and run the below command for a specific conversation:
+		
+	```
+	curl -H "Authorization:Bearer {SecretKey}" https://directline.botframework.com/api/conversations/{conversationId}/messages -XGET
+	```
+
+	![Messages-XGET](images/Messages-XGET.png)
+
+
+	4.2 Web based Rest Clients:
+
+	You can use [Advanced Rest Client](https://advancedrestclient.com/) with Chrome for receiving messages from the bot. 
+	
+	To use Advanced Rest Client, the header would need to contain header name (Authorization) and header value (Bearer SecretKey). The request url would be https://directline.botframework.com/api/conversations/{conversationId}/messages endpoint
+	
+	The below images indicate the conversations obtained from *Advanced Rest Client*. Note the conversation "Hi there" and the corresponding bot response that is echoed back.
 
 	![HTTPRequest](images/HTTPRequest.png)
-
 
 	&nbsp;
 
 	![HTTPRequest1](images/HTTPRequest_1.png)
 
-	* Curl:
-
-		Alternatively, you can also use curl for communicating with the bot. You can download curl from 	
-	https://curl.haxx.se/download.html
-
-		Open terminal and go to the location where curl is installed and run the below command for a specific conversation:
-		
-```
-curl -H "Authorization:Bearer {SecretKey}" https://directline.botframework.com/api/conversations/{conversationId}/messages -XGET
-```
-
-![Messages-XGET](images/Messages-XGET.png)
-
 5.	Direct Line API 3.0
 
 	With 3.0, you can also send rich media such as images or hero cards unlike the earlier versions. If you are using DirectLineBotDialog.cs, one of the case statements looks for the text "send me a botframework image" to send image
 
-```c#
-case "send me a botframework image":
-                    
-	reply.Text = $"Sample message with an Image attachment";
+	```c#
+	case "send me a botframework image":
+						
+		reply.Text = $"Sample message with an Image attachment";
 
-        var imageAttachment = new Attachment()
-        {
-		ContentType = "image/png",
-                ContentUrl = "https://docs.microsoft.com/en-us/bot-framework/media/how-it-works/architecture-resize.png",
-         };
+			var imageAttachment = new Attachment()
+			{
+			ContentType = "image/png",
+					ContentUrl = "https://docs.microsoft.com/en-us/bot-framework/media/how-it-works/architecture-resize.png",
+			};
 
-	reply.Attachments.Add(imageAttachment);
-```
+		reply.Attachments.Add(imageAttachment);
+	```
 
-Enter this text using the client and view the results via curl as shown below. You will find the image url displayed in the images array.
+	Enter this text using the client and view the results via curl as shown below. You will find the image url displayed in the images array.
 
-![Images Array](images/ImagesArray.png)
+	![Images Array](images/ImagesArray.png)
