@@ -31,7 +31,7 @@ This runs a single training experiment. If we are doing this for the first time,
 <div style="text-align:center"><img src ="./images/jobs-pannel.jpg" width="300"/></div>
 Click on the green **Completed** button for one of the jobs to examine the logs created by the script.
 7. Once all the jobs finish running, go to the the **Runs** tab on the left-hand side and click on **All Runs**. Then examine the metrics and visualizations we are presented with.
-<div style="text-align:center"><img src ="./images/runs-tab.jpg" width="300"/></div>
+<div style="text-align:center"><img src ="./images/runs-tab.jpg" width="200"/></div>
 At the top we have four pannels, one showing information about the jobs we ran and the other three showing some metrics collected by each run (a run here is a single experiment).
 <div style="text-align:center"><img src ="./images/top-four-pannel.jpg" width="700"/></div>
 To see how these metrics tie back to the Python script, open `iris_sklearn.py` in **Code** and find where the model's accuracy is being logged. Hint: the Python object storing it is called `accuracy` in the script. 
@@ -60,7 +60,7 @@ print ("Max F_1 is {}".format(max(f_score)))
 2. Return to the Workbench and go the the **Runs** tab and click on **All Runs**. Scroll down to the table listing all the runs, click on the checkbox next to `RUN NUMBER` to select them all and click on **Archive**. Repeat this until all the runs have been archived.
 <div style="text-align:center"><img src ="./images/archive-runs.jpg" width="500"/></div>
 3. From the **Command Prompt** rerun `python run.py` and go to the **Jobs** pannel to monitor jobs as they are running. Once all the jobs are finish running, click on the green **Completed** button to view their output. Find the job with regularization rate 0.009765625 and report its maximum F-score (under `Max F_1 is ...`). The output on this page is produced as a result of `print` statements in the script (or functions that return output). 
-<div style="text-align:center"><img src ="./images/printed-output.jpg" width="500"/></div>
+<div style="text-align:center"><img src ="./images/printed-output.jpg" width="600"/></div>
 For the same run, now click on the blue link just above the green **Completed** button to see the **Run Properties** pane. Find the regularization rate and the F-score in this tab. The output in this pane is created partly as a result of meta-data collected for each job (such as **Start Time** and **Duration**) and partly as a result of metrics that we logged using the `run_logger.log` function. 
 <div style="text-align:center"><img src ="./images/run-properties.jpg" width="500"/></div>
 Scroll down to see the visuals created by array we logged, including the `Fscore` visual that should now also appear.
@@ -76,9 +76,9 @@ You should now see an additional plot showing the value for `MaxFscore` accross 
 <div style="text-align:center"><img src ="./images/max-fscore.jpg" width="600"/></div>
 Of the two models, find the one with the highest accuracy (you will find accuracy under **Logged Metrics**) and note its `runNumber` (at the very top). Then click on **Run List** to return to the table of all the runs and this time click on the `RUN NUMBER` for that model.
 6. In **Run Properties** under **Outputs** select the binary object that stores our model (called `model.pkl` by the script) and click on **Promote**.
-<div style="text-align:center"><img src ="./images/promote-model.jpg.jpg" width="500"/></div>
+<div style="text-align:center"><img src ="./images/promote-model.jpg" width="600"/></div>
 Click on **Project Dashboard** and then on the project path at the top. 
-<div style="text-align:center"><img src ="./images/project-dashboard.jpg" width="500"/></div>
+<div style="text-align:center"><img src ="./images/project-dashboard.jpg" width="600"/></div>
 A Windows Explorer window will open. From there go to the `classifying_iris` folder. When we promote a model, a new folder is created in our project directory called `assets` (if there was none before) and a link to the `model.pkl` is placed there, called `model.pkl.link`. The model object can also be directly downloaded using the **Download** button under **Outputs** in **Run Properties**. Once we have the model object, we can use it to create a scoring script.  
 Promoted models are registered and versioned in our **Azure Model Management** account and can be viewed in the Azure portal under the Model Management portal. This link can be used to later download the model object itself. 
 <div style="text-align:center"><img src ="./images/models-in-mm-portal.jpg" width="500"/></div>
