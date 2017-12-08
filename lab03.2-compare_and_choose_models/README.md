@@ -1,114 +1,100 @@
-# Lab 3.2: Model management using the Azure Machine Learning Workbench
+# Lab 3.2: Building and comparing models with Azure ML Workbench
 
-Here is the high-level architecture of an end-to-end solution with Azure ML Workbench (or Workbench for short) handling both the development and operationalization of a Machine Learning model. We should return to this chart as we run through this lab to see how all the pieces come together.
+Data science is a very iterative process that involves lots of trial and error. As such, the Azure Machine Learning Workbench (Workbench for short) makes it easy for data scientists to iterate on the model building and deployment process. Among other things, Workbench facilitates two common problems we encounter when developing ML solutions: 
 
-<div style="text-align:center"><img src ="https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/overview-general-concepts/hierarchy.png" width="800"/></div>
+- **Model selection**: Run and compare different models across collected metrics (with a few extra lines of python code). In this context, a single model estimate is referred to as an **experiment** and we talk about training and scoring experiments. However this term should not be confused with a statistical experiment (a randomized controlled experiment) and to avoid this confusion we try to avoid overusing the term **experiment** and use **run** or **job** instead to refer to a singe experiment and use the term **model selection** to refer to the whole process of **experimentation** (running and comparing many different experiments).
+- **Model management**: Lets us bind specific models to their underlying code repository and allows the *promotion* of a model into staging and production without changes to the API servicing the model. The need for model management arises from the need to perform model selection in a tractable way and with the ability to perform rollbacks.
 
-The three main Azure resources we will consume in this lab are as follows:
+In this lab we will focus on how to use Workbench to facilitate model selection. In a different lab, we will learn how Workbench can also be used to do model management.
 
- - An **Experimentation account** contains workspaces, which is where our projects are sitting. When working in teams, we can add multiple users or "seats" to an experimentation account. To use the Workbench and run experiments, we must create an experimentation account.
- - A **Model Management account** is for managing models. Model management is essential to both model development and deployment. We use a model management account to register models and bundle models and code (including dependencies) into **manifests**. Manifests are in turn used to create Docker **images**, and those images in turn build containerized web services that run instances of our deployed application, locally or in the cloud.
- - An **environment** denotes a particular computing resource that is used for deploying and managing models. It can be a local computer, a Linux VM on Azure, or a Kubernetes cluster running in Azure Container Service. A model hosted in a Docker container runs in these environments and is exposed as a REST API endpoint.
+## Praparing Workbench and running a single experiment
 
-Source: https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-general-concepts
-
-After this lab is finished, we will have a better idea of how to use the Workbench and accompanying Azure services in order to
-
-- minimize the time and effort that goes into the iterative process of building and evaluating ML models
-- smooth out the transition of going from development to production for operationalizing ML models
-- get back to doing more data science and less administrative or devops types of tasks
-
-### 3.1 Running the modeling script in Docker
-
-Our task in this section is to successfully run the project in a Docker container. To do so, we will need to start a new Workbench project based on an existing template and make a set of changes to the project in order to run it successfully. 
-
-1. Open the Workbench and press **CTRL+N** to create a new project. Name the project `churn_prediction` and use the `Documents` folder as the project directory. Finally, in the box called `Search Project Templates`, type `churn` and select the template called `Customer Churn Prediction`. Press **Create** to create the project.
-2. Go to **File > Open Project (Code)** to edit the project scripts using Code. Find the script `CATelcoCustomerChurnModelingDocker.py` and replace line 13 with the following line: `df = pd.read_csv('data/CATelcoCustomerChurnTrainingSample.csv')`.
-3. Go to `aml_config/docker.compute` and replace line 2 with `baseDockerImage: "microsoft/mmlspark:plus-0.7.91"`.
-4. Go to `aml_config/docker.runconfig` and replace its content with 
-
-```
-ArgumentVector:
-  - "$file"
-Target: "docker"
-EnvironmentVariables:
-  "EXAMPLE_ENV_VAR": "Example Value"
-Framework: "PySpark"
-CondaDependenciesFile: "aml_config/conda_dependencies.yml"
-SparkDependenciesFile: "aml_config/spark_dependencies.yml"
-PrepareEnvironment: true
-TrackedRun: true
-```
-
-5. On Code, go to **File > Save All** to save all the above changes. Then return to the Workbench and check to make sure the changes are visible here. We can check by clicking on the **Files** tab on the left pannel and opening one of the files we changed.
-6. In order to run the experiment in a Docker container, we must prepare a Docker image. We will do so programatically by going to **File > Open Command Prompt** and typing `az ml experiment prepare -c docker`. Notice all the changes that are happening as this command is running. This should take a few minutes.
-  **Note:** At this point, there is a strange Docker behavior for which we propose an easy solution: we may get an error at the top about `image operating system "linux" cannot be used on this platform`.
-
-  <div style="text-align:center"><img src ="./images/linux-image-not-found.jpg" width="600"/></div>
-
-  To resolve it we click on the Docker logo on the right-hand side in the taskbar and switch Docker to use Windows containers. This will result in a new Docker error:
-
-  <div style="text-align:center"><img src ="./images/docker-windows-image.jpg" width="300"/></div>
-
-  Now we switch Docker back to Linux containers (by going to the taskbar once more).
-
-  <div style="text-align:center"><img src ="./images/switch-linux-containers.jpg" width="500"/></div>
-
-  We then return to the command prompt and run the above command again. This will take a few minutes. When finished, we should get a message saying `Your environment is now ready`.
-
-7. We can now run our experiment in a Docker container by submitting the following command: `az ml experiment submit -c docker CATelcoCustomerChurnModelingDocker.py`. Alternatively, we can go to the **Project Dashboard**, select "docker" as the run configuration, select the `CATelcoCustomerChurnModelingDocker.py` script and click on the run button. In either case, we should be able to see a new job starting on the **Jobs** in the pannel on the right-hand side. Click on the finished job to see the **Run Properties** such as **Duration**. Notice under **Outputs** there are no objects, so the script did not create any artifacts. Click on the green **Completed** to see any results printed by the script, including the model accuracy. It is worth noting that the Azure CLI runs on both the Windows and Linux command line. To see this in action, from the Windows command prompt type `bash` to switch to a Linux command prompt and submit `az ml experiment submit -c docker CATelcoCustomerChurnModelingDocker.py` a second time.
-8. Return to Code and add the following code snippet to the bottom of `CATelcoCustomerChurnModelingDocker.py` and rerun the experiment. The purpose of the code snippet is to serialize the model on disk in the `outputs` folder.
-
-```
-import pickle
-
-print ("Export the model to model.pkl")
-f = open('./model.pkl', 'wb')
-pickle.dump(dt, f)
-f.close()
-```
-
-9. Rerun the experiment and when finished click on the job and notice the output `model.pkl` in the **Run Properties** pane under **Outputs**. Select this output and download it and place it in new folder called `outputs` under the project directory.
-
-### 3.2 Creating a web service out of the scoring script
-
-Let's now see how we can create a scoring web service from the above model inside a docker image. There are multiple steps that go into doing that. We will be running commands from the command line, but we will also log into the Azure portal in order to see which resources are being created as we run various Azure CLI commands.
-
-1. Using Code, replace line 16 in `score.py` with `model = joblib.load('./model.pkl')` (keeping the indentation). Save the change.
+1. Open the Workbench and create a new project called `classifying_iris`. Choose the **Classifying Iris** as the project template and `Documents` folder as its directory. Open the project and go to **File > Open Command Prompt** to access the command line from within the project parent folder. 
 2. Run `az group create -n azurebootcamplab32 -l eastus2` to create a resource group called `azurebootcamplab32` for the resources we will provision throughout this lab. Then run the following command to create an Azure ML Experimentation account, a Model Management account, and a Workspace.
 ```
 az storage account create -n azurebootcampeastus2 -g azurebootcamplab32 --sku Standard_LRS
 az group deployment create -g azurebootcamplab32 --template-file template-azml.json --parameters @parameters-azml.json
 ```
-In case the deployment results in an error message coded `RoleAssignmentUpdateNotPermitted`, we can safely ignore it as long as the assets `azureuseramlexp`, `azureuseramlws` and `azureuseramlmm` were added to the resource group. We can check all the resources under a resource group from the portal or by running `az resource list -g azurebootcamplab32 -o table`.
-
+In case the deployment results in an error message coded `RoleAssignmentUpdateNotPermitted`, we can safely ignore it as long as the assets `azureuseramlexp`, `azureuseramlws` and `azureuseramlmm` were added to the resource group. We can check all the resources under a resource group from the portal or by running `az resource list -g azurebootcamplab32 -o table`.  
 FYI, as an alternative, we can also create the above from the Azure portal by navigating to [this link](https://docs.microsoft.com/en-us/azure/machine-learning/preview/quickstart-installation) and completing the section **Create Azure Machine Learning accounts**.
-3. Log into the Azure portal and find all the resources under the resource group `azurebootcamplab32`. This should include an Experimentation and a Model Management account. Open the Model Management resource and click on **Model Management** icon on the top.
-4. If we're doing this for the first time, then we need to set up an environment. We usually have a staging and a production environment. We can deploy our models to the staging environment to test them and then redeploy them to the production environment once we're happy with the result. To create a new environment run `az ml env setup --cluster -l eastus2 -n bootcampvmstage -g azurebootcamplab32`. We can look at all the environments uder our subscription using `az ml env list -o table`. Creating the new environment takes about one minute, after which we can activate it using `az ml env set -n bootcampvmstage -g azurebootcamplab32` and list it using `az ml env show`.
-5. We next set our Model Management account by running `az ml account modelmanagement set -n azureuseramlmm -g azurebootcamplab32`.
-6. We are now finally ready to deploy our model as a web service. We do so by running `az ml service create realtime -n churnpred --model-file ./model.pkl -f score.py -r python -s service_schema.json`. Notice the three steps that take place as the command is running. First we register the model, then we create a manifest, then we create a Docker image, and finally we initialize a Docker container that services our prediction app. We can go to the Azure portal and go to click on the resource named `azureuseramlmm` under the resource group `azurebootcamplab32`, then click on **Model Management**.
-<div style="text-align:center"><img src ="./images/model-management-portal.jpg" width="600"/></div>
-In the Model Management portal, we can view the three resources that are created as the above command runs: the manifest, the image, and the service. Click on each to view the resources.
-<div style="text-align:center"><img src ="./images/model-management-services.jpg" width="600"/></div>
-7. We will now recreate the same service, but in three separate commands instead of one command as we did adove. This will help us better understands how one steps leads to the next. First we will register the model object `model.pkl`.
+3. From the command prompt, run the following command to submit the training experiment: 
 ```
-az ml model register -m model.pkl -n model.pkl
+az ml experiment submit -c docker-python iris_sklearn.py
 ```
-Run `az ml model list -o table` and we can see that two different versions of the same model now exist. This is because the model was registered under the same name. We can now create a manifest for the model in Azure Container Services. To do so, in the next command, we replace `<model_id>` with the model ID that was returned in the last command:
+This runs a single training experiment. If we are doing this for the first time, then prior to running the experiment Workbench will create a docker image for us, which will take a few minutes. Once the image is ready, as long as we use the same image, we can run experiments on it quickly and without the initial delay.
+
+## Running multiple experiments
+
+4. Go to **File > Open Project (Code)** to edit the project scripts using Code. Open the script called `iris_sklearn.py`. Go to lines 45-48 and examine the code snippet there. We use the `sys.argv` function to pass extra arguments to Python when we run it from the command line. In our script, we have an optional regularization parameter that we can declare when we before running the experiment (otherwise it defaults to the value in line 45).
+5. We will now run multiple experiments in order to perform model selection. Each experiment will consist of a model with a different regularization parameter. To make it easier to iterate over the different vaules of the regularization parameter, we have the short script called `run.py` with creates a list of regularization parameters we want to iterate over and then runs the same `az ml experiment submit` command we ran earlier, but this time with the regularization parameter explicitly passed as well. Open `run.py` in Code and change `local` to `docker-python` in line 9. Save the change.
+6. Return to the command line and run `python run.py` to run multiple experiments. As the experiments are running, return to the Workbench and open the **Jobs** pannel on the right-hand side and monitor jobs as they're running.
+<div style="text-align:center"><img src ="./images/jobs-pannel.jpg" width="300"/></div>
+Click on the green **Completed** button for one of the jobs to examine the logs created by the script.
+7. Once all the jobs finish running, go to the the **Runs** tab on the left-hand side and click on **All Runs**. Then examine the metrics and visualizations we are presented with.
+<div style="text-align:center"><img src ="./images/runs-tab.jpg" width="200"/></div>
+At the top we have four pannels, one showing information about the jobs we ran and the other three showing some metrics collected by each run (a run here is a single experiment).
+<div style="text-align:center"><img src ="./images/top-four-pannel.jpg" width="700"/></div>
+To see how these metrics tie back to the Python script, open `iris_sklearn.py` in **Code** and find where the model's accuracy is being logged. Hint: the Python object storing it is called `accuracy` in the script. 
+8. Note that we have two ways of logging information in Workbench: 
+  - We can simply rely on Python's `print` function, as can be seen by `print("Accuracy is {}".format(accuracy))` for example. In such a case, we can go the the **Jobs** pannel and click on the green **Completed** button to see any printed logs for a given run.
+  <div style="text-align:center"><img src ="./images/click-completed.jpg" width="700"/></div>
+  - We can rely on the `get_azureml_logger` method to instantiate a logger object and use it to log information, such as in `run_logger.log("Accuracy", accuracy)`. This produces the accuracy chart from the **Runs** tab.
+  <div style="text-align:center"><img src ="./images/accuracy-chart.jpg" width="500"/></div>
+  The biggest advantage of this second approach is that the chart has an interactive component to it. For example, we can click on the chart to select the point with the highest accuracy and as we do so, the corresponding run is automatically selected and we can examine its content by clicking on it.
+  <div style="text-align:center"><img src ="./images/highest-accuracy.jpg" width="700"/></div>
+  We can also hold down **CTRL** and click on the next run with the highest accuracy and once again as we do so the run is automatically selected for us. With two or more selected runs, we can now click on **Compare** to compare them across various metrics.
+  <div style="text-align:center"><img src ="./images/runs-table.jpg" width="600"/></div>
+  This allows us to compare meta-data between runs, any metrics we collected using the `get_azureml_logger` method, as well as any visualizations created by the Python script as part of the run.
+
+## Logging new metrics 
+
+We now add two new metrics to the logger in the `iris_sklearn.py` script, then rerun the experiments to see the additional output that is created as a result.
+
+1. Since the training experiment `iris_sklearn.py` keeps track on precision and recall, we can use those to find the **F-score** which is a sort of average of precision and recall. In our script, the variables `precision` and `recall` are not single numbers but arrays. This is because obtain a different precision and recall by changing our probability threshold for being classified as positive. Similarly, we obtain an array of F-scores by using different threshold values, so we will also log the maximum F-score value (a single number). In **Code** paste in the below code snippet after line 71 in `iris_sklearn.py`, then save the script.
 ```
-az ml manifest create -n churnpred -f score.py -s service_schema.json -r python -i <model_id>
+f_score = 2*(precision*recall)/(precision + recall)
+run_logger.log("Fscore", f_score)
+run_logger.log("MaxFscore", max(f_score))
+print ("Max F_1 is {}".format(max(f_score)))
 ```
-We can run `az ml manifest list -o table` to list our manifests, which returns the manifest ID. We can then replace `<manifest_id>` in the next command with our manifest ID to create an image from a model manifest.
+2. Return to the Workbench and go the the **Runs** tab and click on **All Runs**. Scroll down to the table listing all the runs, click on the checkbox next to `RUN NUMBER` to select them all and click on **Archive**. Repeat this until all the runs have been archived.
+<div style="text-align:center"><img src ="./images/archive-runs.jpg" width="500"/></div>
+3. From the **Command Prompt** rerun `python run.py` and go to the **Jobs** pannel to monitor jobs as they are running. Once all the jobs are finish running, click on the green **Completed** button to view their output. Find the job with regularization rate 0.009765625 and report its maximum F-score (under `Max F_1 is ...`). The output on this page is produced as a result of `print` statements in the script (or functions that return output). 
+<div style="text-align:center"><img src ="./images/printed-output.jpg" width="600"/></div>
+For the same run, now click on the blue link just above the green **Completed** button to see the **Run Properties** pane. Find the regularization rate and the F-score in this tab. The output in this pane is created partly as a result of meta-data collected for each job (such as **Start Time** and **Duration**) and partly as a result of metrics that we logged using the `run_logger.log` function. 
+<div style="text-align:center"><img src ="./images/run-properties.jpg" width="500"/></div>
+Scroll down to see the visuals created by array we logged, including the `Fscore` visual that should now also appear.
+<div style="text-align:center"><img src ="./images/array-visuals.jpg" width="500"/></div>
+Scroll further down to look at visualizations created by the Python script itself. These visualizations were not explicitly logged, but they are also tracked and presented here.
+<div style="text-align:center"><img src ="./images/python-visualizations.jpg" width="500"/></div>
+4. Click on **All Runs** from the **Runs** tab and click on the little settings icon on the right.
+<div style="text-align:center"><img src ="./images/run-settings.jpg" width="500"/></div>
+In the window that opens, put a check mark in the box next to `MaxFscore` then click on **Apply**.
+<div style="text-align:center"><img src ="./images/checkmark-fscore.jpg" width="400"/></div>
+You should now see an additional plot showing the value for `MaxFscore` accross the different runs.
+5. Choose the two models with the highest `MaxFscore` (simply click on the two highest point on the chart). Notice how doing so automatically selects them in the table with all the runs just below the chart. Now click on the **Compare** button to compare the two models.
+<div style="text-align:center"><img src ="./images/max-fscore.jpg" width="600"/></div>
+Of the two models, find the one with the highest accuracy (you will find accuracy under **Logged Metrics**) and note its `runNumber` (at the very top). Then click on **Run List** to return to the table of all the runs and this time click on the `RUN NUMBER` for that model.
+6. In **Run Properties** under **Outputs** select the binary object that stores our model (called `model.pkl` by the script) and click on **Promote**.
+<div style="text-align:center"><img src ="./images/promote-model.jpg" width="600"/></div>
+Click on **Project Dashboard** and then on the project path at the top. 
+<div style="text-align:center"><img src ="./images/project-dashboard.jpg" width="600"/></div>
+A Windows Explorer window will open. From there go to the `classifying_iris` folder. When we promote a model, a new folder is created in our project directory called `assets` (if there was none before) and a link to the `model.pkl` is placed there, called `model.pkl.link`. The model object can also be directly downloaded using the **Download** button under **Outputs** in **Run Properties**. Once we have the model object, we can use it to create a scoring script.  
+Promoted models are registered and versioned in our **Azure Model Management** account and can be viewed in the Azure portal under the Model Management portal. This link can be used to later download the model object itself. 
+<div style="text-align:center"><img src ="./images/models-in-mm-portal.jpg" width="500"/></div>
+Later registered models can be used to create a scoring service. We learn more about this and the Model Management portal in later labs.
+7. Before we finish this lab, let's just briefly go over how to programmatically do what we did above by using the Azure CLI instead of the Workbench GUI. Go to **File > Open Command Prompt** from Workbench and enter `az ml history list -o table` to get the history of runs. Select a particular run by copying its `Run_id` then paste it into the following command to see artifacts from a given run:
+``` 
+az ml history info --run <run_id> --artifact driver_log
 ```
-az ml image create -n churnpred --manifest-id <manifest_id>
+The resulting output matches the output we saw when clicking on the green **Completed** button of a given run.  
+To promote a model object, we simply run
 ```
-This creates the image and places it in the Azure container registry, which can be thought of as a compute environment for machine learning models on Azure. The above command creates an image with a matching image ID. We can look up the manifest ID and the image ID from the Azure portal as well. Finally, the last step is to create a service out of the image we have:
+az ml history promote --run <run_id> --artifact-path outputs/model.pkl --name model.pkl
 ```
-az ml service update realtime -i <service_id_on_portal> --image-id <new_image_id>
+The model object is assumed to be in `outputs/model.pkl` in the above command. The name given to the model object in the Model Management portal will also `model.pkl`. If models with this name is already in the Model Management portal, then each additional one will appear with a new version so that scoring services can later be rolled back to older models if need be.  
+A promoted model object can be downloaded (and put in a folder called `output`) using the following command:
 ```
-Notice that since a service already existed for the model, we used `az ml service update` to update it instead of `az ml service create` to create a new one. Updating the service is a preferable options for models in production because we won't need to make to make any changes to the REST APIs calling the service.
-8. Let's now create a new environment that plays the role of a *production* environment for us. This could be a bigger VM serving as a production VM or a VM in a different location so the service can be available in multiple locations.
+az ml asset download --link-file assets/model.pkl.link -d outputs
 ```
-az ml env setup --cluster -l eastus2 -n bootcampvmprod -g azurebootcamplab32
-```
-We can create a new service programmatically in the same way we did earlier. But we can also go to the Model Management portal, select the image and choose **Create Service** and switch the environment to the production environment `bootcampvmprod` we just created.
+We will cover model management in greater detail in later labs.
