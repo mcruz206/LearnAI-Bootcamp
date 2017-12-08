@@ -33,7 +33,6 @@ Welcome to the second two days of the Cloud AI Bootcamp. In these two days, we w
 - Execute Data preparation workflows and train your models on remote Data Science Virtual Machines (with or without GPUs) and HDInsight Clusters running Spark
 - Manage and compare models with Azure Machine Learning
 - Explore hyper-parameters on Spark using Azure Machine Learning
-- Leverage Batch AI training for parallel training on GPUs
 - Deploy and Consume a scoring service on Azure Container Service
 - Collect and Analyze data from a scoring service in production to progress the data science lifecycle.
 
@@ -46,13 +45,13 @@ Please note: This is a rough agenda, and the schedule is subject to change pendi
     - 10-11: Lab 3.1: Introduction to Team Data Science Process with Azure Machine Learning 
   - 11-12: Lab 3.2: Comparing and Managing Models with Azure Machine Learning
   - 12-1: Lunch
-  - 1-2:20 Lab 3.3: Deploying a data engineering or model training workflow to a remote execution environment 
+  - 1-2:20 Lab 3.3: Executing a data engineering or model training workflow to a remote execution environment 
   - 2:30-3:50 Lab 3.4: Managing conda environments for Azure Machine Learning workflows
   - 4-5: Summary and White-board Discussion
 - Day 2 
   - 9-10: Introduction and Context.
   - 10-11: Lab 4.1: Explore hyper-parameters on Spark using Azure Machine Learning
-  - 11-12:00: Lab 4.2: Deploying a scoring service to Azure Container Service 
+  - 11-12:00: Lab 4.2: Deploying a scoring service to Azure Container Service (AKS) 
   - 12-1: Lunch
   - 1:00-1:50: Lab 4.3: Updating a Model in Production using Model Management Service
   - 2:00-2:50: Lab 4.4: Consuming the final service
