@@ -55,10 +55,11 @@ Please note: This is a rough agenda, and the schedule is subject to change pendi
   - 10:15-11:15: Lab 2.2: Testing your Bot
   - 11:15-12:00: Summary and Whiteboard Discussion of Logging and Testing
   - 12-1: Lunch
-  - 1:00-1:30: Introduction and Context for Custom Vision Service
-  - 1:30-2:00: Lab 2.3: Creating an Image Classification Application using the Custom Vision Service I
-  - 2:00-2:30: Lab 2.4: Creating an Image Classification Application using the Custom Vision Service II
-  - 2:30-3:00: Lab 2.5: Creating an Image Classification Application using the Custom Vision Service III
-  - 3:00-3:50: Summary and Whiteboard Discussion for Custom Vision
+  - 1:00-1:30: Discussion with Andy Hickl, GPM for Cognitive Services
+  - 1:30-2:00: Introduction and Context for Custom Vision Service
+  - 2:00-2:30: Lab 2.3: Creating an Image Classification Application using the Custom Vision Service I
+  - 2:30-3:00: Lab 2.4: Creating an Image Classification Application using the Custom Vision Service II
+  - 3:00-3:30: Lab 2.5: Creating an Image Classification Application using the Custom Vision Service III
+  - 3:30-3:50: Summary and Whiteboard Discussion for Custom Vision
   - 4:00-5:00: Q&A and Feedback for Emerging AI Bootcamp
 
