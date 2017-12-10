@@ -52,8 +52,8 @@ Please note: This is a rough agenda, and the schedule is subject to change pendi
   - 9-10: Introduction and Context.
   - 10-11: Lab 4.1: Explore hyper-parameters on Spark using Azure Machine Learning
   - 11-12:00: Lab 4.2: Deploying a scoring service to Azure Container Service (AKS) 
-  - 12-1: Lunch
+  - 12:00-1: Lunch
   - 1:00-1:50: Lab 4.3: Updating a Model in Production using Model Management Service
   - 2:00-2:50: Lab 4.4: Consuming the final service
   - 3:00-3:50: Lab 4.5: Collect data from a scoring service
-  - 4-5: Summary and White-board Discussion
+  - 4:00-5:00: Q&A and Feedback for Pro AI Bootcamp
