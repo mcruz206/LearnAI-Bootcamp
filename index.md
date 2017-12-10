@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Cloud AI Bootcamp
 
 The goal of this four day bootcamp is to provide a kick-start to individuals who need to develop deeper proficiency with the range of the Microsoft Cloud AI platform. These days are not "Getting Started with..." the various services and assume a 100-200-level familiarity with the products prior to getting started.
