@@ -1,4 +1,4 @@
-# lab01.1-pcl_and_cognitive_services - Using Portable Class Libraries to Simplify App Development with Cognitive Services
+# Using Portable Class Libraries to Simplify App Development with Cognitive Services
 
 This hands-on lab guides you through creating an intelligent Windows (UWP) application from end-to-end using Cognitive Services (Computer Vision API, Emotion API, Face API). We will focus on the ImageProcessing portable class library (PCL), discussing its contents and how to use it in your own applications. 
 
