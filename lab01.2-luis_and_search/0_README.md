@@ -1,4 +1,4 @@
-# lab01.2-luis_and_search - Developing Intelligent Applications with LUIS and Azure Search
+# Developing Intelligent Applications with LUIS and Azure Search
 
 This hands-on lab guides you through creating an intelligent bot from end-to-end using the Microsoft Bot Framework, Azure Search, and Microsoft's Language Understanding Intelligent Service (LUIS). 
 
