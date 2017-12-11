@@ -10,7 +10,7 @@ The material for this lab was mostly derived from the [Azure BatchAI documentati
 
 1. We will use a Data Science Virtual Machine (DSVM) to run this lab. Azure BatchAI is already installed on the DSVM and integrated into the Azure CLI. Log into the DSVM and open up the browser. Download the data used in this lab from [this link](https://batchaisamples.blob.core.windows.net/samples/BatchAIQuickStart.zip?st=2017-09-29T18%3A29%3A00Z&se=2099-12-31T08%3A00%3A00Z&sp=rl&sv=2016-05-31&sr=b&sig=hrAZfbZC%2BQ%2FKccFQZ7OC4b%2FXSzCF5Myi4Cj%2BW3sVZDo%3D), unzip it and go to the unzipped folder. We will see three files: `ConvNet_MNIST.py` which has our script and `Train-28x28_cntk_text.txt` and `Test-28x28_cntk_text.txt` which have our training and test data. The data is a very typical dataset called [MNIST](https://en.wikipedia.org/wiki/MNIST_database), containing images hand-written digits. In the above datasets, the images have already been pre-processed so the data is ready for analysis. The analysis will consist of a Python script which will use the CNTK framework to build a deep learning model for recognizing hand-written digits.
 2. From the above folder, launch the Command Prompt by typing `cmd` from the address bar at the top.
-<div style="text-align:center"><img src ="./images/address-bar-cmd.jpg" width="500"/></div>
+![](./images/address-bar-cmd.jpg =500x)
 Because Azure BatchAI is still in preview, we need to register to use it. We can do so by the commands `az provider register -n Microsoft.BatchAI` and `az provider register -n Microsoft.Batch`. The registration will take a few minutes. We can check if it's done by typing `az provider show -n Microsoft.BatchAI -o table`.
 
 ## Preparing Azure BatchAI to run jobs
@@ -43,8 +43,8 @@ az storage file upload --share-name batchaiquickstart --source Test-28x28_cntk_t
 az storage file upload --share-name batchaiquickstart --source ConvNet_MNIST.py --path mnistcntksample
 ```
 5. We can now visit the Azure portal to make sure that the above assets were created and the files uploaded.
-<div style="text-align:center"><img src ="./images/azbatchai-storage.jpg" width="600"/></div>
-<div style="text-align:center"><img src ="./images/azbatchai-files.jpg" width="600"/></div>
+![](./images/azbatchai-storage.jpg =600x)
+![](./images/azbatchai-files.jpg =600x)
 
 ## Managing jobs in Azure BatchAI
 
