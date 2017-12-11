@@ -16,9 +16,9 @@ Welcome to the first two days of the Learn AI Bootcamp. In these two days, we wi
     - [Part 1](https://www.linkedin.com/learning/creating-bots-with-the-microsoft-bot-framework-part-1)
     - [Part 2](https://www.linkedin.com/learning/creating-bots-with-the-microsoft-bot-framework-part-2)
   - Microsoft Virtual Academy
-    - https://mva.microsoft.com/en-us/training-courses/creating-bots-in-the-microsoft-bot-framework-using-c-17590#!
+    - [Creating Bots in the MSFT Bot Framework](https://mva.microsoft.com/en-us/training-courses/creating-bots-in-the-microsoft-bot-framework-using-c-17590#!)
 
- ## Languages
+## Languages
 
 - C# Proficiency and familiarity with REST APIs
 
@@ -44,19 +44,22 @@ At the end of this workshop, you should be able to:
 Please note: This is a rough agenda, and the schedule is subject to change pending class activities and interaction.
 
 - Day 1
-  - 9-10: Introduction and Context. 
-  - 10-11:20: Lab 1.1: Using Portable Class Libraries to Simplify App Development with Cognitive Services
-  - 11:30-12:00: Whiteboard Session for Cognitive Services
+  - 9-10: Introduction and Context 
+  - 10-12:00: [Lab 1.1: Using Portable Class Libraries to Simplify App Development with Cognitive Services](https://aka.ms/LearnAI-EmergingAIDevBootcamp-01-1)
   - 12-1: Lunch
-  - 1-3:15: Lab 1.2: Developing Intelligent Applications with LUIS and Azure Search
-  - 3:30-5: Summary and White-board Discussion
+  - 1-3:15: [Lab 1.2: Developing Intelligent Applications with LUIS and Azure Search](https://aka.ms/LearnAI-EmergingAIDevBootcamp-01-2)
+  - 3:30-5: Summary and Whiteboard Discussion 
 - Day 2 
-  - 9-10: Introduction and Context.
-  - 10-11: Lab 2.1: Log Chat Conversations in your Bot 
-  - 11-12: Lab 2.2: Testing your Bot
+  - 9-9:30: Introduction and Context
+  - 9:30-10:15: [Lab 2.1: Log Chat Conversations in your Bot](https://aka.ms/LearnAI-EmergingAIDevBootcamp-02-1)
+  - 10:15-11:15: [Lab 2.2: Testing your Bot](https://aka.ms/LearnAI-EmergingAIDevBootcamp-02-2)
+  - 11:15-12:00: Summary and Whiteboard Discussion of Logging and Testing
   - 12-1: Lunch
-  - 1:00-1:50: Summary and White-board Discussion of Azure Bot Services
-  - 2:00-3:00: Lab 2.3: Creating an Image Classification Application using the Custom Vision Service I
-  - 3:00-4:00: Lab 2.4: Creating an Image Classification Application using the Custom Vision Service II
-  - 4-5: Summary and White-board Discussion
+  - 1:00-1:30: Discussion with Andy Hickl, GPM for Cognitive Services
+  - 1:30-2:00: Introduction and Context for Custom Vision Service
+  - 2:00-2:30: [Lab 2.3: Creating an Image Classification Application using the Custom Vision Service I](https://aka.ms/LearnAI-EmergingAIDevBootcamp-02-3)
+  - 2:30-3:00: [Lab 2.4: Creating an Image Classification Application using the Custom Vision Service II](https://aka.ms/LearnAI-EmergingAIDevBootcamp-02-4)
+  - 3:00-3:30: [Lab 2.5: Creating an Image Classification Application using the Custom Vision Service III](https://aka.ms/LearnAI-EmergingAIDevBootcamp-02-5)
+  - 3:30-3:50: Summary and Whiteboard Discussion for Custom Vision
+  - 4:00-5:00: Q&A and Feedback for Emerging AI Bootcamp
 
