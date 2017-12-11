@@ -223,4 +223,4 @@ From your bot's dashboard, you can add other channels, and try out your bot in S
 
 ### Continue to [5_Challenge_and_Closing](./5_Challenge_and_Closing.md)
 
-Back to [README](./0_readme.md)
+Back to [README](./0_README.md)

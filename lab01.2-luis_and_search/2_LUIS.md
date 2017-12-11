@@ -129,4 +129,4 @@ Explore using custom entities of entity type "List" to capture emotion and gende
 
 ### Continue to [3_Bot](./3_Bot.md)
 
-Back to [README](./0_readme.md)
+Back to [README](./0_README.md)

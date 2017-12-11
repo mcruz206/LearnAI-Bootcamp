@@ -127,4 +127,4 @@ Try performing other searches using [examples such as these](https://docs.micros
 
 ### Continue to [2_LUIS](./2_LUIS.md)
 
-Back to [README](./0_readme.md)
+Back to [README](./0_README.md)
