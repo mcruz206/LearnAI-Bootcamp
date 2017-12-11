@@ -16,9 +16,9 @@ Welcome to the first two days of the Learn AI Bootcamp. In these two days, we wi
     - [Part 1](https://www.linkedin.com/learning/creating-bots-with-the-microsoft-bot-framework-part-1)
     - [Part 2](https://www.linkedin.com/learning/creating-bots-with-the-microsoft-bot-framework-part-2)
   - Microsoft Virtual Academy
-    - https://mva.microsoft.com/en-us/training-courses/creating-bots-in-the-microsoft-bot-framework-using-c-17590#!
+    - [Creating Bots in the MSFT Bot Framework](https://mva.microsoft.com/en-us/training-courses/creating-bots-in-the-microsoft-bot-framework-using-c-17590#!)
 
- ## Languages
+## Languages
 
 - C# Proficiency and familiarity with REST APIs
 
