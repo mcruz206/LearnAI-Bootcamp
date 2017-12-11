@@ -202,4 +202,4 @@ Press F5 to run your bot again.  In the Bot Emulator, try searching with "find d
 
 ### Continue to [4_Bot_Enhancements](./4_Bot_Enhancements.md)
 
-Back to [README](./0_readme.md)
+Back to [README](./0_README.md)

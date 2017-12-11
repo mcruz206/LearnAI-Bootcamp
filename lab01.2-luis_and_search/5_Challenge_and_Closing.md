@@ -25,4 +25,4 @@ Resources for future projects/learning:
 - [LUIS Sample](https://github.com/Microsoft/BotBuilder-Samples/blob/master/CSharp/intelligence-LUIS/README.md)
 
 
-Back to [README](./0_readme.md)
+Back to [README](./0_README.md)
