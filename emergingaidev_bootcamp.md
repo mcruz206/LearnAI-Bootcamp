@@ -45,9 +45,9 @@ Please note: This is a rough agenda, and the schedule is subject to change pendi
 
 - Day 1
   - 9-10: Introduction and Context 
-  - 10-12:00: Lab 1.1: Using Portable Class Libraries to Simplify App Development with Cognitive Services
+  - 10-12:00: [Lab 1.1: Using Portable Class Libraries to Simplify App Development with Cognitive Services](https://aka.ms/LearnAI-EmergingAIDevBootcamp-01-1)
   - 12-1: Lunch
-  - 1-3:15: Lab 1.2: Developing Intelligent Applications with LUIS and Azure Search
+  - 1-3:15: [Lab 1.2: Developing Intelligent Applications with LUIS and Azure Search](https://aka.ms/LearnAI-EmergingAIDevBootcamp-01-2)
   - 3:30-5: Summary and Whiteboard Discussion 
 - Day 2 
   - 9-9:30: Introduction and Context
