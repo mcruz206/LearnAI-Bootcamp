@@ -9,15 +9,15 @@ Welcome to the second two days of the Cloud AI Bootcamp. In these two days, we w
 - The ability to create resources within an Azure subscription
 - Familiarity with how to create resources in said subscription
 
- ## Azure Machine Learning Services
+## Azure Machine Learning Services
 
 - Python Proficiency and familiarity with data science workloads and techniques.
 
- ## Version Control
+## Version Control
 
 - Familiarity with [Git](https://git-scm.com/) and a [Visual Studio Team Services Account](https://azure.microsoft.com/en-us/services/visual-studio-team-services/) to leverage collaborative features of Azure Machine Learning.
 
- ## Languages
+## Languages
 
 - Python
 
