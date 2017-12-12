@@ -42,7 +42,7 @@ Please note: This is a rough agenda, and the schedule is subject to change pendi
 
 - Day 1
   - 9-11: Introduction and Context
-    - 10-11: Lab 3.1: Introduction to Team Data Science Process with Azure Machine Learning 
+  - 10-11: Lab 3.1: Introduction to Team Data Science Process with Azure Machine Learning 
   - 11-12: Lab 3.2: Comparing and Managing Models with Azure Machine Learning
   - 12-1: Lunch
   - 1-2:20 Lab 3.3: Executing a data engineering or model training workflow to a remote execution environment 
