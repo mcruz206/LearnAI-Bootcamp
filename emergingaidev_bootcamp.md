@@ -63,3 +63,6 @@ Please note: This is a rough agenda, and the schedule is subject to change pendi
   - 3:30-3:50: Summary and Whiteboard Discussion for Custom Vision
   - 4:00-5:00: Q&A and Feedback for Emerging AI Bootcamp
 
+# Discussion Forum
+
+We will also use a gitter forum for discussion. Please post comments and questions [here](https://gitter.im/LearnAI-Bootcamps).
