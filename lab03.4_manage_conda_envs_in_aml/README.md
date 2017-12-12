@@ -1,4 +1,4 @@
-# Lab 3.4: Updating conda to include additional external dependencies for deep learning or MML
+# Updating conda to include additional external dependencies for deep learning or MML
 
 ## What is conda?
 

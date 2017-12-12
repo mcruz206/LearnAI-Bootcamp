@@ -1,4 +1,5 @@
-# lab04.4-consuming_a_scoring_service - Consuming a Scoring Service
+# Consuming a Scoring Service
+
 This hands-on lab guides you through consuming a Machine Learning scoring service using [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-what-is-azure-ml) with the Azure Machine Learning Workbench. 
 
 In this workshop, you will:
@@ -37,11 +38,13 @@ We will review these articles in class:
   1.  [Primary Concepts](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-consumption)
 
 ### Lab: Creating a model and consuming it
+
 In this lab you'll create an experiment, examine its configuration, and run the experiment locally, using both a local and a local Docker container. You'll set up the experiment in the AMLS Workbench tool, and then run all experiments from the command line interface (CLI)
 - [ ] Open the Azure Machine Learning Services Workbench tool locally or on your Data Science Virtual Machine. 
 - [ ] [Navigate to this Resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-consumption) and complete the steps you see there.
 
 ## Workshop Completion
+
 In this workshop you learned how to:
 - [ ] Understand how to consume a deployed model from a Web API
 

@@ -1,4 +1,4 @@
-# lab04.3-deploying_a_scoring_service_to_acs - Deploying a scoring service to the Azure Container  (AKS)
+# Deploying a scoring service to the Azure Container (AKS)
 
 This hands-on lab guides you through deploying a Machine Learning scoring file to a remote environment using [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-what-is-azure-ml) with the Azure Machine Learning Workbench. 
 
@@ -33,6 +33,7 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
         *  After you create and Start the DSVM, log in to it and double-click the "Install Azure Machine Learning Workbench" icon. Finish the installation by following the on-screen instructions. The installer downloads all the necessary dependent components, such as Python, Miniconda, and other related libraries. The installation might take around half an hour to finish all the components. When complete, the Azure Machine Learning Workbench is installed in the following directory: C:\\Users\\%USERNAME%\\AppData\\Local\\AmlWorkbench
 
 ## Building the Scoring for remote Deployment
+
 (Note - [Our primary example is here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/tutorial-classifying-iris-part-3) and [Another example is here](https://blogs.technet.microsoft.com/machinelearning/2017/09/25/deploying-machine-learning-models-using-azure-machine-learning/) )
 
 The general configuration for working with the  Azure Container Service has this architecture:
@@ -54,6 +55,7 @@ In this lab you'll create an experiment, examine its configuration, and run the 
 - [ ] [Next, navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/tutorial-classifying-iris-part-3), and complete all sections there.
 
 ## Workshop Completion
+
 In this workshop you learned how to:
 - [ ] Understand how to create a model file
 - [ ] Generate a scoring script and schema file

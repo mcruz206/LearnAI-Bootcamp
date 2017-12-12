@@ -1,4 +1,4 @@
-# Lab 3.2: Building and comparing models with Azure ML Workbench
+# Building and comparing models with Azure ML Workbench
 
 Data science is a very iterative process that involves lots of trial and error. As such, the Azure Machine Learning Workbench (Workbench for short) makes it easy for data scientists to iterate on the model building and deployment process. Among other things, Workbench facilitates two common problems we encounter when developing ML solutions: 
 

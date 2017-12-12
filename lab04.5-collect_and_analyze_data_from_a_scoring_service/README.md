@@ -1,4 +1,5 @@
-# lab04.5-collect_and_analyze_data_from_a_scoring_service - Collect and Analyze Data from a scoring service
+# Collect and Analyze Data from a scoring service
+
 This hands-on lab guides you through collecting Machine Learning scoring  data using [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-what-is-azure-ml) with the Azure Machine Learning Workbench. 
 
 In this workshop, you will:

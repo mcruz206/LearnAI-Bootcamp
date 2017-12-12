@@ -1,4 +1,5 @@
-# lab03.3-execute_in_remote_environment - Executing Your Machine Learning Model In A Remote Environment
+# Executing Your Machine Learning Model In A Remote Environment
+
 This hands-on lab guides you through executing a machine learning data preparation or model training work load in a remote environment using [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-what-is-azure-ml) with the Azure Machine Learning Workbench. 
 
 In this workshop, you will:
@@ -19,6 +20,7 @@ You'll focus on the objectives above, not Data Science, Machine Learning or a di
 There is a comprehensive Learning Path you can use to prepare for this course [located here](https://github.com/Azure/learnAnalytics-CreatingSolutionswiththeTeamDataScienceProcess-/blob/master/Instructions/Learning%20Path%20-%20Creating%20Solutions%20with%20the%20Team%20Data%20Science%20Process.md).
 
 ## Introduction and setup 
+
 [Primary Concepts are here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/experimentation-service-configuration)
 
 ***NOTE***: These steps must be completed ***prior*** to attempting this workshop.
@@ -109,6 +111,7 @@ To run your scripts on Spark, [review this link](https://docs.microsoft.com/en-u
 To run your scripts on GPU in a remote machine, you can follow the guidance in this article: [How to use GPU in Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-use-gpu). Focus on the section **Configure Azure ML Workbench to Access GPU**
 
 ## Workshop Completion
+
 In this workshop you learned how to:
 - [ ] Execute your workloads on remote Data Science Virtual Machines 
 - [ ] Execute your workloads on remote Data Science VMs with GPU's
