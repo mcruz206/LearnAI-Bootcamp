@@ -1,4 +1,4 @@
-# Deploying a scoring service to the Azure Container (AKS)
+# Deploying a scoring service to the Azure Container Serice (AKS)
 
 This hands-on lab guides you through deploying a Machine Learning scoring file to a remote environment using [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-what-is-azure-ml) with the Azure Machine Learning Workbench. 
 
