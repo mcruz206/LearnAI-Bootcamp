@@ -12,16 +12,15 @@ CRITICAL NOTE: conda is not used (by default) for local script runs, which use t
 
 1. Open the Workbench and create a new project called `hello_bootcamp`, make it a blank project and place it in the `Documents` folder. Open the project and go to **File > Open Command Prompt** to access the command line from within the project parent folder. Type `python`, then in the python console paste this in:
 
-```
-import sys
-print(sys.executable)
+  ```
+  import sys
+  print(sys.executable)
 
-import matplotlib
-print("matplotlib version:", matplotlib.__version__)
-```
-
-Note the path to the Python executable and the `matplotlib` version. Now type `exit()` to leave the Python console and return to the command prompt.  
-If working locally without the use of Conda environments, we would be using our local root Python installation, which means that all projects would rely on the same environment and where conflicting dependencies can cause collusion, and where missing system dependencies can cause headaches when going from development to staging or production. Therefore, if working locally it is still better to leverage Docker (and Conda within Docker) instead of relying on the root Python executable as we did above. Let's now see how we can do this.
+  import matplotlib
+  print("matplotlib version:", matplotlib.__version__)
+  ```
+  Note the path to the Python executable and the `matplotlib` version. Now type `exit()` to leave the Python console and return to the command prompt.  
+  If working locally without the use of Conda environments, we would be using our local root Python installation, which means that all projects would rely on the same environment and where conflicting dependencies can cause collusion, and where missing system dependencies can cause headaches when going from development to staging or production. Therefore, if working locally it is still better to leverage Docker (and Conda within Docker) instead of relying on the root Python executable as we did above. Let's now see how we can do this.
 2. To see if Conda is installed, type `conda --version`. Now type `conda list` to see a listing of installed python packages. Some of these packages are installed using `pip` or `easy_install`, some are installed using `conda install`.
 3. Open the project with Code by going to **File > Open Project (Code)**. Open the `conda_dependencies.yml` file and examine the content. What package dependencies are specified here? Add `matplotlib=2.0.2` to the list of dependencies for this project then save the file.
 4. To create a Conda environment, return to the command prompt and type
