@@ -61,7 +61,6 @@ We will use the Azure Machine Learning Services (AMLS) and the Azure Machine Lea
 
 ![Azure Machine Learning Components](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/overview-general-concepts/hierarchy.png)
 
-
 ### Lab: Set Up TDSP Structure using the Azure Machine Learning Workbench
 
 In this lab you'll set up your project's structure, conforming to the Team Data Science Process, using the Azure Machine Learning Workbench.
