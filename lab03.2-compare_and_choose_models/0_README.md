@@ -28,22 +28,22 @@ This runs a single training experiment. If we are doing this for the first time,
 4. Go to **File > Open Project (Code)** to edit the project scripts using Code. Open the script called `iris_sklearn.py`. Go to lines 45-48 and examine the code snippet there. We use the `sys.argv` function to pass extra arguments to Python when we run it from the command line. In our script, we have an optional regularization parameter that we can declare when we before running the experiment (otherwise it defaults to the value in line 45).
 5. We will now run multiple experiments in order to perform model selection. Each experiment will consist of a model with a different regularization parameter. To make it easier to iterate over the different vaules of the regularization parameter, we have the short script called `run.py` with creates a list of regularization parameters we want to iterate over and then runs the same `az ml experiment submit` command we ran earlier, but this time with the regularization parameter explicitly passed as well. Open `run.py` in Code and change `local` to `docker-python` in line 9. Save the change.
 6. Return to the command line and run `python run.py` to run multiple experiments. As the experiments are running, return to the Workbench and open the **Jobs** pannel on the right-hand side and monitor jobs as they're running.
-![](./images/jobs-pannel.jpg =300x)
+![](./images/jobs-pannel.jpg)
 Click on the green **Completed** button for one of the jobs to examine the logs created by the script.
 7. Once all the jobs finish running, go to the the **Runs** tab on the left-hand side and click on **All Runs**. Then examine the metrics and visualizations we are presented with.
-![](./images/runs-tab.jpg =200x)
+![](./images/runs-tab.jpg)
 At the top we have four pannels, one showing information about the jobs we ran and the other three showing some metrics collected by each run (a run here is a single experiment).
-![](./images/top-four-pannel.jpg =700x)
+![](./images/top-four-pannel.jpg)
 To see how these metrics tie back to the Python script, open `iris_sklearn.py` in **Code** and find where the model's accuracy is being logged. Hint: the Python object storing it is called `accuracy` in the script. 
 8. Note that we have two ways of logging information in Workbench: 
   - We can simply rely on Python's `print` function, as can be seen by `print("Accuracy is {}".format(accuracy))` for example. In such a case, we can go the the **Jobs** pannel and click on the green **Completed** button to see any printed logs for a given run.
-  ![](./images/click-completed.jpg =700x)
+  ![](./images/click-completed.jpg)
   - We can rely on the `get_azureml_logger` method to instantiate a logger object and use it to log information, such as in `run_logger.log("Accuracy", accuracy)`. This produces the accuracy chart from the **Runs** tab.
-  ![](./images/accuracy-chart.jpg =500x)
+  ![](./images/accuracy-chart.jpg)
   The biggest advantage of this second approach is that the chart has an interactive component to it. For example, we can click on the chart to select the point with the highest accuracy and as we do so, the corresponding run is automatically selected and we can examine its content by clicking on it.
-  ![](./images/highest-accuracy.jpg =700x)
+  ![](./images/highest-accuracy.jpg)
   We can also hold down **CTRL** and click on the next run with the highest accuracy and once again as we do so the run is automatically selected for us. With two or more selected runs, we can now click on **Compare** to compare them across various metrics.
-  ![](./images/runs-table.jpg =600x)
+  ![](./images/runs-table.jpg)
   This allows us to compare meta-data between runs, any metrics we collected using the `get_azureml_logger` method, as well as any visualizations created by the Python script as part of the run.
 
 ## Logging new metrics 
@@ -58,30 +58,30 @@ run_logger.log("MaxFscore", max(f_score))
 print ("Max F_1 is {}".format(max(f_score)))
 ```
 2. Return to the Workbench and go the the **Runs** tab and click on **All Runs**. Scroll down to the table listing all the runs, click on the checkbox next to `RUN NUMBER` to select them all and click on **Archive**. Repeat this until all the runs have been archived.
-![](./images/archive-runs.jpg =500x)
+![](./images/archive-runs.jpg)
 3. From the **Command Prompt** rerun `python run.py` and go to the **Jobs** pannel to monitor jobs as they are running. Once all the jobs are finish running, click on the green **Completed** button to view their output. Find the job with regularization rate 0.009765625 and report its maximum F-score (under `Max F_1 is ...`). The output on this page is produced as a result of `print` statements in the script (or functions that return output). 
-![](./images/printed-output.jpg =600x)
+![](./images/printed-output.jpg)
 For the same run, now click on the blue link just above the green **Completed** button to see the **Run Properties** pane. Find the regularization rate and the F-score in this tab. The output in this pane is created partly as a result of meta-data collected for each job (such as **Start Time** and **Duration**) and partly as a result of metrics that we logged using the `run_logger.log` function. 
-![](./images/run-properties.jpg =500x)
+![](./images/run-properties.jpg)
 Scroll down to see the visuals created by array we logged, including the `Fscore` visual that should now also appear.
-![](./images/array-visuals.jpg =500x)
+![](./images/array-visuals.jpg)
 Scroll further down to look at visualizations created by the Python script itself. These visualizations were not explicitly logged, but they are also tracked and presented here.
-![](./images/python-visualizations.jpg =500x)
+![](./images/python-visualizations.jpg)
 4. Click on **All Runs** from the **Runs** tab and click on the little settings icon on the right.
-![](./images/run-settings.jpg =500x)
+![](./images/run-settings.jpg)
 In the window that opens, put a check mark in the box next to `MaxFscore` then click on **Apply**.
-![](./images/checkmark-fscore.jpg =400x)
+![](./images/checkmark-fscore.jpg)
 You should now see an additional plot showing the value for `MaxFscore` accross the different runs.
 5. Choose the two models with the highest `MaxFscore` (simply click on the two highest point on the chart). Notice how doing so automatically selects them in the table with all the runs just below the chart. Now click on the **Compare** button to compare the two models.
-![](./images/max-fscore.jpg =600x)
+![](./images/max-fscore.jpg)
 Of the two models, find the one with the highest accuracy (you will find accuracy under **Logged Metrics**) and note its `runNumber` (at the very top). Then click on **Run List** to return to the table of all the runs and this time click on the `RUN NUMBER` for that model.
 6. In **Run Properties** under **Outputs** select the binary object that stores our model (called `model.pkl` by the script) and click on **Promote**.
-![](./images/promote-model.jpg =600x)
+![](./images/promote-model.jpg)
 Click on **Project Dashboard** and then on the project path at the top. 
-![](./images/project-dashboard.jpg =600x)
+![](./images/project-dashboard.jpg)
 A Windows Explorer window will open. From there go to the `classifying_iris` folder. When we promote a model, a new folder is created in our project directory called `assets` (if there was none before) and a link to the `model.pkl` is placed there, called `model.pkl.link`. The model object can also be directly downloaded using the **Download** button under **Outputs** in **Run Properties**. Once we have the model object, we can use it to create a scoring script.  
 Promoted models are registered and versioned in our **Azure Model Management** account and can be viewed in the Azure portal under the Model Management portal. This link can be used to later download the model object itself. 
-![](./images/models-in-mm-portal.jpg =500x)
+![](./images/models-in-mm-portal.jpg)
 Later registered models can be used to create a scoring service. We learn more about this and the Model Management portal in later labs.
 7. Before we finish this lab, let's just briefly go over how to programmatically do what we did above by using the Azure CLI instead of the Workbench GUI. Go to **File > Open Command Prompt** from Workbench and enter `az ml history list -o table` to get the history of runs. Select a particular run by copying its `Run_id` then paste it into the following command to see artifacts from a given run:
 ``` 
