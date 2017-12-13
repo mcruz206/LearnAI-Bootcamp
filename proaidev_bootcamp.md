@@ -65,14 +65,14 @@ Please note: This is a rough agenda, and the schedule is subject to change pendi
 
 We will also use a gitter forum for discussion. Please post comments and questions [here][gitter].
 
-[prereq3.0](https://aka.ms/learnai-proaidevbootcamp-03-0)
-[lab3.1](https://aka.ms/learnai-proaidevbootcamp-03-1) 
-[lab3.2](https://aka.ms/learnai-proaidevbootcamp-03-2)
-[lab3.3](https://aka.ms/learnai-proaidevbootcamp-03-3)
-[lab3.4](https://aka.ms/learnai-proaidevbootcamp-03-4)
-[lab4.1](https://aka.ms/learnai-proaidevbootcamp-04-1)
-[lab4.2](https://aka.ms/learnai-proaidevbootcamp-04-2)
-[lab4.3](https://aka.ms/learnai-proaidevbootcamp-04-3)
-[lab4.4](https://aka.ms/learnai-proaidevbootcamp-04-4)
-[lab4.5](https://aka.ms/learnai-proaidevbootcamp-04-5)
-[gitter](https://gitter.im/LearnAI-Bootcamps)
+[prereq3.0]: https://aka.ms/learnai-proaidevbootcamp-03-0
+[lab3.1]: https://aka.ms/learnai-proaidevbootcamp-03-1
+[lab3.2]: https://aka.ms/learnai-proaidevbootcamp-03-2
+[lab3.3]: https://aka.ms/learnai-proaidevbootcamp-03-3
+[lab3.4]: https://aka.ms/learnai-proaidevbootcamp-03-4
+[lab4.1]: https://aka.ms/learnai-proaidevbootcamp-04-1
+[lab4.2]: https://aka.ms/learnai-proaidevbootcamp-04-2
+[lab4.3]: https://aka.ms/learnai-proaidevbootcamp-04-3
+[lab4.4]: https://aka.ms/learnai-proaidevbootcamp-04-4
+[lab4.5]: https://aka.ms/learnai-proaidevbootcamp-04-5
+[gitter]: https://gitter.im/LearnAI-Bootcamps
