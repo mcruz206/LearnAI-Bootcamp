@@ -1,4 +1,4 @@
-# Consuming a Scoring Service
+# Consuming a scoring service
 
 This hands-on lab guides you through consuming a Machine Learning scoring service using [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-what-is-azure-ml) with the Azure Machine Learning Workbench. 
 

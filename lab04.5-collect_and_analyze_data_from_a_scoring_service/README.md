@@ -1,4 +1,4 @@
-# Collect and Analyze Data from a scoring service
+# Collect data from a scoring service
 
 This hands-on lab guides you through collecting Machine Learning scoring  data using [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-what-is-azure-ml) with the Azure Machine Learning Workbench. 
 
@@ -30,6 +30,7 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
         *  After you create and Start the DSVM, log in to it and double-click the "Install Azure Machine Learning Workbench" icon. Finish the installation by following the on-screen instructions. The installer downloads all the necessary dependent components, such as Python, Miniconda, and other related libraries. The installation might take around half an hour to finish all the components. When complete, the Azure Machine Learning Workbench is installed in the following directory: C:\\Users\\%USERNAME%\\AppData\\Local\\AmlWorkbench
 
 We will review these articles in class: 
+
   1.  [Model data collection](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-use-model-data-collection)
   2.  [Azure Machine Learning Model Data Collection API reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-data-collection-api-reference)
 
@@ -38,6 +39,7 @@ The process and flow for using Azure Machine Learning Services has this layout:
 ![Image](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/model-management-overview/modelmanagementworkflow.png)
 
 ### Lab: Collecting Model Data
+
 In this lab you'll use Python to collect scoring data 
 - [ ] Open the Azure Machine Learning Services Workbench tool locally or on your Data Science Virtual Machine. 
 - [ ] [Navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-use-model-data-collection), and complete all sections there.
@@ -45,6 +47,7 @@ In this lab you'll use Python to collect scoring data
 - [ ] Using Power BI, Excel, Spark or HIVE, examine the data from the various runs.
 
 ## Workshop Completion
+
 In this workshop you learned how to:
 - [ ] Use the Azure Machine Learning Services collection module to view scoring data from API calls
 - [ ] Use Azure Storage to view the results
