@@ -57,3 +57,8 @@ Please note: This is a rough agenda, and the schedule is subject to change pendi
   - 2:00-2:50: Lab 4.4: Consuming the final service
   - 3:00-3:50: Lab 4.5: Collect data from a scoring service
   - 4:00-5:00: Q&A and Feedback for Pro AI Bootcamp
+
+
+# Discussion Forum
+
+We will also use a gitter forum for discussion. Please post comments and questions [here](https://gitter.im/LearnAI-Bootcamps).
