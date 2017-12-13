@@ -23,14 +23,15 @@ az ml experiment submit -c docker-python iris_sklearn.py
 ```
 This runs a single training experiment. If we are doing this for the first time, then prior to running the experiment Workbench will create a docker image for us, which will take a few minutes. Once the image is ready, as long as we use the same image, we can run experiments on it quickly and without the initial delay.
 
-## Running multiple experiments
+    ## Running multiple experiments
 
 4. Go to **File > Open Project (Code)** to edit the project scripts using Code. Open the script called `iris_sklearn.py`. Go to lines 45-48 and examine the code snippet there. We use the `sys.argv` function to pass extra arguments to Python when we run it from the command line. In our script, we have an optional regularization parameter that we can declare when we before running the experiment (otherwise it defaults to the value in line 45).
 5. We will now run multiple experiments in order to perform model selection. Each experiment will consist of a model with a different regularization parameter. To make it easier to iterate over the different vaules of the regularization parameter, we have the short script called `run.py` with creates a list of regularization parameters we want to iterate over and then runs the same `az ml experiment submit` command we ran earlier, but this time with the regularization parameter explicitly passed as well. Open `run.py` in Code and change `local` to `docker-python` in line 9. Save the change.
 6. Return to the command line and run `python run.py` to run multiple experiments. As the experiments are running, return to the Workbench and open the **Jobs** pannel on the right-hand side and monitor jobs as they're running.
 
     ![](./images/jobs-pannel.jpg){:height="300px"}
-Click on the green **Completed** button for one of the jobs to examine the logs created by the script.
+
+    Click on the green **Completed** button for one of the jobs to examine the logs created by the script.
 7. Once all the jobs finish running, go to the the **Runs** tab on the left-hand side and click on **All Runs**. Then examine the metrics and visualizations we are presented with.
 ![](./images/runs-tab.jpg)
 At the top we have four pannels, one showing information about the jobs we ran and the other three showing some metrics collected by each run (a run here is a single experiment).
