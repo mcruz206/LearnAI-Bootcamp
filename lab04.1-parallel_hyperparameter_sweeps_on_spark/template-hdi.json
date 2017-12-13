@@ -87,10 +87,10 @@
                 "storageProfile": {
                     "storageaccounts": [
                         {
-                            "name": "sethmotteastus2.blob.core.windows.net",
+                            "name": "azbcsparkeastus2.blob.core.windows.net",
                             "isDefault": true,
-                            "container": "sethmotthdispark-2017-11-17t22-04-30-375z",
-                            "key": "[listKeys('/subscriptions/5be49961-ea44-42ec-8021-b728be90d58c/resourceGroups/sethmottbootcamp/providers/Microsoft.Storage/storageAccounts/sethmotteastus2', '2015-05-01-preview').key1]"
+                            "container": "azbootcamphdispark-2017-11-17t22-04-30-375z",
+                            "key": "[listKeys('/subscriptions/5be49961-ea44-42ec-8021-b728be90d58c/resourceGroups/azurebootcamplab41/providers/Microsoft.Storage/storageAccounts/azbcsparkeastus2', '2015-05-01-preview').key1]"
                         }
                     ]
                 },

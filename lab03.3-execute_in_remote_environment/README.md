@@ -74,7 +74,7 @@ sudo docker run docker/whalesay cowsay "The best debugging is done with CTRL-X. 
 - [ ] Open the Azure Machine Learning Services Workbench tool locally or on your Windows Data Science Virtual Machine. 
 - [ ] [Navigate to this resource](https://docs.microsoft.com/en-us/azure/machine-learning/preview/experimentation-service-configuration), and complete the section marked **"Running a script on a remote Docker"**
 
-### Running on a Spark Cluster
+### Running on a remove Spark or GPU cluster
 
 To run your scripts on Spark, [review this link](https://docs.microsoft.com/en-us/azure/machine-learning/preview/experimentation-service-configuration), referencing the section marked **"Running a script on an HDInsight cluster"**
 
