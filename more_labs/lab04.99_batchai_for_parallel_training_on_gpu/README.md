@@ -1,4 +1,4 @@
-# Lab 4.2: Leverage Batch AI Training for parallel training on GPUs
+# Leverage Batch AI Training for parallel training on GPUs
 
 An AI workflow is very iterative. We go from questions, to data, to building models and operationalizing them and we then iterate on this workflow over and over again. As we do this, we run into many DevOps kind of tasks, such as moving from development to production, provisioning, monitoring, scaling VMs up and down based on demand, or writing code to hadle failures and run at scale. As data scientists, we want these tasks to be handled by others as much as possible so we can focus on what we data scientists are good at.
 

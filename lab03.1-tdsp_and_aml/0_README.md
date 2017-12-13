@@ -1,4 +1,5 @@
-# lab03.1-tdsp_and_amls - The Team Data Science Process using Azure Machine Learning
+# The Team Data Science Process using Azure Machine Learning
+
 This hands-on lab guides you through using the [Team Data Science Process](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/overview) using [Azure Machine Learning Services](https://docs.microsoft.com/en-us/azure/machine-learning/preview/overview-what-is-azure-ml) with the Azure Machine Learning Workbench. 
 
 In this workshop, you will:
@@ -20,6 +21,7 @@ You'll focus on the objectives above, not Data Science, Machine Learning or a di
 There is a comprehensive Learning Path you can use to prepare for this course [located here](https://github.com/Azure/learnAnalytics-CreatingSolutionswiththeTeamDataScienceProcess-/blob/master/Instructions/Learning%20Path%20-%20Creating%20Solutions%20with%20the%20Team%20Data%20Science%20Process.md).
 
 ## Introduction and setup 
+
 [The Primary Concepts for this lab are here](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-classifying-us-incomes). We'll refer to these throughout the lab.
 
 ***NOTE*** The following steps must be completed ***prior*** to attempting this workshop:
@@ -48,6 +50,7 @@ There is a comprehensive Learning Path you can use to prepare for this course [l
 ![Image](resources/docs/images/tdsp.png)
 
 ## 1. Business Understanding
+
 In the [Business Understanding](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-business-understanding) phase of the TDSP, you discover the questions that the organization would like answered from data. This is a group effort, involving the organization, the Data Science team, and the DevOps team along with other stakeholders. 
 
 ![Image](resources/docs/images/contosologo.gif)
@@ -58,13 +61,14 @@ We will use the Azure Machine Learning Services (AMLS) and the Azure Machine Lea
 
 ![Azure Machine Learning Components](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/overview-general-concepts/hierarchy.png)
 
-
 ### Lab: Set Up TDSP Structure using the Azure Machine Learning Workbench
+
 In this lab you'll set up your project's structure, conforming to the Team Data Science Process, using the Azure Machine Learning Workbench.
 - [ ] [Open this link](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-use-tdsp-in-azure-ml), read from the top and complete the steps there. Do not complete the steps marked **"Next Steps"**. Enter the git repo text you brought with you to class. 
 - [ ] [Review this link](https://github.com/Azure/Azure-TDSP-ProjectTemplate) and verify that you have the structure shown in the directory you specified. You will use this structure throughout this workshop.
 
 ### Optional Lab: Use-case evaluation for Data Science questions
+
 In this lab you'll evaluate a business scenario, and detail possible predictions, classifications, or other data science questions that you can begin to explore.
 - [ ] Read the scenario below carefully. Copy and paste the Scenario text below into a text file called *Business Understanding.md* in the /docs directory set up in the previous lab.
 - [ ] Detail a question you could begin to explore answering with a prediction or classification algorithm. Enter that question in your *Business Understanding.md* text file. 
@@ -72,16 +76,19 @@ In this lab you'll evaluate a business scenario, and detail possible predictions
 - [ ] What data sources will you need to complete your prediction? Enter possible sources in your *Business Understanding.md* text file.
 
 #### Optional Example Scenario: 
+
 The Orange Telecom company in France is one of the largest operators of mobile and internet services in Europe and Africa and a global leader in corporate telecommunication services. They have 256 million customers worldwide. They have significant coverage in France, Spain, Belgium, Poland, Romania, Slovakia Moldova, and a large presence Africa and the Middle East.
 Customer Churn is always an issue in any company. Orange would like to predict the propensity of customers to switch provider (churn), buy new products or services (appetency), or buy upgrades or add-ons proposed to them to make the sale more profitable (up-selling). For this effort, they think churn is the first thing they would like to focus on. 
 
 ## 2. Data Acquisition and Understanding
+
 The [Data Aquisition and Understanding](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-data) phase of the TDSP you ingest or access data from various locations to answer the questions the organization has asked. In most cases, this data will be in multiple locations. 
 Once the data is ingested into the system, you'll need to examine it to see what it holds. All data needs cleaning, so after the inspection phase, you'll replace missing values, add and change columns. You'll cover more extensive Data Wrangling tasks in other labs. 
 
 In this workshop, we'll use a single file-based dataset from the U.S. Census to train our model.
 
 ### Lab: Ingest data from a local source
+
 In this lab you will load the data set, inspect it, make a few changes, and then save the Data Wrangling steps as a Python package. 
 
 - [ ] Open [this reference](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-classifying-us-incomes).  We will use this to explain the steps we will use in this lab.
@@ -96,6 +103,7 @@ In this lab you will load the data set, inspect it, make a few changes, and then
 - [ ] This example uses the IDEAR methodology to examine the data. Open the directory where you stored your project, and examine the **WhateverYouNamedYourProject\docs\deliverable_docs\IDEAR.html** file in a web browser for the code and results. 
 
 ## 3. Modeling
+
 The [Modeling](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-modeling) phase of the Team Data Science Process involves creating experiments using one or more algorithms and base data to create a repeatable prediction or classification. 
 
   * You'll begin by doing some feature engineering to prepare the data for modeling.
@@ -103,6 +111,7 @@ The [Modeling](https://docs.microsoft.com/en-us/azure/machine-learning/team-data
   * Finally, after the experiments run, you'll score the models to select the best one.
 
 ### Lab: Feature Engineering, Modeling, and Scoring
+
 In this lab we'll use the same project you just completed - the "Classify US Incomes" one. You'll create your feature engineering file, run the model training, and create the final scores.
 - [ ] In the Azure Machine Learning Services Workbench, open the **Files** icon
     - [ ] Open the **code/02_modeling/Main_FeatureEngineering.py** file and run it to perform the Feature Engineering. You will see the Job status in the right-hand pane and in the Job History section of the Workbench.
@@ -113,6 +122,7 @@ In this lab we'll use the same project you just completed - the "Classify US Inc
 - [ ] Now you need the serialized model file ("pickle file") saved off so that the code in the deployment section that follows can send the model to a container. To do that, look in the Job Status pane again and this time click the **code/02_modeling/Main_ModelCreation.py** item. In the **Output** area there you will see two models. Select the **CVRandomForestModel.pkl** file, select **Download** and save the file in the root of the project folder - You can find this in the "Project Dashboard" view in the Workbench, as the "Location" shown there. 
 
 ## 4. Deployment
+
 The [Deployment](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-deployment) phase of the TDSP entails outputting  the results to a data location, creating an Application Programming Interface (API) or another mechanism for the classification or prediction model to be consumed. 
 
 An outline of this process is here: 
@@ -120,12 +130,14 @@ An outline of this process is here:
 ![Image](https://docs.microsoft.com/en-us/azure/machine-learning/preview/media/model-management-overview/modelmanagementworkflow.png)
  
 ### Optional Lab: Deploy the solution using Containers, consume the results
+
 In this lab you will deploy the solution to Azure Container Services (ACS) for worldwide deployment. **NOTE** This section takes quite some, so it's included here for completeness. The instructor will go over it with you. 
 - [ ] Click **File** then **Open Command Prompt** in the Workbench
 - [ ] In the Workbench, Open the **Files** area, and navigate to the **code/03_deployment/readme.md** file. Click the **Edit** button at the top of the Workbench and follow along with the instructions in that file. 
 - [ ] You will copy and paste each of the commands shown in the Command Prompt. Some of these take a bit of time to complete.
 
 ## 5. Customer Acceptance
+
 The final step in the Team Data Science Process is [Customer Acceptance](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle-acceptance). Here you focus on ensuring that the model performed within acceptable time and accuracy rates, and also present your findings in a comprehensive project document.
 ### Lab: Review Customer Acceptance and Closeout Documentation
 In this lab you will examine the final project close out document. In production implementations, you and your team will create this document. 
@@ -133,6 +145,7 @@ In this lab you will examine the final project close out document. In production
 - [ ] Is there more information needed there? Are there items you would also include? How should this document be communicated? Are there security implications?
 
 ## Workshop Completion
+
 In this workshop you learned how to:
 - [ ] Understand and use the TDSP to clearly define business goals and success criteria
 - [ ] Use a code-repository system with the Azure Machine Learning Workbench using the TDSP structure
