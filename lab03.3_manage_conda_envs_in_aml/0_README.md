@@ -11,7 +11,6 @@ With Azure ML Workbench projects, we use Docker for managing system requirements
 CRITICAL NOTE: conda is not used (by default) for local script runs, which use the root environment instead. This can cause dependencies to break between compute environments. As a general rule, it is better to use Docker even when working locally.
 
 1. Open the Workbench and create a new project called `hello_bootcamp`, make it a blank project and place it in the `Documents` folder. Open the project and go to **File > Open Command Prompt** to access the command line from within the project parent folder. Type `python`, then in the python console paste this in:
-
   ```
   import sys
   print(sys.executable)
